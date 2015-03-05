@@ -46,6 +46,8 @@ private:
     void keyPressEvent( QKeyEvent *_event );
 
 private slots :
+    void renderNow();
+
     void setScale();
     void setTranslate();
     void setRotate();

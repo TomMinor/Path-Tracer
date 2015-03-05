@@ -11,7 +11,7 @@ ngl::Colour Scene::shade(const Ray& _ray, const Primitive& _primitive)
     return _primitive.getSurfaceColour();
 }
 
-void Scene::trace(const Ray& _ray, ngl::Colour &_spectrum)
+bool Scene::trace(const Ray& _ray, ngl::Colour &_spectrum)
 {
     ngl::Real tClosest = _ray.m_tmax;
     ngl::Colour primitiveColour;
@@ -26,13 +26,41 @@ void Scene::trace(const Ray& _ray, ngl::Colour &_spectrum)
             {
                 tClosest = t;
                 hitObject = m_context->m_primitives[i];
-                primitiveColour = m_context->m_primitives[i]->getSurfaceColour();
+
+                ngl::Vec3 hit = ngl::Vec4(ngl::Vec4(_ray(t)) * m_context->m_camera.m_cameraToWorld).toVec3();
+                ngl::Colour result;
+
+                if(_ray.m_type == CAMERARAY)
+                {
+                    ngl::Vec4 lightPos = ngl::Vec4(1, 6, -1.0f);
+
+                    ngl::Vec3 rayOrigin = ngl::Vec4(lightPos * m_context->m_camera.m_cameraToWorld).toVec3();
+                    ngl::Vec3 rayDirection = hit - rayOrigin;
+                    rayDirection.normalize();
+
+                    Ray ray(rayOrigin, rayDirection, m_context->m_camera.m_nearClippingPlane, m_context->m_camera.m_farClippingPlane, SHADOWRAY);
+
+                    _spectrum = m_context->m_primitives[i]->getSurfaceColour();
+
+                    if(!trace(ray, result))
+                    {
+                        _spectrum *= 0.2;
+                    }
+                }
+                else
+                {
+                    _spectrum = primitiveColour;
+                }
+
+                return true;
             }
         }
     }
 
     // Set the background if no rays intersect any objects
-    _spectrum = ( hitObject != NULL ) ? primitiveColour : m_context->m_background;
+    _spectrum =  m_context->m_background;
+
+    return false;
 }
 
 Framebuffer Scene::render(const RendererContext* _context)

@@ -13,7 +13,13 @@
 class RendererContext
 {
 public:
-    RendererContext( std::vector<Primitive*> &_primitives, std::vector<TestLight*> &_lights, const ngl::Mat4 &_camToWorld, float _fov, unsigned int _imageWidth, unsigned int _imageHeight, ngl::Colour _background);
+    RendererContext( std::vector<Primitive*> &_primitives,
+                     std::vector<TestLight*> &_lights,
+                     const ngl::Mat4 &_camToWorld,
+                     float _fov,
+                     unsigned int _imageWidth,
+                     unsigned int _imageHeight,
+                     ngl::Colour _background);
 
     unsigned int m_imageWidth;
     unsigned int m_imageHeight;

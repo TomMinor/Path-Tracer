@@ -20,6 +20,9 @@ MainWindow::MainWindow( QWidget *parent ) : QMainWindow(parent), m_ui(new Ui::Ma
   m_ui->gridLayout->addWidget(m_gl);
 
 
+
+  connect(m_ui->renderButton, SIGNAL(clicked()), this, SLOT(renderNow()));
+
   // the following code connects the ui components to the GL class
   /// connect the vboSelection combo to the index value in the gl window class
   //connect(m_ui->m_vboSelection,SIGNAL(currentIndexChanged(int)),m_gl,SLOT(vboChanged(int )));
@@ -75,6 +78,11 @@ MainWindow::MainWindow( QWidget *parent ) : QMainWindow(parent), m_ui(new Ui::Ma
 MainWindow::~MainWindow()
 {
     delete m_ui;
+}
+
+void MainWindow::renderNow()
+{
+  qDebug() << "Poop";
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -158,19 +166,16 @@ void MainWindow::keyPressEvent(QKeyEvent *_event  )
   // we then switch on the key value and set the camera in the GLWindow
   switch (_event->key())
   {
-  case Qt::Key_Escape :{ QApplication::exit(EXIT_SUCCESS); break;}
-  //case Qt::Key_W : {m_ui->m_wireframe->toggle(); break;}
-  //case Qt::Key_N : {m_ui->m_normals->toggle(); break;}
+    case Qt::Key_Escape :{ QApplication::exit(EXIT_SUCCESS); break;}
 
-  case Qt::Key_S :
-  {
-//    m_ui->m_sx->setValue(m_ui->m_sx->value()+increment);
-//    m_ui->m_sy->setValue(m_ui->m_sy->value()+increment);
-//    m_ui->m_sz->setValue(m_ui->m_sz->value()+increment);
-
-    break;
-
-  }
+    case Qt::Key_R :
+    {
+        if ( QApplication::keyboardModifiers ()  == Qt::ControlModifier)
+        {
+            renderNow();
+        }
+        break;
+    }
 //  case Qt::Key_X : { m_ui->m_rx->setValue(m_ui->m_rx->value()+increment*10); break; }
 //  case Qt::Key_Y : { m_ui->m_ry->setValue(m_ui->m_ry->value()+increment*10); break; }
 //  case Qt::Key_Z : { m_ui->m_rz->setValue(m_ui->m_rz->value()+increment*10); break; }
@@ -182,8 +187,7 @@ void MainWindow::keyPressEvent(QKeyEvent *_event  )
 //  case Qt::Key_O : { m_ui->m_tz->setValue(m_ui->m_tz->value()-increment); break; }
 //  case Qt::Key_L : { m_ui->m_tz->setValue(m_ui->m_tz->value()+increment); break; }
 
-
-  default : break;
+    default : break;
   }
   // finally update the GLWindow and re-draw
   m_gl->updateGL();

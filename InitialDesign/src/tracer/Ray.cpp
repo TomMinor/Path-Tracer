@@ -1,8 +1,8 @@
 #include <tracer/Ray.h>
 #include <ngl/Camera.h>
 
-Ray::Ray(ngl::Vec3 &_origin, ngl::Vec3 &_direction, ngl::Real _near, ngl::Real _far)
-    : m_origin(_origin), m_direction(_direction), m_tmin(_near), m_tmax(_far), m_type(CAMERARAY)
+Ray::Ray(ngl::Vec3 &_origin, ngl::Vec3 &_direction, ngl::Real _near, ngl::Real _far, Raytype type)
+    : m_origin(_origin), m_direction(_direction), m_tmin(_near), m_tmax(_far), m_type(type)
 {
     // Precompute the inverse
     m_inverseDir = inverseDirection();

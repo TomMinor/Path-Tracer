@@ -44,7 +44,7 @@ color: rgb(243, 243, 243);</string>
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -69,7 +69,7 @@ color: rgb(243, 243, 243);</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>
-               <widget class="QPushButton" name="pushButton">
+               <widget class="QPushButton" name="renderButton">
                 <property name="text">
                  <string>Render</string>
                 </property>
@@ -102,9 +102,6 @@ color: rgb(243, 243, 243);</string>
          </widget>
         </item>
        </layout>
-       <zorder>label</zorder>
-       <zorder>gridLayoutWidget</zorder>
-       <zorder>verticalScrollBar</zorder>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -171,4 +168,7 @@ color: rgb(243, 243, 243);</string>
  </widget>
  <resources/>
  <connections/>
+ <slots>
+  <slot>startRender()</slot>
+ </slots>
 </ui>

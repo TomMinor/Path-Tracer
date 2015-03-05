@@ -17,7 +17,7 @@ enum Raytype
 class Ray
 {
 public:
-    Ray(ngl::Vec3 &_origin, ngl::Vec3 &_direction,  ngl::Real _near = 0.0, ngl::Real _far = std::numeric_limits<ngl::Real>::max());
+    Ray(ngl::Vec3 &_origin, ngl::Vec3 &_direction,  ngl::Real _near = 0.0, ngl::Real _far = std::numeric_limits<ngl::Real>::max(), Raytype type = CAMERARAY);
 
     // Unused right now, seems handy
     ngl::Vec3 operator () (const ngl::Real &_t) const;

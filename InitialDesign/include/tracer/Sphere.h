@@ -13,9 +13,7 @@ public:
         : Primitive(_objectToWorld, _sceneCamera), m_radius(_radius), m_radius_sqr(_radius * _radius)
     {;}
 
-    virtual bool
-    intersect(const Ray &_ray, ngl::Real &_t) const;
-
+    virtual bool intersect(const Ray &_ray, ngl::Real &_t) const;
     virtual void draw(ngl::Mat4 &_globalMouseTx);
 
 private:

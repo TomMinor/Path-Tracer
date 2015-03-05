@@ -33,7 +33,7 @@ public:
      * @param _context
      * @param _spectrum
      */
-    void trace(const Ray& _ray, ngl::Colour &_spectrum);
+    bool trace(const Ray& _ray, ngl::Colour &_spectrum);
 
     /**
      * @brief render sets up a Framebuffer and fires traces through the centers of each pixel.
