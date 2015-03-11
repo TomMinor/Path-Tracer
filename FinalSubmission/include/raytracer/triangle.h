@@ -3,6 +3,9 @@
 
 #include "raytracer/primitive.h"
 
+namespace Renderer
+{
+
 class Triangle : public Primitive
 {
 public:
@@ -10,8 +13,8 @@ public:
         : Primitive(_toWorldSpace), m_v0(_v0), m_v1(_v1), m_v2(_v2), m_singleSided(_singleSided)
     {}
 
-    virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const;
-    virtual void draw(ngl::Mat4 &_globalMouseTx, const RenderContext& _context) {}
+    virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const override;
+    virtual void draw(ngl::Mat4 &_globalMouseTx, const RenderContext& _context) override;
 
 private:
     ngl::Vec3 m_v0;
@@ -20,6 +23,8 @@ private:
 
     bool m_singleSided;
 };
+
+}
 
 #endif // TRIANGLEMESH_H
 

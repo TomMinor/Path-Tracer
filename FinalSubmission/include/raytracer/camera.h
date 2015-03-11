@@ -5,10 +5,13 @@
 
 #include "raytracer/tracemath.h"
 
-class RendererCamera
+namespace Renderer
+{
+
+class Camera
 {
 public:
-    RendererCamera( const ngl::Mat4 &_toWorldSpace = ngl::Mat4(),
+    Camera( const ngl::Mat4 &_toWorldSpace = ngl::Mat4(),
                     float _fov = 90.f,
                     float _nearClip = 0.1f,
                     float _farClip = 1000.f );
@@ -79,6 +82,9 @@ private:
      */
     float m_angle;
 };
+
+}
+
 
 #endif // RENDERERCAMERA
 

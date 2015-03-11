@@ -5,6 +5,9 @@
 
 #include "raytracer/triangle.h"
 #include "raytracer/ray.h"
+#include "raytracer/sphere.h"
+#include "raytracer/primitive.h"
+#include "raytracer/renderer.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 MainWindow::MainWindow( QWidget *parent ) : QMainWindow(parent), m_ui(new Ui::MainWindow)
@@ -16,8 +19,6 @@ MainWindow::MainWindow( QWidget *parent ) : QMainWindow(parent), m_ui(new Ui::Ma
   QGLFormat format;
   format.setVersion(3,2);
   format.setProfile( QGLFormat::CoreProfile);
-
-  m_ui->openGLWidget->deleteLater();
 
   m_gl = new GLWindow(format,this);
   m_ui->gridLayout->addWidget(m_gl);
@@ -85,24 +86,51 @@ MainWindow::~MainWindow()
 
 void MainWindow::renderNow()
 {
-    ngl::Mat4 tmp;
+//    ngl::Mat4 tmp;
 
-    ngl::Vec3 v0(-0.7130257454508733, -0.5865434646245038, 1.7369010036587358);
-    ngl::Vec3 v1(-0.07521651730128985, -1.1122104816514653, -1.74747496047553);
-    ngl::Vec3 v2(1.7395444928627066, 0.3947376948632006, -0.17860976125582403);
+//    ngl::Vec3 v0(-0.7130257454508733, -0.5865434646245038, 1.7369010036587358);
+//    ngl::Vec3 v1(-0.07521651730128985, -1.1122104816514653, -1.74747496047553);
+//    ngl::Vec3 v2(1.7395444928627066, 0.3947376948632006, -0.17860976125582403);
 
-    Ray<float>::RayType a = Ray<float>::CAMERA;
+//    Renderer::Ray<float>::RayType a = Renderer::Ray<float>::CAMERA;
 
-    Ray<float> r( ngl::Vec3(0, 0, 0),
-                  ngl::Vec3(2, -2, 2), a);
+//    Renderer::Ray<float> r( ngl::Vec3(0, 0, 0),
+//                  ngl::Vec3(2, -2, 2), a);
 
-    Triangle tri(v0, v1, v2, tmp);
-    float t = 0.0f;
+//    Renderer::Triangle tri(v0, v1, v2, tmp);
+//    float t = 0.0f;
 
-    if(tri.intersect(r, t))
-    {
-        qDebug() << "Tri intersects at " << t;
-    }
+//    if(tri.intersect(r, t))
+//    {
+//        qDebug() << "Tri intersects at " << t;
+//    }
+
+  Renderer::Scene::lightList lights;
+  Renderer::Scene::objectList  objects;
+
+  ngl::Mat4 o2w;
+  o2w.translate(0, 0, -5);
+
+  objects.push_back(new Renderer::Sphere(o2w));
+
+  o2w.identity();
+  o2w.translate(1, 1, -6);
+  o2w.scale(1, 2, 1);
+  objects.push_back(new Renderer::Sphere(o2w));
+
+  ngl::Mat4 c2w;
+  c2w.translate(0, 0, 5);
+
+  ngl::Camera a;
+  a.setEye(ngl::Vec4(0, 0, 5, 1));
+  a.setViewAngle(30);
+
+  Renderer::Scene* scene = new Renderer::Scene(a, objects, lights);
+
+  Renderer::RenderContext* context = new Renderer::RenderContext(scene, 640, 480, "output.ppm");
+
+  Renderer::render(context);
+
 }
 
 //----------------------------------------------------------------------------------------------------------------------

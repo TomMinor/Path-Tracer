@@ -4,11 +4,14 @@
 #include <ngl/Vec3.h>
 #include <limits>
 
+namespace Renderer
+{
+
 template <typename T>
 struct Ray
 {
 public:
-    enum RayType { UNKNOWN = 0, CAMERA, SHADOW };
+    enum RayType { UNKNOWN = 0, CAMERA, SHADOW }; ///@todo Make the ray polymorphic?
 
     Ray(const ngl::Vec3& _origin, const ngl::Vec3& _direction, RayType _type = UNKNOWN, T _near = 0.0, T _far = std::numeric_limits<T>::max())
         : m_origin(_origin), m_direction(_direction), m_tmin(_near), m_tmax(_far), m_type(_type)
@@ -46,7 +49,7 @@ public:
 
     const RayType m_type;
 
-private:
+protected:
     ///
     /// \brief inverseDirection
     /// \return The inverse vector of the current direction
@@ -59,5 +62,7 @@ private:
                           numerator / m_direction.m_z );
     }
 };
+
+}
 
 #endif

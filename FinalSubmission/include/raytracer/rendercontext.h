@@ -7,8 +7,12 @@
 #include <ngl/Camera.h>
 
 #include "raytracer/primitive.h"
-#include "raytracer/renderercamera.h"
+#include "raytracer/camera.h"
 #include "raytracer/scene.h"
+
+namespace Renderer
+{
+
 
 class Scene;
 
@@ -17,9 +21,10 @@ class Scene;
  */
 struct RenderContext
 {
-    RenderContext( const Scene* _scene,
+    RenderContext(Scene *_scene,
                    unsigned int _imageWidth,
-                   unsigned int _imageHeight
+                   unsigned int _imageHeight,
+                   const std::string& _outputPath = ""
                  );
 
     ~RenderContext();
@@ -31,9 +36,12 @@ struct RenderContext
     unsigned int m_imageHeight;
     float m_aspectRatio;
 
-    Scene* m_scene;
+    std::string m_outputPath;
 
+    Scene* m_scene;
 };
+
+}
 
 #endif // RENDERCONTEXT_H
 

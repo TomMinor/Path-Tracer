@@ -1,5 +1,8 @@
 #include "raytracer/triangle.h"
 
+namespace Renderer
+{
+
 bool Triangle::intersect(const Ray<float> &_ray, ngl::Real &_t) const
 {
     _t = 0.f; // Initialise to 0 just incase
@@ -80,4 +83,12 @@ bool Triangle::intersect(const Ray<float> &_ray, ngl::Real &_t) const
  * gnuplot> splot 'tri.dat' w pm3d notitle, 'line.dat' notitle with lines lt -1
  *
  */
+
+void Triangle::draw(ngl::Mat4 &_globalMouseTx, const RenderContext &_context)
+{
+
+}
+
+}
+
 

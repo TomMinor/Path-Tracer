@@ -1,7 +1,11 @@
 #include "raytracer/scene.h"
 
-Scene::Scene(const ngl::Camera &_camera, const std::vector<Primitive *> &_primitives,
-             const std::vector<TestLight *> &_lights,
+namespace Renderer
+{
+
+Scene::Scene(const ngl::Camera &_camera,
+             const std::vector<Primitive *> &_primitives,
+             const std::vector<Light *> &_lights,
              ngl::Colour _background)
     :   m_primitives(_primitives),
         m_lights(_lights),
@@ -14,5 +18,10 @@ Scene::Scene(const ngl::Camera &_camera, const std::vector<Primitive *> &_primit
 
 //    transform.
 
-    m_camera = new RendererCamera( ngl::Mat4(), 90.f );
+  ngl::Mat4 a;
+  a.translate(_camera.getEye().m_x, _camera.getEye().m_y, _camera.getEye().m_z);
+
+  m_camera = new Camera( a, 90.f );
+}
+
 }

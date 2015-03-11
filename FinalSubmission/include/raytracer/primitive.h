@@ -7,6 +7,9 @@
 #include <ngl/Mat4.h>
 #include <ngl/Colour.h>
 
+namespace Renderer
+{
+
 // We pass in a reference to RenderContext when drawing
 struct RenderContext;
 
@@ -18,6 +21,7 @@ class Primitive
 {
 public:
     Primitive(const ngl::Mat4 &_toWorldSpace);
+    virtual ~Primitive() {;}
 
     virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const = 0;
     virtual void draw(ngl::Mat4 &_globalMouseTx, const RenderContext& _context) = 0;
@@ -48,6 +52,8 @@ protected:
 
     ngl::Colour m_colour;
 };
+
+}
 
 #endif // PRIMITIVE_H
 

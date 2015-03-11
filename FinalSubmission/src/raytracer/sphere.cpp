@@ -11,6 +11,8 @@
 #include "raytracer/sphere.h"
 #include "raytracer/tracemath.h"
 
+namespace Renderer
+{
 
 bool Sphere::intersect(const Ray<float> &_ray, float &o_t) const
 {
@@ -60,4 +62,6 @@ void Sphere::draw(ngl::Mat4 &_globalMouseTx, const RenderContext &_context)
 //    {
 //        MV = m_toObjectSpace  * _globalMouseTx * _context.m_camera->
 //    }
+}
+
 }

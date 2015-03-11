@@ -3,6 +3,9 @@
 
 #include "raytracer/primitive.h"
 
+namespace Renderer
+{
+
 class Sphere : public Primitive
 {
 public:
@@ -18,6 +21,8 @@ private:
     float m_squaredRadius;
 
 };
+
+}
 
 #endif // SPHERE_H
 

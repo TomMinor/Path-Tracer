@@ -2,6 +2,10 @@
 
 #include <ngl/Random.h>
 
+
+namespace Renderer
+{
+
 Primitive::Primitive(const ngl::Mat4 &_toWorldSpace)
     : m_toWorldSpace(_toWorldSpace)
 {
@@ -47,4 +51,4 @@ Ray<float> Primitive::rayToObjectSpace(const Ray<float> &_ray) const
     return Ray<float>(rayOrigin, rayDirection, _ray.m_type, _ray.m_tmin, _ray.m_tmax);
 }
 
-
+}

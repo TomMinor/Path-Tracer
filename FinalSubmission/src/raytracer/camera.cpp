@@ -1,8 +1,11 @@
 #include <QDebug>
 
-#include "raytracer/renderercamera.h"
+#include "raytracer/camera.h"
 
-RendererCamera::RendererCamera(const ngl::Mat4 &_toWorldSpace, float _fov, float _nearClip, float _farClip)
+namespace Renderer
+{
+
+Camera::Camera(const ngl::Mat4 &_toWorldSpace, float _fov, float _nearClip, float _farClip)
 {
     setFOV(_fov);
     setClippingPlanes(_nearClip, _farClip);
@@ -14,4 +17,6 @@ RendererCamera::RendererCamera(const ngl::Mat4 &_toWorldSpace, float _fov, float
     {
         qWarning() << "Render camera scale is not 1";
     }
+}
+
 }
