@@ -21,3 +21,8 @@ bool SolveQuadratic(float _a, float _b, float _c, float &o_x0, float &o_x1)
 
     return true;
 }
+
+float degreesToRadians(float _deg)
+{
+    return _deg * (M_PI / 180.0f);
+}

@@ -2,7 +2,8 @@
 #define RENDERERCAMERA
 
 #include <ngl/Mat4.h>
-#include <cmath>
+
+#include "raytracer/tracemath.h"
 
 class RendererCamera
 {
@@ -19,7 +20,23 @@ public:
     inline void setFOV(float _fov)
     {
         m_fov = _fov;
-        m_angle = atan( (m_fov * 0.5) * (M_PI / 180.0f) ); // @todo What's this do again?
+
+        /*                C
+         *
+         *               /|
+         *              / |
+         *             /  |
+         *            /   |
+         *           /    | 1 (screenheight is between 1 and -1)
+         *          /     |
+         *         /\     |
+         *      A /α_\____| B
+         *            1
+         *
+         * m_angle = α = atan(opp/adj) = atan(1/1)
+         */
+
+        m_angle = atan( degreesToRadians(m_fov * 0.5) ); // Necessary to remap the [1:-1] screenspace ratio onto the aspect ratio, into camera space
     }
 
     inline void setClippingPlanes(float _near, float _far)
@@ -52,11 +69,15 @@ public:
 private:
     ngl::Mat4 m_toObjectSpace;
     ngl::Mat4 m_toWorldSpace;
-    float m_angle;
 
     float m_nearClippingPlane;
     float m_farClippingPlane;
     float m_fov;
+
+    /**
+     * @brief m_angle is used to compute cameraspace rays
+     */
+    float m_angle;
 };
 
 #endif // RENDERERCAMERA
