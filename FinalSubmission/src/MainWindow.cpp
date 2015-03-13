@@ -17,8 +17,18 @@ MainWindow::MainWindow( QWidget *parent )
   format.setVersion(3,2);
   format.setProfile( QGLFormat::CoreProfile);
 
+  m_ui->horizontalLayout_7->removeWidget(m_ui->widget);
+
   m_gl = new GLWindow(format,this);
-  m_ui->gridLayout->addWidget(m_gl);
+  m_ui->horizontalLayout_7->addWidget(m_gl);
+
+  std::string style = "QLineEdit {\
+                           border-style: outset;\
+                           border-width: 16px;\
+                           border-color: black;\
+                       }";
+
+  m_gl->setStyleSheet(style.c_str());
 
   connect(m_ui->renderButton, SIGNAL(clicked()), this, SLOT(renderNow()));
 

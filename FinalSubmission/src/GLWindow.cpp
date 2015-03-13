@@ -8,6 +8,7 @@
 #include <ngl/VAOPrimitives.h>
 #include <ngl/ShaderLib.h>
 
+
 #include "raytracer/triangle.h"
 #include "raytracer/ray.h"
 #include "raytracer/sphere.h"
@@ -75,7 +76,48 @@ GLWindow::GLWindow(const QGLFormat _format, QWidget *_parent ) : QGLWidget( _for
   m_matrixOrder=GLWindow::RTS;
   m_euler=1.0;
   m_modelPos.set(0,0,0);
+
+
 }
+
+//void GLWindow::createTextureObject()
+//{
+//  // create a texture object
+//  glGenTextures(1, &m_textureID);
+//  // bind it to make it active
+//  glActiveTexture(GL_TEXTURE0);
+//  glBindTexture(GL_TEXTURE_2D, m_textureID);
+//  // set params
+//  glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//  glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+//  //glGenerateMipmapEXT(GL_TEXTURE_2D);  // set the data size but just set the buffer to 0 as we will fill it with the FBO
+//  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 640, 480, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
+//  // now turn the texture off for now
+//  glBindTexture(GL_TEXTURE_2D, 0);
+//}
+
+//void GLWindow::createFramebufferObject()
+//{
+//  // create a framebuffer object this is deleted in the dtor
+//  glGenFramebuffers(1, &m_fboID);
+//  glBindFramebuffer(GL_FRAMEBUFFER, m_fboID);
+
+//  // create a renderbuffer object to store depth info
+//  glGenRenderbuffers(1, &m_rboID);
+//  glBindRenderbuffer(GL_RENDERBUFFER, m_rboID);
+
+//  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+//  // bind
+//  glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+//  // attatch the texture we created earlier to the FBO
+//  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_textureID, 0);
+
+//  // now attach a renderbuffer to depth attachment point
+//  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_rboID);
+//  // now got back to the default render context
+//  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//}
 
 // This virtual function is called once before the first call to paintGL() or resizeGL(),
 //and then once whenever the widget has been assigned a new QGLContext.
@@ -316,7 +358,6 @@ void GLWindow::paintGL()
 
 //    //prim->draw( s_vboNames[m_drawIndex]);
 //  }
-
 
 
   using namespace Renderer;
