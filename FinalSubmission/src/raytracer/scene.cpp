@@ -1,39 +1,23 @@
 #include "raytracer/scene.h"
+#include <ngl/Camera.h>
 
 namespace Renderer
 {
 
-Scene::Scene(ngl::Camera *_camera,
-             const std::vector<Primitive *> &_primitives,
+Scene::Scene(const std::vector<Primitive *> &_primitives,
              const std::vector<Light *> &_lights,
+             const ngl::Mat4 &_cameraTransform,
+             const ngl::Mat4 &_cameraView,
              ngl::Colour _background)
-    :   m_primitives(_primitives),
-        m_lights(_lights),
-        m_drawCamera(_camera),
-        m_background(_background)
+    : m_cameraView(_cameraView),
+      m_primitives(_primitives),
+      m_lights(_lights),
+      m_background(_background)
 {
-//    ngl::Vec4 eye = _camera.getEye();
-//    ngl::Vec4 lookAt = _camera.getLook();
-//    ngl::Mat4 transform;
-
   ngl::Mat4 a;
-  //a.translate(_camera.getEye().m_x, _camera.getEye().m_y, _camera.getEye().m_z);
-  a.translate(0, 0, 5);
-  //a.inverse();
+  //a.translate(0, 0, -5);
 
-  m_camera = new Camera( a, 45.f );
-}
-
-void Scene::draw(ngl::Mat4 &_globalMouseTx)
-{
-  for(objectListIterator object = objectBegin();
-      object != objectEnd();
-      object++)
-  {
-    (*object)->draw(_globalMouseTx,
-                    m_drawCamera->getViewMatrix(),
-                    m_drawCamera->getProjectionMatrix());
-  }
+  m_camera = new Camera(_cameraTransform, 90);
 }
 
 }

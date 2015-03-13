@@ -84,11 +84,6 @@ bool Triangle::intersect(const Ray<float> &_ray, ngl::Real &_t) const
  *
  */
 
-void Triangle::draw(const ngl::Mat4 &_globalMouseTx, const ngl::Mat4 &_modelView, const ngl::Mat4 &_viewProjection)
-{
-
-}
-
 }
 
 

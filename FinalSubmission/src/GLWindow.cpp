@@ -205,7 +205,7 @@ void GLWindow::initializeGL()
   shader->setShaderParam1i("drawFaceNormals",true);
   shader->setShaderParam1i("drawVertexNormals",true);
 
-  prim->createSphere("sphere1", 1.0f, 30);
+  //prim->createSphere("sphere1", 1.0f, 30);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -226,9 +226,9 @@ void GLWindow::loadMatricesToShader( )
   ngl::Mat4 MVP;
   ngl::Mat3 normalMatrix;
   ngl::Mat4 M;
-  M=m_transform*m_mouseGlobalTX;
-  MV=M*m_cam->getViewMatrix();
-  MVP=  MV*m_cam->getProjectionMatrix();
+  M = m_transform * m_mouseGlobalTX;
+  MV = M * m_cam->getViewMatrix();
+  MVP = MV * m_cam->getProjectionMatrix();
   normalMatrix=MV;
   normalMatrix.inverse();
   shader->setShaderParamFromMat4("MV",MV);
@@ -287,6 +287,8 @@ void GLWindow::paintGL()
   ngl::Mat4 rotY;
   // create the rotation matrices
   rotX.rotateX(m_spinXFace / 3.f);
+
+
   rotY.rotateY(m_spinYFace);
   // multiply the rotations
   m_mouseGlobalTX=rotX * rotY;
@@ -328,7 +330,20 @@ void GLWindow::paintGL()
     m_material.setDiffuse((*object)->getSurfaceColour());
     m_material.loadToShader("material");
 
-    prim->draw("sphere1");
+    prim->draw("sphere");
+  }
+
+  for( Scene::lightListIterator light = m_scene->lightBegin();
+       light != m_scene->lightEnd();
+       ++light)
+  {
+    m_transform = (*light)->worldTransform();
+    loadMatricesToShader();
+
+    m_material.setDiffuse(ngl::Colour(0.f, 0.4f, 0.f));
+    m_material.loadToShader("material");
+
+    prim->draw("cone", GL_LINE_LOOP);
   }
 
   m_axis->draw(m_mouseGlobalTX);
@@ -362,7 +377,10 @@ bool GLWindow::loadScene(const std::string& _filepath)
   ngl::Mat4 c2w;
   c2w.translate(0, 0, 5);
 
-  m_scene = new Renderer::Scene(m_cam, objects, lights);
+  m_scene = new Renderer::Scene(objects,
+                                lights,
+                                m_cam->getViewMatrix(),
+                                m_mouseGlobalTX * m_cam->getViewMatrix() * m_cam->getProjectionMatrix());
 
   return true;
 }
@@ -371,6 +389,11 @@ bool GLWindow::loadScene(const std::string& _filepath)
  {
    if(m_scene != NULL)
    {
+     ///@todo Clean up the scene/render context confusion
+     ngl::Mat4 tmp = m_mouseGlobalTX * m_cam->getViewMatrix();
+
+     m_scene->getRenderCamera()->setCameraWorldSpace(tmp.inverse());
+     m_scene->getRenderCamera()->setFOV(m_cam->getFOV());
      Renderer::render(_context);
    }
  }

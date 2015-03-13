@@ -67,11 +67,6 @@ namespace Renderer
                        renderCamera->getfarClipPlane()
                        );
 
-        if(i == 638 && j == 28)
-        {
-
-        }
-
         Image::Pixel rayColour;
         trace(ray, _context, rayColour);
         pixels.setPixel(rayColour, i, j);

@@ -2,11 +2,11 @@
 #define SCENE_H
 
 #include <vector>
-#include <ngl/Camera.h>
 #include <ngl/Colour.h>
 
-#include <raytracer/rendercontext.h>
+#include "raytracer/rendercontext.h"
 #include "raytracer/camera.h"
+#include "raytracer/light.h"
 
 namespace Renderer
 {
@@ -18,9 +18,10 @@ struct RenderContext;
 class Scene
 {
 public:
-    Scene(ngl::Camera* _camera,
-          const std::vector<Primitive*> &_primitives,
+    Scene(const std::vector<Primitive*> &_primitives,
           const std::vector<Light*> &_lights,
+          const ngl::Mat4 &_cameraTransform,
+          const ngl::Mat4 &_cameraView,
           ngl::Colour _background = ngl::Colour(0.f, 0.f, 0.f) // Default to black
           );
 
@@ -40,23 +41,24 @@ public:
     inline const ngl::Colour& getBackgroundColour() const { return m_background; }
 
     inline Camera* getRenderCamera() const { return m_camera; }
-    inline ngl::Camera* getDrawCamera() { return m_drawCamera; }
 
 //    inline void addPrimitive(const Primitive* _object) { m_primitives.push_back(_object); }
 //    inline void addLight(const Light* _light) { m_lights.push_back(_light); }
 
-    void draw(ngl::Mat4 &_globalMouseTx);
-
 private:
-    //-------------------------------------------------
-    // Scene Settings /// @todo Maybe this should be it's own Scene class?
-    //-------------------------------------------------
+    Camera *m_camera;
+    ngl::Colour m_background;
+    ngl::Mat4 m_cameraView;
+
+    //------------------------------------------
+    // Objects
+    //------------------------------------------
     objectList m_primitives;
     lightList m_lights;
-    Camera *m_camera;
-    ngl::Camera *m_drawCamera;
 
-    ngl::Colour m_background;
+
+
+
 };
 
 }

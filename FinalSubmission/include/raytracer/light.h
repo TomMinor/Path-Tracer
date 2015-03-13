@@ -6,10 +6,12 @@
 namespace Renderer
 {
 
-class Light
+class Light : public Primitive
 {
 public:
-  Light() {;}
+  Light(const ngl::Mat4 &_toWorldSpace)
+    : Primitive(_toWorldSpace)
+  {;}
 
 private:
 

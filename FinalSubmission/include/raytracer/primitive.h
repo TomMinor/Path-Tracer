@@ -2,7 +2,6 @@
 #define PRIMITIVE_H
 
 #include "raytracer/ray.h"
-#include "raytracer/rendercontext.h"
 #include <ngl/Vec3.h>
 #include <ngl/Mat4.h>
 #include <ngl/Colour.h>
@@ -24,7 +23,6 @@ public:
     virtual ~Primitive() {;}
 
     virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const = 0;
-    virtual void draw(const ngl::Mat4 &_globalMouseTx, const ngl::Mat4 &_modelView, const ngl::Mat4 &_viewProjection) = 0;
 
     /**
      * @brief convertRayToObjectSpace is a helper method to transform a ray into this primitives object space
