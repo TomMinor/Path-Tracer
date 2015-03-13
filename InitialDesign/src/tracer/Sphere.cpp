@@ -13,6 +13,8 @@
 
 bool Sphere::intersect(const Ray &_ray, ngl::Real &_t) const
 {
+
+
     ngl::Vec3 r_origin;
     ngl::Vec3 r_direction = ngl::Vec4(m_worldToObject * ngl::Vec4(_ray.m_direction)).toVec3();
 

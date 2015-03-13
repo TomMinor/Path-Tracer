@@ -3,14 +3,11 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
-#include "raytracer/triangle.h"
-#include "raytracer/ray.h"
-#include "raytracer/sphere.h"
-#include "raytracer/primitive.h"
-#include "raytracer/renderer.h"
+
 
 //----------------------------------------------------------------------------------------------------------------------
-MainWindow::MainWindow( QWidget *parent ) : QMainWindow(parent), m_ui(new Ui::MainWindow)
+MainWindow::MainWindow( QWidget *parent )
+  : QMainWindow(parent), m_ui(new Ui::MainWindow), m_scene(NULL)
 {
   // setup the user interface
   m_ui->setupUi(this);
@@ -22,8 +19,6 @@ MainWindow::MainWindow( QWidget *parent ) : QMainWindow(parent), m_ui(new Ui::Ma
 
   m_gl = new GLWindow(format,this);
   m_ui->gridLayout->addWidget(m_gl);
-
-
 
   connect(m_ui->renderButton, SIGNAL(clicked()), this, SLOT(renderNow()));
 
@@ -76,6 +71,8 @@ MainWindow::MainWindow( QWidget *parent ) : QMainWindow(parent), m_ui(new Ui::Ma
 //  connect(m_ui->m_eulerXAxis,SIGNAL(valueChanged(double)),this,SLOT(setEuler()));
 //  connect(m_ui->m_eulerYAxis,SIGNAL(valueChanged(double)),this,SLOT(setEuler()));
 //  connect(m_ui->m_eulerZAxis,SIGNAL(valueChanged(double)),this,SLOT(setEuler()));
+
+  m_gl->loadScene("");
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -105,32 +102,9 @@ void MainWindow::renderNow()
 //        qDebug() << "Tri intersects at " << t;
 //    }
 
-  Renderer::Scene::lightList lights;
-  Renderer::Scene::objectList  objects;
+  Renderer::RenderContext* context = new Renderer::RenderContext(m_gl->getScene(), 1024, 720, "output.ppm");
 
-  ngl::Mat4 o2w;
-  o2w.translate(0, 0, -5);
-
-  objects.push_back(new Renderer::Sphere(o2w));
-
-  o2w.identity();
-  o2w.translate(1, 1, -6);
-  o2w.scale(1, 2, 1);
-  objects.push_back(new Renderer::Sphere(o2w));
-
-  ngl::Mat4 c2w;
-  c2w.translate(0, 0, 5);
-
-  ngl::Camera a;
-  a.setEye(ngl::Vec4(0, 0, 5, 1));
-  a.setViewAngle(30);
-
-  Renderer::Scene* scene = new Renderer::Scene(a, objects, lights);
-
-  Renderer::RenderContext* context = new Renderer::RenderContext(scene, 640, 480, "output.ppm");
-
-  Renderer::render(context);
-
+  m_gl->renderScene(context);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

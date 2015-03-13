@@ -11,8 +11,6 @@ Primitive::Primitive(const ngl::Mat4 &_toWorldSpace)
 {
     ngl::Random *random = ngl::Random::instance();
 
-    m_position = ngl::Vec3(m_toWorldSpace.m_30, m_toWorldSpace.m_31, m_toWorldSpace.m_32);
-
     m_toObjectSpace = m_toWorldSpace.inverse();
     m_colour = random->getRandomColour();
 }
@@ -32,12 +30,12 @@ Ray<float> Primitive::rayToObjectSpace(const Ray<float> &_ray) const
      */
 
     ngl::Vec3 rayOrigin;
-    ngl::Vec3 rayDirection = ngl::Vec4( m_toWorldSpace * ngl::Vec4(_ray.m_direction)).toVec3(); // Apply world transforms to ray direction
+    ngl::Vec3 rayDirection = ngl::Vec4( m_toObjectSpace * ngl::Vec4(_ray.m_direction)).toVec3(); // Apply world transforms to ray direction
 
     // Translate the origin coordinate ( this code was copied straight from the scratchapixel math header, needs tidying )
     /// @todo Convert this to use ngl::Mat4, unsure why the math differs
     float m[4][4];
-    memcpy(m, m_toWorldSpace.m_openGL, sizeof(float)*16);
+    memcpy(m, m_toObjectSpace.m_openGL, sizeof(float)*16);
 
     float src[3] = { _ray.m_origin.m_x, _ray.m_origin.m_y, _ray.m_origin.m_z };
     float x = src[0] * m[0][0] + src[1] * m[1][0] + src[2] * m[2][0] + m[3][0];

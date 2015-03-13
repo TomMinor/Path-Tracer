@@ -16,7 +16,7 @@ public:
     virtual bool intersect(const Ray &_ray, ngl::Real &_t) const;
     virtual void draw(ngl::Mat4 &_globalMouseTx);
 
-private:
+//private:
     ngl::Real m_radius;
     ngl::Real m_radius_sqr;
 };

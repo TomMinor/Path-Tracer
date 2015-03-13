@@ -7,9 +7,9 @@ RenderContext::RenderContext(Scene* _scene,
                              unsigned int _imageWidth,
                              unsigned int _imageHeight,
                              const std::string &_outputPath)
-    : m_scene(_scene),
-      m_imageWidth(_imageWidth),
+    : m_imageWidth(_imageWidth),
       m_imageHeight(_imageHeight),
+      m_scene(_scene),
       m_outputPath(_outputPath)
 
 {

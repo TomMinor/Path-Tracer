@@ -8,6 +8,12 @@
 #include <ngl/VAOPrimitives.h>
 #include <ngl/ShaderLib.h>
 
+#include "raytracer/triangle.h"
+#include "raytracer/ray.h"
+#include "raytracer/sphere.h"
+#include "raytracer/primitive.h"
+#include "raytracer/renderer.h"
+
 #include <QDebug>
 const static float INCREMENT=0.01;
 const static float ZOOM=0.1;
@@ -86,7 +92,7 @@ void GLWindow::initializeGL()
   // Now we will create a basic Camera from the graphics library
   // This is a static camera so it only needs to be set once
   // First create Values for the camera position
-  ngl::Vec3 from(0,0,8);
+  ngl::Vec3 from(4, 4, 4);
   ngl::Vec3 to(0,0,0);
   ngl::Vec3 up(0,1,0);
 
@@ -94,7 +100,7 @@ void GLWindow::initializeGL()
   m_cam= new ngl::Camera(from,to,up);
   // set the shape using FOV 45 Aspect Ratio based on Width and Height
   // The final two are near and far clipping planes of 0.5 and 10
-  m_cam->setShape(45,(float)720.0/576.0,0.5,10);
+  m_cam->setShape(45,(float)720.0/576.0, 0.5, 10);
   // now to load the shader and set the values
   // grab an instance of shader manager
   ngl::ShaderLib *shader=ngl::ShaderLib::instance();
@@ -198,6 +204,8 @@ void GLWindow::initializeGL()
 
   shader->setShaderParam1i("drawFaceNormals",true);
   shader->setShaderParam1i("drawVertexNormals",true);
+
+  prim->createSphere("sphere1", 1.0f, 30);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -206,7 +214,7 @@ void GLWindow::initializeGL()
 void GLWindow::resizeGL(int _w, int _h )
 {
   glViewport(0,0,_w,_h);
-  m_cam->setShape(45,(float)_w/_h,0.05,450);
+  m_cam->setShape(45,(float)_w/_h,0.05,10000);
 
 }
 
@@ -228,6 +236,7 @@ void GLWindow::loadMatricesToShader( )
   shader->setShaderParamFromMat3("normalMatrix",normalMatrix);
   shader->setShaderParamFromMat4("M",M);
 }
+
 //----------------------------------------------------------------------------------------------------------------------
 //This virtual function is called whenever the widget needs to be painted.
 // this is our main drawing routine
@@ -267,53 +276,104 @@ void GLWindow::paintGL()
     m_transform=m_translate*m_gimbal*m_scale;
   }
   emit matrixDirty(m_transform);
-  // now set this value in the shader for the current ModelMatrix
-  (*shader)["Phong"]->use();
 
+
+  (*shader)["Phong"]->use();
+  // now set this value in the shader for the current ModelMatrix
   m_material.loadToShader("material");
 
-
   // Rotation based on the mouse position for our global transform
-    ngl::Mat4 rotX;
-    ngl::Mat4 rotY;
-    // create the rotation matrices
-    rotX.rotateX(m_spinXFace);
-    rotY.rotateY(m_spinYFace);
-    // multiply the rotations
-    m_mouseGlobalTX=rotY*rotX;
-    // add the translations
-    m_mouseGlobalTX.m_m[3][0] = m_modelPos.m_x;
-    m_mouseGlobalTX.m_m[3][1] = m_modelPos.m_y;
-    m_mouseGlobalTX.m_m[3][2] = m_modelPos.m_z;
+  ngl::Mat4 rotX;
+  ngl::Mat4 rotY;
+  // create the rotation matrices
+  rotX.rotateX(m_spinXFace / 3.f);
+  rotY.rotateY(m_spinYFace);
+  // multiply the rotations
+  m_mouseGlobalTX=rotX * rotY;
+  // add the translations
+  m_mouseGlobalTX.m_m[3][0] = m_modelPos.m_x;
+  m_mouseGlobalTX.m_m[3][1] = m_modelPos.m_y;
+  m_mouseGlobalTX.m_m[3][2] = m_modelPos.m_z;
+  loadMatricesToShader();
+
+  // get the VBO instance and draw the built in teapot
+  ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();
+
+//  prim->draw( s_vboNames[m_drawIndex]);
+
+//  if(m_drawNormals)
+//  {
+//    (*shader)["normalShader"]->use();
+//    ngl::Mat4 MV;
+//    ngl::Mat4 MVP;
+
+//    MV=m_transform * m_mouseGlobalTX* m_cam->getViewMatrix();
+//    MVP=MV * m_cam->getProjectionMatrix();
+//    shader->setShaderParamFromMat4("MVP",MVP);
+//    shader->setShaderParam1f("normalSize",m_normalSize/10.0);
+
+//    //prim->draw( s_vboNames[m_drawIndex]);
+//  }
 
 
-       loadMatricesToShader();
-      // get the VBO instance and draw the built in teapot
-      ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();
-      prim->draw( s_vboNames[m_drawIndex]);
 
-      if(m_drawNormals)
-      {
-        (*shader)["normalShader"]->use();
-        ngl::Mat4 MV;
-        ngl::Mat4 MVP;
+  using namespace Renderer;
+  for( Scene::objectListIterator object = m_scene->objectBegin();
+       object != m_scene->objectEnd();
+       ++object)
+  {
+    m_transform = (*object)->worldTransform();
+    loadMatricesToShader();
 
-        MV=m_transform*m_mouseGlobalTX* m_cam->getViewMatrix();
-        MVP=MV*m_cam->getProjectionMatrix();
-        shader->setShaderParamFromMat4("MVP",MVP);
-        shader->setShaderParam1f("normalSize",m_normalSize/10.0);
+    m_material.setDiffuse((*object)->getSurfaceColour());
+    m_material.loadToShader("material");
 
-        prim->draw( s_vboNames[m_drawIndex]);
-      }
-
-
-
+    prim->draw("sphere1");
+  }
 
   m_axis->draw(m_mouseGlobalTX);
-
-
-
 }
+
+
+bool GLWindow::loadScene(const std::string& _filepath)
+{
+  Renderer::Scene::lightList lights;
+  Renderer::Scene::objectList  objects;
+
+  ngl::Mat4 o2w;
+  o2w.identity();
+  o2w.translate(0, 0, -5);
+  objects.push_back(new Renderer::Sphere(o2w));
+
+  o2w.identity();
+  o2w.translate(0, 0, 5);
+  objects.push_back(new Renderer::Sphere(o2w));
+
+  o2w.identity();
+  o2w.translate(1, 1, -6);
+  o2w.scale(1, 2, 1);
+  objects.push_back(new Renderer::Sphere(o2w));
+
+  o2w.identity();
+  o2w.translate(1.f, 1.f, -2.f);
+  o2w.scale(1.5f, 1.5f, 1.5f);
+  objects.push_back(new Renderer::Sphere(o2w));
+
+  ngl::Mat4 c2w;
+  c2w.translate(0, 0, 5);
+
+  m_scene = new Renderer::Scene(m_cam, objects, lights);
+
+  return true;
+}
+
+ void GLWindow::renderScene(const Renderer::RenderContext* _context)
+ {
+   if(m_scene != NULL)
+   {
+     Renderer::render(_context);
+   }
+ }
 
 //----------------------------------------------------------------------------------------------------------------------
 void GLWindow::mouseMoveEvent (QMouseEvent * _event  )
@@ -338,10 +398,12 @@ void GLWindow::mouseMoveEvent (QMouseEvent * _event  )
     int diffY = (int)(_event->y() - m_origYPos);
     m_origXPos=_event->x();
     m_origYPos=_event->y();
-    m_modelPos.m_x += INCREMENT * diffX;
-    m_modelPos.m_y -= INCREMENT * diffY;
-    updateGL();
+//    m_modelPos.m_x += INCREMENT * diffX;
+//    m_modelPos.m_y -= INCREMENT * diffY;
 
+    m_cam->slide(-diffX * 0.1f, diffY * 0.1f, 0);
+
+    updateGL();
   }
 
 }
@@ -386,16 +448,22 @@ void GLWindow::mouseReleaseEvent (QMouseEvent * _event )
 
 void GLWindow::wheelEvent(QWheelEvent *_event)
 {
+  float zoomScale = 0.0f;
 
   // check the diff of the wheel position (0 means no change)
   if(_event->delta() > 0)
   {
-    m_modelPos.m_z+=ZOOM;
+    zoomScale = -0.25f;
+    //m_modelPos.m_x+=ZOOM;
   }
   else if(_event->delta() <0 )
   {
-    m_modelPos.m_z-=ZOOM;
+    zoomScale =  0.25f;
+    //m_modelPos.m_x-=ZOOM;
   }
+
+  m_cam->slide(0, 0, zoomScale);
+
   updateGL();
 }
 

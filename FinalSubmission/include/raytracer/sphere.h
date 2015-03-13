@@ -14,7 +14,7 @@ public:
     {;}
 
     virtual bool intersect(const Ray<float> &_ray, float &o_t) const;
-    virtual void draw(ngl::Mat4 &_globalMouseTx, const RenderContext& _context);
+    virtual void draw(const ngl::Mat4 &_globalMouseTx, const ngl::Mat4 &_modelView, const ngl::Mat4 &_viewProjection);
 
 private:
     float m_radius;

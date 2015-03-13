@@ -13,8 +13,8 @@ public:
         : Primitive(_toWorldSpace), m_v0(_v0), m_v1(_v1), m_v2(_v2), m_singleSided(_singleSided)
     {}
 
-    virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const override;
-    virtual void draw(ngl::Mat4 &_globalMouseTx, const RenderContext& _context) override;
+    virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const;
+    virtual void draw(const ngl::Mat4 &_globalMouseTx, const ngl::Mat4 &_modelView, const ngl::Mat4 &_viewProjection);
 
 private:
     ngl::Vec3 m_v0;

@@ -34,7 +34,7 @@ bool Sphere::intersect(const Ray<float> &_ray, float &o_t) const
     }
 
     //@todo What's this doing?
-    if(t0 > t1)
+    if(t1 < t0)
     {
         std::swap(t0, t1);
     }
@@ -44,24 +44,54 @@ bool Sphere::intersect(const Ray<float> &_ray, float &o_t) const
     return true;
 }
 
-void Sphere::draw(ngl::Mat4 &_globalMouseTx, const RenderContext &_context)
-{
-    ngl::ShaderLib *shader = ngl::ShaderLib::instance();
+void Sphere::draw(const ngl::Mat4 &_globalMouseTx, const ngl::Mat4 &_modelView, const ngl::Mat4 &_viewProjection)
+{    
+    ngl::ShaderLib *shader=ngl::ShaderLib::instance();
     (*shader)["Phong"]->use();
 
-    ngl::Material mat;
-    mat.setDiffuse(m_colour);
-    mat.loadToShader("material");
 
-    //@todo I need to know this
-    ngl::Mat4 MV;
-    ngl::Mat4 MVP;
-    ngl::Mat4 normalMatrix;
 
-//    if(_context.m_camera)
-//    {
-//        MV = m_toObjectSpace  * _globalMouseTx * _context.m_camera->
-//    }
+//    ngl::Mat4 tmp;
+//    tmp.translate(-4, -4, -4);
+
+//    ngl::Mat4 MV = m_toWorldSpace * _globalMouseTx * _modelView;;
+//    ngl::Mat4 MVP = MV * _viewProjection;;
+//    ngl::Mat3 normalMatrix = MV;
+//    normalMatrix.inverse();
+
+//    shader->setShaderParamFromMat4("MV",MV);
+    //shader->setShaderParamFromMat4("MVP",MVP);
+    //shader->setShaderParamFromMat3("normalMatrix",normalMatrix);
+
+//    (*shader)["Phong"]->use();
+//    ngl::Mat4 MV;
+//    ngl::Mat4 MVP;
+//    ngl::Mat3 normalMatrix;
+//    ngl::Mat4 M;
+//    M=m_toWorldSpace*_globalMouseTx;
+//    MV=M*_modelView;
+//    MVP=  MV*_viewProjection;
+//    normalMatrix=MV;
+//    normalMatrix.inverse();
+//    shader->setShaderParamFromMat4("MV",MV);
+//    shader->setShaderParamFromMat4("MVP",MVP);
+//    shader->setShaderParamFromMat3("normalMatrix",normalMatrix);
+//    shader->setShaderParamFromMat4("M",M);
+
+//    ngl::Mat4 MV;
+//    ngl::Mat4 MVP;
+//    ngl::Mat4 M;
+
+//    ngl::Mat4 tmp;
+//    tmp.translate(0,0,-1);
+
+//    M=m_toWorldSpace* _globalMouseTx;
+//    MV= M * _modelView;
+//    MVP= MV * _viewProjection;
+//    shader->setShaderParamFromMat4("MVP",M * _viewProjection);
+
+    ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();
+    prim->draw("sphere");
 }
 
 }

@@ -22,7 +22,7 @@ void Image::setPixel(const Pixel &_pixel, unsigned int _x, unsigned int _y)
   m_image[index].m_b = _pixel.m_b;
 }
 
-const Image::Pixel& Image::getPixel(unsigned int _x, unsigned int _y)
+ Image::Pixel& Image::getPixel(unsigned int _x, unsigned int _y)
 {
   assert( (_x >= 0  && _x <= m_width) && (_y >= 0  && _y <= m_height) );
 

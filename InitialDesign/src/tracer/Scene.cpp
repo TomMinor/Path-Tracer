@@ -5,6 +5,8 @@
 
 #include <tracer/Scene.h>
 #include <tracer/Framebuffer.h>
+#include <tracer/Sphere.h>
+#include <string.h>
 
 ngl::Colour Scene::shade(const Ray& _ray, const Primitive& _primitive)
 {
@@ -20,10 +22,37 @@ bool Scene::trace(const Ray& _ray, ngl::Colour &_spectrum)
     for(size_t i=0; i < m_context->m_primitives.size(); ++i)
     {
         ngl::Real t = 0.0f;
-        if(m_context->m_primitives[i]->intersect(_ray, t))
+
+        Sphere* poo = (Sphere*)m_context->m_primitives[i];
+        bool b = poo->intersect(_ray, t);
+
+
+        if(b)
         {
             if( t < tClosest && t > _ray.m_tmin)
             {
+              ngl::Vec3 r_origin(0,0,0);
+              ngl::Vec3 r_direction = ngl::Vec4(poo->m_worldToObject * ngl::Vec4(_ray.m_direction)).toVec3();
+
+              // Translate the origin coordinate ( this code was copied straight from the scratchapixel math header, needs tidying )
+              float m[4][4];
+              memcpy(m, poo->m_worldToObject.m_openGL, sizeof(float)*16);
+              float src[3] = { _ray.m_origin.m_x, _ray.m_origin.m_y, _ray.m_origin.m_z };
+              ngl::Real x = src[0] * m[0][0] + src[1] * m[1][0] + src[2] * m[2][0] + m[3][0];
+              ngl::Real y = src[0] * m[0][1] + src[1] * m[1][1] + src[2] * m[2][1] + m[3][1];
+              ngl::Real z = src[0] * m[0][2] + src[1] * m[1][2] + src[2] * m[2][2] + m[3][2];
+              ngl::Real w = src[0] * m[0][3] + src[1] * m[1][3] + src[2] * m[2][3] + m[3][3];
+              r_origin.m_x = x / w;
+              r_origin.m_y = y / w;
+              r_origin.m_z = z / w;
+
+              ngl::Real a = r_direction.dot(r_direction);
+              ngl::Real b = 2 * r_direction.dot(r_origin);
+              ngl::Real c = r_origin.dot(r_origin) - poo->m_radius_sqr;
+              ngl::Real t0;
+              ngl::Real t1;
+
+
                 tClosest = t;
                 hitObject = m_context->m_primitives[i];
 
@@ -84,6 +113,11 @@ Framebuffer Scene::render(const RendererContext* _context)
             rayDirection.normalize();
 
             Ray ray(rayOrigin, rayDirection, _context->m_camera.m_nearClippingPlane, _context->m_camera.m_farClippingPlane);
+
+            if(i == 638 && j == 28)
+            {
+
+            }
 
             ngl::Colour rayColour;
             trace(ray, rayColour);

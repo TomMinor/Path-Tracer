@@ -17,7 +17,7 @@ public:
   ~Image();
 
   virtual void setPixel(const Pixel& _pixel, unsigned int _x, unsigned int _y);
-  virtual const Pixel& getPixel(unsigned int _x, unsigned int _y);
+  virtual Pixel &getPixel(unsigned int _x, unsigned int _y);
 
   virtual bool save(const std::string& _filename) = 0;
   virtual bool read(const std::string& _filename) = 0;

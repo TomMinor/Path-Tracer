@@ -11,6 +11,7 @@
 #include <ngl/VAOPrimitives.h>
 #include <ngl/ShaderLib.h>
 #include <ngl/Random.h>
+#include <ngl/NGLStream.h>
 
 //----------------------------------------------------------------------------------------------------------------------
 /// @brief the increment for x/y translation with mouse movement
@@ -181,6 +182,11 @@ void NGLScene::renderImage()
 {
     // Modelview
     ngl::Mat4 camToWorld = m_mouseGlobalTX * m_cam->getViewMatrix();
+
+//    camToWorld.translate(0, 0, 5);
+//    camToWorld.inverse();
+
+    std::cout << camToWorld << std::endl;
 
     delete m_renderContext;
     m_renderContext = new RendererContext(m_primitives, m_lights, camToWorld.inverse(), m_cam->getFOV(), width(), height(), m_background);

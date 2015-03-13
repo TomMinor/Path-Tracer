@@ -24,7 +24,7 @@ public:
     virtual ~Primitive() {;}
 
     virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const = 0;
-    virtual void draw(ngl::Mat4 &_globalMouseTx, const RenderContext& _context) = 0;
+    virtual void draw(const ngl::Mat4 &_globalMouseTx, const ngl::Mat4 &_modelView, const ngl::Mat4 &_viewProjection) = 0;
 
     /**
      * @brief convertRayToObjectSpace is a helper method to transform a ray into this primitives object space
@@ -34,6 +34,10 @@ public:
     Ray<float> rayToObjectSpace(const Ray<float>& _ray) const;
 
     ngl::Colour getSurfaceColour() const { return m_colour; }
+
+    inline const ngl::Mat4& objectTransform() const { return m_toObjectSpace; }
+    inline const ngl::Mat4& worldTransform() const { return m_toWorldSpace; }
+
 protected:
     // Used to easily convert between world and object space
 
@@ -47,13 +51,11 @@ protected:
      */
     ngl::Mat4 m_toObjectSpace;
 
-    // These are just used for drawing right now
-    ngl::Vec3 m_position;
-
     ngl::Colour m_colour;
 };
 
 }
 
 #endif // PRIMITIVE_H
+
 

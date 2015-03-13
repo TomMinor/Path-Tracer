@@ -5,20 +5,20 @@
 #include <ngl/Camera.h>
 #include <ngl/Colour.h>
 
+#include <raytracer/rendercontext.h>
 #include "raytracer/camera.h"
 
 namespace Renderer
 {
 
-/// @todo Implement this class
 class Light;
 class Primitive;
-
+struct RenderContext;
 
 class Scene
 {
 public:
-    Scene(const ngl::Camera& _camera,
+    Scene(ngl::Camera* _camera,
           const std::vector<Primitive*> &_primitives,
           const std::vector<Light*> &_lights,
           ngl::Colour _background = ngl::Colour(0.f, 0.f, 0.f) // Default to black
@@ -38,10 +38,14 @@ public:
     lightListIterator lightEnd() const { return m_lights.end(); }
 
     inline const ngl::Colour& getBackgroundColour() const { return m_background; }
+
     inline Camera* getRenderCamera() const { return m_camera; }
+    inline ngl::Camera* getDrawCamera() { return m_drawCamera; }
 
 //    inline void addPrimitive(const Primitive* _object) { m_primitives.push_back(_object); }
 //    inline void addLight(const Light* _light) { m_lights.push_back(_light); }
+
+    void draw(ngl::Mat4 &_globalMouseTx);
 
 private:
     //-------------------------------------------------
@@ -50,7 +54,7 @@ private:
     objectList m_primitives;
     lightList m_lights;
     Camera *m_camera;
-    ngl::Camera m_drawCamera;
+    ngl::Camera *m_drawCamera;
 
     ngl::Colour m_background;
 };

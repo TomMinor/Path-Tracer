@@ -17,18 +17,19 @@ bool ImagePPM::save(const std::string& _filename)
   }
   else
   {
-    Pixel* pixel = &m_image[0];
-
     file << "P6\n" << m_width << " " << m_height << "\n255\n";
     for(unsigned int j = 0; j < m_height; ++j)
     {
       for(unsigned int i = 0; i < m_width; ++i)
       {
-        unsigned char r = (unsigned char)(std::max(0.f, std::min(255.f, powf(pixel->m_r, 1/2.2) * 255 + 0.5f)));
-        unsigned char g = (unsigned char)(std::max(0.f, std::min(255.f, powf(pixel->m_g, 1/2.2) * 255 + 0.5f)));
-        unsigned char b = (unsigned char)(std::max(0.f, std::min(255.f, powf(pixel->m_b, 1/2.2) * 255 + 0.5f)));
-        file << r << g << b;
-        pixel++;
+        Pixel pixel = getPixel(i,j);
+        unsigned char pixelChar[3];
+
+        pixelChar[0] = (unsigned char)(std::min(pixel.m_r * 255 + 0.5, 255.0));
+        pixelChar[1] = (unsigned char)(std::min(pixel.m_g * 255 + 0.5, 255.0));
+        pixelChar[2] = (unsigned char)(std::min(pixel.m_b * 255 + 0.5, 255.0));
+
+        file.write((char*)&pixelChar[0], 3);
       }
     }
 

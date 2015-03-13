@@ -23,7 +23,7 @@ public:
 
     ngl::Colour getSurfaceColour() const { return m_colour; }
 
-protected:
+//protected:
     // Used to easily convert between world and object space
     ngl::Mat4 m_objectToWorld;
     ngl::Mat4 m_worldToObject;

@@ -5,6 +5,8 @@
 #include "GLWindow.h"
 #include "Axis.h"
 
+#include "raytracer/scene.h"
+
 /// @namespace Ui our Ui namespace created from the MainWindow class
 namespace Ui {
     class MainWindow;
@@ -39,6 +41,10 @@ private:
     //----------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------
     GLWindow *m_gl;
+
+    //----------------------------------------------------------------------------------------------------------------------
+    Renderer::Scene* m_scene;
+
     //----------------------------------------------------------------------------------------------------------------------
     /// \brief override the keyPressEvent inherited from QObject so we can handle key presses.
     /// @param [in] _event the event to process
