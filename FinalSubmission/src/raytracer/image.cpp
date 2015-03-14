@@ -14,7 +14,7 @@ Image::~Image()
 
 void Image::setPixel(const Pixel &_pixel, unsigned int _x, unsigned int _y)
 {
-  assert( (_x >= 0  && _x <= m_width) && (_y >= 0  && _y <= m_height) );
+  assert( (_x <= m_width) && (_y <= m_height) );
 
   unsigned int index = (_y * m_width) + _x;
   m_image[index].m_r = _pixel.m_r;
@@ -24,7 +24,7 @@ void Image::setPixel(const Pixel &_pixel, unsigned int _x, unsigned int _y)
 
  Image::Pixel& Image::getPixel(unsigned int _x, unsigned int _y)
 {
-  assert( (_x >= 0  && _x <= m_width) && (_y >= 0  && _y <= m_height) );
+  assert( (_x <= m_width) && (_y <= m_height) );
 
   return m_image[ (_y * m_width) + _x ];
 }

@@ -33,7 +33,7 @@ color: rgb(243, 243, 243);</string>
       <item row="0" column="0">
        <widget class="QToolBox" name="toolBox">
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page">
          <property name="geometry">
@@ -57,7 +57,7 @@ color: rgb(243, 243, 243);</string>
           </size>
          </property>
          <attribute name="label">
-          <string>Page 1</string>
+          <string>3D Viewport</string>
          </attribute>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
@@ -82,7 +82,7 @@ color: rgb(243, 243, 243);</string>
           </rect>
          </property>
          <attribute name="label">
-          <string>Page 2</string>
+          <string>Render View</string>
          </attribute>
         </widget>
        </widget>
@@ -121,13 +121,28 @@ color: rgb(243, 243, 243);</string>
       <property name="midLineWidth">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="toolBoxPage1" native="true">
+      <widget class="QWidget" name="toolBoxPage1">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>180</width>
+         <height>451</height>
+        </rect>
+       </property>
        <attribute name="label">
         <string/>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QScrollBar" name="verticalScrollBar">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QScrollArea" name="scrollArea_2">
             <property name="widgetResizable">
@@ -169,16 +184,17 @@ color: rgb(243, 243, 243);</string>
           </item>
          </layout>
         </item>
-        <item>
-         <widget class="QScrollBar" name="verticalScrollBar">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="toolBoxPage2" native="true">
+      <widget class="QWidget" name="toolBoxPage2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>180</width>
+         <height>451</height>
+        </rect>
+       </property>
        <attribute name="label">
         <string/>
        </attribute>

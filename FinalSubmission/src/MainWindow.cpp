@@ -19,6 +19,9 @@ MainWindow::MainWindow( QWidget *parent )
 
   m_ui->horizontalLayout_7->removeWidget(m_ui->widget);
 
+
+  m_ui->toolBox->setCurrentIndex(0);
+
   m_gl = new GLWindow(format,this);
   m_ui->horizontalLayout_7->addWidget(m_gl);
 
@@ -30,7 +33,7 @@ MainWindow::MainWindow( QWidget *parent )
 
   m_gl->setStyleSheet(style.c_str());
 
-  connect(m_ui->renderButton, SIGNAL(clicked()), this, SLOT(renderNow()));
+  //connect(m_ui->renderButton, SIGNAL(clicked()), this, SLOT(renderNow()));
 
   // the following code connects the ui components to the GL class
   /// connect the vboSelection combo to the index value in the gl window class
@@ -267,3 +270,22 @@ void MainWindow::setTab(int _value )
   }
 }
 //----------------------------------------------------------------------------------------------------------------------
+
+void MainWindow::on_renderButton_clicked()
+{
+    renderNow();
+    m_ui->toolBox->setCurrentIndex(1);
+    m_ui->toolBox_2->setCurrentIndex(1);
+}
+
+void MainWindow::on_toolBox_currentChanged(int index)
+{
+  m_ui->toolBox->setCurrentIndex(index);
+  m_ui->toolBox_2->setCurrentIndex(index);
+}
+
+void MainWindow::on_toolBox_2_currentChanged(int index)
+{
+  m_ui->toolBox->setCurrentIndex(index);
+  m_ui->toolBox_2->setCurrentIndex(index);
+}
