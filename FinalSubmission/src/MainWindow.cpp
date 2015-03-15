@@ -20,7 +20,7 @@ MainWindow::MainWindow( QWidget *parent )
   m_ui->horizontalLayout_7->removeWidget(m_ui->widget);
 
 
-  m_ui->toolBox->setCurrentIndex(0);
+  m_ui->tabWidget->setCurrentIndex(0);
 
   m_gl = new GLWindow(format,this);
   m_ui->horizontalLayout_7->addWidget(m_gl);
@@ -274,18 +274,17 @@ void MainWindow::setTab(int _value )
 void MainWindow::on_renderButton_clicked()
 {
     renderNow();
-    m_ui->toolBox->setCurrentIndex(1);
-    m_ui->toolBox_2->setCurrentIndex(1);
+    m_ui->tabWidget->setCurrentIndex(1);
 }
 
-void MainWindow::on_toolBox_currentChanged(int index)
+void MainWindow::on_tabWidget_2_currentChanged(int index)
 {
-  m_ui->toolBox->setCurrentIndex(index);
-  m_ui->toolBox_2->setCurrentIndex(index);
+    m_ui->tabWidget->setCurrentIndex(index);
+    m_ui->tabWidget_2->setCurrentIndex(index);
 }
 
-void MainWindow::on_toolBox_2_currentChanged(int index)
+void MainWindow::on_tabWidget_currentChanged(int index)
 {
-  m_ui->toolBox->setCurrentIndex(index);
-  m_ui->toolBox_2->setCurrentIndex(index);
+    m_ui->tabWidget->setCurrentIndex(index);
+    m_ui->tabWidget_2->setCurrentIndex(index);
 }

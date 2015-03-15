@@ -65,8 +65,8 @@ private slots :
     void setTab(int _value);
 
     void on_renderButton_clicked();
-    void on_toolBox_currentChanged(int index);
-    void on_toolBox_2_currentChanged(int index);
+    void on_tabWidget_2_currentChanged(int index);
+    void on_tabWidget_currentChanged(int index);
 };
 
 #endif // MAINWINDOW_H
