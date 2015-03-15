@@ -1,4 +1,4 @@
-#Affine Transforms
+#TRay
 ![alt tag](http://nccastaff.bournemouth.ac.uk/jmacey/GraphicsLib/Demos/Affine.png)
 
-A demonstration of affine transforms using matrices (mainly used for teaching maths)
+Physically based global illumination renderer with Open Shading Language intergration.
