@@ -115,7 +115,7 @@ void MainWindow::renderNow()
 //        qDebug() << "Tri intersects at " << t;
 //    }
 
-  Renderer::RenderContext* context = new Renderer::RenderContext(m_gl->getScene(), 320, 200, "output.ppm");
+  Renderer::RenderContext* context = new Renderer::RenderContext(m_gl->getScene(), NULL, 320, 200, "output.ppm");
 
   m_gl->renderScene(context);
 }

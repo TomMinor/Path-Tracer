@@ -5,7 +5,7 @@ OBJECTS_DIR=obj
 # core Qt Libs to use add more here if needed.
 QT+=gui opengl core
 
-#QMAKE_CXXFLAGS  = -std=c++0x
+QMAKE_CXXFLAGS  = -std=c++0x
 
 # as I want to support 4.8 and 5 this will set a flag for some of the mac stuff
 # mainly in the types.h file for the setMacVisual which is native in Qt5

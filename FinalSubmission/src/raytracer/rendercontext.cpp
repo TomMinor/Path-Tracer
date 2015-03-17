@@ -4,11 +4,13 @@ namespace Renderer
 {
 
 RenderContext::RenderContext(Scene* _scene,
+                             Camera *_camera,
                              unsigned int _imageWidth,
                              unsigned int _imageHeight,
                              const std::string &_outputPath)
     : m_imageWidth(_imageWidth),
       m_imageHeight(_imageHeight),
+      m_renderCamera(_camera),
       m_scene(_scene),
       m_outputPath(_outputPath)
 

@@ -22,6 +22,7 @@ class Scene;
 struct RenderContext
 {
     RenderContext(Scene *_scene,
+                  Camera *_camera,
                    unsigned int _imageWidth,
                    unsigned int _imageHeight,
                    const std::string& _outputPath = ""
@@ -36,9 +37,10 @@ struct RenderContext
     unsigned int m_imageHeight;
     float m_aspectRatio;
 
-    std::string m_outputPath;
-
+    Camera* m_renderCamera;
     Scene* m_scene;
+
+    std::string m_outputPath;
 };
 
 }
