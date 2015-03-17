@@ -20,6 +20,7 @@ class Primitive
 {
 public:
     Primitive(const ngl::Mat4 &_toWorldSpace);
+    Primitive(const ngl::Mat4 &_toWorldSpace, const ngl::Colour& _colour);
     virtual ~Primitive() {;}
 
     virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const = 0;

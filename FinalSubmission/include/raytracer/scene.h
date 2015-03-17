@@ -19,7 +19,6 @@ class Scene
 {
 public:
     Scene(const std::vector<Primitive*> &_primitives,
-          const std::vector<Light*> &_lights,
           const ngl::Mat4 &_cameraTransform,
           const ngl::Mat4 &_cameraView,
           ngl::Colour _background = ngl::Colour(0.f, 0.f, 0.f) // Default to black
@@ -28,15 +27,9 @@ public:
     typedef std::vector<Primitive*> objectList;
     typedef objectList::const_iterator objectListIterator;
 
-    typedef std::vector<Light*> lightList;
-    typedef lightList::const_iterator lightListIterator;
-
     // Allow iteration over private objects
     objectListIterator objectBegin() const { return m_primitives.begin(); }
     objectListIterator objectEnd() const { return m_primitives.end(); }
-
-    lightListIterator lightBegin() const { return m_lights.begin(); }
-    lightListIterator lightEnd() const { return m_lights.end(); }
 
     inline const ngl::Colour& getBackgroundColour() const { return m_background; }
 
@@ -54,11 +47,6 @@ private:
     // Objects
     //------------------------------------------
     objectList m_primitives;
-    lightList m_lights;
-
-
-
-
 };
 
 }

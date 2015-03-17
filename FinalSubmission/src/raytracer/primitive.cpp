@@ -15,6 +15,13 @@ Primitive::Primitive(const ngl::Mat4 &_toWorldSpace)
     m_colour = random->getRandomColour();
 }
 
+Primitive::Primitive(const ngl::Mat4 &_toWorldSpace,
+                     const ngl::Colour& _colour)
+    : m_toWorldSpace(_toWorldSpace), m_colour(_colour)
+{
+  m_toObjectSpace = m_toWorldSpace.inverse();
+}
+
 /**
  * @brief Primitive::rayToObjectSpace
  * @param _ray
