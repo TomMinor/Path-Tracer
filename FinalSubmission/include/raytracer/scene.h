@@ -20,7 +20,6 @@ class Scene
 public:
     Scene(const std::vector<Primitive*> &_primitives,
           const ngl::Mat4 &_cameraTransform,
-          const ngl::Mat4 &_cameraView,
           ngl::Colour _background = ngl::Colour(0.f, 0.f, 0.f) // Default to black
           );
 
@@ -32,16 +31,10 @@ public:
     objectListIterator objectEnd() const { return m_primitives.end(); }
 
     inline const ngl::Colour& getBackgroundColour() const { return m_background; }
-
-    inline Camera* getRenderCamera() const { return m_camera; }
-
-//    inline void addPrimitive(const Primitive* _object) { m_primitives.push_back(_object); }
-//    inline void addLight(const Light* _light) { m_lights.push_back(_light); }
-
 private:
-    Camera *m_camera;
+    //Camera *m_camera;
+    const ngl::Mat4 m_initialCameraView;
     ngl::Colour m_background;
-    ngl::Mat4 m_cameraView;
 
     //------------------------------------------
     // Objects

@@ -15,6 +15,7 @@
 #include "raytracer/primitive.h"
 #include "raytracer/renderer.h"
 #include "raytracer/scenefile.h"
+#include "raytracer/camera.h"
 
 #include <QDebug>
 const static float INCREMENT=0.01;
@@ -419,24 +420,23 @@ bool GLWindow::loadScene(const std::string& _filepath)
   c2w.translate(0, 0, 5);
 
   m_scene = new Renderer::Scene(objects,
-                                m_cam->getViewMatrix(),
-                                m_mouseGlobalTX * m_cam->getViewMatrix() * m_cam->getProjectionMatrix());
+                                c2w);
 
   return true;
 }
 
- void GLWindow::renderScene(const Renderer::RenderContext* _context)
+ void GLWindow::renderScene(Renderer::RenderContext* _context)
  {
-   Renderer::SceneFile a("test.txt");
-   a.read();
+//   Renderer::SceneFile a("test.txt");
+//   a.read();
 
    if(m_scene != NULL)
    {
      ///@todo Clean up the scene/render context confusion
      ngl::Mat4 tmp = m_mouseGlobalTX * m_cam->getViewMatrix();
 
-     m_scene->getRenderCamera()->setCameraWorldSpace(tmp.inverse());
-     m_scene->getRenderCamera()->setFOV(m_cam->getFOV());
+     _context->m_renderCamera = new Renderer::Camera(tmp.inverse(), m_cam->getFOV());
+
      Renderer::render(_context);
    }
  }

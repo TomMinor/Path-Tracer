@@ -82,7 +82,7 @@ Renderer::Scene* SceneFile::read() const
 
   ///@todo Move camera projection info out of Scene constructor, construct it at render time from ngl::Camera,
   /// but don't make ngl a dependency for the renderer to work
-  return Scene(primitives, )
+  //return Scene(primitives, )
 
 
 }

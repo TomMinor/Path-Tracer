@@ -40,7 +40,7 @@ public :
 
   bool loadScene(const std::string& _path);
 
-  void renderScene(const Renderer::RenderContext* _context);
+  void renderScene(Renderer::RenderContext *_context);
 
   Renderer::Scene* getScene() { return m_scene; }
 
