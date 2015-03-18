@@ -1,5 +1,0 @@
-#ifndef GLRENDERVIEW_H
-#define GLRENDERVIEW_H
-
-#endif // GLRENDERVIEW_H
-

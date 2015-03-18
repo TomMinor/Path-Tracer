@@ -8,7 +8,13 @@
 #include <ngl/Light.h>
 #include <ngl/Material.h>
 #include <Axis.h>
-#include <QtOpenGL>
+
+//#include <QtGui/QWindow>
+#include <QGLWidget>
+#include <QMouseEvent>
+#include <QColorDialog>
+//#include <QGLFunctions>
+//#include <QtOpenGL>
 
 #include "raytracer/scene.h"
 #include "raytracer/rendercontext.h"
@@ -48,11 +54,14 @@ public :
 
   void createTextureObject();
 
+  std::vector <ngl::Vec3> m_verts;
 
   //----------------------------------------------------------------------------------------------------------------------
   /// @brief Our Camera
   //----------------------------------------------------------------------------------------------------------------------
   ngl::Camera *m_cam;
+
+  ngl::VertexArrayObject *test_vao;
 
 private :
   //----------------------------------------------------------------------------------------------------------------------
@@ -63,6 +72,10 @@ private :
   /// @brief our FBO id used by the FBO
   //----------------------------------------------------------------------------------------------------------------------
   GLuint m_fboID;
+  //----------------------------------------------------------------------------------------------------------------------
+  /// @brief our render buffer id used by the FBO
+  //----------------------------------------------------------------------------------------------------------------------
+  GLuint m_rboID;
 
   //----------------------------------------------------------------------------------------------------------------------
   /// @brief used to store the x rotation mouse value

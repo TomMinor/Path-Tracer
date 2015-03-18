@@ -33,16 +33,24 @@ bool Sphere::intersect(const Ray<float> &_ray, float &o_t) const
         return false;
     }
 
-    //@todo What's this doing?
+    // t1 is expected to be further away
     if(t1 < t0)
     {
         std::swap(t0, t1);
     }
 
+    // Prefer a solution infront of the camera
     o_t = (t0 < 0) ? t1 : t0;
 
     return true;
 }
 
+void Sphere::draw() const
+{
+    glCullFace(GL_FRONT);
+    ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();
+    prim->draw("sphere");
+    glCullFace(GL_BACK);
+}
 
 }

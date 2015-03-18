@@ -482,7 +482,7 @@
          <enum>QTabWidget::Triangular</enum>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideNone</enum>
@@ -500,32 +500,6 @@
             <property name="sizeConstraint">
              <enum>QLayout::SetNoConstraint</enum>
             </property>
-            <item>
-             <widget class="QWidget" name="widget" native="true">
-              <property name="autoFillBackground">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="tabWidgetPage2">
-         <attribute name="title">
-          <string>Render View</string>
-         </attribute>
-         <layout class="QHBoxLayout" name="horizontalLayout_9">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_6">
-            <item>
-             <widget class="QWidget" name="widget_2" native="true">
-              <property name="autoFillBackground">
-               <bool>true</bool>
-              </property>
-              <zorder>tabWidget_2</zorder>
-             </widget>
-            </item>
            </layout>
           </item>
          </layout>
@@ -612,26 +586,47 @@
                <height>471</height>
               </rect>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_2">
-              <item>
-               <widget class="QPushButton" name="renderButton">
+             <layout class="QFormLayout" name="formLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_2">
                 <property name="text">
-                 <string>Render</string>
+                 <string>0</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
-              <item>
-               <spacer name="verticalSpacer">
+              <item row="0" column="1">
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Primitive Count :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Light Count :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QListView" name="listView"/>
+              </item>
+              <item row="3" column="1">
+               <widget class="Line" name="line">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
+               </widget>
               </item>
              </layout>
             </widget>
@@ -670,7 +665,28 @@
              <height>471</height>
             </rect>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_5"/>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <widget class="QPushButton" name="pushButton">
+              <property name="text">
+               <string>Render</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
@@ -761,7 +777,14 @@
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
+   <widget class="QMenu" name="menuScene">
+    <property name="title">
+     <string>Scene</string>
+    </property>
+    <addaction name="actionRender"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuScene"/>
   </widget>
   <action name="actionOpen_scene">
    <property name="text">
@@ -773,9 +796,31 @@
     <string>Quit..</string>
    </property>
   </action>
+  <action name="actionRender">
+   <property name="text">
+    <string>Render</string>
+   </property>
+  </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>menuBar</sender>
+   <signal>triggered(QAction*)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>startRender()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>79</x>
+     <y>15</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>148</x>
+     <y>29</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <slots>
   <slot>startRender()</slot>
  </slots>

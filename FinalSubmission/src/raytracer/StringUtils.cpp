@@ -1,6 +1,7 @@
 #include <istream>
 #include <sstream>
 #include <stdexcept>
+#include <QDebug>
 
 #include "raytracer/StringUtils.h"
 

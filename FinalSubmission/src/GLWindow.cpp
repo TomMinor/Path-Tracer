@@ -1,5 +1,8 @@
 /// @file GLWindow.cpp
 /// @brief basic implementation file for the GLWindow class
+///
+
+
 #include "GLWindow.h"
 #include <iostream>
 #include <ngl/Light.h>
@@ -12,10 +15,13 @@
 #include "raytracer/triangle.h"
 #include "raytracer/ray.h"
 #include "raytracer/sphere.h"
-#include "raytracer/primitive.h"
+#include "raytracer/plane.h"
 #include "raytracer/renderer.h"
+
 #include "raytracer/scenefile.h"
 #include "raytracer/camera.h"
+
+#include "raytracer/tracemath.h"
 
 #include <QDebug>
 const static float INCREMENT=0.01;
@@ -78,48 +84,53 @@ GLWindow::GLWindow(const QGLFormat _format, QWidget *_parent ) : QGLWidget( _for
   m_matrixOrder=GLWindow::RTS;
   m_euler=1.0;
   m_modelPos.set(0,0,0);
-
-
+  m_cam = NULL;
+  m_axis = NULL;
+  m_scene = NULL;
 }
 
-//void GLWindow::createTextureObject()
-//{
-//  // create a texture object
-//  glGenTextures(1, &m_textureID);
-//  // bind it to make it active
-//  glActiveTexture(GL_TEXTURE0);
-//  glBindTexture(GL_TEXTURE_2D, m_textureID);
-//  // set params
-//  glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//  glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-//  //glGenerateMipmapEXT(GL_TEXTURE_2D);  // set the data size but just set the buffer to 0 as we will fill it with the FBO
-//  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 640, 480, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
-//  // now turn the texture off for now
-//  glBindTexture(GL_TEXTURE_2D, 0);
-//}
+const static int TEXTURE_WIDTH=1024;
+const static int TEXTURE_HEIGHT=1024;
 
-//void GLWindow::createFramebufferObject()
-//{
-//  // create a framebuffer object this is deleted in the dtor
-//  glGenFramebuffers(1, &m_fboID);
-//  glBindFramebuffer(GL_FRAMEBUFFER, m_fboID);
+void GLWindow::createTextureObject()
+{
+  // create a texture object
+  glGenTextures(1, &m_textureID);
 
-//  // create a renderbuffer object to store depth info
-//  glGenRenderbuffers(1, &m_rboID);
-//  glBindRenderbuffer(GL_RENDERBUFFER, m_rboID);
+  // bind it to make it active
+  glActiveTexture(GL_TEXTURE0);
+  glBindTexture(GL_TEXTURE_2D, m_textureID);
+  // set params
+  glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+  //glGenerateMipmapEXT(GL_TEXTURE_2D);  // set the data size but just set the buffer to 0 as we will fill it with the FBO
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, TEXTURE_WIDTH, TEXTURE_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
+  // now turn the texture off for now
+  glBindTexture(GL_TEXTURE_2D, 0);
+}
 
-//  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-//  // bind
-//  glBindRenderbuffer(GL_RENDERBUFFER, 0);
+void GLWindow::createFramebufferObject()
+{
+  // create a framebuffer object this is deleted in the dtor
+  glGenFramebuffers(1, &m_fboID);
+  glBindFramebuffer(GL_FRAMEBUFFER, m_fboID);
 
-//  // attatch the texture we created earlier to the FBO
-//  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_textureID, 0);
+  // create a renderbuffer object to store the rendered result
+  glGenRenderbuffers(1, &m_rboID);
+  glBindRenderbuffer(GL_RENDERBUFFER, m_rboID);
 
-//  // now attach a renderbuffer to depth attachment point
-//  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_rboID);
-//  // now got back to the default render context
-//  glBindFramebuffer(GL_FRAMEBUFFER, 0);
-//}
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+  // bind
+  glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+  // attatch the texture we created earlier to the FBO
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_textureID, 0);
+
+  // now attach a renderbuffer to depth attachment point
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_rboID);
+  // now got back to the default render context
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
 
 // This virtual function is called once before the first call to paintGL() or resizeGL(),
 //and then once whenever the widget has been assigned a new QGLContext.
@@ -133,6 +144,8 @@ void GLWindow::initializeGL()
   glClearColor(0.4f, 0.4f, 0.4f, 1.0f);			   // Grey Background
   // enable depth testing for drawing
   glEnable(GL_DEPTH_TEST);
+  glEnable(GL_CULL_FACE);
+
   // Now we will create a basic Camera from the graphics library
   // This is a static camera so it only needs to be set once
   // First create Values for the camera position
@@ -213,6 +226,9 @@ void GLWindow::initializeGL()
   prim->createDisk("disk",0.5,40);
   prim->createTrianglePlane("plane",1,1,10,10,ngl::Vec3(0,1,0));
   prim->createTorus("torus",0.15,0.4,40,40);
+  prim->createLineGrid("grid", 20, 20, 20);
+  prim->createTrianglePlane("viewport",1,1,1,1,ngl::Vec3(0,1,0));
+
   // set the bg colour
   glClearColor(0.5,0.5,0.5,0.0);
   m_axis = new Axis("Colour",1.5);
@@ -250,6 +266,32 @@ void GLWindow::initializeGL()
   shader->setShaderParam1i("drawVertexNormals",true);
 
   //prim->createSphere("sphere1", 1.0f, 30);
+
+  loadScene("test.txt");
+
+//  createTextureObject();
+//  createFramebufferObject();
+
+  std::function<float(float)> F = [](float x){ return 2 * x * x; } ;
+  std::function<float(float)> f = [](float x){ return 4 * x; } ;
+
+  float result = integrate(F, f, 0, 5, 100);
+
+  qDebug() << result;
+
+
+  // create the m_points array for drawing the quad as a tri
+
+//    GLubyte indices[]={0,1,3,3,2,1};
+//    (*shader)["Phong"]->use();
+//    shader->setRegisteredUniform4f("Colour",1,1,0,0);
+//    test_vao = ngl::VertexArrayObject::createVOA(GL_TRIANGLES);
+//    test_vao->bind();
+//    test_vao->setIndexedData(4*sizeof(ngl::Vec3),m_verts[0].m_x,sizeof(indices),&indices[0],GL_UNSIGNED_BYTE);
+//    test_vao->setVertexAttributePointer(0,3,GL_FLOAT,sizeof(ngl::Vec3),0);
+//    test_vao->setIndexedData(4*sizeof(ngl::Vec3),normals[0].m_x,sizeof(indices),&indices[0],GL_UNSIGNED_BYTE);
+//    test_vao->setVertexAttributePointer(2,3,GL_FLOAT,sizeof(ngl::Vec3),0);
+//    test_vao->setNumIndices(6);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -286,6 +328,52 @@ void GLWindow::loadMatricesToShader( )
 // this is our main drawing routine
 void GLWindow::paintGL()
 {
+    loadScene("test.txt");
+
+//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+//    ngl::ShaderLib *shader=ngl::ShaderLib::instance();
+//    (*shader)["Phong"]->use();
+//    ngl::Mat4 MV;
+//    ngl::Mat4 MVP;
+//    ngl::Mat3 normalMatrix;
+//    ngl::Mat4 M;
+////    M.rotateZ(90);
+//    MV = M * m_cam->getViewMatrix();
+//    //MV.rotateX(90);
+////    MVP = MV * m_cam->getProjectionMatrix();
+//    MVP.rotateX(-90);
+//    normalMatrix=MV;
+//    normalMatrix.inverse();
+//    shader->setShaderParamFromMat4("MV",MV);
+//    shader->setShaderParamFromMat4("MVP",MVP);
+//    shader->setShaderParamFromMat3("normalMatrix",normalMatrix);
+//    shader->setShaderParamFromMat4("M",M);
+
+//    (*shader)["Phong"]->use();
+//    m_material.setDiffuse(ngl::Colour());
+//    m_material.setAmbient(ngl::Colour(1,1,1,1));
+//    m_material.setSpecularExponent(0);
+//    m_material.setSpecular(ngl::Colour());
+//    // now set this value in the shader for the current ModelMatrix
+//    m_material.loadToShader("material");
+
+//    glBindTexture(GL_TEXTURE_2D, m_textureID);
+
+//    ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();
+//    prim->draw("viewport");
+
+//    return;
+
+//  glBindFramebuffer(GL_FRAMEBUFFER, m_fboID);
+
+//  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+//  glViewport(0, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+
+//  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
   // grab an instance of the shader manager
   ngl::ShaderLib *shader=ngl::ShaderLib::instance();
   // clear the screen and depth buffer
@@ -296,31 +384,7 @@ void GLWindow::paintGL()
   m_light->enable();
 
   m_transform.identity();
-
-  if (m_matrixOrder == GLWindow::RTS)
-  {
-    m_transform=m_rotate*m_translate*m_scale;
-  }
-
-  else if (m_matrixOrder == GLWindow::TRS)
-  {
-    m_transform=m_translate*m_rotate*m_scale;
-  }
-  else if (m_matrixOrder == GLWindow::EULERTS)
-  {
-    m_transform=m_translate*m_euler*m_scale;
-  }
-  else if (m_matrixOrder == GLWindow::TEULERS)
-  {
-    m_transform=m_euler*m_translate*m_scale;
-  }
-
-  else if (m_matrixOrder == GLWindow::GIMBALLOCK )
-  {
-    m_transform=m_translate*m_gimbal*m_scale;
-  }
-  emit matrixDirty(m_transform);
-
+  loadMatricesToShader();
 
   (*shader)["Phong"]->use();
   // now set this value in the shader for the current ModelMatrix
@@ -331,8 +395,6 @@ void GLWindow::paintGL()
   ngl::Mat4 rotY;
   // create the rotation matrices
   rotX.rotateX(m_spinXFace / 3.f);
-
-
   rotY.rotateY(m_spinYFace);
   // multiply the rotations
   m_mouseGlobalTX=rotX * rotY;
@@ -361,75 +423,153 @@ void GLWindow::paintGL()
 //    //prim->draw( s_vboNames[m_drawIndex]);
 //  }
 
+//    std::vector <ngl::Vec3> normals(6);
 
-  using namespace Renderer;
-  for( Scene::objectListIterator object = m_scene->objectBegin();
-       object != m_scene->objectEnd();
-       ++object)
-  {
-    m_transform = (*object)->worldTransform();
-    loadMatricesToShader();
+//    ngl::Vec3 normal=ngl::calcNormal(m_verts[0],m_verts[1],m_verts[2]);
 
-    m_material.setDiffuse((*object)->getSurfaceColour());
-    m_material.loadToShader("material");
 
-    prim->draw("sphere");
-  }
 
-//  for( Scene::lightListIterator light = m_scene->lightBegin();
-//       light != m_scene->lightEnd();
-//       ++light)
-//  {
-//    m_transform = (*light)->worldTransform();
+//    for(int i=0; i<6; ++i)
+//    {
+//        normals[i] = normal;
+//    }
+
+//      Renderer::Triangle a( ngl::Vec3(0,0,0),
+//                            ngl::Vec3(1,0,1),
+//                            ngl::Vec3(0,0,1),
+//                            ngl::Mat4());
+
+
+//      m_material.setDiffuse(ngl::Colour(1.f, 0.4f, 1.f));
+//      m_material.loadToShader("material");
+
+//      m_transform.identity();
+//      m_transform.scale(2,2,2);
 //    loadMatricesToShader();
+//    a.draw();
 
-//    m_material.setDiffuse(ngl::Colour(0.f, 0.4f, 0.f));
+//    ngl::VertexArrayObject *vao=ngl::VertexArrayObject::createVOA(GL_TRIANGLES);
+
+//    (*shader)["Phong"]->use();
+//    m_material.setDiffuse(ngl::Colour(1,1,0,1));
 //    m_material.loadToShader("material");
 
-//    prim->draw("cone", GL_LINE_LOOP);
-//  }
+//      vao->bind();
+//      vao->setData(m_verts.size() * sizeof(ngl::Vec3), m_verts[0].m_x);
+//      vao->setVertexAttributePointer(0, 3, GL_FLOAT, 0, 0);
 
+//      vao->setData(normals.size() * sizeof(ngl::Vec3), normals[0].m_x);
+//      vao->setNumIndices(normals.size());
+//      vao->setVertexAttributePointer(2, 3, GL_FLOAT, 0, 0);
+
+//      vao->setNumIndices(m_verts.size());
+
+//      vao->draw();
+//      vao->unbind();
+//      vao->removeVOA();
+
+  if(m_scene)
+  {
+      (*shader)["Phong"]->use();
+
+      using namespace Renderer;
+      for( Scene::objectListIterator object = m_scene->objectBegin();
+           object != m_scene->objectEnd();
+           ++object)
+      {
+        m_transform = (*object)->worldTransform();
+        loadMatricesToShader();
+
+        m_material.setDiffuse((*object)->getSurfaceColour());
+        m_material.loadToShader("material");
+
+        //->draw("cube");
+
+        (*object)->draw();
+
+        // Polymorphism should really be used for this
+
+//        Sphere* sphere = static_cast<Sphere*>(*object);
+//        if(sphere)  {   prim->draw("sphere"); continue; }
+
+//        Plane* plane = static_cast<Plane*>(*object);
+//        if(plane)  {   prim->draw("plane"); continue; }
+      }
+
+//      for( Scene::lightListIterator light = m_scene->lightBegin();
+//           light != m_scene->lightEnd();
+//           ++light)
+//      {
+//        m_transform = (*light)->worldTransform();
+//        loadMatricesToShader();
+
+//        m_material.setDiffuse(ngl::Colour(0.f, 0.4f, 0.f));
+//        m_material.loadToShader("material");
+
+//        prim->draw("cone", GL_LINE_LOOP);
+//      }
+  }
   m_axis->draw(m_mouseGlobalTX);
+
+  m_transform.identity();
+  loadMatricesToShader();
+
+  m_material.setDiffuse(ngl::Colour(0,0,0));
+  m_material.loadToShader("material");
+  prim->draw("grid");
 }
 
 
 bool GLWindow::loadScene(const std::string& _filepath)
 {
-  Renderer::Scene::objectList  objects;
+//  if(!m_cam)
+//      return false;
 
-  ngl::Mat4 o2w;
-  o2w.identity();
-  o2w.translate(0, 0, -5);
-  objects.push_back(new Renderer::Sphere(o2w));
+//  Renderer::Scene::objectList  objects;
 
-  o2w.identity();
-  o2w.translate(0, 0, 5);
-  objects.push_back(new Renderer::Sphere(o2w));
+//  ngl::Mat4 o2w;
+//  o2w.identity();
+//  o2w.translate(0, 0, -5);
+//  objects.push_back(new Renderer::Sphere(o2w));
 
-  o2w.identity();
-  o2w.translate(1, 1, -6);
-  o2w.scale(1, 2, 1);
-  objects.push_back(new Renderer::Sphere(o2w));
+//  o2w.identity();
+//  o2w.translate(0, 0, 5);
+//  objects.push_back(new Renderer::Sphere(o2w));
 
-  o2w.identity();
-  o2w.translate(1.f, 1.f, -2.f);
-  o2w.scale(1.5f, 1.5f, 1.5f);
-  objects.push_back(new Renderer::Sphere(o2w));
+//  o2w.identity();
+//  o2w.translate(1, 1, -6);
+//  o2w.scale(1, 2, 1);
+//  objects.push_back(new Renderer::Sphere(o2w));
 
-  ngl::Mat4 c2w;
-  c2w.translate(0, 0, 5);
+//  o2w.identity();
+//  o2w.translate(1.f, 1.f, -2.f);
+//  o2w.scale(1.5f, 1.5f, 1.5f);
+//  objects.push_back(new Renderer::Sphere(o2w));
 
-  m_scene = new Renderer::Scene(objects,
-                                c2w);
+//  ngl::Mat4 c2w;
+//  c2w.translate(0, 0, 5);
 
-  return true;
+//  m_scene = new Renderer::Scene(objects,
+//                                c2w);
+
+//  return true;
+
+    try
+    {
+        Renderer::SceneFile file(_filepath);
+        m_scene = file.read();
+    }
+    catch(std::invalid_argument& e)
+    {
+        std::cerr << e.what() << std::endl;
+        return false;
+    }
+
+    return true;
 }
 
  void GLWindow::renderScene(Renderer::RenderContext* _context)
  {
-//   Renderer::SceneFile a("test.txt");
-//   a.read();
-
    if(m_scene != NULL)
    {
      ///@todo Clean up the scene/render context confusion
@@ -519,12 +659,12 @@ void GLWindow::wheelEvent(QWheelEvent *_event)
   // check the diff of the wheel position (0 means no change)
   if(_event->delta() > 0)
   {
-    zoomScale = -0.25f;
+    zoomScale = -1.f;
     //m_modelPos.m_x+=ZOOM;
   }
   else if(_event->delta() <0 )
   {
-    zoomScale =  0.25f;
+    zoomScale =  1.f;
     //m_modelPos.m_x-=ZOOM;
   }
 

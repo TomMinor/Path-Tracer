@@ -7,7 +7,7 @@
 Axis::Axis(std::string _shaderName, ngl::Real _scale )
 {
   m_shaderName=_shaderName;
-  m_scale=_scale * 0.5f;
+  m_scale=_scale * 2;
 
   ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();
   prim->createCylinder("nglAXISCylinder",0.02,2,60,60);

@@ -3,14 +3,23 @@
 #include <iostream>
 
 #include "raytracer/scenefile.h"
-
 #include "raytracer/StringUtils.h"
+#include "raytracer/scene.h"
 
 namespace Renderer
 {
 
+template <typename T>
+T popFirstItem(std::deque<T>& _items)
+{
+    T item = _items.front();
+    _items.pop_front();
+    return item;
+}
+
+
 SceneFile::SceneFile(const std::string &_path)
-  : m_sceneFile(NULL)
+  : m_sceneFile(NULL), m_counter(0)
 {
   m_sceneFile = new std::ifstream(_path.c_str(), std::ifstream::in | std::ifstream::out);
 
@@ -26,24 +35,27 @@ SceneFile::~SceneFile()
   delete m_sceneFile;
 }
 
-Renderer::Scene* SceneFile::read() const
+Renderer::Scene* SceneFile::read()
 {
   Scene::objectList primitives;
   Camera* renderCamera = NULL; // Only allow 1 render camera, maybe extend to support many cameras in scenes
+  ngl::Colour background;
 
   std::string line;
-  int counter = 0;
   while ( std::getline(*m_sceneFile, line) )
   {
-    std::vector<std::string> tokens;
-    tokenize(line, tokens, " ");
+    std::vector<std::string> tokenVector;
+    tokenize(line, tokenVector, " ");
+
+    std::deque<std::string> tokens;
+    std::copy( tokenVector.begin(), tokenVector.end(), std::inserter( tokens, tokens.end() ) );
 
     if(tokens.size() > 0)
     {
       float xres = 640, yres = 480; // Render resolution
 
-      std::string lineType = tokens[0];
-      if(lineType[0] == '$') // Ignore lines not starting with $
+      std::string lineType = popFirstItem<std::string>(tokens);
+      if(lineType[0] != '#' && lineType[0] == '$') // Ignore lines not starting with $ and are not comments #
       {
         lineType.erase(0, 1);
         if(lineType == "camera")
@@ -63,96 +75,111 @@ Renderer::Scene* SceneFile::read() const
           if(primitive)
             primitives.push_back(primitive);
         }
+        else if(lineType == "tri")
+        {
+          Triangle* primitive = parseTriangle(tokens);
+          if(primitive)
+            primitives.push_back(primitive);
+        }
+        else if(lineType == "plane")
+        {
+          Plane* primitive = parsePlane(tokens);
+          if(primitive)
+            primitives.push_back(primitive);
+        }
         else if(lineType == "res")
         {
           try
           {
-            xres = parseFloat(tokens[1]);
-            yres = parseFloat(tokens[2]);
+            xres = parseFloat(popFirstItem<std::string>(tokens));
+            yres = parseFloat(popFirstItem<std::string>(tokens));
           }
           catch(std::runtime_error& e)
           {
             std::cerr << "Error parsing resolution data : " << e.what() << std::endl;
           }
         }
+        else
+        {
+            //std::cerr << "Unknown data type : " << lineType << std::endl;
+        }
       } // End $ check
     } // End token size check
-    counter++;
+    m_counter++;
   } // End line loop
 
-  ///@todo Move camera projection info out of Scene constructor, construct it at render time from ngl::Camera,
-  /// but don't make ngl a dependency for the renderer to work
-  //return Scene(primitives, )
+  if(!renderCamera)
+      renderCamera = new Camera;
 
-
+  return new Scene(primitives, renderCamera->getWorldSpaceMatrix(), background);
 }
 
 
-ngl::Mat4 SceneFile::parseTransform(const std::vector<std::string> &_tokens, unsigned int _tokenOffset)
+ngl::Mat4 SceneFile::parseTransform(std::deque<std::string> &_tokens, unsigned int _tokenOffset)
 {
   ngl::Vec3 position, rotation, scale;
 
-  try
-  {
-    position = ngl::Vec3( tokenToFloat(_tokens[_tokenOffset + 0]),
-                          tokenToFloat(_tokens[_tokenOffset + 1]),
-                          tokenToFloat(_tokens[_tokenOffset + 2]) );
-  }
-  catch(std::runtime_error)
-  {
-    throw std::runtime_error("Could not read position");
-  }
+  if(_tokens.size() < 9)        { throw std::runtime_error("Could not read rotation"); }
+  else if(_tokens.size() < 6)   { throw std::runtime_error("Could not read scale"); }
+  else if(_tokens.size() < 3)   { throw std::runtime_error("Could not read position"); }
 
-  try
-  {
-    scale = ngl::Vec3( tokenToFloat(_tokens[_tokenOffset + 3]),
-                       tokenToFloat(_tokens[_tokenOffset + 4]),
-                       tokenToFloat(_tokens[_tokenOffset + 5]) );
-  }
-  catch(std::runtime_error)
-  {
-    throw std::runtime_error("Could not read scale");
-  }
+    position = ngl::Vec3( tokenToFloat(popFirstItem<std::string>(_tokens)),
+                      tokenToFloat(popFirstItem<std::string>(_tokens)),
+                      tokenToFloat(popFirstItem<std::string>(_tokens)) );
 
-  try
-  {
-    rotation = ngl::Vec3( tokenToFloat(_tokens[_tokenOffset + 6]),
-                          tokenToFloat(_tokens[_tokenOffset + 7]),
-                          tokenToFloat(_tokens[_tokenOffset + 8]) );
-  }
-  catch(std::runtime_error)
-  {
-    throw std::runtime_error("Could not read rotation");
-  }
+    scale = ngl::Vec3( tokenToFloat(popFirstItem<std::string>(_tokens)),
+                     tokenToFloat(popFirstItem<std::string>(_tokens)),
+                     tokenToFloat(popFirstItem<std::string>(_tokens)) );
+
+    rotation = ngl::Vec3( tokenToFloat(popFirstItem<std::string>(_tokens)),
+                        tokenToFloat(popFirstItem<std::string>(_tokens)),
+                        tokenToFloat(popFirstItem<std::string>(_tokens)) );
 
   ngl::Mat4 translateXYZ, scaleXYZ, rotX, rotY, rotZ;
 
   rotX.rotateX(rotation.m_x);
-  rotY.rotateY(rotation.m_x);
-  rotZ.rotateZ(rotation.m_x);
+  rotY.rotateY(rotation.m_y);
+  rotZ.rotateZ(rotation.m_z);
 
   translateXYZ.translate(position.m_x, position.m_y, position.m_z);
   scaleXYZ.scale(scale.m_x, scale.m_y, scale.m_z);
 
-  return ngl::Mat4(translateXYZ * rotZ * rotY * rotX * scaleXYZ);
+  ngl::Mat4 result;
+  result = translateXYZ * rotZ * rotY * rotX * scaleXYZ;
+
+  return result;
 }
 
-ngl::Colour SceneFile::parseColour(const std::vector<std::string> &_tokens, unsigned int _tokenOffset)
+ngl::Colour SceneFile::parseColour(std::deque<std::string> &_tokens, unsigned int _tokenOffset)
 {
   ngl::Colour colour;
 
-  try
+  if(_tokens.size() < 3)
   {
-    colour = ngl::Colour( tokenToFloat(_tokens[_tokenOffset + 0]),
-                          tokenToFloat(_tokens[_tokenOffset + 1]),
-                          tokenToFloat(_tokens[_tokenOffset + 2]) );
-  }
-  catch(std::runtime_error)
-  {
-    throw std::runtime_error("Could not read colour");
+      throw std::runtime_error("Could not read colour");
   }
 
+  colour = ngl::Colour( tokenToFloat(popFirstItem<std::string>(_tokens)),
+                        tokenToFloat(popFirstItem<std::string>(_tokens)),
+                        tokenToFloat(popFirstItem<std::string>(_tokens)) );
+
   return colour;
+}
+
+ngl::Vec3 SceneFile::parseVertex(std::deque<std::string> &_tokens, unsigned int _tokenOffset)
+{
+  ngl::Vec3 vtx;
+
+  if(_tokens.size() < 3)
+  {
+      throw std::runtime_error("Could not read vertex");
+  }
+
+  vtx = ngl::Vec3( tokenToFloat(popFirstItem<std::string>(_tokens)),
+                   tokenToFloat(popFirstItem<std::string>(_tokens)),
+                   tokenToFloat(popFirstItem<std::string>(_tokens)) );
+
+  return vtx;
 }
 
 float SceneFile::parseFloat(const std::string &_token)
@@ -172,7 +199,7 @@ float SceneFile::parseFloat(const std::string &_token)
 }
 
 
-Sphere* SceneFile::parseSphere(const std::vector<std::string>& _tokens)
+Sphere* SceneFile::parseSphere(std::deque<std::string>& _tokens)
 {
   /*
    * $sphere tx ty tz sx sy sz rx ry rz cr cg cb
@@ -188,19 +215,72 @@ Sphere* SceneFile::parseSphere(const std::vector<std::string>& _tokens)
   }
   catch(std::runtime_error& e)
   {
-    std::cerr << "Error parsing sphere data : " << e.what() << std::endl;
+    std::cerr << " : Error parsing sphere data : " << e.what() << std::endl;
     return NULL;
   }
 
-  return new Sphere(transform, colour);
+  return new Sphere(transform, 1, colour);
 }
 
-Camera* SceneFile::parseCamera(const std::vector<std::string> &_tokens)
+Triangle* SceneFile::parseTriangle(std::deque<std::string> &_tokens)
 {
-  /*
-   * $sphere tx ty tz sx sy sz rx ry rz cr cg cb
-   */
+    /*
+    * $tri v0x v0y v0z v1x v1y v1z v2x v2y v2z tx ty tz sx sy sz rx ry rz cr cg cb
+    */
 
+   ngl::Mat4 transform;
+   ngl::Colour colour;
+   ngl::Vec3 vertex[3];
+
+   try
+   {
+     vertex[0] = parseVertex(_tokens, LineTypeSize + (VertexSize * 0) );
+     vertex[1] = parseVertex(_tokens, LineTypeSize + (VertexSize * 1) );
+     vertex[2] = parseVertex(_tokens, LineTypeSize + (VertexSize * 2) );
+
+     transform = parseTransform(_tokens, LineTypeSize + (VertexSize * 3));
+     colour = parseColour(_tokens, LineTypeSize + TransformSize);
+   }
+   catch(std::runtime_error& e)
+   {
+     std::cerr << "Line " << m_counter << " : Error parsing triangle data : " << e.what() << std::endl;
+     return NULL;
+   }
+
+   return new Triangle(vertex[0], vertex[1], vertex[2], transform, colour);
+}
+
+Plane* SceneFile::parsePlane(std::deque<std::string> &_tokens)
+{
+    /*
+    * $tri v0x v0y v0z v1x v1y v1z v2x v2y v2z tx ty tz sx sy sz rx ry rz cr cg cb
+    */
+
+   ngl::Mat4 transform;
+   ngl::Colour colour;
+   ngl::Vec3 vertex[4];
+
+   try
+   {
+     vertex[0] = parseVertex(_tokens, LineTypeSize + (VertexSize * 0) );
+     vertex[1] = parseVertex(_tokens, LineTypeSize + (VertexSize * 1) );
+     vertex[2] = parseVertex(_tokens, LineTypeSize + (VertexSize * 2) );
+     vertex[3] = parseVertex(_tokens, LineTypeSize + (VertexSize * 2) );
+
+     transform = parseTransform(_tokens, LineTypeSize + (VertexSize * 3));
+     colour = parseColour(_tokens, LineTypeSize + TransformSize);
+   }
+   catch(std::runtime_error& e)
+   {
+     std::cerr  << "Line " << m_counter << " : Error parsing plane data : " << e.what() << std::endl;
+     return NULL;
+   }
+
+   return new Plane(vertex[0], vertex[1], vertex[2], vertex[3], transform, colour);
+}
+
+Camera* SceneFile::parseCamera(std::deque<std::string> &_tokens)
+{
   ngl::Mat4 transform;
   float FOV;
   float nearZ = 0.0f, farZ = 1e9;
@@ -208,23 +288,21 @@ Camera* SceneFile::parseCamera(const std::vector<std::string> &_tokens)
   try
   {
     transform = parseTransform(_tokens, LineTypeSize);
-    FOV = parseFloat(_tokens[LineTypeSize + 1]);
-    nearZ = parseFloat(_tokens[LineTypeSize + 2]);
-    farZ = parseFloat(_tokens[LineTypeSize + 3]);
+    FOV = parseFloat( popFirstItem<std::string>(_tokens) );
+    nearZ = parseFloat( popFirstItem<std::string>(_tokens) );
+    farZ = parseFloat( popFirstItem<std::string>(_tokens) );
   }
   catch(std::runtime_error& e)
   {
-    std::cerr << "Error parsing camera data : " << e.what() << std::endl;
+    std::cerr  << "Line " << m_counter << " : Error parsing camera data : " << e.what() << std::endl;
     return NULL;
   }
 
   return new Camera(transform, FOV, nearZ, farZ);
 }
 
-bool SceneFile::write(Renderer::Scene* _scene) const
+bool SceneFile::write(Renderer::Scene* _scene)
 {
 
 }
-
-
 }

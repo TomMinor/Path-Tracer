@@ -2,6 +2,9 @@
 #define TRIANGLEMESH_H
 
 #include "raytracer/primitive.h"
+#include <ngl/VAOPrimitives.h>
+#include <ngl/ShaderLib.h>
+#include <vector>
 
 namespace Renderer
 {
@@ -9,16 +12,25 @@ namespace Renderer
 class Triangle : public Primitive
 {
 public:
-    Triangle(ngl::Vec3 _v0, ngl::Vec3 _v1, ngl::Vec3 _v2, const ngl::Mat4 _toWorldSpace, bool _singleSided = true)
-        : Primitive(_toWorldSpace), m_v0(_v0), m_v1(_v1), m_v2(_v2), m_singleSided(_singleSided)
-    {}
+    Triangle(ngl::Vec3 _v0,
+             ngl::Vec3 _v1,
+             ngl::Vec3 _v2,
+             const ngl::Mat4 _toWorldSpace,
+             ngl::Colour _colour = ngl::Colour(0.5, 0.5, 0.5),
+             bool _singleSided = true);
 
     virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const;
 
+    virtual void draw() const;
+
+    ~Triangle();
+
+
 private:
-    ngl::Vec3 m_v0;
-    ngl::Vec3 m_v1;
-    ngl::Vec3 m_v2;
+    ngl::Vec3 m_vtx[3];
+    ngl::Vec3 m_normals[3];
+
+    ngl::VertexArrayObject *m_vao;
 
     bool m_singleSided;
 };

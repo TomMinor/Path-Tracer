@@ -3,12 +3,18 @@
 
 #include <string>
 #include <fstream>
+#include <deque>
 
-#include "raytracer/scene.h"
 #include "raytracer/sphere.h"
+#include "raytracer/triangle.h"
+#include "raytracer/plane.h"
+
 
 namespace Renderer
 {
+
+class Scene;
+class Camera;
 
 class SceneFile
 {
@@ -16,13 +22,13 @@ public:
   SceneFile(const std::string& _path);
   ~SceneFile();
 
-  Renderer::Scene* read() const;
-  bool write(Renderer::Scene *_scene) const;
+  Scene* read();
+  bool write(Scene *_scene);
 
 private:
   std::ifstream* m_sceneFile;
 
-  enum TokenOffsets { LineTypeSize = 1, TransformSize = 9, ColourSize = 3 };
+  enum TokenOffsets { LineTypeSize = 1, TransformSize = 9, ColourSize = 3, VertexSize = 3 };
 
   ///
   /// \brief parseTransform Parses a stream of tokens containing position, scale & rotation and constructing a transform matrix from it.
@@ -31,7 +37,7 @@ private:
   /// \return a transform matrix, M = Translation * Rotation * Scale
   /// \exceptions std::runtime_error is returned if the token stream is too short
   ///
-  static ngl::Mat4 parseTransform(const std::vector<std::string> &_tokens, unsigned int _tokenOffset = 1);
+  ngl::Mat4 parseTransform(std::deque<std::string> &_tokens, unsigned int _tokenOffset = 1);
 
   ///
   /// \brief parseColour Parses a stream of tokens and extracts the r,g,b colour values
@@ -40,7 +46,16 @@ private:
   /// \return an rgb colour
   /// \exceptions std::runtime_error is returned if the token stream is too short
   ///
-  static ngl::Colour parseColour(const std::vector<std::string> &_tokens, unsigned int _tokenOffset = 1);
+  ngl::Colour parseColour(std::deque<std::string> &_tokens, unsigned int _tokenOffset = 1);
+
+  ///
+  /// \brief parseVertex Parses a stream of tokens and extracts the x,y,z values
+  /// \param _tokens Expects 3 strings from start index of token stream, of the form x,y,z
+  /// \param _tokenOffset is the start index of the token stream
+  /// \return a vector
+  /// \exceptions std::runtime_error is returned if the token stream is too short
+  ///
+  ngl::Vec3 parseVertex(std::deque<std::string> &_tokens, unsigned int _tokenOffset = 1);
 
   ///
   /// \brief parseFloat Parses a token and extracts the float value
@@ -48,10 +63,14 @@ private:
   /// \return a float value
   /// \exceptions std::runtime_error is returned if the token could not be read
   ///
-  static float parseFloat(const std::string &_token);
+  float parseFloat(const std::string &_token);
 
-  static Sphere* parseSphere(const std::vector<std::string> &_tokens);
-  static Camera* parseCamera(const std::vector<std::string> &_tokens);
+  Sphere* parseSphere(std::deque<std::string> &_tokens);
+  Triangle* parseTriangle(std::deque<std::string> &_tokens);
+  Plane* parsePlane(std::deque<std::string> &_tokens);
+  Camera* parseCamera(std::deque<std::string> &_tokens);
+
+  unsigned int m_counter;
 };
 
 }

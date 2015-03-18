@@ -9,15 +9,13 @@ namespace Renderer
 class Sphere : public Primitive
 {
 public:
-    Sphere(const ngl::Mat4 &_toWorldSpace, float _radius = 1.0f)
-        : Primitive(_toWorldSpace), m_radius(_radius), m_squaredRadius(_radius * _radius)
-    {;}
-
-    Sphere(const ngl::Mat4 &_toWorldSpace, const ngl::Colour& _colour, float _radius = 1.0f)
+    Sphere(const ngl::Mat4 &_toWorldSpace = ngl::Mat4(), float _radius = 1.0f, const ngl::Colour& _colour = ngl::Colour(0,0,0,0))
         : Primitive(_toWorldSpace, _colour), m_radius(_radius), m_squaredRadius(_radius * _radius)
     {;}
 
     virtual bool intersect(const Ray<float> &_ray, float &o_t) const;
+
+    virtual void draw() const;
 
 private:
     float m_radius;

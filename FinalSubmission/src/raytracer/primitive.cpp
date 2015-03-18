@@ -6,14 +6,14 @@
 namespace Renderer
 {
 
-Primitive::Primitive(const ngl::Mat4 &_toWorldSpace)
-    : m_toWorldSpace(_toWorldSpace)
-{
-    ngl::Random *random = ngl::Random::instance();
+//Primitive::Primitive(const ngl::Mat4 &_toWorldSpace)
+//    : m_toWorldSpace(_toWorldSpace)
+//{
+//    ngl::Random *random = ngl::Random::instance();
 
-    m_toObjectSpace = m_toWorldSpace.inverse();
-    m_colour = random->getRandomColour();
-}
+//    m_toObjectSpace = m_toWorldSpace.inverse();
+//    m_colour = random->getRandomColour();
+//}
 
 Primitive::Primitive(const ngl::Mat4 &_toWorldSpace,
                      const ngl::Colour& _colour)

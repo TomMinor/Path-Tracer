@@ -24,11 +24,11 @@ public:
           );
 
     typedef std::vector<Primitive*> objectList;
-    typedef objectList::const_iterator objectListIterator;
+    typedef objectList::iterator objectListIterator;
 
     // Allow iteration over private objects
-    objectListIterator objectBegin() const { return m_primitives.begin(); }
-    objectListIterator objectEnd() const { return m_primitives.end(); }
+    objectListIterator objectBegin() { return m_primitives.begin(); }
+    objectListIterator objectEnd() { return m_primitives.end(); }
 
     inline const ngl::Colour& getBackgroundColour() const { return m_background; }
 private:

@@ -19,11 +19,12 @@ struct RenderContext;
 class Primitive
 {
 public:
-    Primitive(const ngl::Mat4 &_toWorldSpace);
-    Primitive(const ngl::Mat4 &_toWorldSpace, const ngl::Colour& _colour);
+    Primitive(const ngl::Mat4 &_toWorldSpace, const ngl::Colour& _colour = ngl::Colour(0.5, 0.5, 0.5));
     virtual ~Primitive() {;}
 
     virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const = 0;
+
+    virtual void draw() const = 0;
 
     /**
      * @brief convertRayToObjectSpace is a helper method to transform a ray into this primitives object space

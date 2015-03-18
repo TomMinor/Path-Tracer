@@ -17,21 +17,13 @@ MainWindow::MainWindow( QWidget *parent )
   format.setVersion(3,2);
   format.setProfile( QGLFormat::CoreProfile);
 
-  m_ui->horizontalLayout_7->removeWidget(m_ui->widget);
-
-
   m_ui->tabWidget->setCurrentIndex(0);
 
   m_gl = new GLWindow(format,this);
   m_ui->horizontalLayout_7->addWidget(m_gl);
 
-  std::string style = "QLineEdit {\
-                           border-style: outset;\
-                           border-width: 16px;\
-                           border-color: black;\
-                       }";
-
-  m_gl->setStyleSheet(style.c_str());
+//  auto* a = new GLWindow(format, this);
+//  m_ui->horizontalLayout_6->addWidget(a);
 
   //connect(m_ui->renderButton, SIGNAL(clicked()), this, SLOT(renderNow()));
 
@@ -55,6 +47,10 @@ MainWindow::MainWindow( QWidget *parent )
   //connect(m_ui->m_reset,SIGNAL(clicked()),this,SLOT(reset()));
   // connect the emit matrix dirty to update the matrix.
   connect(m_gl,SIGNAL(matrixDirty(ngl::Mat4)),this,SLOT(updateMatrix(ngl::Mat4)));
+
+  connect(m_ui->actionRender, SIGNAL(triggered()), this, SLOT(renderNow()) );
+  connect(m_ui->pushButton, SIGNAL(triggered()), this, SLOT(renderNow()) );
+
   // connect the slider to the normal drawing attrib size
   //connect(m_ui->m_normalSize,SIGNAL(valueChanged(int)),m_gl,SLOT(setNormalSize(int)));
   /*
@@ -84,8 +80,6 @@ MainWindow::MainWindow( QWidget *parent )
 //  connect(m_ui->m_eulerXAxis,SIGNAL(valueChanged(double)),this,SLOT(setEuler()));
 //  connect(m_ui->m_eulerYAxis,SIGNAL(valueChanged(double)),this,SLOT(setEuler()));
 //  connect(m_ui->m_eulerZAxis,SIGNAL(valueChanged(double)),this,SLOT(setEuler()));
-
-  m_gl->loadScene("");
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -115,7 +109,7 @@ void MainWindow::renderNow()
 //        qDebug() << "Tri intersects at " << t;
 //    }
 
-  Renderer::RenderContext* context = new Renderer::RenderContext(m_gl->getScene(), NULL, 320, 200, "output.ppm");
+  Renderer::RenderContext* context = new Renderer::RenderContext(m_gl->getScene(), NULL, 640, 480, "output.ppm");
 
   m_gl->renderScene(context);
 }
@@ -274,17 +268,17 @@ void MainWindow::setTab(int _value )
 void MainWindow::on_renderButton_clicked()
 {
     renderNow();
-    m_ui->tabWidget->setCurrentIndex(1);
+//    m_ui->tabWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_tabWidget_2_currentChanged(int index)
 {
-    m_ui->tabWidget->setCurrentIndex(index);
-    m_ui->tabWidget_2->setCurrentIndex(index);
+//    m_ui->tabWidget->setCurrentIndex(index);
+//    m_ui->tabWidget_2->setCurrentIndex(index);
 }
 
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
-    m_ui->tabWidget->setCurrentIndex(index);
-    m_ui->tabWidget_2->setCurrentIndex(index);
+//    m_ui->tabWidget->setCurrentIndex(index);
+//    m_ui->tabWidget_2->setCurrentIndex(index);
 }
