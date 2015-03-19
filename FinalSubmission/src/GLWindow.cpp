@@ -150,10 +150,9 @@ void GLWindow::initializeGL()
   // Now we will create a basic Camera from the graphics library
   // This is a static camera so it only needs to be set once
   // First create Values for the camera position
-  ngl::Vec3 from(4, 4, 4);
-  ngl::Vec3 to(0,0,0);
+  ngl::Vec3 from(48, 14, 0);
+  ngl::Vec3 to(0,14,0);
   ngl::Vec3 up(0,1,0);
-
 
   m_cam= new ngl::Camera(from,to,up);
   // set the shape using FOV 45 Aspect Ratio based on Width and Height

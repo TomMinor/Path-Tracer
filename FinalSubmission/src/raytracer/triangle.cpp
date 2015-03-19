@@ -8,9 +8,9 @@ Triangle::Triangle(ngl::Vec3 _v0,
                    ngl::Vec3 _v1,
                    ngl::Vec3 _v2,
                    const ngl::Mat4 _toWorldSpace,
-                   ngl::Colour _colour,
+                   const Material &_material,
                    bool _singleSided)
-    : Primitive(_toWorldSpace, _colour)
+    : Primitive(_toWorldSpace, _material), m_singleSided(_singleSided)
 {
     m_vtx[0] = _v0;
     m_vtx[1] = _v1;
@@ -47,14 +47,26 @@ Triangle::~Triangle()
     delete m_vao;
 }
 
+ngl::Vec3 Triangle::sample() const
+{
+    // get two randoms
+    const double sqr1 = sqrt(drand48());
+    const double r2   = drand48();
+
+    // make barycentric coords
+    const double a = 1.0 - sqr1;
+    const double b = (1.0 - r2) * sqr1;
+    //const real64 c = r2 * sqr1;
+
+    // make position from barycentrics
+    // calculate interpolation by using two edges as axes scaled by the
+    // barycentrics
+    return ngl::Vec3( ((m_vtx[1] - m_vtx[0]) * a) +
+       ((m_vtx[2] - m_vtx[0]) * b) + m_vtx[0] );
+}
+
 ngl::Vec3 Triangle::getNormal(ngl::Vec3 _point) const
 {
-    const ngl::Vec3 edge1 = m_vtx[1] - m_vtx[0];
-    const ngl::Vec3 edge2 = m_vtx[2] - m_vtx[0];
-
-    ngl::Vec3 pvec ( edge1.cross(edge2));
-    pvec.normalize();
-
     ngl::Vec3 nrm(m_normals[0].m_x, m_normals[0].m_y, m_normals[0].m_z);
     nrm.normalize();
 
@@ -65,9 +77,9 @@ ngl::Vec3 Triangle::getNormal(ngl::Vec3 _point) const
 const double EPSILON = 1.0 / 1048576.0;
 
 // http://www.hxa.name/rendering/#minilight
-bool Triangle::intersect(const Ray<float> &_ray, HitData &_hit) const
+bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
 {
-    Ray<float> objectSpaceRay = rayToObjectSpace(_ray);
+    Ray objectSpaceRay = rayToObjectSpace(_ray);
 
     const ngl::Vec3 edge1 = m_vtx[1] - m_vtx[0];
     const ngl::Vec3 edge2 = m_vtx[2] - m_vtx[0];
@@ -75,7 +87,7 @@ bool Triangle::intersect(const Ray<float> &_ray, HitData &_hit) const
     const ngl::Vec3 pvec ( objectSpaceRay.m_direction.cross(edge2));
     const double det = edge1.dot(pvec);
 
-    if(det > 0)
+    if(m_singleSided && det > 0)
         return false;
 
     bool isHit = false;
@@ -97,7 +109,9 @@ bool Triangle::intersect(const Ray<float> &_ray, HitData &_hit) const
                 _hit.m_u = u;
                 _hit.m_v = v;
                 _hit.m_w = (1-u-v);
-                _hit.m_normal = getNormal(_ray(_hit.m_t));
+                _hit.m_impact = _ray(_hit.m_t);
+                _hit.m_normal = getNormal(_hit.m_impact);
+                _hit.m_material = m_material;
 
                 isHit = (_hit.m_t >= 0.0);
             }
@@ -225,6 +239,7 @@ bool Triangle::intersect(const Ray<float> &_ray, HitData &_hit) const
 //    // Ray hits the triangle
 //    return true;
 }
+
 /* These are handy for testing
  *
  * gnuplot> unset label; set label at 0.326836, -0.326836, 0.326836 "" point pointtype 6 pointsize 2 lc rgb "white" front

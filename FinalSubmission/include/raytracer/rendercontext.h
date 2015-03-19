@@ -41,6 +41,8 @@ struct RenderContext
     Scene* m_scene;
 
     std::string m_outputPath;
+
+    HitData m_hit;
 };
 
 }

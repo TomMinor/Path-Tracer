@@ -39,7 +39,7 @@ Renderer::Scene* SceneFile::read()
 {
   Scene::objectList primitives;
   Camera* renderCamera = NULL; // Only allow 1 render camera, maybe extend to support many cameras in scenes
-  ngl::Colour background;
+  Image::Pixel background;
 
   std::string line;
   while ( std::getline(*m_sceneFile, line) )
@@ -115,7 +115,7 @@ Renderer::Scene* SceneFile::read()
 }
 
 
-ngl::Mat4 SceneFile::parseTransform(std::deque<std::string> &_tokens, unsigned int _tokenOffset)
+ngl::Mat4 SceneFile::parseTransform(std::deque<std::string> &_tokens)
 {
   ngl::Vec3 position, rotation, scale;
 
@@ -150,7 +150,7 @@ ngl::Mat4 SceneFile::parseTransform(std::deque<std::string> &_tokens, unsigned i
   return result;
 }
 
-ngl::Colour SceneFile::parseColour(std::deque<std::string> &_tokens, unsigned int _tokenOffset)
+ngl::Colour SceneFile::parseColour(std::deque<std::string> &_tokens)
 {
   ngl::Colour colour;
 
@@ -166,7 +166,7 @@ ngl::Colour SceneFile::parseColour(std::deque<std::string> &_tokens, unsigned in
   return colour;
 }
 
-ngl::Vec3 SceneFile::parseVertex(std::deque<std::string> &_tokens, unsigned int _tokenOffset)
+ngl::Vec3 SceneFile::parseVertex(std::deque<std::string> &_tokens)
 {
   ngl::Vec3 vtx;
 
@@ -198,6 +198,17 @@ float SceneFile::parseFloat(const std::string &_token)
   return val;
 }
 
+Material::SurfaceProperty SceneFile::parseMaterialType(const std::string& _token)
+{
+    if(_token == "DIFFUSE")         return Material::DIFFUSE;
+    else if (_token == "SPECULAR")  return Material::SPECULAR;
+    else if (_token == "EMISSIVE")  return Material::EMISSIVE;
+    else
+        throw std::runtime_error("Unknown material ");
+
+    return Material::DIFFUSE;
+}
+
 
 Sphere* SceneFile::parseSphere(std::deque<std::string>& _tokens)
 {
@@ -207,11 +218,14 @@ Sphere* SceneFile::parseSphere(std::deque<std::string>& _tokens)
 
   ngl::Mat4 transform;
   ngl::Colour colour;
+  Material::SurfaceProperty type;
+
 
   try
   {
-    transform = parseTransform(_tokens, LineTypeSize);
-    colour = parseColour(_tokens, LineTypeSize + TransformSize);
+    transform = parseTransform(_tokens);
+    colour = parseColour(_tokens);
+    type = parseMaterialType( _tokens[0] );
   }
   catch(std::runtime_error& e)
   {
@@ -219,7 +233,9 @@ Sphere* SceneFile::parseSphere(std::deque<std::string>& _tokens)
     return NULL;
   }
 
-  return new Sphere(transform, 1, colour);
+  Material mat(type, colour);
+
+  return new Sphere(transform, mat, 1.0f);
 }
 
 Triangle* SceneFile::parseTriangle(std::deque<std::string> &_tokens)
@@ -231,15 +247,18 @@ Triangle* SceneFile::parseTriangle(std::deque<std::string> &_tokens)
    ngl::Mat4 transform;
    ngl::Colour colour;
    ngl::Vec3 vertex[3];
+   Material::SurfaceProperty type;
 
    try
    {
-     vertex[0] = parseVertex(_tokens, LineTypeSize + (VertexSize * 0) );
-     vertex[1] = parseVertex(_tokens, LineTypeSize + (VertexSize * 1) );
-     vertex[2] = parseVertex(_tokens, LineTypeSize + (VertexSize * 2) );
+     vertex[0] = parseVertex(_tokens);
+     vertex[1] = parseVertex(_tokens);
+     vertex[2] = parseVertex(_tokens);
 
-     transform = parseTransform(_tokens, LineTypeSize + (VertexSize * 3));
-     colour = parseColour(_tokens, LineTypeSize + TransformSize);
+     transform = parseTransform(_tokens);
+     colour = parseColour(_tokens);
+     type = parseMaterialType( _tokens[0] );
+
    }
    catch(std::runtime_error& e)
    {
@@ -247,7 +266,13 @@ Triangle* SceneFile::parseTriangle(std::deque<std::string> &_tokens)
      return NULL;
    }
 
-   return new Triangle(vertex[0], vertex[1], vertex[2], transform, colour);
+   Material mat(type, colour);
+   mat.m_diffuse.m_r = colour.m_r;
+   mat.m_diffuse.m_g = colour.m_g;
+   mat.m_diffuse.m_b = colour.m_b;
+//   mat.m_type = type;
+
+   return new Triangle(vertex[0], vertex[1], vertex[2], transform, mat);
 }
 
 Plane* SceneFile::parsePlane(std::deque<std::string> &_tokens)
@@ -259,16 +284,18 @@ Plane* SceneFile::parsePlane(std::deque<std::string> &_tokens)
    ngl::Mat4 transform;
    ngl::Colour colour;
    ngl::Vec3 vertex[4];
+   Material::SurfaceProperty type;
 
    try
    {
-     vertex[0] = parseVertex(_tokens, LineTypeSize + (VertexSize * 0) );
-     vertex[1] = parseVertex(_tokens, LineTypeSize + (VertexSize * 1) );
-     vertex[2] = parseVertex(_tokens, LineTypeSize + (VertexSize * 2) );
-     vertex[3] = parseVertex(_tokens, LineTypeSize + (VertexSize * 2) );
+     vertex[0] = parseVertex(_tokens);
+     vertex[1] = parseVertex(_tokens);
+     vertex[2] = parseVertex(_tokens);
+     vertex[3] = parseVertex(_tokens);
 
-     transform = parseTransform(_tokens, LineTypeSize + (VertexSize * 3));
-     colour = parseColour(_tokens, LineTypeSize + TransformSize);
+     transform = parseTransform(_tokens);
+     colour = parseColour(_tokens);
+     type = parseMaterialType( _tokens[0] );
    }
    catch(std::runtime_error& e)
    {
@@ -276,7 +303,9 @@ Plane* SceneFile::parsePlane(std::deque<std::string> &_tokens)
      return NULL;
    }
 
-   return new Plane(vertex[0], vertex[1], vertex[2], vertex[3], transform, colour);
+   Material mat(type, colour);
+
+   return new Plane(vertex[0], vertex[1], vertex[2], vertex[3], transform, mat);
 }
 
 Camera* SceneFile::parseCamera(std::deque<std::string> &_tokens)
@@ -287,7 +316,7 @@ Camera* SceneFile::parseCamera(std::deque<std::string> &_tokens)
 
   try
   {
-    transform = parseTransform(_tokens, LineTypeSize);
+    transform = parseTransform(_tokens);
     FOV = parseFloat( popFirstItem<std::string>(_tokens) );
     nearZ = parseFloat( popFirstItem<std::string>(_tokens) );
     farZ = parseFloat( popFirstItem<std::string>(_tokens) );

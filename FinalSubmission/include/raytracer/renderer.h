@@ -7,9 +7,11 @@
 
 namespace Renderer
 {
-  void trace(const Ray<float>& _ray, const RenderContext *_context, Image::Pixel &o_colour);
+  Image::Pixel shade(RenderContext *_context);
 
-  void render(const RenderContext *_context);
+  Image::Pixel trace(const Ray& _ray, RenderContext *_context);
+
+  void render(RenderContext *_context);
 }
 
 #endif // RENDERER_H

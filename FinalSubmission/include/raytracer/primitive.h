@@ -1,21 +1,31 @@
 #ifndef PRIMITIVE_H
 #define PRIMITIVE_H
 
-#include "raytracer/ray.h"
 #include <ngl/Vec3.h>
 #include <ngl/Mat4.h>
-#include <ngl/Colour.h>
+
+#include "raytracer/ray.h"
+#include "raytracer/material.h"
 
 namespace Renderer
 {
 
 struct HitData
 {
+    Ray m_ray;
+    unsigned int m_depth;
     float m_t;
     float m_u;
     float m_v;
     float m_w;
+    ngl::Vec3 m_impact;
     ngl::Vec3 m_normal;
+    Material m_material;
+    class Primitive* m_object;
+
+    HitData()
+        : m_ray(ngl::Vec3(), ngl::Vec3()), m_object(NULL)
+    {;}
 };
 
 /**
@@ -25,12 +35,14 @@ struct HitData
 class Primitive
 {
 public:
-    Primitive(const ngl::Mat4 &_toWorldSpace, const ngl::Colour& _colour = ngl::Colour(0.5, 0.5, 0.5));
+    Primitive(const ngl::Mat4 &_toWorldSpace, const Material &_material);
     virtual ~Primitive() {;}
 
-    virtual bool intersect(const Ray<float>& _ray, HitData& _hit) const = 0;
+    virtual bool intersect(const Ray& _ray, HitData& _hit) const = 0;
 
     virtual void draw() const = 0;
+
+    virtual ngl::Vec3 sample() const = 0;
 
     virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const = 0;
 
@@ -39,9 +51,11 @@ public:
      * @param _ray
      * @return
      */
-    Ray<float> rayToObjectSpace(const Ray<float>& _ray) const;
+    Ray rayToObjectSpace(const Ray& _ray) const;
 
-    ngl::Colour getSurfaceColour() const { return m_colour; }
+    inline Material getSurfaceMaterial() const { return m_material; }
+
+    inline ngl::Colour getSurfaceColour() const { return m_material.m_diffuse; }
 
     inline const ngl::Mat4& objectTransform() const { return m_toObjectSpace; }
     inline const ngl::Mat4& worldTransform() const { return m_toWorldSpace; }
@@ -59,7 +73,7 @@ protected:
      */
     ngl::Mat4 m_toObjectSpace;
 
-    ngl::Colour m_colour;
+    Material m_material;
 };
 
 }

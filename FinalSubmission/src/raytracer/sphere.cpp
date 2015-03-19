@@ -23,9 +23,9 @@ ngl::Vec3 Sphere::getNormal(ngl::Vec3 _point) const
     return dir;
 }
 
-bool Sphere::intersect(const Ray<float> &_ray, HitData& _hit) const
+bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
 {
-    Ray<float> objectSpaceRay = rayToObjectSpace(_ray);
+    Ray objectSpaceRay = rayToObjectSpace(_ray);
 
     const ngl::Vec3 rayDirection = objectSpaceRay.m_direction;
     const ngl::Vec3 rayOrigin = objectSpaceRay.m_origin;
@@ -50,14 +50,32 @@ bool Sphere::intersect(const Ray<float> &_ray, HitData& _hit) const
 
     // Prefer a solution infront of the camera
     _hit.m_t = (t0 < 0) ? t1 : t0;
-    _hit.m_normal = getNormal(_ray(_hit.m_t));
+    _hit.m_impact = _ray(_hit.m_t);
+    _hit.m_normal = getNormal(_hit.m_impact);
 
-    //Generate UVs http://www.mvps.org/directx/articles/spheremap.htm
+    //Generate UVs (http://www.mvps.org/directx/articles/spheremap.htm)
     _hit.m_u = asinf(_hit.m_normal.m_x)/M_PI + 0.5;
-    _hit.m_v = asinf(_hit.m_normal.m_y)/M_PI + 0.5;;
+    _hit.m_v = asinf(_hit.m_normal.m_y)/M_PI + 0.5;
     _hit.m_w = 1 - _hit.m_u - _hit.m_v;
+    _hit.m_material = m_material;
 
     return true;
+}
+
+ngl::Vec3 Sphere::sample() const
+{
+    ///@todo Make this more uniform
+    float x,y,z;
+
+    // Rejection sampling
+    do
+    {
+        x = drand48();
+        y = drand48();
+        z = drand48();
+    }while(x*x + y*y + z*z > 1);
+
+    return ngl::Vec3(x,y,z);
 }
 
 void Sphere::draw() const

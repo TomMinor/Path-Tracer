@@ -16,12 +16,14 @@ public:
              ngl::Vec3 _v1,
              ngl::Vec3 _v2,
              const ngl::Mat4 _toWorldSpace,
-             ngl::Colour _colour = ngl::Colour(0.5, 0.5, 0.5),
+             const Material& _material,
              bool _singleSided = true);
 
-    virtual bool intersect(const Ray<float>& _ray, HitData& _hit) const;
+    virtual bool intersect(const Ray& _ray, HitData& _hit) const;
 
     virtual void draw() const;
+
+    virtual ngl::Vec3 sample() const;
 
     virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const;
 

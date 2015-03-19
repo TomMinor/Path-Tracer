@@ -16,8 +16,8 @@ namespace Renderer
 //}
 
 Primitive::Primitive(const ngl::Mat4 &_toWorldSpace,
-                     const ngl::Colour& _colour)
-    : m_toWorldSpace(_toWorldSpace), m_colour(_colour)
+                     const Material& _material)
+    : m_toWorldSpace(_toWorldSpace), m_material(_material)
 {
   m_toObjectSpace = m_toWorldSpace.inverse();
 }
@@ -27,7 +27,7 @@ Primitive::Primitive(const ngl::Mat4 &_toWorldSpace,
  * @param _ray
  * @return
  */
-Ray<float> Primitive::rayToObjectSpace(const Ray<float> &_ray) const
+Ray Primitive::rayToObjectSpace(const Ray &_ray) const
 {
     /* To get correct object intersections the ray must also be transformed
      * to match the primitive's transform/scale.
@@ -53,7 +53,7 @@ Ray<float> Primitive::rayToObjectSpace(const Ray<float> &_ray) const
     rayOrigin.m_y = y / w;
     rayOrigin.m_z = z / w;
 
-    return Ray<float>(rayOrigin, rayDirection, _ray.m_type, _ray.m_tmin, _ray.m_tmax);
+    return Ray(rayOrigin, rayDirection, _ray.m_type, _ray.m_tmin, _ray.m_tmax);
 }
 
 }
