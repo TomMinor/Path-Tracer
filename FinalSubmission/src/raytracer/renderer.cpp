@@ -32,6 +32,7 @@ namespace Renderer
       {
           ngl::Vec3 end = (*light)->sample();
           ngl::Vec3 direction =  origin - end;
+          float length = direction.length();
           direction.normalize();
 
           Ray newRay(origin, direction, Ray::SHADOW);
@@ -43,8 +44,8 @@ namespace Renderer
               HitData hitResult;
               if(!(*object)->intersect(newRay, hitResult))
               {
-                  hitResult.m_object = *object;
-                 colour += hitResult.m_object->getSurfaceMaterial().m_diffuse * (1 / (hitResult.m_t*hitResult.m_t)); // inverse square
+                 hitResult.m_object = *object;
+                 colour += hitResult.m_object->getSurfaceMaterial().m_diffuse * (1 / (length*length)); // inverse square
                  visibleLights++;
               }
 //            if( (*object)->intersect(_ray, hitResult) )
@@ -63,10 +64,10 @@ namespace Renderer
 
     if(visibleLights > 0)
     {
-        colour.m_r /= visibleLights;
-        colour.m_g /= visibleLights;
-        colour.m_b /= visibleLights;
-        colour.m_a = 1;
+//        colour.m_r /= visibleLights;
+//        colour.m_g /= visibleLights;
+//        colour.m_b /= visibleLights;
+//        colour.m_a = 1;
     }
 
     return Image::Pixel(colour.m_r, colour.m_g, colour.m_b);
@@ -130,7 +131,7 @@ namespace Renderer
       {
           Image::Pixel result;
 
-          const int samples = 16;
+          const int samples = 32;
           for(int s = 0; s < samples; s++)
           {
               ///@todo Add a better sampler (stratified?), move into Sampler class, put in render context

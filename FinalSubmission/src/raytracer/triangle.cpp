@@ -105,7 +105,7 @@ bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
             const double v = objectSpaceRay.m_direction.dot(qvec) * inv_det;
             if( (v >= 0.0) & (u + v <= 1.0) )
             {
-                _hit.m_t = edge2.dot(qvec) * inv_det;
+                _hit.m_t = edge2.dot(qvec) * inv_det; ///@todo This doesn't return the right value of t
                 _hit.m_u = u;
                 _hit.m_v = v;
                 _hit.m_w = (1-u-v);
