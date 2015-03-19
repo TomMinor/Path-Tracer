@@ -19,9 +19,11 @@ public:
              ngl::Colour _colour = ngl::Colour(0.5, 0.5, 0.5),
              bool _singleSided = true);
 
-    virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const;
+    virtual bool intersect(const Ray<float>& _ray, HitData& _hit) const;
 
     virtual void draw() const;
+
+    virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const;
 
     ~Triangle();
 

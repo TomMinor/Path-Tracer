@@ -16,7 +16,8 @@ Triangle::Triangle(ngl::Vec3 _v0,
     m_vtx[1] = _v1;
     m_vtx[2] = _v2;
 
-    ngl::Vec3 nrm = ngl::calcNormal(m_vtx[0], m_vtx[2], m_vtx[1]);
+    ngl::Vec3 nrm = ngl::calcNormal(m_vtx[0], m_vtx[1], m_vtx[2]);
+    nrm.normalize();
     m_normals[0] = m_normals[1] = m_normals[2] = nrm;
 
     m_vao =  ngl::VertexArrayObject::createVOA(GL_TRIANGLES);
@@ -46,11 +47,65 @@ Triangle::~Triangle()
     delete m_vao;
 }
 
-bool Triangle::intersect(const Ray<float> &_ray, ngl::Real &_t) const
+ngl::Vec3 Triangle::getNormal(ngl::Vec3 _point) const
 {
+    const ngl::Vec3 edge1 = m_vtx[1] - m_vtx[0];
+    const ngl::Vec3 edge2 = m_vtx[2] - m_vtx[0];
+
+    ngl::Vec3 pvec ( edge1.cross(edge2));
+    pvec.normalize();
+
+    ngl::Vec3 nrm(m_normals[0].m_x, m_normals[0].m_y, m_normals[0].m_z);
+    nrm.normalize();
+
+    return nrm;
+}
 
 
-    return true;
+const double EPSILON = 1.0 / 1048576.0;
+
+// http://www.hxa.name/rendering/#minilight
+bool Triangle::intersect(const Ray<float> &_ray, HitData &_hit) const
+{
+    Ray<float> objectSpaceRay = rayToObjectSpace(_ray);
+
+    const ngl::Vec3 edge1 = m_vtx[1] - m_vtx[0];
+    const ngl::Vec3 edge2 = m_vtx[2] - m_vtx[0];
+
+    const ngl::Vec3 pvec ( objectSpaceRay.m_direction.cross(edge2));
+    const double det = edge1.dot(pvec);
+
+    if(det > 0)
+        return false;
+
+    bool isHit = false;
+    if( (det <= -EPSILON) | (det >= EPSILON) )
+    {
+        const double inv_det = 1.0 / det;
+
+        const ngl::Vec3 tvec = objectSpaceRay.m_origin - m_vtx[0];
+
+        const double u = tvec.dot(pvec) * inv_det;
+        if( (u >= 0.0) & (u <= 1.0) )
+        {
+            const ngl::Vec3 qvec(tvec.cross(edge1));
+
+            const double v = objectSpaceRay.m_direction.dot(qvec) * inv_det;
+            if( (v >= 0.0) & (u + v <= 1.0) )
+            {
+                _hit.m_t = edge2.dot(qvec) * inv_det;
+                _hit.m_u = u;
+                _hit.m_v = v;
+                _hit.m_w = (1-u-v);
+                _hit.m_normal = getNormal(_ray(_hit.m_t));
+
+                isHit = (_hit.m_t >= 0.0);
+            }
+        }
+    }
+
+    return isHit;
+
 //    ngl::Mat4 a,b,c;
 
 //    a.translate(m_vtx[0].m_x, m_vtx[0].m_y, m_vtx[0].m_z);

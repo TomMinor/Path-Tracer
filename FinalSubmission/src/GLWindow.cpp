@@ -145,6 +145,7 @@ void GLWindow::initializeGL()
   // enable depth testing for drawing
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
+  glCullFace(GL_FRONT);
 
   // Now we will create a basic Camera from the graphics library
   // This is a static camera so it only needs to be set once
@@ -397,7 +398,7 @@ void GLWindow::paintGL()
   rotX.rotateX(m_spinXFace / 3.f);
   rotY.rotateY(m_spinYFace);
   // multiply the rotations
-  m_mouseGlobalTX=rotX * rotY;
+  m_mouseGlobalTX=rotY * rotX;
   // add the translations
   m_mouseGlobalTX.m_m[3][0] = m_modelPos.m_x;
   m_mouseGlobalTX.m_m[3][1] = m_modelPos.m_y;

@@ -18,9 +18,13 @@ MOC_DIR=moc
 # on a mac we don't create a .app bundle file ( for ease of multiplatform use)
 CONFIG-=app_bundle
 # Auto include all .cpp files in the project src directory (can specifiy individually if required)
-SOURCES+= $$PWD/src/raytracer/*.cpp $$PWD/src/*.cpp
+SOURCES+= $$PWD/src/raytracer/*.cpp $$PWD/src/*.cpp \
+    src/raytracer/sampler.cpp \
+    src/raytracer/material.cpp
 # same for the .h files
-HEADERS+= $$PWD/include/*.h $$PWD/include/raytracer/*.h
+HEADERS+= $$PWD/include/*.h $$PWD/include/raytracer/*.h \
+    include/raytracer/sampler.h \
+    include/raytracer/material.h
 #Forms
 FORMS+=ui/MainWindow.ui
 # and add the include dir into the search path for Qt and make

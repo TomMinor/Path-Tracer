@@ -9,8 +9,14 @@
 namespace Renderer
 {
 
-// We pass in a reference to RenderContext when drawing
-struct RenderContext;
+struct HitData
+{
+    float m_t;
+    float m_u;
+    float m_v;
+    float m_w;
+    ngl::Vec3 m_normal;
+};
 
 /**
  * @brief The Primitive class is the abstract class representing a renderer primitive,
@@ -22,9 +28,11 @@ public:
     Primitive(const ngl::Mat4 &_toWorldSpace, const ngl::Colour& _colour = ngl::Colour(0.5, 0.5, 0.5));
     virtual ~Primitive() {;}
 
-    virtual bool intersect(const Ray<float>& _ray, ngl::Real &_t) const = 0;
+    virtual bool intersect(const Ray<float>& _ray, HitData& _hit) const = 0;
 
     virtual void draw() const = 0;
+
+    virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const = 0;
 
     /**
      * @brief convertRayToObjectSpace is a helper method to transform a ray into this primitives object space

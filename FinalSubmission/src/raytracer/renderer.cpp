@@ -14,14 +14,23 @@ namespace Renderer
         object++)
     {
       Primitive* tmp = *object;
-      float t;
-      if( (*object)->intersect(_ray, t) )
+      HitData hitResult;
+
+      if( (*object)->intersect(_ray, hitResult) )
       {
-        if(t < nearestT && t > _ray.m_tmin)
+        if(hitResult.m_t < nearestT && hitResult.m_t > _ray.m_tmin)
         {
-          nearestT = t;
+          nearestT = hitResult.m_t;
           hit = *object;
-          primitiveColour = (*object)->getSurfaceColour();
+          //primitiveColour = (*object)->getSurfaceColour();
+          ngl::Vec3 c = hitResult.m_normal;
+          primitiveColour.m_r = fabs(std::min<float>(hitResult.m_u, 1.0));
+          primitiveColour.m_g = fabs(std::min<float>(hitResult.m_v, 1.0));
+          primitiveColour.m_b = fabs(std::min<float>(hitResult.m_w, 1.0));
+
+//          primitiveColour.m_r = fabs(std::min<float>(c.m_x, 1.0));
+//          primitiveColour.m_g = fabs(std::min<float>(c.m_y, 1.0));
+//          primitiveColour.m_b = fabs(std::min<float>(c.m_z, 1.0));
         }
       }
     }
@@ -29,7 +38,7 @@ namespace Renderer
     ngl::Colour c;
     if(hit != NULL)
     {
-      c = hit->getSurfaceColour();
+      c = primitiveColour;// * hit->getSurfaceColour();
     }
     else
     {
@@ -54,7 +63,7 @@ namespace Renderer
     {
       for(unsigned int i = 0; i < _context->m_imageWidth; ++i)
       {
-        ///@todo Move into function and explain this a bit
+        ///@todo Move into function and explain this a bit (canonical coordinates?)
         float x = (2 * ((i + 0.5) / _context->m_imageWidth) - 1) * _context->m_aspectRatio * _context->m_renderCamera->getAngle();
         float y = (1 - 2 *((j + 0.5) / _context->m_imageHeight)) * _context->m_renderCamera->getAngle();
 

@@ -14,7 +14,16 @@
 namespace Renderer
 {
 
-bool Sphere::intersect(const Ray<float> &_ray, float &o_t) const
+ngl::Vec3 Sphere::getNormal(ngl::Vec3 _point) const
+{
+    ngl::Vec3 origin(m_toWorldSpace.m_03, m_toWorldSpace.m_13, m_toWorldSpace.m_23);
+    ngl::Vec3 dir(_point - origin);
+    dir.normalize();
+
+    return dir;
+}
+
+bool Sphere::intersect(const Ray<float> &_ray, HitData& _hit) const
 {
     Ray<float> objectSpaceRay = rayToObjectSpace(_ray);
 
@@ -40,17 +49,23 @@ bool Sphere::intersect(const Ray<float> &_ray, float &o_t) const
     }
 
     // Prefer a solution infront of the camera
-    o_t = (t0 < 0) ? t1 : t0;
+    _hit.m_t = (t0 < 0) ? t1 : t0;
+    _hit.m_normal = getNormal(_ray(_hit.m_t));
+
+    //Generate UVs http://www.mvps.org/directx/articles/spheremap.htm
+    _hit.m_u = asinf(_hit.m_normal.m_x)/M_PI + 0.5;
+    _hit.m_v = asinf(_hit.m_normal.m_y)/M_PI + 0.5;;
+    _hit.m_w = 1 - _hit.m_u - _hit.m_v;
 
     return true;
 }
 
 void Sphere::draw() const
 {
-    glCullFace(GL_FRONT);
+    //glCullFace(GL_FRONT);
     ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();
     prim->draw("sphere");
-    glCullFace(GL_BACK);
+    //glCullFace(GL_BACK);
 }
 
 }

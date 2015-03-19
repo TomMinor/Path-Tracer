@@ -19,15 +19,20 @@ Plane::Plane(ngl::Vec3 _p1, ngl::Vec3 _p2, ngl::Vec3 _p3, ngl::Vec3 _p4, const n
     m_t2 = new Triangle(_p3, _p4, _p1, _toWorldSpace, _colour);
 }
 
+ngl::Vec3 Plane::getNormal(ngl::Vec3 _point) const
+{
+    return m_t1->getNormal(_point);
+}
+
 Plane::~Plane()
 {
     delete m_t1;
     delete m_t2;
 }
 
-bool Plane::intersect(const Ray<float> &_ray, float &o_t) const
+bool Plane::intersect(const Ray<float> &_ray, HitData &_hit) const
 {
-    return m_t1->intersect(_ray, o_t);// || t2.intersect(_ray, o_t);
+    return m_t1->intersect(_ray, _hit) || m_t2->intersect(_ray, _hit);
 }
 
 void Plane::draw() const

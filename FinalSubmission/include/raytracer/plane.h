@@ -14,8 +14,9 @@ public:
 
     ~Plane();
 
-    virtual bool intersect(const Ray<float> &_ray, float &o_t) const;
+    virtual bool intersect(const Ray<float> &_ray, HitData& _hit) const;
     virtual void draw() const;
+    virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const;
 
 private:
     Triangle* m_t1;
