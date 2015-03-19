@@ -34,6 +34,11 @@ public:
         return m_origin + (m_direction * _t);
     }
 
+    static inline ngl::Vec3 reflect(ngl::Vec3 _incident, ngl::Vec3 _normal)
+    {
+      return ngl::Vec3(_incident - (2 * _incident.dot(_normal) * _normal));
+    }
+
 public:
     ngl::Vec3 m_origin;
     ngl::Vec3 m_direction;

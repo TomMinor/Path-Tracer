@@ -5,12 +5,12 @@
 
 #include "GLWindow.h"
 #include <iostream>
+#include <stdexcept>
 #include <ngl/Light.h>
 #include <ngl/Material.h>
 #include <ngl/NGLInit.h>
 #include <ngl/VAOPrimitives.h>
 #include <ngl/ShaderLib.h>
-
 
 #include "raytracer/triangle.h"
 #include "raytracer/ray.h"
@@ -272,12 +272,12 @@ void GLWindow::initializeGL()
 //  createTextureObject();
 //  createFramebufferObject();
 
-  std::function<float(float)> F = [](float x){ return 2 * x * x; } ;
-  std::function<float(float)> f = [](float x){ return 4 * x; } ;
+//  std::function<float(float)> F = [](float x){ return 2 * x * x; } ;
+//  std::function<float(float)> f = [](float x){ return 4 * x; } ;
 
-  float result = integrate(F, f, 0, 5, 100);
+//  float result = integrate(F, f, 0, 5, 100);
 
-  qDebug() << result;
+//  qDebug() << result;
 
 
   // create the m_points array for drawing the quad as a tri
@@ -517,6 +517,11 @@ void GLWindow::paintGL()
   m_material.setDiffuse(ngl::Colour(0,0,0));
   m_material.loadToShader("material");
   prim->draw("grid");
+
+  m_transform.identity();
+  m_transform.translate(-6, 23, -6);
+  loadMatricesToShader();
+  prim->draw("cone");
 }
 
 

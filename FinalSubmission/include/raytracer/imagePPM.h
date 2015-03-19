@@ -11,8 +11,8 @@ public:
     Image(_width, _height)
   {;}
 
-  virtual bool save(const std::string& _filename) override;
-  virtual bool read(const std::string& _filename) override;
+  virtual bool save(const std::string& _filename);
+  virtual bool read(const std::string& _filename);
 };
 
 #endif // IMAGEPPM_H

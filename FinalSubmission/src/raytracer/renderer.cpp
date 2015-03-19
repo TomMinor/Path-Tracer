@@ -23,44 +23,50 @@ namespace Renderer
 
     int visibleLights = 0;
 
-    for(Scene::objectListIterator light = _context->m_scene->objectBegin();
-        light != _context->m_scene->objectEnd();
-        light++)
-    {
-      Material::SurfaceProperty type = (*light)->getSurfaceMaterial().m_type;
-      if( type == Material::EMISSIVE)
+//    for(Scene::objectListIterator light = _context->m_scene->objectBegin();
+//        light != _context->m_scene->objectEnd();
+//        light++)
+//    {
+      //Material::SurfaceProperty type = (*light)->getSurfaceMaterial().m_type;
+      //if( type == Material::EMISSIVE)
       {
-          ngl::Vec3 end = (*light)->sample();
+          //ngl::Vec3 end = (*light)->sample();
+          ngl::Vec3 end(-6, 23, -6);
           ngl::Vec3 direction =  origin - end;
           float length = direction.length();
           direction.normalize();
 
           Ray newRay(origin, direction, Ray::SHADOW);
 
+          bool isHit = false;
           for(Scene::objectListIterator object = _context->m_scene->objectBegin();
               object != _context->m_scene->objectEnd();
               object++)
           {
               HitData hitResult;
-              if(!(*object)->intersect(newRay, hitResult))
+              if((*object)->intersect(newRay, hitResult))
               {
                  hitResult.m_object = *object;
-                 colour += hitResult.m_object->getSurfaceMaterial().m_diffuse * (1 / (length*length)); // inverse square
-                 visibleLights++;
+                 isHit = true;
+                 //colour += /*hitResult.m_object->getSurfaceMaterial().m_diffuse*/ ngl::Colour(4,4,4) * (1 / (length*length)); // inverse square
+                 //colour = ngl::Colour(0.25f, 0.25f, 0.25f);
               }
-//            if( (*object)->intersect(_ray, hitResult) )
-//            {
-//              if(hitResult.m_t < nearestT && hitResult.m_t > _ray.m_tmin)
-//              {
-//                nearestT = hitResult.m_t;
-//                hitResult.m_object = *object;
-//              }
-//            }
+              else
+              {
+                //colour = ngl::Colour(0,0,0);
+              }
           }
 
-
+          if(!isHit)
+          {
+            colour = ngl::Colour(0.25f, 0.25f, 0.25f);
+          }
+          else
+          {
+            colour = ngl::Colour(1, 1, 1);
+          }
       }
-    }
+//    }
 
     if(visibleLights > 0)
     {
@@ -69,6 +75,8 @@ namespace Renderer
 //        colour.m_b /= visibleLights;
 //        colour.m_a = 1;
     }
+
+    //colour += trace
 
     return Image::Pixel(colour.m_r, colour.m_g, colour.m_b);
   }
@@ -89,6 +97,7 @@ namespace Renderer
         if(hitResult.m_t < nearestT && hitResult.m_t > _ray.m_tmin)
         {
           nearestT = hitResult.m_t;
+          qDebug() << nearestT;
           hitResult.m_object = *object;
         }
       }
@@ -104,7 +113,11 @@ namespace Renderer
         primitiveColour.m_g = fabs(std::min<float>(hitResult.m_v, 1.0));
         primitiveColour.m_b = fabs(std::min<float>(hitResult.m_w, 1.0));
 
-        primitiveColour = shade(_context);
+        primitiveColour.m_r = hitResult.m_object->getSurfaceColour().m_r;
+        primitiveColour.m_g = hitResult.m_object->getSurfaceColour().m_g;
+        primitiveColour.m_b = hitResult.m_object->getSurfaceColour().m_b;
+
+        primitiveColour = shade(_context) * primitiveColour;
 
         c = primitiveColour;
     }
@@ -131,7 +144,7 @@ namespace Renderer
       {
           Image::Pixel result;
 
-          const int samples = 32;
+          const int samples = 4;
           for(int s = 0; s < samples; s++)
           {
               ///@todo Add a better sampler (stratified?), move into Sampler class, put in render context
@@ -155,8 +168,6 @@ namespace Renderer
                       );
 
               result += trace(ray, _context);
-
-              qDebug() << "Sample : " << s << " j : " << j << " i : " << i;
           }
 
         result /= samples;
