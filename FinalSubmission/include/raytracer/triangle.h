@@ -27,11 +27,14 @@ public:
 
     virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const;
 
+    ngl::Vec3 getTangent() const;
+
     ~Triangle();
 
 
 private:
     ngl::Vec3 m_vtx[3];
+    ngl::Vec3 m_wsvtx[3];
     ngl::Vec3 m_normals[3];
 
     ngl::VertexArrayObject *m_vao;

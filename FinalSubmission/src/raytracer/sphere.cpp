@@ -14,14 +14,34 @@
 namespace Renderer
 {
 
+
+///@todo FIND HOME
+// A limit to how deeply in recursion CalculateLighting may go
+// before it gives up, so as to avoid call stack overflow.
+const int MAX_OPTICAL_RECURSION_DEPTH = 20;
+
+// A limit to how weak the red, green, or blue intensity of
+// a light ray may be after recursive calls from multiple
+// reflections and/or refractions before giving up.
+// This intensity is deemed too weak to make a significant
+// difference to the image.
+const double MIN_OPTICAL_INTENSITY = 0.001;
+
+
+
+
+
+const double EPSILON = 1.0e-6;
+
 ngl::Vec3 Sphere::getNormal(ngl::Vec3 _point) const
 {
-    ngl::Vec3 origin(m_toWorldSpace.m_03, m_toWorldSpace.m_13, m_toWorldSpace.m_23);
+    ngl::Vec3 origin = ngl::Vec4(ngl::Vec4() * m_toObjectSpace).toVec3();
     ngl::Vec3 dir(_point - origin);
     dir.normalize();
 
     return dir;
 }
+
 
 bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
 {
@@ -35,29 +55,31 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
     const float c = rayOrigin.dot(rayOrigin) - m_squaredRadius;
 
     float t0, t1;
-    if(!SolveQuadratic(a,b,c, t0, t1) || t1 < 0)
+    if(!SolveQuadratic(a,b,c, t0, t1) || t1 < EPSILON)
     {
         // No valid intersections
-        // (we didn't touch the sphere or the intersection was behind the camera)
+        // (we didn't touch the sphere or the intersection was inside)
         return false;
     }
 
     // t1 is expected to be further away
-    if(t1 < t0)
-    {
-        std::swap(t0, t1);
-    }
+//    if(t1 < t0)
+//    {
+//        std::swap(t0, t1);
+//    }
 
     // Prefer a solution infront of the camera
     _hit.m_t = (t0 < 0) ? t1 : t0;
-    _hit.m_impact = _ray(_hit.m_t);
-    _hit.m_normal = getNormal(_hit.m_impact);
+    _hit.m_surfaceImpact = objectSpaceRay(_hit.m_t);
+    _hit.m_surfaceNormal = getNormal(_hit.m_surfaceImpact);
 
     //Generate UVs (http://www.mvps.org/directx/articles/spheremap.htm)
-    _hit.m_u = asinf(_hit.m_normal.m_x)/M_PI + 0.5;
-    _hit.m_v = asinf(_hit.m_normal.m_y)/M_PI + 0.5;
+    _hit.m_u = asinf(_hit.m_surfaceNormal.m_x)/M_PI + 0.5;
+    _hit.m_v = asinf(_hit.m_surfaceNormal.m_y)/M_PI + 0.5;
     _hit.m_w = 1 - _hit.m_u - _hit.m_v;
-    _hit.m_material = m_material;
+
+    _hit.m_ray = objectSpaceRay;
+    _hit.m_object = this;
 
     return true;
 }

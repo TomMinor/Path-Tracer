@@ -6,8 +6,8 @@ bool SolveQuadratic(float _a, float _b, float _c, float &o_x0, float &o_x1)
 
     if(discriminant > 0) // 2 real roots
     {
-        o_x0 = (-(_b) + discriminant )/ (2 * _a);
-        o_x1 = (-(_b) - discriminant )/ (2 * _a);
+        o_x0 = (-(_b) - discriminant )/ (2 * _a);
+        o_x1 = (-(_b) + discriminant )/ (2 * _a);
     }
     else if(discriminant == 0) // Only 1 real root
     {

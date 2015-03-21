@@ -394,7 +394,7 @@ void GLWindow::paintGL()
   ngl::Mat4 rotX;
   ngl::Mat4 rotY;
   // create the rotation matrices
-  rotX.rotateX(m_spinXFace / 3.f);
+  rotX.rotateZ(m_spinXFace / 3.f);
   rotY.rotateY(m_spinYFace);
   // multiply the rotations
   m_mouseGlobalTX=rotY * rotX;
@@ -519,7 +519,7 @@ void GLWindow::paintGL()
   prim->draw("grid");
 
   m_transform.identity();
-  m_transform.translate(-6, 23, -6);
+  m_transform.translate(-6, -6, -6);
   loadMatricesToShader();
   prim->draw("cone");
 }

@@ -1,5 +1,7 @@
 #include "raytracer/renderer.h"
 #include "raytracer/imagePPM.h"
+#include "raytracer/sphere.h"
+#include "raytracer/triangle.h"
 #include <QDebug>
 
 namespace Renderer
@@ -7,7 +9,7 @@ namespace Renderer
   Image::Pixel shade(RenderContext *_context)
   {
     //http://www.cs.utah.edu/~shirley/books/fcg2/rt.pdf
-    ngl::Colour colour(0,0,0);
+    ngl::Colour colour(1,1,1);
 
 
     // Inverse square falloff
@@ -19,9 +21,7 @@ namespace Renderer
      *  color += trace(random ray)
      */
 
-    ngl::Vec3 origin = _context->m_hit.m_impact;
-
-    int visibleLights = 0;
+    ngl::Vec3 origin = _context->m_hit.m_surfaceImpact + (_context->m_hit.m_surfaceNormal * 0.0005);
 
 //    for(Scene::objectListIterator light = _context->m_scene->objectBegin();
 //        light != _context->m_scene->objectEnd();
@@ -31,50 +31,61 @@ namespace Renderer
       //if( type == Material::EMISSIVE)
       {
           //ngl::Vec3 end = (*light)->sample();
-          ngl::Vec3 end(-6, 23, -6);
-          ngl::Vec3 direction =  origin - end;
+          ngl::Vec3 end(-6,6,-6);
+          ngl::Vec3 direction = end - origin;
           float length = direction.length();
           direction.normalize();
 
+
           Ray newRay(origin, direction, Ray::SHADOW);
 
+          HitData hitResult;
+
           bool isHit = false;
+          float nearestT = newRay.m_tmax;
           for(Scene::objectListIterator object = _context->m_scene->objectBegin();
               object != _context->m_scene->objectEnd();
               object++)
           {
-              HitData hitResult;
-              if((*object)->intersect(newRay, hitResult))
-              {
-                 hitResult.m_object = *object;
-                 isHit = true;
-                 //colour += /*hitResult.m_object->getSurfaceMaterial().m_diffuse*/ ngl::Colour(4,4,4) * (1 / (length*length)); // inverse square
-                 //colour = ngl::Colour(0.25f, 0.25f, 0.25f);
-              }
-              else
-              {
-                //colour = ngl::Colour(0,0,0);
-              }
+//                  Material::SurfaceProperty type = (*object)->getSurfaceMaterial().m_type;
+//                  if( type != Material::EMISSIVE)
+                  {
+                      //newRay = Primitive::rayToObjectSpace(*object, newRay);
+                      if((*object)->intersect(newRay, hitResult))
+                      {
+                          if(hitResult.m_t < nearestT && hitResult.m_t > newRay.m_tmin)
+                          {
+                             hitResult.m_object = *object;
+                             isHit = true;
+                             //colour += /*hitResult.m_object->getSurfaceMaterial().m_diffuse*/ ngl::Colour(4,4,4) * (1 / (length*length)); // inverse square
+                             //colour = ngl::Colour(0.25f, 0.25f, 0.25f);
+                          }
+                      }
+                  }
           }
 
-          if(!isHit)
+          if(hitResult.m_object != NULL)
           {
-            colour = ngl::Colour(0.25f, 0.25f, 0.25f);
+            //colour = ngl::Colour(fabs(origin.m_x), fabs(origin.m_y), fabs(origin.m_z));
+              colour = ngl::Colour(_context->m_hit.m_t / 128.f ,
+                                   _context->m_hit.m_t / 128.f ,
+                                   _context->m_hit.m_t / 128.f );
           }
           else
           {
-            colour = ngl::Colour(1, 1, 1);
+            colour = ngl::Colour(0,0,0);
           }
+
+//          if(isHit)
+//          {
+//            colour = ngl::Colour(0.25f, 0.25f, 0.25f);
+//          }
+//          else
+//          {
+//            colour = ngl::Colour(1, 1, 1);
+//          }
       }
 //    }
-
-    if(visibleLights > 0)
-    {
-//        colour.m_r /= visibleLights;
-//        colour.m_g /= visibleLights;
-//        colour.m_b /= visibleLights;
-//        colour.m_a = 1;
-    }
 
     //colour += trace
 
@@ -83,28 +94,51 @@ namespace Renderer
 
   Image::Pixel  trace(const Ray &_ray, RenderContext *_context)
   {
+
     Image::Pixel primitiveColour;
     float nearestT = _ray.m_tmax;
 
     HitData hitResult;
+    const Primitive* tmp = NULL;
+
+    float oldT;
+    float cntr = 0;
 
     for(Scene::objectListIterator object = _context->m_scene->objectBegin();
         object != _context->m_scene->objectEnd();
         object++)
     {
+      //Ray newRay = Primitive::rayToObjectSpace(*object, _ray);
       if( (*object)->intersect(_ray, hitResult) )
       {
-        if(hitResult.m_t < nearestT && hitResult.m_t > _ray.m_tmin)
+        oldT = nearestT;
+        if(hitResult.m_t < nearestT && hitResult.m_t > hitResult.m_ray.m_tmin)
         {
           nearestT = hitResult.m_t;
-          qDebug() << nearestT;
-          hitResult.m_object = *object;
+          tmp = hitResult.m_object;
+
+          if(oldT != _ray.m_tmax)
+          {
+              bool isSphere = NULL != dynamic_cast<Sphere*>(*object);
+              bool isTri = NULL != dynamic_cast<Triangle*>(*object);
+
+              //qDebug("%s : replacing %f with %f", isSphere ? "Sphere" : (isTri ? "Triangle" : "Unknown"), oldT, nearestT);
+              cntr += 0.1f;
+          }
+
+//          ngl::Vec3 end(-6, 23, -6);
+//          ngl::Vec3 direction =  origin - end;
+//          float length = direction.length();
+//          direction.normalize();
+
+//          Ray newRay(origin, direction, Ray::SHADOW);
+
         }
       }
     }
 
     Image::Pixel c;
-    if(hitResult.m_object != NULL)
+    if(tmp != NULL)
     {
         _context->m_hit = hitResult;
 
@@ -113,11 +147,21 @@ namespace Renderer
         primitiveColour.m_g = fabs(std::min<float>(hitResult.m_v, 1.0));
         primitiveColour.m_b = fabs(std::min<float>(hitResult.m_w, 1.0));
 
-        primitiveColour.m_r = hitResult.m_object->getSurfaceColour().m_r;
-        primitiveColour.m_g = hitResult.m_object->getSurfaceColour().m_g;
-        primitiveColour.m_b = hitResult.m_object->getSurfaceColour().m_b;
+        primitiveColour.m_r = tmp->getSurfaceColour().m_r;
+        primitiveColour.m_g = tmp->getSurfaceColour().m_g;
+        primitiveColour.m_b = tmp->getSurfaceColour().m_b;
 
-        primitiveColour = shade(_context) * primitiveColour;
+        //primitiveColour = shade(_context);// * primitiveColour;
+
+        ngl::Vec3 a = hitResult.m_surfaceNormal;
+
+//        primitiveColour.m_r = hitResult.m_t / (hitResult.m_ray.m_tmax / 4.0);
+//        primitiveColour.m_g = hitResult.m_t / (hitResult.m_ray.m_tmax / 4.0);
+//        primitiveColour.m_b = hitResult.m_t / (hitResult.m_ray.m_tmax / 4.0);
+
+//        primitiveColour.m_r = a.m_x;
+//        primitiveColour.m_g = a.m_y;
+//        primitiveColour.m_b = a.m_z;
 
         c = primitiveColour;
     }
@@ -144,7 +188,7 @@ namespace Renderer
       {
           Image::Pixel result;
 
-          const int samples = 4;
+          const int samples = 1;
           for(int s = 0; s < samples; s++)
           {
               ///@todo Add a better sampler (stratified?), move into Sampler class, put in render context
@@ -174,13 +218,18 @@ namespace Renderer
 
         pixels.setPixel(result, i, j);
       }
+
+      const float percentile = ((float)((_context->m_imageWidth * j)) /
+                                        (_context->m_imageWidth * _context->m_imageHeight)) * 100;
+
+      qDebug("Render progress : %.2f%%", percentile);
     }
+
+    qDebug("Render complete.");
 
     if(_context->m_outputPath.length() > 0)
     {
       pixels.save(_context->m_outputPath);
     }
-
   }
-
 }

@@ -12,6 +12,13 @@ Triangle::Triangle(ngl::Vec3 _v0,
                    bool _singleSided)
     : Primitive(_toWorldSpace, _material), m_singleSided(_singleSided)
 {
+
+    ngl::Mat4 tmp = m_toObjectSpace;
+//    tmp.transpose();
+    m_wsvtx[0]= ngl::Vec4(_v0 * tmp).toVec3();
+    m_wsvtx[1]= ngl::Vec4(_v1 * tmp).toVec3();
+    m_wsvtx[2]= ngl::Vec4(_v2 * tmp).toVec3();
+
     m_vtx[0] = _v0;
     m_vtx[1] = _v1;
     m_vtx[2] = _v2;
@@ -61,16 +68,30 @@ ngl::Vec3 Triangle::sample() const
     // make position from barycentrics
     // calculate interpolation by using two edges as axes scaled by the
     // barycentrics
-    return ngl::Vec3( ((m_vtx[1] - m_vtx[0]) * a) +
-       ((m_vtx[2] - m_vtx[0]) * b) + m_vtx[0] );
+    return ngl::Vec3( ((m_wsvtx[1] - m_wsvtx[0]) * a) + ((m_wsvtx[2] - m_wsvtx[0]) * b) + m_wsvtx[0] );
 }
 
 ngl::Vec3 Triangle::getNormal(ngl::Vec3 _point) const
-{
+{/*
     ngl::Vec3 nrm(m_normals[0].m_x, m_normals[0].m_y, m_normals[0].m_z);
-    nrm.normalize();
+    nrm.normalize();*/
 
-    return nrm;
+//    ngl::Mat4 tmp = m_toObjectSpace;
+//    tmp.transpose();
+//    ngl::Vec3 v1 = ngl::Vec4(m_vtx[1] * tmp).toVec3();
+//    ngl::Vec3 v2 = ngl::Vec4(m_vtx[2] * tmp).toVec3();
+
+    return getTangent().cross( m_wsvtx[2] - m_wsvtx[1] );
+}
+
+ngl::Vec3 Triangle::getTangent() const
+{
+//    ngl::Mat4 tmp = m_toObjectSpace;
+//    tmp.transpose();
+//    ngl::Vec3 v0 = ngl::Vec4(m_vtx[0] * tmp).toVec3();
+//    ngl::Vec3 v1 = ngl::Vec4(m_vtx[1] * tmp).toVec3();
+
+    return m_wsvtx[1] - m_wsvtx[0];
 }
 
 
@@ -79,10 +100,21 @@ const double EPSILON = 1.0 / 1048576.0;
 // http://www.hxa.name/rendering/#minilight
 bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
 {
-    Ray objectSpaceRay = rayToObjectSpace(_ray);
+    Ray objectSpaceRay = _ray;//rayToObjectSpace(_ray);
 
-    const ngl::Vec3 edge1 = m_vtx[1] - m_vtx[0];
-    const ngl::Vec3 edge2 = m_vtx[2] - m_vtx[0];
+    ngl::Mat4 tmp = m_toWorldSpace;
+    tmp.transpose();
+    ngl::Vec3 origin = ngl::Vec4(_ray.m_origin * tmp).toVec3();
+    ngl::Vec3 direction = ngl::Vec4(_ray.m_direction * m_toWorldSpace).toVec3();
+    direction.normalize();
+    objectSpaceRay = Ray(origin, direction, _ray.m_type, _ray.m_tmin);
+
+    ngl::Vec3 v0 = m_wsvtx[0];
+    ngl::Vec3 v1 = m_wsvtx[1];
+    ngl::Vec3 v2 = m_wsvtx[2];
+
+    const ngl::Vec3 edge1 = v1 - v0;
+    const ngl::Vec3 edge2 = v2 - v0;
 
     const ngl::Vec3 pvec ( objectSpaceRay.m_direction.cross(edge2));
     const double det = edge1.dot(pvec);
@@ -95,7 +127,7 @@ bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
     {
         const double inv_det = 1.0 / det;
 
-        const ngl::Vec3 tvec = objectSpaceRay.m_origin - m_vtx[0];
+        const ngl::Vec3 tvec = objectSpaceRay.m_origin - v0;
 
         const double u = tvec.dot(pvec) * inv_det;
         if( (u >= 0.0) & (u <= 1.0) )
@@ -105,15 +137,20 @@ bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
             const double v = objectSpaceRay.m_direction.dot(qvec) * inv_det;
             if( (v >= 0.0) & (u + v <= 1.0) )
             {
-                _hit.m_t = edge2.dot(qvec) * inv_det; ///@todo This doesn't return the right value of t
-                _hit.m_u = u;
-                _hit.m_v = v;
-                _hit.m_w = (1-u-v);
-                _hit.m_impact = _ray(_hit.m_t);
-                _hit.m_normal = getNormal(_hit.m_impact);
-                _hit.m_material = m_material;
+                float t = edge2.dot(qvec) * inv_det;
+                if(t >= 0)
+                {
+                    _hit.m_t = t;///@todo This doesn't return the right value of t
+                    _hit.m_u = u;
+                    _hit.m_v = v;
+                    _hit.m_w = (1-u-v);
+                    _hit.m_surfaceImpact = objectSpaceRay(_hit.m_t);
+                    _hit.m_surfaceNormal = getNormal(_hit.m_surfaceImpact);
+                    _hit.m_ray = objectSpaceRay;
+                    _hit.m_object = this;
 
-                isHit = (_hit.m_t >= 0.0);
+                    isHit = true;
+                }
             }
         }
     }

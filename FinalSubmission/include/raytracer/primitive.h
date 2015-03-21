@@ -13,15 +13,14 @@ namespace Renderer
 struct HitData
 {
     Ray m_ray;
-    unsigned int m_depth;
+    float m_distanceSqr;
     float m_t;
     float m_u;
     float m_v;
     float m_w;
-    ngl::Vec3 m_impact;
-    ngl::Vec3 m_normal;
-    Material m_material;
-    class Primitive* m_object;
+    ngl::Vec3 m_surfaceImpact;
+    ngl::Vec3 m_surfaceNormal;
+    const class Primitive* m_object;
 
     HitData()
         : m_ray(ngl::Vec3(), ngl::Vec3()), m_object(NULL)
@@ -59,6 +58,11 @@ public:
 
     inline const ngl::Mat4& objectTransform() const { return m_toObjectSpace; }
     inline const ngl::Mat4& worldTransform() const { return m_toWorldSpace; }
+
+//    inline void populateHitData(Hitdata& _hit)
+//    {
+
+//    }
 
 protected:
     // Used to easily convert between world and object space
