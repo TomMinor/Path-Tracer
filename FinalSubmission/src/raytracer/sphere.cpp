@@ -62,16 +62,16 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
         return false;
     }
 
-    // t1 is expected to be further away
-//    if(t1 < t0)
-//    {
-//        std::swap(t0, t1);
-//    }
-
+//     t1 is expected to be further away
+    if(t1 < t0)
+    {
+        std::swap(t0, t1);
+    }
     // Prefer a solution infront of the camera
     _hit.m_t = (t0 < 0) ? t1 : t0;
     _hit.m_surfaceImpact = objectSpaceRay(_hit.m_t);
     _hit.m_surfaceNormal = getNormal(_hit.m_surfaceImpact);
+    _hit.m_distanceSqr = _hit.m_surfaceImpact.lengthSquared();
 
     //Generate UVs (http://www.mvps.org/directx/articles/spheremap.htm)
     _hit.m_u = asinf(_hit.m_surfaceNormal.m_x)/M_PI + 0.5;
@@ -84,20 +84,40 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
     return true;
 }
 
+//http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf pg 19
 ngl::Vec3 Sphere::sample() const
 {
-    ///@todo Make this more uniform
-    float x,y,z;
+    ngl::Vec3 center(m_toWorldSpace.m_03, m_toWorldSpace.m_13, m_toWorldSpace.m_23);
+    float r1 = drand48();
+    float r2 = drand48();
 
-    // Rejection sampling
-    do
-    {
-        x = drand48();
-        y = drand48();
-        z = drand48();
-    }while(x*x + y*y + z*z > 1);
+    ngl::Vec3 point( center.m_x + 2 * m_radius * cos(2 * M_PI * r1) * sqrt(r2 * (1 - r2)),
+                      center.m_y + 2 * m_radius * sin(2 * M_PI * r1) * sqrt(r2 * (1 - r2)),
+                      center.m_z + m_radius * (1 - (2*r2))
+                );
 
-    return ngl::Vec3(x,y,z);
+
+    return ngl::Vec4( point * m_toObjectSpace ).toVec3();
+
+//    ///@todo Make this more uniform
+//    float x,y,z;
+
+//    // Rejection sampling
+//    do
+//    {
+//        x = drand48();
+//        y = drand48();
+//        z = drand48();
+//    }while(x*x + y*y + z*z > 1);
+
+//    return ngl::Vec3(x,y,z);
+}
+
+ngl::Vec3 Sphere::tangentSphere(const ngl::Vec3 _point, const ngl::Vec3 _direction) const
+{
+    float t = getNormal(_point).dot(_direction);
+
+    return (t >= 0) ? t : 0;
 }
 
 void Sphere::draw() const

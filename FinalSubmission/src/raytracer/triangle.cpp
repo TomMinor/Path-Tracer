@@ -13,8 +13,8 @@ Triangle::Triangle(ngl::Vec3 _v0,
     : Primitive(_toWorldSpace, _material), m_singleSided(_singleSided)
 {
 
-    ngl::Mat4 tmp = m_toObjectSpace;
-//    tmp.transpose();
+    ngl::Mat4 tmp;// = m_toWorldSpace;
+    //tmp.transpose();
     m_wsvtx[0]= ngl::Vec4(_v0 * tmp).toVec3();
     m_wsvtx[1]= ngl::Vec4(_v1 * tmp).toVec3();
     m_wsvtx[2]= ngl::Vec4(_v2 * tmp).toVec3();
@@ -68,7 +68,10 @@ ngl::Vec3 Triangle::sample() const
     // make position from barycentrics
     // calculate interpolation by using two edges as axes scaled by the
     // barycentrics
-    return ngl::Vec3( ((m_wsvtx[1] - m_wsvtx[0]) * a) + ((m_wsvtx[2] - m_wsvtx[0]) * b) + m_wsvtx[0] );
+    ngl::Vec3 point( ((m_wsvtx[1] - m_wsvtx[0]) * a) + ((m_wsvtx[2] - m_wsvtx[0]) * b) + m_wsvtx[0] );
+
+
+    return ngl::Vec4( point * m_toObjectSpace ).toVec3();
 }
 
 ngl::Vec3 Triangle::getNormal(ngl::Vec3 _point) const
@@ -100,14 +103,7 @@ const double EPSILON = 1.0 / 1048576.0;
 // http://www.hxa.name/rendering/#minilight
 bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
 {
-    Ray objectSpaceRay = _ray;//rayToObjectSpace(_ray);
-
-    ngl::Mat4 tmp = m_toWorldSpace;
-    tmp.transpose();
-    ngl::Vec3 origin = ngl::Vec4(_ray.m_origin * tmp).toVec3();
-    ngl::Vec3 direction = ngl::Vec4(_ray.m_direction * m_toWorldSpace).toVec3();
-    direction.normalize();
-    objectSpaceRay = Ray(origin, direction, _ray.m_type, _ray.m_tmin);
+    Ray objectSpaceRay = rayToObjectSpace(_ray);
 
     ngl::Vec3 v0 = m_wsvtx[0];
     ngl::Vec3 v1 = m_wsvtx[1];
@@ -137,6 +133,7 @@ bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
             const double v = objectSpaceRay.m_direction.dot(qvec) * inv_det;
             if( (v >= 0.0) & (u + v <= 1.0) )
             {
+                //objectSpaceRay = rayToObjectSpace(_ray);
                 float t = edge2.dot(qvec) * inv_det;
                 if(t >= 0)
                 {
@@ -146,6 +143,7 @@ bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
                     _hit.m_w = (1-u-v);
                     _hit.m_surfaceImpact = objectSpaceRay(_hit.m_t);
                     _hit.m_surfaceNormal = getNormal(_hit.m_surfaceImpact);
+                    _hit.m_distanceSqr = (_hit.m_surfaceImpact - _ray.m_origin).lengthSquared();
                     _hit.m_ray = objectSpaceRay;
                     _hit.m_object = this;
 

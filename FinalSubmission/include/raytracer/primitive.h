@@ -51,6 +51,7 @@ public:
      * @return
      */
     Ray rayToObjectSpace(const Ray& _ray) const;
+    Ray rayToWorldSpace(const Ray& _ray) const;
 
     inline Material getSurfaceMaterial() const { return m_material; }
 

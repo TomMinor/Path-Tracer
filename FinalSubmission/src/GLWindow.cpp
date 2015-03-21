@@ -519,7 +519,7 @@ void GLWindow::paintGL()
   prim->draw("grid");
 
   m_transform.identity();
-  m_transform.translate(-6, -6, -6);
+  m_transform.translate(10, 9, 6);
   loadMatricesToShader();
   prim->draw("cone");
 }

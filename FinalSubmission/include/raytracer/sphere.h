@@ -21,6 +21,9 @@ public:
 
     virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const;
 
+    //http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf pg 17
+    ngl::Vec3 tangentSphere(const ngl::Vec3 _point, const ngl::Vec3 _direction) const;
+
 private:
     float m_radius;
     float m_squaredRadius;
