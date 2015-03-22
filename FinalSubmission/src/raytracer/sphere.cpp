@@ -54,7 +54,7 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
     const float b = rayDirection.dot(rayOrigin) * 2.0f;
     const float c = rayOrigin.dot(rayOrigin) - m_squaredRadius;
 
-    float t0, t1;
+    float t0 = -1.f, t1 = -1.f;
     if(!SolveQuadratic(a,b,c, t0, t1) || t1 < EPSILON)
     {
         // No valid intersections
@@ -68,7 +68,7 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
         std::swap(t0, t1);
     }
     // Prefer a solution infront of the camera
-    _hit.m_t = (t0 < 0) ? t1 : t0;
+    _hit.m_t = (t0 < EPSILON) ? t1 : t0;
     _hit.m_surfaceImpact = objectSpaceRay(_hit.m_t);
     _hit.m_surfaceNormal = getNormal(_hit.m_surfaceImpact);
     _hit.m_distanceSqr = _hit.m_surfaceImpact.lengthSquared();
@@ -87,7 +87,7 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
 //http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf pg 19
 ngl::Vec3 Sphere::sample() const
 {
-    ngl::Vec3 center(m_toWorldSpace.m_03, m_toWorldSpace.m_13, m_toWorldSpace.m_23);
+    ngl::Vec3 center = ngl::Vec4(ngl::Vec4() * m_toObjectSpace).toVec3();
     float r1 = drand48();
     float r2 = drand48();
 

@@ -115,7 +115,7 @@ bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
     const ngl::Vec3 pvec ( objectSpaceRay.m_direction.cross(edge2));
     const double det = edge1.dot(pvec);
 
-    if(m_singleSided && det > 0)
+    if(m_singleSided && det > EPSILON)
         return false;
 
     bool isHit = false;

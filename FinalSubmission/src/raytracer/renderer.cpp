@@ -38,7 +38,7 @@ namespace Renderer
 
           Ray newRay(origin, direction, Ray::SHADOW);
 
-          newRay = (*light)->rayToObjectSpace(newRay);
+          //newRay = (*light)->rayToObjectSpace(newRay);
 
           HitData hitResult;
 
@@ -51,24 +51,12 @@ namespace Renderer
                   Material::SurfaceProperty type = (*object)->getSurfaceMaterial().m_type;
                   if( type != Material::EMISSIVE)
                   {
-//                      ngl::Mat4 tmp = (*object)->objectTransform();
-//                      tmp.transpose();
-
-//                      ngl::Vec3 o(origin);
-//                      ngl::Vec3 d(direction);
-
-//                      o = ngl::Vec4(origin * tmp).toVec3();
-//                      d = ngl::Vec4(direction * (*object)->objectTransform()).toVec3();
-
-//                      newRay = Ray(origin, direction, newRay.m_type);
-
 //                      newRay = (*object)->Primitive::rayToWorldSpace(newRay);
                       if((*object)->intersect(newRay, hitResult))
                       {
                           //if(hitResult.m_t < nearestT && hitResult.m_t > newRay.m_tmin)
                           {
                              isHit = true;
-
                           }
                       }
                   }
@@ -80,13 +68,21 @@ namespace Renderer
           }
           else
           {
-                ngl::Colour tint = (*light)->getSurfaceMaterial().m_diffuse * 0.25;
+                ngl::Colour tint = (*light)->getSurfaceMaterial().m_diffuse;
                 colour += tint;
           }
       }
     }
 
     //colour += trace
+
+    //_context->m_hit.m_surfaceNormal.normalize();
+
+//    ngl::Vec3 a = _context->m_hit.m_surfaceNormal;
+//    if(a.lengthSquared() < 0)
+//        a = -a;
+
+//    float tmp = std::max(0.f, (float)_context->m_hit.m_ray.m_direction.dot(a) * 1);
 
     return Image::Pixel(colour.m_r, colour.m_g, colour.m_b);
   }
@@ -108,6 +104,8 @@ namespace Renderer
         object++)
     {
       //Ray newRay = Primitive::rayToObjectSpace(*object, _ray);
+
+      // Object space ray
       if( (*object)->intersect(_ray, hitResult) )
       {
         oldT = nearestT;
@@ -139,7 +137,7 @@ namespace Renderer
         c.m_g = col.m_g;
         c.m_b = col.m_b;
 
-        c *=  shade(_context);// * primitiveColour;
+        c =  shade(_context);// * primitiveColour;
 
 //        ngl::Vec3 a = hitResult.m_surfaceImpact;
 //        a.normalize();
@@ -179,7 +177,7 @@ namespace Renderer
       {
           Image::Pixel result;
 
-          const int samples = 8;
+          const int samples = 1;
           for(int s = 0; s < samples; s++)
           {
               ///@todo Add a better sampler (stratified?), move into Sampler class, put in render context
@@ -195,6 +193,7 @@ namespace Renderer
               ngl::Vec3 rayDirection = cameraPosition - rayOrigin;
               rayDirection.normalize();
 
+              // World space ray
               Ray ray(rayOrigin,
                       rayDirection,
                       Ray::CAMERA,
