@@ -103,7 +103,7 @@ const double EPSILON = 1.0 / 1048576.0;
 // http://www.hxa.name/rendering/#minilight
 bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
 {
-    Ray objectSpaceRay = rayToObjectSpace(_ray);
+    Ray objectSpaceRay = _ray;//rayToObjectSpace(_ray);
 
     ngl::Vec3 v0 = m_wsvtx[0];
     ngl::Vec3 v1 = m_wsvtx[1];
@@ -133,17 +133,27 @@ bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
             const double v = objectSpaceRay.m_direction.dot(qvec) * inv_det;
             if( (v >= 0.0) & (u + v <= 1.0) )
             {
-                //objectSpaceRay = rayToObjectSpace(_ray);
+
                 float t = edge2.dot(qvec) * inv_det;
-                if(t >= 0)
+                if(t >= EPSILON)
                 {
                     _hit.m_t = t;///@todo This doesn't return the right value of t
+
+                    // UVW coordinates
                     _hit.m_u = u;
                     _hit.m_v = v;
                     _hit.m_w = (1-u-v);
+
+                    // Get surface impact in object space
                     _hit.m_surfaceImpact = objectSpaceRay(_hit.m_t);
+
+                    // Get normal in object space
                     _hit.m_surfaceNormal = getNormal(_hit.m_surfaceImpact);
+
+
                     _hit.m_distanceSqr = (_hit.m_surfaceImpact - _ray.m_origin).lengthSquared();
+
+
                     _hit.m_ray = objectSpaceRay;
                     _hit.m_object = this;
 

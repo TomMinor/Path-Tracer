@@ -11,7 +11,6 @@ namespace Renderer
     //http://www.cs.utah.edu/~shirley/books/fcg2/rt.pdf
     ngl::Colour colour(0, 0, 0);
 
-
     // Inverse square falloff
 
     /*  for each light source
@@ -22,6 +21,7 @@ namespace Renderer
      */
 
     ngl::Vec3 origin = _context->m_hit.m_surfaceImpact + (_context->m_hit.m_surfaceNormal * 0.0005);
+    origin = transformPosition(origin, _context->m_hit.m_object->worldTransform());
 
     for(Scene::objectListIterator light = _context->m_scene->objectBegin();
         light != _context->m_scene->objectEnd();
@@ -31,15 +31,12 @@ namespace Renderer
       if( type == Material::EMISSIVE)
       {
           ngl::Vec3 end = (*light)->sample();
-          //qDebug("%f, %f, %f", end.m_x, end.m_y, end.m_z);
-          //ngl::Vec3 end(10, 9, 6); // Lazy pointlight
+          end = transformPosition(end, (*light)->worldTransform());
+
           ngl::Vec3 direction = origin - end;
           direction.normalize();
 
           Ray newRay(origin, direction, Ray::SHADOW);
-
-          //newRay = (*light)->rayToObjectSpace(newRay);
-
           HitData hitResult;
 
           bool isHit = false;
@@ -51,12 +48,13 @@ namespace Renderer
                   Material::SurfaceProperty type = (*object)->getSurfaceMaterial().m_type;
                   if( type != Material::EMISSIVE)
                   {
-//                      newRay = (*object)->Primitive::rayToWorldSpace(newRay);
+                      newRay = (*object)->Primitive::rayToObjectSpace(newRay);
                       if((*object)->intersect(newRay, hitResult))
                       {
                           //if(hitResult.m_t < nearestT && hitResult.m_t > newRay.m_tmin)
                           {
                              isHit = true;
+                             break;
                           }
                       }
                   }
@@ -68,8 +66,10 @@ namespace Renderer
           }
           else
           {
+                Ray tmp(hitResult.m_ray);
+
                 ngl::Colour tint = (*light)->getSurfaceMaterial().m_diffuse;
-                colour += tint;
+                colour += tint ;
           }
       }
     }
@@ -87,9 +87,8 @@ namespace Renderer
     return Image::Pixel(colour.m_r, colour.m_g, colour.m_b);
   }
 
-  Image::Pixel  trace(const Ray &_ray, RenderContext *_context)
+  Image::Pixel trace(const Ray &_ray, RenderContext *_context)
   {
-
     Image::Pixel primitiveColour;
     float nearestT = _ray.m_tmax;
     float nearestHit = 2000000;
@@ -97,18 +96,13 @@ namespace Renderer
     HitData hitResult;
     const Primitive* tmp = NULL;
 
-    float oldT;
-
     for(Scene::objectListIterator object = _context->m_scene->objectBegin();
         object != _context->m_scene->objectEnd();
         object++)
     {
-      //Ray newRay = Primitive::rayToObjectSpace(*object, _ray);
-
-      // Object space ray
-      if( (*object)->intersect(_ray, hitResult) )
+      Ray newRay = (*object)->rayToObjectSpace(_ray);
+      if( (*object)->intersect(newRay, hitResult) )
       {
-        oldT = nearestT;
         if(hitResult.m_t < nearestT && hitResult.m_t > hitResult.m_ray.m_tmin)
         {
           nearestT = hitResult.m_t;
@@ -121,9 +115,9 @@ namespace Renderer
     if(tmp != NULL)
     {
         _context->m_hit = hitResult;
-        _context->m_hit.m_surfaceImpact = ngl::Vec4(hitResult.m_surfaceImpact * tmp->worldTransform()).toVec3();
+        _context->m_hit.m_surfaceImpact = hitResult.m_surfaceImpact;
 
-        //primitiveColour = (*object)->getSurfaceColour();
+//        primitiveColour = (*object)->getSurfaceColour();
 //        primitiveColour.m_r = fabs(std::min<float>(hitResult.m_u, 1.0));
 //        primitiveColour.m_g = fabs(std::min<float>(hitResult.m_v, 1.0));
 //        primitiveColour.m_b = fabs(std::min<float>(hitResult.m_w, 1.0));
@@ -137,7 +131,7 @@ namespace Renderer
         c.m_g = col.m_g;
         c.m_b = col.m_b;
 
-        c =  shade(_context);// * primitiveColour;
+        c *= shade(_context);// * primitiveColour;
 
 //        ngl::Vec3 a = hitResult.m_surfaceImpact;
 //        a.normalize();
@@ -150,7 +144,7 @@ namespace Renderer
 //        primitiveColour.m_g = a.m_y;
 //        primitiveColour.m_b = a.m_z;
 
-//        primitiveColour.m_r = sqrt(hitResult.m_distanceSqr) / 16 ;
+//        primitiveColour.m_r = sqrt(hitResult.m_distanceSqr) / 16;
 //        primitiveColour.m_g = sqrt(hitResult.m_distanceSqr) / 16;
 //        primitiveColour.m_b = sqrt(hitResult.m_distanceSqr) / 16;
     }
@@ -177,7 +171,7 @@ namespace Renderer
       {
           Image::Pixel result;
 
-          const int samples = 1;
+          const int samples = 4;
           for(int s = 0; s < samples; s++)
           {
               ///@todo Add a better sampler (stratified?), move into Sampler class, put in render context

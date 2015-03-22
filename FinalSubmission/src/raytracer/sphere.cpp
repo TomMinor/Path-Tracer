@@ -35,7 +35,7 @@ const double EPSILON = 1.0e-6;
 
 ngl::Vec3 Sphere::getNormal(ngl::Vec3 _point) const
 {
-    ngl::Vec3 origin = ngl::Vec4(ngl::Vec4() * m_toObjectSpace).toVec3();
+    ngl::Vec3 origin = transformPosition( ngl::Vec3(), m_toObjectSpace);
     ngl::Vec3 dir(_point - origin);
     dir.normalize();
 
@@ -45,10 +45,8 @@ ngl::Vec3 Sphere::getNormal(ngl::Vec3 _point) const
 
 bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
 {
-    Ray objectSpaceRay = rayToObjectSpace(_ray);
-
-    const ngl::Vec3 rayDirection = objectSpaceRay.m_direction;
-    const ngl::Vec3 rayOrigin = objectSpaceRay.m_origin;
+    const ngl::Vec3 rayDirection = _ray.m_direction;
+    const ngl::Vec3 rayOrigin = _ray.m_origin;
 
     const float a = rayDirection.dot(rayDirection);
     const float b = rayDirection.dot(rayOrigin) * 2.0f;
@@ -69,16 +67,15 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
     }
     // Prefer a solution infront of the camera
     _hit.m_t = (t0 < EPSILON) ? t1 : t0;
-    _hit.m_surfaceImpact = objectSpaceRay(_hit.m_t);
+    _hit.m_surfaceImpact = _ray(_hit.m_t);
     _hit.m_surfaceNormal = getNormal(_hit.m_surfaceImpact);
-    _hit.m_distanceSqr = _hit.m_surfaceImpact.lengthSquared();
 
     //Generate UVs (http://www.mvps.org/directx/articles/spheremap.htm)
     _hit.m_u = asinf(_hit.m_surfaceNormal.m_x)/M_PI + 0.5;
     _hit.m_v = asinf(_hit.m_surfaceNormal.m_y)/M_PI + 0.5;
     _hit.m_w = 1 - _hit.m_u - _hit.m_v;
 
-    _hit.m_ray = objectSpaceRay;
+    _hit.m_ray = _ray;
     _hit.m_object = this;
 
     return true;
@@ -87,7 +84,7 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
 //http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf pg 19
 ngl::Vec3 Sphere::sample() const
 {
-    ngl::Vec3 center = ngl::Vec4(ngl::Vec4() * m_toObjectSpace).toVec3();
+    ngl::Vec3 center = transformPosition( ngl::Vec3(), m_toObjectSpace);
     float r1 = drand48();
     float r2 = drand48();
 
@@ -96,8 +93,7 @@ ngl::Vec3 Sphere::sample() const
                       center.m_z + m_radius * (1 - (2*r2))
                 );
 
-
-    return ngl::Vec4( point * m_toObjectSpace ).toVec3();
+    return point;
 
 //    ///@todo Make this more uniform
 //    float x,y,z;

@@ -1,4 +1,5 @@
 #include "raytracer/tracemath.h"
+#include <ngl/Vec4.h>
 
 bool SolveQuadratic(float _a, float _b, float _c, float &o_x0, float &o_x1)
 {
@@ -47,4 +48,29 @@ float integrate( std::function< float(float) >& F,
     }
 
     return exact;
+}
+
+ngl::Vec3 transformPosition(const ngl::Vec3& _point, const ngl::Mat4& _transform)
+{
+    ngl::Mat4 tmp = _transform;
+    tmp.transpose();
+    ngl::Vec3 transformedPoint = (tmp * ngl::Vec4(_point)).toVec3();
+
+    //rayOrigin.normalize();
+
+    return transformedPoint;
+}
+
+ngl::Vec3 transformNormal(const ngl::Vec3& _normal, const ngl::Mat4& _transform)
+{
+    ngl::Mat4 tmp = _transform;
+    tmp.m_30 = 0;
+    tmp.m_31 = 0;
+    tmp.m_32 = 0;
+
+    ngl::Vec3 transformedNormal = ( tmp * ngl::Vec4(_normal)).toVec3(); // Apply world transforms to ray direction
+    transformedNormal.normalize();
+
+    return transformedNormal;
+
 }
