@@ -9,6 +9,8 @@
 namespace Renderer
 {
 
+///@bug Too late to fix now, but data is read in the incorrect order.
+/// Would explain why models were facing the wrong way, as xyz is imported as zyx
 template <typename T>
 T popFirstItem(std::deque<T>& _items)
 {
@@ -93,12 +95,13 @@ Renderer::Scene* SceneFile::read()
           if(primitive)
             primitives.push_back(primitive);
         }
-        else if(lineType == "plane")
-        {
-          Plane* primitive = parsePlane(tokens);
-          if(primitive)
-            primitives.push_back(primitive);
-        }
+        ///@unimplemented
+//        else if(lineType == "plane")
+//        {
+//          Plane* primitive = parsePlane(tokens);
+//          if(primitive)
+//            primitives.push_back(primitive);
+//        }
         /* Doesn't make much sense to store render data like resolution in the scene file */
 //        else if(lineType == "res")
 //        {
@@ -232,7 +235,6 @@ Sphere* SceneFile::parseSphere(std::deque<std::string>& _tokens)
   ngl::Mat4 transform;
   ngl::Colour colour;
   Material::SurfaceProperty type;
-
 
   try
   {

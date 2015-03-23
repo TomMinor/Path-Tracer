@@ -8,7 +8,6 @@ namespace Renderer
 {
   Image::Pixel shade(RenderContext *_context)
   {
-
     Image::Pixel emitted(0, 0, 0);
     Image::Pixel reflected(0, 0, 0);
 
@@ -37,11 +36,11 @@ namespace Renderer
           ngl::Vec3 direction = shadowOrigin - shadowEnd;
           direction.normalize();
 
-          // Don't bother with checking objects in the scene if the surface normal & light direction are opposing
+          // Don't bother with checking objects in the scene if the surface normal & light direction are in opposing directions
           // http://www.ics.uci.edu/~gopi/CS211B/RayTracing%20tutorial.pdf pg 8
           if(_context->m_hit.m_object->getNormal(shadowOrigin).dot(direction) <= 0.f)
           {
-            continue;
+              continue;
           }
 
           HitData hitResult;
@@ -56,51 +55,56 @@ namespace Renderer
               if( type != Material::EMISSIVE)
               {
                   Ray newRay(shadowOrigin, direction, Ray::SHADOW);
+                  // Convert to object space for intersection
                   newRay = (*object)->Primitive::rayToObjectSpace(newRay);
 
                   if((*object)->intersect(newRay, hitResult))
                   {
                      isShaded = true;
-                     break; // If we collide with one object we know this pixel is shaded
+                     break; // If we collide with one object we know this pixel is shaded, no need to check the rest of the scene
                   }
               }
           }
 
           if(!isShaded)
           {
-                Ray tmp(hitResult.m_ray);
+              Ray tmp(hitResult.m_ray);
 
-                ngl::Colour tint = (*light)->getSurfaceMaterial().m_diffuse;
-                ngl::Vec3 camera = shadowOrigin;
-                ngl::Vec3 shadow = shadowEnd;
+              ngl::Colour tint = (*light)->getSurfaceMaterial().m_diffuse;
+              ngl::Vec3 camera = shadowOrigin;
+              ngl::Vec3 shadow = shadowEnd;
 
-                // Convert sample point to world space
-                //shadow = transformPosition(shadow, (*light)->worldTransform());
+              // Convert sample point to world space
+              //shadow = transformPosition(shadow, (*light)->worldTransform());
 
-                float distance = (camera - shadow).length(); // This should be squared, for some reason the actual length computes a nicer falloff
+              float distance = (camera - shadow).length(); // This should be squared, for some reason the actual length computes a nicer falloff
 
-                emitted += Image::Pixel(tint.m_r, tint.m_g, tint.m_b) * inverseSquare(distance);
+              emitted += Image::Pixel(tint.m_r, tint.m_g, tint.m_b) * inverseSquare(distance);
           }
       }
     }
 
+    // Reflections look terrible right now, let's turn them off
+    bool enableReflectionTest = false;
+
     _context->m_depth++;
 
     // Hard limit to the depth (4 is a magic number for now, we should move it into render settings)
-    if(false && _context->m_depth < 4)
+    if(enableReflectionTest && _context->m_depth < 4)
     {
         // Assume equal chance of reflection or refraction
         if(drand48() > 0.5)
         {
-          ngl::Vec3 reflectedDir(shadowOrigin.reflect(worldSpaceNormal));
+            ngl::Vec3 reflectedDir(shadowOrigin.reflect(worldSpaceNormal));
 
-          reflectedDir += ngl::Vec3(drand48(), drand48(),drand48() );
+            reflectedDir += ngl::Vec3(drand48(), drand48(),drand48() );
 
-          Ray reflectedRay(shadowOrigin, reflectedDir, Ray::REFLECT);
-          reflected = trace(reflectedRay, _context) * pow(0.25, _context->m_depth) ;
+            Ray reflectedRay(shadowOrigin, reflectedDir, Ray::REFLECT);
+            reflected = trace(reflectedRay, _context) * pow(0.25, _context->m_depth);
         }
         else
         {
+            ///@todo Refraction, snell's law?
 //          float theta =
 
 //          // http://graphics.stanford.edu/courses/cs148-10-summer/docs/2006--degreve--reflection_refraction.pdf
@@ -114,11 +118,12 @@ namespace Renderer
 
   Image::Pixel trace(const Ray &_ray, RenderContext *_context)
   {
-    float nearestHit = 20000;
+
 
     HitData hitResult;
-    const Primitive* tmp = NULL;
+    const Primitive* collidingObject = NULL;
 
+    float nearestHit = _ray(_ray.m_tmax).length(); // Get maximum length ray
     float distance = _ray(_ray.m_tmax).length();
 
     for(Scene::objectListIterator object = _context->m_scene->objectBegin();
@@ -138,46 +143,41 @@ namespace Renderer
         distance = (camera - shadow).length();
 
         ///@bug Depth fails completely right now, checking for t value failed too
+        /// Objects are drawn in order they were read from the file, this could be related to the
+        /// sphere rendering errors
         if(distance < nearestHit)
         {
           nearestHit = -distance;
-          tmp = hitResult.m_object;
+          collidingObject = hitResult.m_object;
         }
       }
     }
 
-    Image::Pixel c;
-    if(tmp != NULL)
+    Image::Pixel finalColour;
+    if(collidingObject != NULL)
     {
         _context->m_hit = hitResult;
 
-        ngl::Colour col = _context->m_hit.m_object->getSurfaceMaterial().m_diffuse;
-        c.m_r = col.m_r;
-        c.m_g = col.m_g;
-        c.m_b = col.m_b;
-
-        c *= shade(_context);
+        finalColour = Image::Pixel(_context->m_hit.m_object->getSurfaceMaterial().m_diffuse) * shade(_context);
     }
     else
     {
-      c = _context->m_scene->getBackgroundColour();
+        finalColour = _context->m_scene->getBackgroundColour();
     }
 
-    return Image::Pixel(c.m_r, c.m_g, c.m_b);
+    return finalColour;
   }
 
-  ///@todo Refraction, snell's law?
-  ///@todo Light path weight, inverse square?
-  ///@todo Path tracer/Photon mapping
   void render(RenderContext *_context)
   {
     ImagePPM pixels(_context->m_imageWidth, _context->m_imageHeight);
 
+    // Convert world origin to camera's world space
     ngl::Vec3 rayOrigin = (ngl::Vec4() * _context->m_renderCamera->getWorldSpaceMatrix()).toVec3();
 
     // Much improved performance (even without using threads)
-    //http://www.iquilezles.org/www/articles/cputiles/cputiles.htm
-    const int tilesize = 16;
+    // http://www.iquilezles.org/www/articles/cputiles/cputiles.htm
+    const int tilesize = 8;
 
     const int numxtiles = _context->m_imageWidth / tilesize;
     const int numytiles = _context->m_imageHeight / tilesize;
@@ -196,7 +196,7 @@ namespace Renderer
         {
             Image::Pixel result;
 
-            const int samples = 16;
+            const int samples = _context->m_samples;
             for(int s = 0; s < samples; s++)
             {
                 ///@todo Add a better sampler (stratified?), move into Sampler class, put in render context
@@ -204,7 +204,8 @@ namespace Renderer
                 float jitterX = drand48();
                 float jitterY = drand48();
 
-                ///@todo Move into function and explain this a bit (canonical coordinates?)
+                // Canonical Coordinates (camera space)
+                // The jitter is necessary for path tracing to get a variety of samples, but also provides free anti-aliasing
                 float x = (2 * ((ia + i + jitterX) / _context->m_imageWidth) - 1) * _context->m_aspectRatio * _context->m_renderCamera->getAngle();
                 float y = (1 - 2 *((ja + j + jitterY) / _context->m_imageHeight)) * _context->m_renderCamera->getAngle();
 
@@ -229,8 +230,8 @@ namespace Renderer
           pixels.setPixel(result, ia + i, ja + j);
         }
       }
-      const float percentile = (float)(tile * 1.0/numtiles) * 100;
 
+      const float percentile = (float)(tile * 1.0 / numtiles) * 100;
       qDebug("Render progress : %.2f%%", percentile);
     }
     qDebug("Render complete.");
@@ -238,6 +239,10 @@ namespace Renderer
     if(_context->m_outputPath.length() > 0)
     {
       pixels.save(_context->m_outputPath);
+    }
+    else
+    {
+      qWarning("Empty output path");
     }
   }
 }

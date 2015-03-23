@@ -2,13 +2,18 @@
 #define IMAGE_H
 
 #include <string>
+#include <ngl/Colour.h>
 
+///
+/// \brief The Image is the base class of a structure that stores an image, child classes are expected to
+/// implemented the read/write functions to write to specific locations (framebuffers, files of various types etc)
+///
 class Image
 {
 public:
 
     ///
-    /// \brief The Pixel struct simply represents an RGB colour
+    /// \brief The Pixel struct simply represents an RGB colour, overloads the +,-,/ and * operators
     ///
   struct Pixel
   {
@@ -18,6 +23,9 @@ public:
 
     Pixel(float _r=0.0f, float _g=0.0f, float _b=0.0f)
         : m_r(_r), m_g(_g), m_b(_b) {;}
+
+    Pixel(const ngl::Colour& _colour)
+      : m_r(_colour.m_r), m_g(_colour.m_g), m_b(_colour.m_b) {;}
 
     Pixel operator +(const Pixel& _t)   {   return Pixel( m_r + _t.m_r, m_g + _t.m_g, m_b + _t.m_b );   }
     Pixel operator -(const Pixel& _t)   {   return Pixel( m_r - _t.m_r, m_g - _t.m_g, m_b - _t.m_b );   }
@@ -42,6 +50,8 @@ public:
 
   virtual bool save(const std::string& _filename) = 0;
   virtual bool read(const std::string& _filename) = 0;
+
+  virtual void tonemap(double _maxSceneLuminance, double _maxDisplayLuminance) = 0;
 
 protected:
   unsigned int m_width;

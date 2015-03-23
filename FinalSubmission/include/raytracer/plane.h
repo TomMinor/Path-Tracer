@@ -7,6 +7,9 @@
 namespace Renderer
 {
 
+// Most of the implementation is heavily borrowed from this, but it is completely untested and isn't used right now
+// (2 triangles are used to represent a plane instead, although the code may be easier to use with a specialised plane primitive
+// https://github.com/imageworks/OpenShadingLanguage/blob/master/src/testrender/raytracer.h
 class Plane : public Primitive
 {
 public:
