@@ -92,7 +92,7 @@ void MainWindow::renderNow()
 {
   Renderer::RenderContext* context = new Renderer::RenderContext(m_gl->getScene(),
                                                                  NULL,
-                                                                 m_ui->renderHeightEdit->text().toInt(),
+                                                                 m_ui->renderWidthEdit->text().toInt(),
                                                                  m_ui->renderHeightEdit->text().toInt(),
                                                                  m_ui->renderFilenameEdit->text().toStdString());
 
