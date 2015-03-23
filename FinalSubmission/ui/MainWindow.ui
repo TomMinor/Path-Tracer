@@ -785,6 +785,16 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>tabWidget_2</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>rendersamplesEdit</tabstop>
+  <tabstop>renderWidthEdit</tabstop>
+  <tabstop>renderHeightEdit</tabstop>
+  <tabstop>renderFilenameEdit</tabstop>
+  <tabstop>renderButton</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
