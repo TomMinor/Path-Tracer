@@ -12,13 +12,6 @@ Triangle::Triangle(ngl::Vec3 _v0,
                    bool _singleSided)
     : Primitive(_toWorldSpace, _material), m_singleSided(_singleSided)
 {
-
-    ngl::Mat4 tmp;// = m_toWorldSpace;
-    //tmp.transpose();
-    m_wsvtx[0]= ngl::Vec4(_v0 * tmp).toVec3();
-    m_wsvtx[1]= ngl::Vec4(_v1 * tmp).toVec3();
-    m_wsvtx[2]= ngl::Vec4(_v2 * tmp).toVec3();
-
     m_vtx[0] = _v0;
     m_vtx[1] = _v1;
     m_vtx[2] = _v2;
@@ -68,7 +61,7 @@ ngl::Vec3 Triangle::sample() const
     // make position from barycentrics
     // calculate interpolation by using two edges as axes scaled by the
     // barycentrics
-    ngl::Vec3 point( ((m_wsvtx[1] - m_wsvtx[0]) * a) + ((m_wsvtx[2] - m_wsvtx[0]) * b) + m_wsvtx[0] );
+    ngl::Vec3 point( ((m_vtx[1] - m_vtx[0]) * a) + ((m_vtx[2] - m_vtx[0]) * b) + m_vtx[0] );
 
 
     return ngl::Vec4( point * m_toObjectSpace ).toVec3();
@@ -84,7 +77,7 @@ ngl::Vec3 Triangle::getNormal(ngl::Vec3 _point) const
 //    ngl::Vec3 v1 = ngl::Vec4(m_vtx[1] * tmp).toVec3();
 //    ngl::Vec3 v2 = ngl::Vec4(m_vtx[2] * tmp).toVec3();
 
-    return getTangent().cross( m_wsvtx[2] - m_wsvtx[1] );
+    return getTangent().cross( m_vtx[2] - m_vtx[1] );
 }
 
 ngl::Vec3 Triangle::getTangent() const
@@ -94,7 +87,7 @@ ngl::Vec3 Triangle::getTangent() const
 //    ngl::Vec3 v0 = ngl::Vec4(m_vtx[0] * tmp).toVec3();
 //    ngl::Vec3 v1 = ngl::Vec4(m_vtx[1] * tmp).toVec3();
 
-    return m_wsvtx[1] - m_wsvtx[0];
+    return m_vtx[1] - m_vtx[0];
 }
 
 
@@ -103,16 +96,16 @@ const double EPSILON = 1.0 / 1048576.0;
 // http://www.hxa.name/rendering/#minilight
 bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
 {
-    Ray objectSpaceRay = _ray;//rayToObjectSpace(_ray);
+    Ray intersectionRay = _ray;//rayToObjectSpace(_ray);
 
-    ngl::Vec3 v0 = m_wsvtx[0];
-    ngl::Vec3 v1 = m_wsvtx[1];
-    ngl::Vec3 v2 = m_wsvtx[2];
+    ngl::Vec3 v0 = m_vtx[0];
+    ngl::Vec3 v1 = m_vtx[1];
+    ngl::Vec3 v2 = m_vtx[2];
 
     const ngl::Vec3 edge1 = v1 - v0;
     const ngl::Vec3 edge2 = v2 - v0;
 
-    const ngl::Vec3 pvec ( objectSpaceRay.m_direction.cross(edge2));
+    const ngl::Vec3 pvec ( intersectionRay.m_direction.cross(edge2));
     const double det = edge1.dot(pvec);
 
     if(m_singleSided && det > EPSILON)
@@ -123,14 +116,14 @@ bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
     {
         const double inv_det = 1.0 / det;
 
-        const ngl::Vec3 tvec = objectSpaceRay.m_origin - v0;
+        const ngl::Vec3 tvec = intersectionRay.m_origin - v0;
 
         const double u = tvec.dot(pvec) * inv_det;
         if( (u >= 0.0) & (u <= 1.0) )
         {
             const ngl::Vec3 qvec(tvec.cross(edge1));
 
-            const double v = objectSpaceRay.m_direction.dot(qvec) * inv_det;
+            const double v = intersectionRay.m_direction.dot(qvec) * inv_det;
             if( (v >= 0.0) & (u + v <= 1.0) )
             {
 
@@ -145,7 +138,7 @@ bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
                     _hit.m_w = (1-u-v);
 
                     // Get surface impact in object space
-                    _hit.m_surfaceImpact = objectSpaceRay(_hit.m_t);
+                    _hit.m_surfaceImpact = intersectionRay(_hit.m_t);
 
                     // Get normal in object space
                     _hit.m_surfaceNormal = getNormal(_hit.m_surfaceImpact);
@@ -154,7 +147,7 @@ bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
                     _hit.m_distanceSqr = (_hit.m_surfaceImpact - _ray.m_origin).lengthSquared();
 
 
-                    _hit.m_ray = objectSpaceRay;
+                    _hit.m_ray = intersectionRay;
                     _hit.m_object = this;
 
                     isHit = true;

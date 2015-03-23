@@ -10,7 +10,7 @@ namespace Renderer
 class Plane : public Primitive
 {
 public:
-    Plane(ngl::Vec3 _p1, ngl::Vec3 _p2, ngl::Vec3 _p3, ngl::Vec3 _p4, const ngl::Mat4 &_toWorldSpace, const Material& _material);
+    Plane(ngl::Vec3 _p, ngl::Vec3 _x, ngl::Vec3 _y, const ngl::Mat4 &_toWorldSpace, const Material& _material);
 
     ~Plane();
 
@@ -20,8 +20,13 @@ public:
     virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const;
 
 private:
-    Triangle* m_t1;
-    Triangle* m_t2;
+    ngl::Vec3 m_normal;
+    ngl::Vec3 m_p;
+    ngl::Vec3 m_x;
+    ngl::Vec3 m_y;
+    float m_area;
+    float m_u;
+    float m_v;
 };
 
 }

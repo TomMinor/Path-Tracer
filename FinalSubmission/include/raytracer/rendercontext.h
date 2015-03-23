@@ -37,6 +37,8 @@ struct RenderContext
     unsigned int m_imageHeight;
     float m_aspectRatio;
 
+    int m_depth;
+
     Camera* m_renderCamera;
     Scene* m_scene;
 

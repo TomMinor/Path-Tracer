@@ -45,7 +45,7 @@ Renderer::Scene* SceneFile::read()
   while ( std::getline(*m_sceneFile, line) )
   {
     std::vector<std::string> tokenVector;
-    tokenize(line, tokenVector, " ");
+    tokenize(line, tokenVector, " \t");
 
     std::deque<std::string> tokens;
     std::copy( tokenVector.begin(), tokenVector.end(), std::inserter( tokens, tokens.end() ) );
@@ -124,16 +124,16 @@ ngl::Mat4 SceneFile::parseTransform(std::deque<std::string> &_tokens)
   else if(_tokens.size() < 3)   { throw std::runtime_error("Could not read position"); }
 
     position = ngl::Vec3( tokenToFloat(popFirstItem<std::string>(_tokens)),
-                      tokenToFloat(popFirstItem<std::string>(_tokens)),
-                      tokenToFloat(popFirstItem<std::string>(_tokens)) );
+                  tokenToFloat(popFirstItem<std::string>(_tokens)),
+                  tokenToFloat(popFirstItem<std::string>(_tokens)) );
 
     scale = ngl::Vec3( tokenToFloat(popFirstItem<std::string>(_tokens)),
-                     tokenToFloat(popFirstItem<std::string>(_tokens)),
-                     tokenToFloat(popFirstItem<std::string>(_tokens)) );
+                 tokenToFloat(popFirstItem<std::string>(_tokens)),
+                 tokenToFloat(popFirstItem<std::string>(_tokens)) );
 
     rotation = ngl::Vec3( tokenToFloat(popFirstItem<std::string>(_tokens)),
-                        tokenToFloat(popFirstItem<std::string>(_tokens)),
-                        tokenToFloat(popFirstItem<std::string>(_tokens)) );
+                    tokenToFloat(popFirstItem<std::string>(_tokens)),
+                    tokenToFloat(popFirstItem<std::string>(_tokens)) );
 
   ngl::Mat4 translateXYZ, scaleXYZ, rotX, rotY, rotZ;
 
@@ -305,7 +305,9 @@ Plane* SceneFile::parsePlane(std::deque<std::string> &_tokens)
 
    Material mat(type, colour);
 
-   return new Plane(vertex[0], vertex[1], vertex[2], vertex[3], transform, mat);
+   ///@Implement
+   return NULL;
+   //return new Plane(vertex[0], vertex[1], vertex[2], vertex[3], transform, mat);
 }
 
 Camera* SceneFile::parseCamera(std::deque<std::string> &_tokens)

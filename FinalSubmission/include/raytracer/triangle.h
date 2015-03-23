@@ -33,8 +33,8 @@ public:
 
 
 private:
+
     ngl::Vec3 m_vtx[3];
-    ngl::Vec3 m_wsvtx[3];
     ngl::Vec3 m_normals[3];
 
     ngl::VertexArrayObject *m_vao;

@@ -13,6 +13,8 @@
 #include <QGLWidget>
 #include <QMouseEvent>
 #include <QColorDialog>
+#include <QtConcurrent/QtConcurrent>
+
 //#include <QGLFunctions>
 //#include <QtOpenGL>
 
@@ -62,6 +64,10 @@ public :
   ngl::Camera *m_cam;
 
   ngl::VertexArrayObject *test_vao;
+
+  QFuture<void> renderThread;
+
+
 
 private :
   //----------------------------------------------------------------------------------------------------------------------

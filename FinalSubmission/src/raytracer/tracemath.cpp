@@ -67,6 +67,7 @@ ngl::Vec3 transformNormal(const ngl::Vec3& _normal, const ngl::Mat4& _transform)
     tmp.m_30 = 0;
     tmp.m_31 = 0;
     tmp.m_32 = 0;
+//    tmp.transpose();
 
     ngl::Vec3 transformedNormal = ( tmp * ngl::Vec4(_normal)).toVec3(); // Apply world transforms to ray direction
     transformedNormal.normalize();

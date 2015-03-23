@@ -20,8 +20,14 @@ namespace Renderer
      *  color += trace(random ray)
      */
 
-    ngl::Vec3 origin = _context->m_hit.m_surfaceImpact + (_context->m_hit.m_surfaceNormal * 0.0005);
+    ngl::Vec3 origin = _context->m_hit.m_surfaceImpact;
     origin = transformPosition(origin, _context->m_hit.m_object->worldTransform());
+
+    ngl::Vec3 worldSpaceNormal = transformNormal(_context->m_hit.m_surfaceNormal, _context->m_hit.m_object->worldTransform());
+
+    origin += worldSpaceNormal * 0.005;
+
+    float tmp = 100000000000000000000000;
 
     for(Scene::objectListIterator light = _context->m_scene->objectBegin();
         light != _context->m_scene->objectEnd();
@@ -36,53 +42,62 @@ namespace Renderer
           ngl::Vec3 direction = origin - end;
           direction.normalize();
 
-          Ray newRay(origin, direction, Ray::SHADOW);
+
           HitData hitResult;
 
-          bool isHit = false;
-          float nearestT = newRay.m_tmax;
+          bool isShaded = false;
+          float nearestT = _context->m_hit.m_ray.m_tmax;
+
           for(Scene::objectListIterator object = _context->m_scene->objectBegin();
               object != _context->m_scene->objectEnd();
               object++)
           {
-                  Material::SurfaceProperty type = (*object)->getSurfaceMaterial().m_type;
-                  if( type != Material::EMISSIVE)
+              Material::SurfaceProperty type = (*object)->getSurfaceMaterial().m_type;
+              if( type != Material::EMISSIVE)
+              {
+                  Ray newRay(origin, direction, Ray::SHADOW);
+                  newRay = (*object)->Primitive::rayToObjectSpace(newRay);
+
+                  if((*object)->intersect(newRay, hitResult))
                   {
-                      newRay = (*object)->Primitive::rayToObjectSpace(newRay);
-                      if((*object)->intersect(newRay, hitResult))
+                      if(hitResult.m_t < nearestT && hitResult.m_t > newRay.m_tmin)
                       {
-                          //if(hitResult.m_t < nearestT && hitResult.m_t > newRay.m_tmin)
-                          {
-                             isHit = true;
-                             break;
-                          }
+                         isShaded = true;
+                         break;
                       }
                   }
+              }
           }
 
-          if(isHit)
-          {
-                colour += ngl::Colour(0,0,0 );
-          }
-          else
+          if(!isShaded)
           {
                 Ray tmp(hitResult.m_ray);
 
                 ngl::Colour tint = (*light)->getSurfaceMaterial().m_diffuse;
-                colour += tint ;
+                ngl::Vec3 camera = origin;
+                ngl::Vec3 shadow = end;
+
+                // Convert to world space
+                //shadow = transformPosition(shadow, (*light)->worldTransform());
+
+                float distance = (camera - shadow).length(); // This should be squared, for some reason the actual length computes a nicer falloff
+
+                tmp = distance;
+
+                colour += tint * inverseSquare(distance);
           }
       }
     }
 
-    //colour += trace
+//    _context->m_depth = 0;
 
-    //_context->m_hit.m_surfaceNormal.normalize();
+//    if(_context->m_depth < 2)
+//    {
+//        colour += trace()
+//    }
 
-//    ngl::Vec3 a = _context->m_hit.m_surfaceNormal;
-//    if(a.lengthSquared() < 0)
-//        a = -a;
-
-//    float tmp = std::max(0.f, (float)_context->m_hit.m_ray.m_direction.dot(a) * 1);
+    // Calculate reflected ray
+    // Calculate refracted ray
 
     return Image::Pixel(colour.m_r, colour.m_g, colour.m_b);
   }
@@ -100,10 +115,11 @@ namespace Renderer
         object != _context->m_scene->objectEnd();
         object++)
     {
+      // Construct a ray in the primitive's object space and check for collision
       Ray newRay = (*object)->rayToObjectSpace(_ray);
       if( (*object)->intersect(newRay, hitResult) )
       {
-        if(hitResult.m_t < nearestT && hitResult.m_t > hitResult.m_ray.m_tmin)
+        //if(hitResult.m_t < nearestT && hitResult.m_t > hitResult.m_ray.m_tmin)
         {
           nearestT = hitResult.m_t;
           tmp = hitResult.m_object;
@@ -131,7 +147,7 @@ namespace Renderer
         c.m_g = col.m_g;
         c.m_b = col.m_b;
 
-        c *= shade(_context);// * primitiveColour;
+        c *= shade(_context);
 
 //        ngl::Vec3 a = hitResult.m_surfaceImpact;
 //        a.normalize();
@@ -150,7 +166,7 @@ namespace Renderer
     }
     else
     {
-      c = _context->m_scene->getBackgroundColour();
+      c = Image::Pixel(0.5, 0.5, 0.5); //_context->m_scene->getBackgroundColour();
     }
 
     return Image::Pixel(c.m_r, c.m_g, c.m_b);
@@ -171,7 +187,7 @@ namespace Renderer
       {
           Image::Pixel result;
 
-          const int samples = 4;
+          const int samples = 12;
           for(int s = 0; s < samples; s++)
           {
               ///@todo Add a better sampler (stratified?), move into Sampler class, put in render context
@@ -187,7 +203,7 @@ namespace Renderer
               ngl::Vec3 rayDirection = cameraPosition - rayOrigin;
               rayDirection.normalize();
 
-              // World space ray
+              // Construct a ray from camera into the world (World Space)
               Ray ray(rayOrigin,
                       rayDirection,
                       Ray::CAMERA,

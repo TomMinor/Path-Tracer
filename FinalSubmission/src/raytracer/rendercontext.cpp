@@ -12,7 +12,8 @@ RenderContext::RenderContext(Scene* _scene,
       m_imageHeight(_imageHeight),
       m_renderCamera(_camera),
       m_scene(_scene),
-      m_outputPath(_outputPath)
+      m_outputPath(_outputPath),
+      m_depth(0)
 
 {
     m_aspectRatio = (float)m_imageWidth / (float)m_imageHeight;

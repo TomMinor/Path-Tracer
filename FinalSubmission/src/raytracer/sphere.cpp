@@ -50,7 +50,7 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
 
     const float a = rayDirection.dot(rayDirection);
     const float b = rayDirection.dot(rayOrigin) * 2.0f;
-    const float c = rayOrigin.dot(rayOrigin) - m_squaredRadius;
+    const float c = rayOrigin.dot(rayOrigin) - m_radius;
 
     float t0 = -1.f, t1 = -1.f;
     if(!SolveQuadratic(a,b,c, t0, t1) || t1 < EPSILON)
@@ -65,8 +65,9 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
     {
         std::swap(t0, t1);
     }
-    // Prefer a solution infront of the camera
-    _hit.m_t = (t0 < EPSILON) ? t1 : t0;
+
+    // Choose the closest intersection
+    _hit.m_t = (t0 < 0) ? t1 : t0;
     _hit.m_surfaceImpact = _ray(_hit.m_t);
     _hit.m_surfaceNormal = getNormal(_hit.m_surfaceImpact);
 
@@ -94,19 +95,6 @@ ngl::Vec3 Sphere::sample() const
                 );
 
     return point;
-
-//    ///@todo Make this more uniform
-//    float x,y,z;
-
-//    // Rejection sampling
-//    do
-//    {
-//        x = drand48();
-//        y = drand48();
-//        z = drand48();
-//    }while(x*x + y*y + z*z > 1);
-
-//    return ngl::Vec3(x,y,z);
 }
 
 ngl::Vec3 Sphere::tangentSphere(const ngl::Vec3 _point, const ngl::Vec3 _direction) const

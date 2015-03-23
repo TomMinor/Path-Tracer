@@ -150,7 +150,10 @@ void GLWindow::initializeGL()
   // Now we will create a basic Camera from the graphics library
   // This is a static camera so it only needs to be set once
   // First create Values for the camera position
+  //ngl::Vec3 from(48, 14, 0);
+
   ngl::Vec3 from(48, 14, 0);
+
   ngl::Vec3 to(0,14,0);
   ngl::Vec3 up(0,1,0);
 
@@ -582,7 +585,7 @@ bool GLWindow::loadScene(const std::string& _filepath)
 
      _context->m_renderCamera = new Renderer::Camera(tmp.inverse(), m_cam->getFOV());
 
-     Renderer::render(_context);
+     renderThread = QtConcurrent::run(Renderer::render, _context);
    }
  }
 
