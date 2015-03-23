@@ -90,9 +90,6 @@ ngl::Vec3 Triangle::getTangent() const
     return m_vtx[1] - m_vtx[0];
 }
 
-
-const double EPSILON = 1.0 / 1048576.0;
-
 // http://www.hxa.name/rendering/#minilight
 bool Triangle::intersect(const Ray &_ray, HitData &_hit) const
 {

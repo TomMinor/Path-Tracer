@@ -15,24 +15,6 @@ namespace Renderer
 {
 
 
-///@todo FIND HOME
-// A limit to how deeply in recursion CalculateLighting may go
-// before it gives up, so as to avoid call stack overflow.
-const int MAX_OPTICAL_RECURSION_DEPTH = 20;
-
-// A limit to how weak the red, green, or blue intensity of
-// a light ray may be after recursive calls from multiple
-// reflections and/or refractions before giving up.
-// This intensity is deemed too weak to make a significant
-// difference to the image.
-const double MIN_OPTICAL_INTENSITY = 0.001;
-
-
-
-
-
-const double EPSILON = 1.0e-6;
-
 ngl::Vec3 Sphere::getNormal(ngl::Vec3 _point) const
 {
     ngl::Vec3 origin = transformPosition( ngl::Vec3(), m_toObjectSpace);

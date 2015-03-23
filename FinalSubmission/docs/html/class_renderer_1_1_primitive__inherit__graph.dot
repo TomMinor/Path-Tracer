@@ -1,0 +1,12 @@
+digraph "Renderer::Primitive"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Renderer::Primitive\n|# m_toWorldSpace\l# m_toObjectSpace\l# m_material\l|+ Primitive()\l+ ~Primitive()\l+ intersect()\l+ draw()\l+ sample()\l+ getNormal()\l+ rayToObjectSpace()\l+ rayToWorldSpace()\l+ getSurfaceMaterial()\l+ objectTransform()\l+ worldTransform()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{Renderer::Plane\n|- m_normal\l- m_p\l- m_x\l- m_y\l- m_area\l- m_u\l- m_v\l|+ Plane()\l+ ~Plane()\l+ intersect()\l+ draw()\l+ sample()\l+ getNormal()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_plane.html"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{Renderer::Sphere\n|- m_radius\l- m_squaredRadius\l|+ Sphere()\l+ intersect()\l+ draw()\l+ sample()\l+ getNormal()\l+ tangentSphere()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_sphere.html",tooltip="The Sphere class represents a sphere defined by a radius and transform. "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node4 [label="{Renderer::Triangle\n|- m_vtx\l- m_normals\l- m_vao\l- m_singleSided\l|+ Triangle()\l+ intersect()\l+ draw()\l+ sample()\l+ getNormal()\l+ getTangent()\l+ ~Triangle()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_triangle.html",tooltip="The Triangle class represents a triangle with 3 vertices and a transform. "];
+}

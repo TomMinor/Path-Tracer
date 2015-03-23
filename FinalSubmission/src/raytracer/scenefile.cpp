@@ -21,7 +21,7 @@ T popFirstItem(std::deque<T>& _items)
 
 
 SceneFile::SceneFile(const std::string &_path)
-  : m_sceneFile(NULL), m_counter(0)
+  : m_sceneFile(NULL), m_counter(1)
 {
   m_sceneFile = new std::ifstream(_path.c_str(), std::ifstream::in | std::ifstream::out);
 
@@ -290,40 +290,43 @@ Triangle* SceneFile::parseTriangle(std::deque<std::string> &_tokens)
    return new Triangle(vertex[0], vertex[1], vertex[2], transform, mat);
 }
 
-Plane* SceneFile::parsePlane(std::deque<std::string> &_tokens)
-{
-    /*
-    * $plane v0x v0y v0z v1x v1y v1z v2x v2y v2z tx ty tz sx sy sz rx ry rz cr cg cb
-    */
+//Plane* SceneFile::parsePlane(std::deque<std::string> &_tokens)
+//{
+//  ///@notimplemented
+//  return NULL;
 
-   ngl::Mat4 transform;
-   ngl::Colour colour;
-   ngl::Vec3 vertex[4];
-   Material::SurfaceProperty type;
 
-   try
-   {
-     vertex[0] = parseVertex(_tokens);
-     vertex[1] = parseVertex(_tokens);
-     vertex[2] = parseVertex(_tokens);
-     vertex[3] = parseVertex(_tokens);
+//    /*
+//    * $plane v0x v0y v0z v1x v1y v1z v2x v2y v2z tx ty tz sx sy sz rx ry rz cr cg cb
+//    */
 
-     transform = parseTransform(_tokens);
-     colour = parseColour(_tokens);
-     type = parseMaterialType( _tokens[0] );
-   }
-   catch(std::runtime_error& e)
-   {
-     std::cerr  << "Line " << m_counter << " : Error parsing plane data : " << e.what() << std::endl;
-     return NULL;
-   }
+//   ngl::Mat4 transform;
+//   ngl::Colour colour;
+//   ngl::Vec3 vertex[4];
+//   Material::SurfaceProperty type;
 
-   Material mat(type, colour);
+//   try
+//   {
+//     vertex[0] = parseVertex(_tokens);
+//     vertex[1] = parseVertex(_tokens);
+//     vertex[2] = parseVertex(_tokens);
+//     vertex[3] = parseVertex(_tokens);
 
-   ///@notimplemented
-   return NULL;
-   //return new Plane(vertex[0], vertex[1], vertex[2], vertex[3], transform, mat);
-}
+//     transform = parseTransform(_tokens);
+//     colour = parseColour(_tokens);
+//     type = parseMaterialType( _tokens[0] );
+//   }
+//   catch(std::runtime_error& e)
+//   {
+//     std::cerr  << "Line " << m_counter << " : Error parsing plane data : " << e.what() << std::endl;
+//     return NULL;
+//   }
+
+//   Material mat(type, colour);
+
+
+//   //return new Plane(vertex[0], vertex[1], vertex[2], vertex[3], transform, mat);
+//}
 
 Camera* SceneFile::parseCamera(std::deque<std::string> &_tokens)
 {
@@ -345,10 +348,5 @@ Camera* SceneFile::parseCamera(std::deque<std::string> &_tokens)
   }
 
   return new Camera(transform, FOV, nearZ, farZ);
-}
-
-bool SceneFile::write(Renderer::Scene* _scene)
-{
-
 }
 }

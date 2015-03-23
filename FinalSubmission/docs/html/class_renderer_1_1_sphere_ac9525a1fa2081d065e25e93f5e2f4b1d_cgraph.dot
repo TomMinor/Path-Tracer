@@ -1,0 +1,13 @@
+digraph "Renderer::Sphere::intersect"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Renderer::Sphere::intersect",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Renderer::Sphere::getNormal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_sphere.html#a9a25c8561b372c717b03ab1696473b73",tooltip="getNormal calculates the surface normal a certain point "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="transformPosition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45",tooltip="transformPosition transforms a point vector by a transform matrix "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="SolveQuadratic",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tracemath_8cpp.html#a69ce87f2be8257a30cb1d2998f0d8e9c",tooltip="SolveQuadratic. "];
+}

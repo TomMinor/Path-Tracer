@@ -6,9 +6,18 @@
 namespace Renderer
 {
 
+///
+/// \brief The Sphere class represents a sphere defined by a radius and transform
+///
 class Sphere : public Primitive
 {
 public:
+    ///
+    /// \brief Sphere ctor
+    /// \param _toWorldSpace
+    /// \param _material
+    /// \param _radius
+    ///
     Sphere(const ngl::Mat4 &_toWorldSpace, const Material& _material, float _radius = 1.0f)
         : Primitive(_toWorldSpace, _material), m_radius(_radius), m_squaredRadius(_radius * _radius)
     {;}

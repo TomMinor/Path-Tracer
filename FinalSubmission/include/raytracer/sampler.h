@@ -4,7 +4,8 @@
 //drand48()
 
 ///
-/// \brief The Sampler class is mainly used to anti-alias the renderered image
+/// \brief The Sampler class is mainly used to anti-alias the rendered image
+/// (unused, in an ideal implementation there would be a variety of samplers available for different scenarios)
 ///
 class Sampler
 {

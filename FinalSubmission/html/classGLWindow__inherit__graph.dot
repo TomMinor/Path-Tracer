@@ -1,8 +1,0 @@
-digraph "GLWindow"
-{
-  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
-  node [fontname="FreeSans",fontsize="10",shape=record];
-  Node1 [label="{GLWindow\n|+ m_verts\l+ m_scenePath\l+ m_cam\l+ test_vao\l+ renderThread\l|+ GLWindow()\l+ ~GLWindow()\l+ resetMouse()\l+ loadScene()\l+ renderScene()\l+ getScene()\l+ createFramebufferObject()\l+ createTextureObject()\l+ setScenePath()\l+ vboChanged()\l+ toggleNormals()\l+ toggleWireframe()\l+ setNormalSize()\l+ setScale()\l+ setTranslate()\l+ setRotate()\l+ setColour()\l+ setMatrixOrder()\l+ setEuler()\l# initializeGL()\l# resizeGL()\l# paintGL()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="FreeSans"];
-  Node2 [label="{QGLWidget\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-}

@@ -1,0 +1,8 @@
+digraph "GLWindow"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{GLWindow\n|+ m_verts\l+ m_scenePath\l+ m_cam\l+ test_vao\l+ renderThread\l- m_textureID\l- m_fboID\l- m_rboID\l- m_spinXFace\l- m_spinYFace\l- m_rotateActive\l- m_translateActive\l- m_origX\l- m_origY\l- m_origXPos\land 18 more...\l- s_vboNames\l|+ GLWindow()\l+ ~GLWindow()\l+ resetMouse()\l+ loadScene()\l+ renderScene()\l+ getScene()\l+ createFramebufferObject()\l+ createTextureObject()\l+ setScenePath()\l+ vboChanged()\l+ toggleNormals()\l+ toggleWireframe()\l+ setNormalSize()\l+ setScale()\l+ setTranslate()\l+ setRotate()\l+ setColour()\l+ setMatrixOrder()\l+ setEuler()\l# initializeGL()\l# resizeGL()\l# paintGL()\l- mouseMoveEvent()\l- mousePressEvent()\l- mouseReleaseEvent()\l- wheelEvent()\l- loadMatricesToShader()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{QGLWidget\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

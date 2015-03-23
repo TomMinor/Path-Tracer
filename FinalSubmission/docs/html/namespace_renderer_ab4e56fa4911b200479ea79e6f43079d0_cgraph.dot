@@ -1,0 +1,48 @@
+digraph "Renderer::render"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Renderer::render",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Renderer::Camera::getAngle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_camera.html#aee5a50c681121ebad8e8bf0a02df4e96"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Renderer::Camera::getfar\lClipPlane",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_camera.html#a4f31ff2bb69d635467d59ec1e2bd8bfd"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Renderer::Camera::getNear\lClipPlane",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_camera.html#acf6473a1263096a8309c5f1209066ba4"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Renderer::Camera::getWorld\lSpaceMatrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_camera.html#a3f6afedf440c05554e7fbf506aea5514"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ImagePPM::save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_image_p_p_m.html#acf4a44ec60de8ce19b826d51f82e9054",tooltip="save Saves the image buffer to a PPM file "];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Image::getPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_image.html#a634f5e4de7751158cfc2312c93a9a005"];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Image::setPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_image.html#a704672fded047d7f142c6e6dd8c488f8"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Renderer::trace",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_renderer.html#ac12ecacae721953493f903dacb4d411a",tooltip="trace checks if _ray intersects with anything in the scene "];
+  Node9 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Renderer::Scene::objectBegin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_scene.html#ac71ec50dfcae221f69e83ac1717b865d",tooltip="objectBegin allows iteration over private objects without making the containers themselves public ..."];
+  Node9 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="Renderer::Scene::objectEnd",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_scene.html#af5f44baafb6e49510712579c4aca0ca7",tooltip="objectEnd allows iteration over private objects without making the containers themselves public ..."];
+  Node9 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="transformPosition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45",tooltip="transformPosition transforms a point vector by a transform matrix "];
+  Node9 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="Renderer::Primitive\l::worldTransform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_primitive.html#a9a55765d6ba313e07482cd650700bd00",tooltip="worldTransform "];
+  Node9 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="Renderer::Primitive\l::getSurfaceMaterial",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_primitive.html#aa303dc1042f7305a3895049d5f1a51e2",tooltip="getSurfaceMaterial "];
+  Node9 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="Renderer::shade",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_renderer.html#a5889ab8316b510a8dc208452fc14a76c",tooltip="shade checks if the last ray intersection is shaded by another object or has a clear path to a light ..."];
+  Node15 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="transformNormal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tracemath_8cpp.html#a6400b711aeed0a6ff4cd2d8006c4cea8",tooltip="transformNormal "];
+  Node15 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="Renderer::Primitive\l::getNormal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_primitive.html#ade88d0252e3c0bd1f1ee81df35afca0a",tooltip="getNormal calculates the surface normal a certain point "];
+  Node15 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="inverseSquare",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tracemath_8h.html#a8156363d0dd5b6af9a73ca4bbcea0939"];
+  Node15 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="Renderer::Scene::getBackground\lColour",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_scene.html#afed66d5469d6bf5c15a8a1c72051a45a",tooltip="getBackgroundColour "];
+}

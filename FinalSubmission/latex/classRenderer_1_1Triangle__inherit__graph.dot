@@ -1,8 +1,0 @@
-digraph "Renderer::Triangle"
-{
-  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
-  node [fontname="FreeSans",fontsize="10",shape=record];
-  Node1 [label="{Renderer::Triangle\n||+ Triangle()\l+ intersect()\l+ draw()\l+ sample()\l+ getNormal()\l+ getTangent()\l+ ~Triangle()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
-  Node2 [label="{Renderer::Primitive\n|# m_toWorldSpace\l# m_toObjectSpace\l# m_material\l|+ Primitive()\l+ ~Primitive()\l+ intersect()\l+ draw()\l+ sample()\l+ getNormal()\l+ rayToObjectSpace()\l+ rayToWorldSpace()\l+ getSurfaceMaterial()\l+ objectTransform()\l+ worldTransform()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRenderer_1_1Primitive.html",tooltip="The Primitive class is the abstract class representing a renderer primitive, the intersect and draw m..."];
-}

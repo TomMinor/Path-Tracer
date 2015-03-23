@@ -9,6 +9,10 @@
 struct Material
 {
 public:
+
+    ///
+    /// \brief The SurfaceProperty enum Stores the material surface type, used when figuring out how light behaves with the surface
+    ///
     enum SurfaceProperty { DIFFUSE, SPECULAR, EMISSIVE };
 
     Material()
@@ -22,7 +26,7 @@ public:
     }
 
     ngl::Colour m_diffuse;
-    float m_specularCoefficient;
+    float m_specularCoefficient; //unused
     SurfaceProperty m_type;
 };
 

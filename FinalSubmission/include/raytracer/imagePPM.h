@@ -14,7 +14,18 @@ public:
     Image(_width, _height)
   {;}
 
+  ///
+  /// \brief save Saves the image buffer to a PPM file
+  /// \param _filename
+  /// \return
+  ///
   virtual bool save(const std::string& _filename);
+
+  ///
+  /// \brief read Reads a PPM file into the image buffer
+  /// \param _filename
+  /// \return
+  ///
   virtual bool read(const std::string& _filename);
 
   virtual void tonemap(double _maxSceneLuminance, double _maxDisplayLuminance)

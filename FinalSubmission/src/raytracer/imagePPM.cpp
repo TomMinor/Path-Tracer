@@ -39,6 +39,8 @@ bool ImagePPM::save(const std::string& _filename)
 
 bool ImagePPM::read(const std::string& _filename)
 {
+  // This is pretty much untested
+
   unsigned int width, height;
   std::ifstream file(_filename.c_str());
 

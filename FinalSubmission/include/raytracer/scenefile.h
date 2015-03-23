@@ -16,14 +16,27 @@ namespace Renderer
 class Scene;
 class Camera;
 
+///
+/// \brief The SceneFile class parses a text file for scene information and constructs a new scene from it
+///
 class SceneFile
 {
 public:
+
+  ///
+  /// \brief SceneFile opens the file in _path, ready for reading
+  /// \param _path system path
+  /// \exception std::invalid_argument is _path is invalid
+  ///
   SceneFile(const std::string& _path);
+
   ~SceneFile();
 
+  ///
+  /// \brief reads the system path stored in m_sceneFile
+  /// \return constructs a scene and returns it based on the file data
+  ///
   Scene* read();
-  bool write(Scene *_scene);
 
 private:
   std::ifstream* m_sceneFile;
@@ -63,14 +76,43 @@ private:
   ///
   float parseFloat(const std::string &_token);
 
+  ///
+  /// \brief parseMaterialType Reads a token to find out the material type
+  /// \param _token A string value
+  /// \return The parsed material type
+  ///
   Material::SurfaceProperty parseMaterialType(const std::string& _token);
 
+  ////
+  /// \brief parseSphere Reads a series of tokens to find out spherical data
+  /// \param _tokens Expects 13 tokens
+  /// \return Constructs a new sphere and returns it
+  ///
   Sphere* parseSphere(std::deque<std::string> &_tokens);
+
+  ////
+  /// \brief parseTriangle Reads a series of tokens to find out triangle data
+  /// \param _tokens Expects 21 tokens
+  /// \return Constructs a new triangle and returns it
+  ///
   Triangle* parseTriangle(std::deque<std::string> &_tokens);
-  Plane* parsePlane(std::deque<std::string> &_tokens);
+
+//  ////
+//  /// \brief parsePlane Reads a series of tokens to find out planar data
+//  /// \param _tokens Expects 13 tokens
+//  /// \return Constructs a new sphere and returns it
+//  ///
+//  Plane* parsePlane(std::deque<std::string> &_tokens);
+  ////
+  /// \brief parseCamera Reads a series of tokens to find out camera data
+  /// \param _tokens Expects 11 tokens
+  /// \return Constructs a new camera and returns it
+  ///
   Camera* parseCamera(std::deque<std::string> &_tokens);
 
-
+  ///
+  /// \brief m_counter stores the current line number
+  ///
   unsigned int m_counter;
 };
 

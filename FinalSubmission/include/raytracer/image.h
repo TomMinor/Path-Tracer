@@ -48,9 +48,25 @@ public:
   virtual void setPixel(const Pixel& _pixel, unsigned int _x, unsigned int _y);
   virtual Pixel &getPixel(unsigned int _x, unsigned int _y);
 
+  ///
+  /// \brief save Saves the image to the _filename path
+  /// \param _filename system path
+  /// \return true if success, else false
+  ///
   virtual bool save(const std::string& _filename) = 0;
+
+  ///
+  /// \brief read Read an image from _filename into the pixel buffer
+  /// \param _filename system path
+  /// \return true if success, else false
+  ///
   virtual bool read(const std::string& _filename) = 0;
 
+  ///
+  /// \brief tonemap Gamma correct the scene
+  /// \param _maxSceneLuminance
+  /// \param _maxDisplayLuminance
+  ///
   virtual void tonemap(double _maxSceneLuminance, double _maxDisplayLuminance) = 0;
 
 protected:
