@@ -49,7 +49,7 @@ MainWindow::MainWindow( QWidget *parent )
   connect(m_gl,SIGNAL(matrixDirty(ngl::Mat4)),this,SLOT(updateMatrix(ngl::Mat4)));
 
   connect(m_ui->actionRender, SIGNAL(triggered()), this, SLOT(renderNow()) );
-  connect(m_ui->pushButton, SIGNAL(triggered()), this, SLOT(renderNow()) );
+  connect(m_ui->renderButton, SIGNAL(triggered()), this, SLOT(renderNow()) );
 
   // connect the slider to the normal drawing attrib size
   //connect(m_ui->m_normalSize,SIGNAL(valueChanged(int)),m_gl,SLOT(setNormalSize(int)));
@@ -90,26 +90,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::renderNow()
 {
-//    ngl::Mat4 tmp;
-
-//    ngl::Vec3 v0(-0.7130257454508733, -0.5865434646245038, 1.7369010036587358);
-//    ngl::Vec3 v1(-0.07521651730128985, -1.1122104816514653, -1.74747496047553);
-//    ngl::Vec3 v2(1.7395444928627066, 0.3947376948632006, -0.17860976125582403);
-
-//    Renderer::Ray<float>::RayType a = Renderer::Ray<float>::CAMERA;
-
-//    Renderer::Ray<float> r( ngl::Vec3(0, 0, 0),
-//                  ngl::Vec3(2, -2, 2), a);
-
-//    Renderer::Triangle tri(v0, v1, v2, tmp);
-//    float t = 0.0f;
-
-//    if(tri.intersect(r, t))
-//    {
-//        qDebug() << "Tri intersects at " << t;
-//    }
-
-  Renderer::RenderContext* context = new Renderer::RenderContext(m_gl->getScene(), NULL, 640, 480, "output.ppm");
+  Renderer::RenderContext* context = new Renderer::RenderContext(m_gl->getScene(),
+                                                                 NULL,
+                                                                 m_ui->renderHeightEdit->text().toInt(),
+                                                                 m_ui->renderHeightEdit->text().toInt(),
+                                                                 m_ui->renderFilenameEdit->text().toStdString());
 
   m_gl->renderScene(context);
 }
@@ -268,7 +253,6 @@ void MainWindow::setTab(int _value )
 void MainWindow::on_renderButton_clicked()
 {
     renderNow();
-//    m_ui->tabWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_tabWidget_2_currentChanged(int index)
@@ -281,4 +265,40 @@ void MainWindow::on_tabWidget_currentChanged(int index)
 {
 //    m_ui->tabWidget->setCurrentIndex(index);
 //    m_ui->tabWidget_2->setCurrentIndex(index);
+}
+
+
+void MainWindow::on_rendersamplesEdit_editingFinished()
+{
+    int val = m_ui->rendersamplesEdit->text().toInt();
+
+    qDebug("%d", val);
+
+    if(val <= 0)
+      m_ui->rendersamplesEdit->setText("1");
+}
+
+void MainWindow::on_renderHeightEdit_editingFinished()
+{
+    int val = m_ui->renderHeightEdit->text().toInt();
+
+    qDebug("%d", val);
+
+    if(val <= 0)
+      m_ui->renderHeightEdit->setText("1");
+}
+
+void MainWindow::on_renderWidthEdit_editingFinished()
+{
+  int val = m_ui->renderWidthEdit->text().toInt();
+
+  qDebug("%d", val);
+
+  if(val <= 0)
+    m_ui->renderWidthEdit->setText("1");
+}
+
+void MainWindow::on_renderFilenameEdit_editingFinished()
+{
+
 }

@@ -67,6 +67,10 @@ private slots :
     void on_renderButton_clicked();
     void on_tabWidget_2_currentChanged(int index);
     void on_tabWidget_currentChanged(int index);
+    void on_rendersamplesEdit_editingFinished();
+    void on_renderHeightEdit_editingFinished();
+    void on_renderWidthEdit_editingFinished();
+    void on_renderFilenameEdit_editingFinished();
 };
 
 #endif // MAINWINDOW_H

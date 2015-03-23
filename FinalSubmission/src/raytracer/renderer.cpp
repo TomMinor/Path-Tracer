@@ -170,7 +170,7 @@ namespace Renderer
 
   void render(RenderContext *_context)
   {
-    ImagePPM pixels(_context->m_imageWidth, _context->m_imageHeight);
+    ImagePPM image(_context->m_imageWidth, _context->m_imageHeight);
 
     // Convert world origin to camera's world space
     ngl::Vec3 rayOrigin = (ngl::Vec4() * _context->m_renderCamera->getWorldSpaceMatrix()).toVec3();
@@ -227,7 +227,7 @@ namespace Renderer
 
           result /= samples;
 
-          pixels.setPixel(result, ia + i, ja + j);
+          image.setPixel(result, ia + i, ja + j);
         }
       }
 
@@ -238,7 +238,7 @@ namespace Renderer
 
     if(_context->m_outputPath.length() > 0)
     {
-      pixels.save(_context->m_outputPath);
+      image.save(_context->m_outputPath);
     }
     else
     {
