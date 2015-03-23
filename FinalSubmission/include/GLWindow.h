@@ -44,6 +44,13 @@ public :
   GLWindow(const QGLFormat _format, QWidget *_parent );
   //----------------------------------------------------------------------------------------------------------------------
   //----------------------------------------------------------------------------------------------------------------------
+
+  ~GLWindow()
+  {
+//    renderThread.cancel();
+//    renderThread.waitForFinished();
+  }
+
   void resetMouse();
 
   bool loadScene(const std::string& _path);

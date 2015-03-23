@@ -39,7 +39,8 @@ Renderer::Scene* SceneFile::read()
 {
   Scene::objectList primitives;
   Camera* renderCamera = NULL; // Only allow 1 render camera, maybe extend to support many cameras in scenes
-  Image::Pixel background;
+
+  Image::Pixel background(0.5, 0.5, 0.5); // Background colour
 
   std::string line;
   while ( std::getline(*m_sceneFile, line) )
@@ -52,8 +53,6 @@ Renderer::Scene* SceneFile::read()
 
     if(tokens.size() > 0)
     {
-      float xres = 640, yres = 480; // Render resolution
-
       std::string lineType = popFirstItem<std::string>(tokens);
       if(lineType[0] != '#' && lineType[0] == '$') // Ignore lines not starting with $ and are not comments #
       {
@@ -68,6 +67,19 @@ Renderer::Scene* SceneFile::read()
           {
             renderCamera = parseCamera(tokens);
           }
+        }
+        else if(lineType == "background")
+        {
+            try
+            {
+              background = Image::Pixel(parseFloat(popFirstItem<std::string>(tokens)),
+                                       parseFloat(popFirstItem<std::string>(tokens)),
+                                       parseFloat(popFirstItem<std::string>(tokens)));
+            }
+            catch(std::runtime_error& e)
+            {
+              std::cerr << "Error parsing background data : " << e.what() << std::endl;
+            }
         }
         else if(lineType == "sphere")
         {
@@ -87,18 +99,19 @@ Renderer::Scene* SceneFile::read()
           if(primitive)
             primitives.push_back(primitive);
         }
-        else if(lineType == "res")
-        {
-          try
-          {
-            xres = parseFloat(popFirstItem<std::string>(tokens));
-            yres = parseFloat(popFirstItem<std::string>(tokens));
-          }
-          catch(std::runtime_error& e)
-          {
-            std::cerr << "Error parsing resolution data : " << e.what() << std::endl;
-          }
-        }
+        /* Doesn't make much sense to store render data like resolution in the scene file */
+//        else if(lineType == "res")
+//        {
+//          try
+//          {
+//            xres = parseFloat(popFirstItem<std::string>(tokens));
+//            yres = parseFloat(popFirstItem<std::string>(tokens));
+//          }
+//          catch(std::runtime_error& e)
+//          {
+//            std::cerr << "Error parsing resolution data : " << e.what() << std::endl;
+//          }
+//        }
         else
         {
             //std::cerr << "Unknown data type : " << lineType << std::endl;

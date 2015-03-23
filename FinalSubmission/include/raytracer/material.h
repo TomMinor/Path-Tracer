@@ -3,11 +3,10 @@
 
 #include <ngl/Colour.h>
 
-///@todo Is the material the same as the BSDF? and is the BSDF/BRDF the same as the shader?
 struct Material
 {
 public:
-    enum SurfaceProperty { DIFFUSE, SPECULAR, EMISSIVE }; ///@todo What does Ian suggest
+    enum SurfaceProperty { DIFFUSE, SPECULAR, EMISSIVE };
 
     Material()
     {

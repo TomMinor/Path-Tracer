@@ -35,9 +35,11 @@ struct RenderContext
     //-------------------------------------------------
     unsigned int m_imageWidth;
     unsigned int m_imageHeight;
+    unsigned int m_samples;
     float m_aspectRatio;
 
-    int m_depth;
+
+    int m_depth; // Reflection/refraction depth
 
     Camera* m_renderCamera;
     Scene* m_scene;

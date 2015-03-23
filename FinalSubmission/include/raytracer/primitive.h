@@ -55,18 +55,8 @@ public:
 
     inline Material getSurfaceMaterial() const { return m_material; }
 
-    inline ngl::Colour getSurfaceColour() const { return m_material.m_diffuse; }
-
     inline const ngl::Mat4& objectTransform() const { return m_toObjectSpace; }
     inline const ngl::Mat4& worldTransform() const { return m_toWorldSpace; }
-
-    inline const ngl::Mat4& objectDirectionTransform() const { return m_toObjectSpace; }
-    inline const ngl::Mat4& worldDirectionTransform() const { return m_toWorldSpace; }
-
-//    inline void populateHitData(Hitdata& _hit)
-//    {
-
-//    }
 
 protected:
     // Used to easily convert between world and object space

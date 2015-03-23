@@ -50,7 +50,7 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
 
     const float a = rayDirection.dot(rayDirection);
     const float b = rayDirection.dot(rayOrigin) * 2.0f;
-    const float c = rayOrigin.dot(rayOrigin) - m_radius;
+    const float c = rayOrigin.dot(rayOrigin) - m_squaredRadius;
 
     float t0 = -1.f, t1 = -1.f;
     if(!SolveQuadratic(a,b,c, t0, t1) || t1 < EPSILON)

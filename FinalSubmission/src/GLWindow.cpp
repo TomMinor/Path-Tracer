@@ -92,45 +92,45 @@ GLWindow::GLWindow(const QGLFormat _format, QWidget *_parent ) : QGLWidget( _for
 const static int TEXTURE_WIDTH=1024;
 const static int TEXTURE_HEIGHT=1024;
 
-void GLWindow::createTextureObject()
-{
-  // create a texture object
-  glGenTextures(1, &m_textureID);
+//void GLWindow::createTextureObject()
+//{
+//  // create a texture object
+//  glGenTextures(1, &m_textureID);
 
-  // bind it to make it active
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, m_textureID);
-  // set params
-  glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-  //glGenerateMipmapEXT(GL_TEXTURE_2D);  // set the data size but just set the buffer to 0 as we will fill it with the FBO
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, TEXTURE_WIDTH, TEXTURE_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
-  // now turn the texture off for now
-  glBindTexture(GL_TEXTURE_2D, 0);
-}
+//  // bind it to make it active
+//  glActiveTexture(GL_TEXTURE0);
+//  glBindTexture(GL_TEXTURE_2D, m_textureID);
+//  // set params
+//  glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//  glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+//  //glGenerateMipmapEXT(GL_TEXTURE_2D);  // set the data size but just set the buffer to 0 as we will fill it with the FBO
+//  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, TEXTURE_WIDTH, TEXTURE_HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
+//  // now turn the texture off for now
+//  glBindTexture(GL_TEXTURE_2D, 0);
+//}
 
-void GLWindow::createFramebufferObject()
-{
-  // create a framebuffer object this is deleted in the dtor
-  glGenFramebuffers(1, &m_fboID);
-  glBindFramebuffer(GL_FRAMEBUFFER, m_fboID);
+//void GLWindow::createFramebufferObject()
+//{
+//  // create a framebuffer object this is deleted in the dtor
+//  glGenFramebuffers(1, &m_fboID);
+//  glBindFramebuffer(GL_FRAMEBUFFER, m_fboID);
 
-  // create a renderbuffer object to store the rendered result
-  glGenRenderbuffers(1, &m_rboID);
-  glBindRenderbuffer(GL_RENDERBUFFER, m_rboID);
+//  // create a renderbuffer object to store the rendered result
+//  glGenRenderbuffers(1, &m_rboID);
+//  glBindRenderbuffer(GL_RENDERBUFFER, m_rboID);
 
-  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
-  // bind
-  glBindRenderbuffer(GL_RENDERBUFFER, 0);
+//  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, TEXTURE_WIDTH, TEXTURE_HEIGHT);
+//  // bind
+//  glBindRenderbuffer(GL_RENDERBUFFER, 0);
 
-  // attatch the texture we created earlier to the FBO
-  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_textureID, 0);
+//  // attatch the texture we created earlier to the FBO
+//  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_textureID, 0);
 
-  // now attach a renderbuffer to depth attachment point
-  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_rboID);
-  // now got back to the default render context
-  glBindFramebuffer(GL_FRAMEBUFFER, 0);
-}
+//  // now attach a renderbuffer to depth attachment point
+//  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_rboID);
+//  // now got back to the default render context
+//  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//}
 
 // This virtual function is called once before the first call to paintGL() or resizeGL(),
 //and then once whenever the widget has been assigned a new QGLContext.
@@ -380,7 +380,9 @@ void GLWindow::paintGL()
   // grab an instance of the shader manager
   ngl::ShaderLib *shader=ngl::ShaderLib::instance();
   // clear the screen and depth buffer
+  glClearColor( m_scene->getBackgroundColour().m_r, m_scene->getBackgroundColour().m_g, m_scene->getBackgroundColour().m_b, 1);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
   // Rotation based on the mouse position for our global
   // transform
 
@@ -410,67 +412,6 @@ void GLWindow::paintGL()
   // get the VBO instance and draw the built in teapot
   ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();
 
-//  prim->draw( s_vboNames[m_drawIndex]);
-
-//  if(m_drawNormals)
-//  {
-//    (*shader)["normalShader"]->use();
-//    ngl::Mat4 MV;
-//    ngl::Mat4 MVP;
-
-//    MV=m_transform * m_mouseGlobalTX* m_cam->getViewMatrix();
-//    MVP=MV * m_cam->getProjectionMatrix();
-//    shader->setShaderParamFromMat4("MVP",MVP);
-//    shader->setShaderParam1f("normalSize",m_normalSize/10.0);
-
-//    //prim->draw( s_vboNames[m_drawIndex]);
-//  }
-
-//    std::vector <ngl::Vec3> normals(6);
-
-//    ngl::Vec3 normal=ngl::calcNormal(m_verts[0],m_verts[1],m_verts[2]);
-
-
-
-//    for(int i=0; i<6; ++i)
-//    {
-//        normals[i] = normal;
-//    }
-
-//      Renderer::Triangle a( ngl::Vec3(0,0,0),
-//                            ngl::Vec3(1,0,1),
-//                            ngl::Vec3(0,0,1),
-//                            ngl::Mat4());
-
-
-//      m_material.setDiffuse(ngl::Colour(1.f, 0.4f, 1.f));
-//      m_material.loadToShader("material");
-
-//      m_transform.identity();
-//      m_transform.scale(2,2,2);
-//    loadMatricesToShader();
-//    a.draw();
-
-//    ngl::VertexArrayObject *vao=ngl::VertexArrayObject::createVOA(GL_TRIANGLES);
-
-//    (*shader)["Phong"]->use();
-//    m_material.setDiffuse(ngl::Colour(1,1,0,1));
-//    m_material.loadToShader("material");
-
-//      vao->bind();
-//      vao->setData(m_verts.size() * sizeof(ngl::Vec3), m_verts[0].m_x);
-//      vao->setVertexAttributePointer(0, 3, GL_FLOAT, 0, 0);
-
-//      vao->setData(normals.size() * sizeof(ngl::Vec3), normals[0].m_x);
-//      vao->setNumIndices(normals.size());
-//      vao->setVertexAttributePointer(2, 3, GL_FLOAT, 0, 0);
-
-//      vao->setNumIndices(m_verts.size());
-
-//      vao->draw();
-//      vao->unbind();
-//      vao->removeVOA();
-
   if(m_scene)
   {
       (*shader)["Phong"]->use();
@@ -483,34 +424,11 @@ void GLWindow::paintGL()
         m_transform = (*object)->worldTransform();
         loadMatricesToShader();
 
-        m_material.setDiffuse((*object)->getSurfaceColour());
+        m_material.setDiffuse((*object)->getSurfaceMaterial().m_diffuse);
         m_material.loadToShader("material");
 
-        //->draw("cube");
-
         (*object)->draw();
-
-        // Polymorphism should really be used for this
-
-//        Sphere* sphere = static_cast<Sphere*>(*object);
-//        if(sphere)  {   prim->draw("sphere"); continue; }
-
-//        Plane* plane = static_cast<Plane*>(*object);
-//        if(plane)  {   prim->draw("plane"); continue; }
       }
-
-//      for( Scene::lightListIterator light = m_scene->lightBegin();
-//           light != m_scene->lightEnd();
-//           ++light)
-//      {
-//        m_transform = (*light)->worldTransform();
-//        loadMatricesToShader();
-
-//        m_material.setDiffuse(ngl::Colour(0.f, 0.4f, 0.f));
-//        m_material.loadToShader("material");
-
-//        prim->draw("cone", GL_LINE_LOOP);
-//      }
   }
   m_axis->draw(m_mouseGlobalTX);
 
@@ -520,48 +438,11 @@ void GLWindow::paintGL()
   m_material.setDiffuse(ngl::Colour(0,0,0));
   m_material.loadToShader("material");
   prim->draw("grid");
-
-  m_transform.identity();
-  m_transform.translate(10, 9, 6);
-  loadMatricesToShader();
-  prim->draw("cone");
 }
 
 
 bool GLWindow::loadScene(const std::string& _filepath)
 {
-//  if(!m_cam)
-//      return false;
-
-//  Renderer::Scene::objectList  objects;
-
-//  ngl::Mat4 o2w;
-//  o2w.identity();
-//  o2w.translate(0, 0, -5);
-//  objects.push_back(new Renderer::Sphere(o2w));
-
-//  o2w.identity();
-//  o2w.translate(0, 0, 5);
-//  objects.push_back(new Renderer::Sphere(o2w));
-
-//  o2w.identity();
-//  o2w.translate(1, 1, -6);
-//  o2w.scale(1, 2, 1);
-//  objects.push_back(new Renderer::Sphere(o2w));
-
-//  o2w.identity();
-//  o2w.translate(1.f, 1.f, -2.f);
-//  o2w.scale(1.5f, 1.5f, 1.5f);
-//  objects.push_back(new Renderer::Sphere(o2w));
-
-//  ngl::Mat4 c2w;
-//  c2w.translate(0, 0, 5);
-
-//  m_scene = new Renderer::Scene(objects,
-//                                c2w);
-
-//  return true;
-
     try
     {
         Renderer::SceneFile file(_filepath);
@@ -585,6 +466,8 @@ bool GLWindow::loadScene(const std::string& _filepath)
 
      _context->m_renderCamera = new Renderer::Camera(tmp.inverse(), m_cam->getFOV());
 
+     // render in a separate thread
+     ///@todo Stop render when main QT window is closed
      renderThread = QtConcurrent::run(Renderer::render, _context);
    }
  }
@@ -619,7 +502,6 @@ void GLWindow::mouseMoveEvent (QMouseEvent * _event  )
 
     updateGL();
   }
-
 }
 
 

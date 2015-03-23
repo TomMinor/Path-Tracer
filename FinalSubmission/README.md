@@ -41,3 +41,13 @@ Physically based global illumination renderer
 + Bugs
 	- Depth
 	- Sphere intersection
+
++ Improvements
+	- Render tiles in separate threads to improve performance
+	- Acceleration structures such as KD-Trees for faster triangle intersection, other structures for faster object testing
+	- Debugging was a challenge, hard to use breakpoints etc with lots of pixels
+
+
++ Design Decisions
+	- Tried to make path tracer separate from visualisation, all ngl math classes could be replaced with glm or oiio for example
+

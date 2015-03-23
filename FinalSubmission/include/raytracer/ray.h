@@ -10,7 +10,7 @@ namespace Renderer
 struct Ray
 {
 public:
-    enum RayType { UNKNOWN = 0, CAMERA, SHADOW }; ///@todo Make the ray polymorphic?
+    enum RayType { UNKNOWN = 0, CAMERA, SHADOW, REFLECT, REFRACT }; ///@todo Make the ray polymorphic?
 
     Ray(const ngl::Vec3& _origin, const ngl::Vec3& _direction, RayType _type = UNKNOWN, float _near = 0.0, float _far = std::numeric_limits<float>::max())
         : m_origin(_origin), m_direction(_direction), m_tmin(_near), m_tmax(_far), m_type(_type)
