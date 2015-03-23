@@ -293,7 +293,7 @@ Triangle* SceneFile::parseTriangle(std::deque<std::string> &_tokens)
 Plane* SceneFile::parsePlane(std::deque<std::string> &_tokens)
 {
     /*
-    * $tri v0x v0y v0z v1x v1y v1z v2x v2y v2z tx ty tz sx sy sz rx ry rz cr cg cb
+    * $plane v0x v0y v0z v1x v1y v1z v2x v2y v2z tx ty tz sx sy sz rx ry rz cr cg cb
     */
 
    ngl::Mat4 transform;
@@ -320,7 +320,7 @@ Plane* SceneFile::parsePlane(std::deque<std::string> &_tokens)
 
    Material mat(type, colour);
 
-   ///@Implement
+   ///@notimplemented
    return NULL;
    //return new Plane(vertex[0], vertex[1], vertex[2], vertex[3], transform, mat);
 }
