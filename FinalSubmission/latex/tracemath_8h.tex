@@ -1,0 +1,80 @@
+\hypertarget{tracemath_8h}{}\section{include/raytracer/tracemath.h File Reference}
+\label{tracemath_8h}\index{include/raytracer/tracemath.\+h@{include/raytracer/tracemath.\+h}}
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include $<$functional$>$}\\*
+{\ttfamily \#include \char`\"{}ngl/\+Vec3.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ngl/\+Mat4.\+h\char`\"{}}\\*
+Include dependency graph for tracemath.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{tracemath_8h_a69ce87f2be8257a30cb1d2998f0d8e9c}{Solve\+Quadratic} (float \+\_\+a, float \+\_\+b, float \+\_\+c, float \&o\+\_\+x0, float \&o\+\_\+x1)
+\item 
+float \hyperlink{tracemath_8h_ac4bb74681e6f160a17183e2295e6ffcf}{degrees\+To\+Radians} (float \+\_\+deg)
+\item 
+float \hyperlink{tracemath_8h_a06e3ce6f2b644468f65aec38eb1d17e6}{integrate} (std\+::function$<$ float(float) $>$ \&F, std\+::function$<$ float(float) $>$ \&f, float a, float b, unsigned int steps)
+\item 
+float \hyperlink{tracemath_8h_a8156363d0dd5b6af9a73ca4bbcea0939}{inverse\+Square} (float \+\_\+distance\+Squared)
+\item 
+ngl\+::\+Vec3 \hyperlink{tracemath_8h_a70d4019cedd59fd08c763a06b47b2d45}{transform\+Position} (const ngl\+::\+Vec3 \&\+\_\+point, const ngl\+::\+Mat4 \&\+\_\+transform)
+\item 
+ngl\+::\+Vec3 \hyperlink{tracemath_8h_a6400b711aeed0a6ff4cd2d8006c4cea8}{transform\+Normal} (const ngl\+::\+Vec3 \&\+\_\+normal, const ngl\+::\+Mat4 \&\+\_\+transform)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{tracemath_8h_ac4bb74681e6f160a17183e2295e6ffcf}{}\index{tracemath.\+h@{tracemath.\+h}!degrees\+To\+Radians@{degrees\+To\+Radians}}
+\index{degrees\+To\+Radians@{degrees\+To\+Radians}!tracemath.\+h@{tracemath.\+h}}
+\subsubsection[{degrees\+To\+Radians}]{\setlength{\rightskip}{0pt plus 5cm}float degrees\+To\+Radians (
+\begin{DoxyParamCaption}
+\item[{float}]{\+\_\+deg}
+\end{DoxyParamCaption}
+)}\label{tracemath_8h_ac4bb74681e6f160a17183e2295e6ffcf}
+\hypertarget{tracemath_8h_a06e3ce6f2b644468f65aec38eb1d17e6}{}\index{tracemath.\+h@{tracemath.\+h}!integrate@{integrate}}
+\index{integrate@{integrate}!tracemath.\+h@{tracemath.\+h}}
+\subsubsection[{integrate}]{\setlength{\rightskip}{0pt plus 5cm}float integrate (
+\begin{DoxyParamCaption}
+\item[{std\+::function$<$ float(float) $>$ \&}]{F, }
+\item[{std\+::function$<$ float(float) $>$ \&}]{f, }
+\item[{float}]{a, }
+\item[{float}]{b, }
+\item[{unsigned int}]{steps}
+\end{DoxyParamCaption}
+)}\label{tracemath_8h_a06e3ce6f2b644468f65aec38eb1d17e6}
+\hypertarget{tracemath_8h_a8156363d0dd5b6af9a73ca4bbcea0939}{}\index{tracemath.\+h@{tracemath.\+h}!inverse\+Square@{inverse\+Square}}
+\index{inverse\+Square@{inverse\+Square}!tracemath.\+h@{tracemath.\+h}}
+\subsubsection[{inverse\+Square}]{\setlength{\rightskip}{0pt plus 5cm}float inverse\+Square (
+\begin{DoxyParamCaption}
+\item[{float}]{\+\_\+distance\+Squared}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{tracemath_8h_a8156363d0dd5b6af9a73ca4bbcea0939}
+\hypertarget{tracemath_8h_a69ce87f2be8257a30cb1d2998f0d8e9c}{}\index{tracemath.\+h@{tracemath.\+h}!Solve\+Quadratic@{Solve\+Quadratic}}
+\index{Solve\+Quadratic@{Solve\+Quadratic}!tracemath.\+h@{tracemath.\+h}}
+\subsubsection[{Solve\+Quadratic}]{\setlength{\rightskip}{0pt plus 5cm}bool Solve\+Quadratic (
+\begin{DoxyParamCaption}
+\item[{float}]{\+\_\+a, }
+\item[{float}]{\+\_\+b, }
+\item[{float}]{\+\_\+c, }
+\item[{float \&}]{o\+\_\+x0, }
+\item[{float \&}]{o\+\_\+x1}
+\end{DoxyParamCaption}
+)}\label{tracemath_8h_a69ce87f2be8257a30cb1d2998f0d8e9c}
+\hypertarget{tracemath_8h_a6400b711aeed0a6ff4cd2d8006c4cea8}{}\index{tracemath.\+h@{tracemath.\+h}!transform\+Normal@{transform\+Normal}}
+\index{transform\+Normal@{transform\+Normal}!tracemath.\+h@{tracemath.\+h}}
+\subsubsection[{transform\+Normal}]{\setlength{\rightskip}{0pt plus 5cm}ngl\+::\+Vec3 transform\+Normal (
+\begin{DoxyParamCaption}
+\item[{const ngl\+::\+Vec3 \&}]{\+\_\+normal, }
+\item[{const ngl\+::\+Mat4 \&}]{\+\_\+transform}
+\end{DoxyParamCaption}
+)}\label{tracemath_8h_a6400b711aeed0a6ff4cd2d8006c4cea8}
+\hypertarget{tracemath_8h_a70d4019cedd59fd08c763a06b47b2d45}{}\index{tracemath.\+h@{tracemath.\+h}!transform\+Position@{transform\+Position}}
+\index{transform\+Position@{transform\+Position}!tracemath.\+h@{tracemath.\+h}}
+\subsubsection[{transform\+Position}]{\setlength{\rightskip}{0pt plus 5cm}ngl\+::\+Vec3 transform\+Position (
+\begin{DoxyParamCaption}
+\item[{const ngl\+::\+Vec3 \&}]{\+\_\+point, }
+\item[{const ngl\+::\+Mat4 \&}]{\+\_\+transform}
+\end{DoxyParamCaption}
+)}\label{tracemath_8h_a70d4019cedd59fd08c763a06b47b2d45}

@@ -8,6 +8,9 @@
 namespace Renderer
 {
 
+///
+/// \brief The Camera class encapsulates just the render camera, providing methods to calculate FOV, clipping planes and world/object space transform matrices.
+///
 class Camera
 {
 public:

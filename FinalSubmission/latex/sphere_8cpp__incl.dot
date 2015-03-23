@@ -1,0 +1,45 @@
+digraph "src/raytracer/sphere.cpp"
+{
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="src/raytracer/sphere.cpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="utility",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="cstring",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="ngl/Vec4.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="ngl/VAOPrimitives.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="ngl/ShaderLib.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="ngl/Transformation.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="ngl/Material.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="raytracer/sphere.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$sphere_8h.html"];
+  Node9 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="raytracer/primitive.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$primitive_8h.html"];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="ngl/Vec3.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node10 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="ngl/Mat4.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node10 -> Node13 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="raytracer/ray.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ray_8h.html"];
+  Node13 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 -> Node14 [color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="limits",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node10 -> Node15 [color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="raytracer/material.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$material_8h.html"];
+  Node15 -> Node16 [color="midnightblue",fontsize="10",style="solid"];
+  Node16 [label="ngl/Colour.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node17 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 [label="raytracer/tracemath.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tracemath_8h.html"];
+  Node17 -> Node18 [color="midnightblue",fontsize="10",style="solid"];
+  Node18 [label="cmath",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node17 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node19 [label="functional",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node17 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+}

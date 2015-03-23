@@ -1,0 +1,148 @@
+\#\+Path Tracer
+
+Tom Minor, Bournemouth, N\+C\+C\+A
+
+\subsection*{Summary}
+
+My original goals for this project were to create a path tracer with Open Shading Language integration, possibly using Photon Mapping as an optimisation technique. However, it\textquotesingle{}s current state is simply a global illumination renderer that supports\+:
+
+
+\begin{DoxyItemize}
+\item Loading primitive/material data from simple text files.
+\item Global Illumination approximation in the scene, light is sampled from any primitive using an emissive material type.
+\item Controlling the sample rate and render size from the user interface.
+\end{DoxyItemize}
+
+Once the renderer is more mature I hope to carry out my original plans of a usable path tracer integrated with O\+S\+L.
+
+
+
+\subsection*{Usage}
+
+\subsubsection*{3\+D Viewport}
+
+Displays a real time visualisation of the scene, the camera perspective of this view is used in the final render. Automatically updates when a loaded scene file is changed.
+
+
+\begin{DoxyItemize}
+\item $\ast$$\ast$\+Left Mouse Button + Drag -\/$\ast$$\ast$ Orbit around the viewport.
+\item $\ast$$\ast$\+Right Mouse Button + Drag -\/$\ast$$\ast$ Pan around the viewport
+\item $\ast$$\ast$\+Scroll wheel -\/$\ast$$\ast$ Zoom in/out.
+\item $\ast$$\ast$\+File Menu-\/$\ast$$\ast$ Open scene files.
+\end{DoxyItemize}
+
+\subsubsection*{Render Settings}
+
+Control various aspects of the render output.
+
+
+\begin{DoxyItemize}
+\item $\ast$$\ast$\+Samples -\/$\ast$$\ast$ The amount of samples per pixel, higher values will result in longer render times but more accurate images.
+\item $\ast$$\ast$\+Output Size -\/$\ast$$\ast$ The resolution of the rendered image.
+\item {\bfseries File Name -\/$\ast$$\ast$ The output file name $\ast$(only $\ast$$\ast$.ppm} files are supported)$\ast$
+\item $\ast$$\ast$\+Render Button -\/$\ast$$\ast$ Render the scene to the file. {\itshape Note -\/ This will render in the background, right now the progress is only printed to standard output and there is no indication in the U\+I when the render is complete}
+\end{DoxyItemize}
+
+\subsubsection*{Scene files}
+
+All scene data is stored in simple text files, empty/commented lines are ignored.
+
+Comments begin with \#.
+
+\paragraph*{Data Types}
+
+
+\begin{DoxyItemize}
+\item {\bfseries Primitives}
+
+Translation X\+Y\+Z = {\ttfamily tx ty tz}~\newline
+ Rotation X\+Y\+Z = {\ttfamily rx ry rz}~\newline
+ Scale X\+Y\+Z = {\ttfamily sx sy sz}~\newline
+ Colour R\+G\+B = {\ttfamily cr cg cb}~\newline
+ Vertex X\+Y\+Z = {\ttfamily vx vy vz}~\newline
+
+\begin{DoxyItemize}
+\item {\bfseries Sphere} {\ttfamily \$sphere tx ty tz sx sy sz rx ry rz cr cg cb}
+\item {\bfseries Triangle} {\ttfamily \$tri v0x v0y v0z v1x v1y v1z v2x v2y v2z tx ty tz sx sy sz rx ry rz cr cg cb}
+\item {\bfseries Plane} {\itshape Will be supported in future versions, right now two triangle primitives are used}
+\end{DoxyItemize}
+\item {\bfseries Camera} {\ttfamily \$camera tx ty tz sx sy sz rx ry rz fov nearz far z}
+\item {\bfseries Background} {\ttfamily \$background cr cg cb}
+\end{DoxyItemize}
+
+\subsection*{Algorithms/\+Mathematical Methods}
+
+\subsubsection*{Tracing the world}
+
+Proved to me how handy matrices are for storing transformations.
+
+
+\begin{DoxyEnumerate}
+\item Create ray in world space from camera into scene.
+\item Convert into object space for intersection.
+\item Convert impact point and light sample point to world space to calculate new direction vector.
+\item Convert shadow ray to object space for each intersection.
+\end{DoxyEnumerate}
+
+\subsubsection*{Global Illumination}
+
+``` repeat for many samples per pixel fire a single ray into the scene for each light source in scene if not shaded colour += object colour ```
+\begin{DoxyItemize}
+\item Sum all light sources.
+\item Only lose energy whenever a ray bounces.
+\item Use inverse square rule to create light falloff.
+\item Use tonemapping to scale luminance
+\begin{DoxyItemize}
+\item Gamma correct the image
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\subsubsection*{Refraction}
+
+I didn\textquotesingle{}t get chance to look into these in much detail, but I began trying to implement them for the (unfinished) refraction aspect of the path tracing engine.
+
+
+\begin{DoxyItemize}
+\item Schlick\textquotesingle{}s approximation
+\item Snell\textquotesingle{}s law
+\end{DoxyItemize}
+
+\subsection*{Known Problems}
+
+
+\begin{DoxyItemize}
+\item Due to the use of popping off the token stack in the file reading implementation, the tokens are read in the wrong order for some values. Not a huge problem as the input can be inverted, X\+Y\+Z becomes Z\+Y\+X for example. All the more reason to use a well established format.
+\item Depth refuses to work correctly, right now primitives are simply drawn in the order they are read from the file. Using the intersection t value and the world space distance has failed, presumably related to coordinate spaces when calculating intersections.
+\item Spheres are rendered almost fully black, yet shadow rays work correctly and there is a small amount of light hitting the object.
+\item Reflection is roughly implemented, but there are strange artifacts on the triangle reflections and sphere reflections don\textquotesingle{}t seem to exist at all. Refraction doesn\textquotesingle{}t work at all.
+\item No B\+S\+D\+F/\+B\+R\+D\+F\textquotesingle{}s implemented, only the diffuse colour and global illumination.
+\end{DoxyItemize}
+
+\subsection*{Implementation Challenges}
+
+
+\begin{DoxyItemize}
+\item Understanding when to convert between object and world space produced many time consuming bugs, some still aren\textquotesingle{}t fixed.
+\item Unsure where parts of classes such as Scene, Camera \& Render\+Context should go, for example scene will always need at least one camera (and for rendering only one camera will be needed), but logically the render camera is a separate object.
+\item Updating the G\+U\+I while rendering seemed to require a fairly complex threading setup that wasn\textquotesingle{}t worth the time to implement, although adding a background render thread for the render process was fairly easy.
+\end{DoxyItemize}
+
+\subsection*{Planned Features / Improvements}
+
+
+\begin{DoxyItemize}
+\item Acceleration structures such as K\+D-\/\+Trees for faster triangle intersection, other structures for faster object testing.
+\item Open Shading Language to handle surface properties.
+\item Photon mapping to improve the render speed and image quality.
+\item Multi-\/threaded rendering.
+\item Real-\/time visualisation in the viewport by rendering in a background thread that updates a framebuffer object.
+\end{DoxyItemize}
+
+\subsection*{Design Decisions}
+
+
+\begin{DoxyItemize}
+\item Tried to make path tracer separate from visualisation, for example all N\+G\+L math classes could be replaced with {\itshape glm} or {\itshape oiio} fairly painlessly. Ideally the renderer should be a standalone program that the interface controls with command line arguments.
+\item Debugging was a challenge, it was difficult to set breakpoints for certain conditions since so many pixels/rays are evaluated. Other raytracing projects seemed to implement a special class that would print debug info and allow for breakpoints under very specific conditions, this seems to be a good approach to ease further development.
+\item The file structure is fairly robust for such a simple filetype, if corrupt data is found then it is simply skipped and an error message is emitted. However, it is tedious to extend for new types of data/primitives and doesn\textquotesingle{}t allow for more advanced concepts such as relative transformations/parenting. I would have liked to look at the R\+I\+B format instead, but I decided to focus on the path tracing aspect of the project. 
+\end{DoxyItemize}

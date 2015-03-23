@@ -1,0 +1,34 @@
+\hypertarget{Axis_8h}{}\section{include/\+Axis.h File Reference}
+\label{Axis_8h}\index{include/\+Axis.\+h@{include/\+Axis.\+h}}
+
+
+simple class to contain and draw an axis  
+
+
+{\ttfamily \#include $<$ngl/\+Camera.\+h$>$}\\*
+{\ttfamily \#include $<$ngl/\+Shader\+Lib.\+h$>$}\\*
+{\ttfamily \#include $<$ngl/\+Transformation.\+h$>$}\\*
+{\ttfamily \#include $<$ngl/\+V\+A\+O\+Primitives.\+h$>$}\\*
+Include dependency graph for Axis.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classAxis}{Axis}
+\begin{DoxyCompactList}\small\item\em Simple \hyperlink{classAxis}{Axis} drawing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+simple class to contain and draw an axis 
+
+\begin{DoxyAuthor}{Author}
+Jonathan Macey 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+13/10/10 Revision History \+: Initial Version 13/10/10 
+\end{DoxyDate}

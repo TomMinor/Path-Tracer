@@ -273,7 +273,7 @@ void GLWindow::initializeGL()
 
   //prim->createSphere("sphere1", 1.0f, 30);
 
-  loadScene("test.txt");
+  loadScene("test.tray");
 
 //  createTextureObject();
 //  createFramebufferObject();

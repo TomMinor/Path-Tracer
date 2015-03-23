@@ -1,0 +1,46 @@
+digraph "include/raytracer/image.h"
+{
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="include/raytracer/image.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="include/raytracer/scene.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$scene_8h.html"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="include/GLWindow.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$GLWindow_8h.html",tooltip="a basic Qt GL window class for ngl demos "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="include/MainWindow.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MainWindow_8h.html",tooltip="The main class for our UI window. "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="moc/moc_MainWindow.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$moc__MainWindow_8cpp.html"];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="src/main.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html",tooltip="construct the new MainWindow and pass control to it "];
+  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="src/MainWindow.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MainWindow_8cpp.html",tooltip="basic implementation file for the MainWindow class "];
+  Node3 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="moc/moc_GLWindow.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$moc__GLWindow_8cpp.html"];
+  Node3 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="src/GLWindow.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$GLWindow_8cpp.html",tooltip="basic implementation file for the GLWindow class "];
+  Node2 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="include/raytracer/rendercontext.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rendercontext_8h.html"];
+  Node10 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="include/raytracer/renderer.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$renderer_8h.html"];
+  Node11 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="src/raytracer/renderer.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$renderer_8cpp.html"];
+  Node10 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="src/raytracer/rendercontext.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$rendercontext_8cpp.html"];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="src/raytracer/scene.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$scene_8cpp.html"];
+  Node2 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="src/raytracer/scenefile.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$scenefile_8cpp.html"];
+  Node1 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node16 [label="include/raytracer/imagePPM.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$imagePPM_8h.html"];
+  Node16 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node17 [label="src/raytracer/imagePPM.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$imagePPM_8cpp.html"];
+  Node16 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node18 [label="src/raytracer/image.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$image_8cpp.html"];
+}

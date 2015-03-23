@@ -1,0 +1,12 @@
+digraph "Renderer::HitData"
+{
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{Renderer::HitData\n|+ m_distanceSqr\l+ m_t\l+ m_u\l+ m_v\l+ m_w\l+ m_surfaceImpact\l+ m_surfaceNormal\l|+ HitData()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +m_object" ,arrowhead="odiamond"];
+  Node2 [label="{Renderer::Primitive\n|# m_toWorldSpace\l# m_toObjectSpace\l|+ Primitive()\l+ ~Primitive()\l+ intersect()\l+ draw()\l+ sample()\l+ getNormal()\l+ rayToObjectSpace()\l+ rayToWorldSpace()\l+ getSurfaceMaterial()\l+ objectTransform()\l+ worldTransform()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRenderer_1_1Primitive.html",tooltip="The Primitive class is the abstract class representing a renderer primitive, the intersect and draw m..."];
+  Node3 -> Node2 [color="grey25",fontsize="10",style="solid",label=" #m_material" ,arrowhead="odiamond"];
+  Node3 [label="{Material\n|+ m_diffuse\l+ m_specularCoefficient\l+ m_type\l|+ Material()\l+ Material()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structMaterial.html",tooltip="The Material struct represents the properi. "];
+  Node4 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +m_ray" ,arrowhead="odiamond"];
+  Node4 [label="{Renderer::Ray\n|+ m_origin\l+ m_direction\l+ m_inverseDirection\l+ m_sign\l+ m_tmin\l+ m_tmax\l+ m_type\l|+ Ray()\l+ operator()()\l+ reflect()\l# inverseDirection()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structRenderer_1_1Ray.html"];
+}

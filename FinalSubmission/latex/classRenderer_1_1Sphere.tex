@@ -1,0 +1,104 @@
+\hypertarget{classRenderer_1_1Sphere}{}\section{Renderer\+:\+:Sphere Class Reference}
+\label{classRenderer_1_1Sphere}\index{Renderer\+::\+Sphere@{Renderer\+::\+Sphere}}
+
+
+{\ttfamily \#include $<$sphere.\+h$>$}
+
+
+
+Inheritance diagram for Renderer\+:\+:Sphere\+:
+% FIG 0
+
+
+Collaboration diagram for Renderer\+:\+:Sphere\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRenderer_1_1Sphere_a1cc7e679282a27fba0d528021061f571}{Sphere} (const ngl\+::\+Mat4 \&\+\_\+to\+World\+Space, const \hyperlink{structMaterial}{Material} \&\+\_\+material, float \+\_\+radius=1.\+0f)
+\item 
+virtual bool \hyperlink{classRenderer_1_1Sphere_ac9525a1fa2081d065e25e93f5e2f4b1d}{intersect} (const \hyperlink{structRenderer_1_1Ray}{Ray} \&\+\_\+ray, \hyperlink{structRenderer_1_1HitData}{Hit\+Data} \&\+\_\+hit) const 
+\item 
+virtual void \hyperlink{classRenderer_1_1Sphere_addc6c6ef784badc0065ef827d1edda7f}{draw} () const 
+\item 
+virtual ngl\+::\+Vec3 \hyperlink{classRenderer_1_1Sphere_a63986b9167dd275192e87cc3c578d91a}{sample} () const 
+\item 
+virtual ngl\+::\+Vec3 \hyperlink{classRenderer_1_1Sphere_a9a25c8561b372c717b03ab1696473b73}{get\+Normal} (ngl\+::\+Vec3 \+\_\+point) const 
+\item 
+ngl\+::\+Vec3 \hyperlink{classRenderer_1_1Sphere_a1e60080d349a95c18e29bd3e2f0f3819}{tangent\+Sphere} (const ngl\+::\+Vec3 \+\_\+point, const ngl\+::\+Vec3 \+\_\+direction) const 
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classRenderer_1_1Sphere_a1cc7e679282a27fba0d528021061f571}{}\index{Renderer\+::\+Sphere@{Renderer\+::\+Sphere}!Sphere@{Sphere}}
+\index{Sphere@{Sphere}!Renderer\+::\+Sphere@{Renderer\+::\+Sphere}}
+\subsubsection[{Sphere}]{\setlength{\rightskip}{0pt plus 5cm}Renderer\+::\+Sphere\+::\+Sphere (
+\begin{DoxyParamCaption}
+\item[{const ngl\+::\+Mat4 \&}]{\+\_\+to\+World\+Space, }
+\item[{const {\bf Material} \&}]{\+\_\+material, }
+\item[{float}]{\+\_\+radius = {\ttfamily 1.0f}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classRenderer_1_1Sphere_a1cc7e679282a27fba0d528021061f571}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classRenderer_1_1Sphere_addc6c6ef784badc0065ef827d1edda7f}{}\index{Renderer\+::\+Sphere@{Renderer\+::\+Sphere}!draw@{draw}}
+\index{draw@{draw}!Renderer\+::\+Sphere@{Renderer\+::\+Sphere}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Renderer\+::\+Sphere\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{classRenderer_1_1Sphere_addc6c6ef784badc0065ef827d1edda7f}
+
+
+Implements \hyperlink{classRenderer_1_1Primitive_a9ac7e1ff84d81f2a8f474cbaf36b41d0}{Renderer\+::\+Primitive}.
+
+\hypertarget{classRenderer_1_1Sphere_a9a25c8561b372c717b03ab1696473b73}{}\index{Renderer\+::\+Sphere@{Renderer\+::\+Sphere}!get\+Normal@{get\+Normal}}
+\index{get\+Normal@{get\+Normal}!Renderer\+::\+Sphere@{Renderer\+::\+Sphere}}
+\subsubsection[{get\+Normal}]{\setlength{\rightskip}{0pt plus 5cm}ngl\+::\+Vec3 Renderer\+::\+Sphere\+::get\+Normal (
+\begin{DoxyParamCaption}
+\item[{ngl\+::\+Vec3}]{\+\_\+point}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{classRenderer_1_1Sphere_a9a25c8561b372c717b03ab1696473b73}
+
+
+Implements \hyperlink{classRenderer_1_1Primitive_ade88d0252e3c0bd1f1ee81df35afca0a}{Renderer\+::\+Primitive}.
+
+\hypertarget{classRenderer_1_1Sphere_ac9525a1fa2081d065e25e93f5e2f4b1d}{}\index{Renderer\+::\+Sphere@{Renderer\+::\+Sphere}!intersect@{intersect}}
+\index{intersect@{intersect}!Renderer\+::\+Sphere@{Renderer\+::\+Sphere}}
+\subsubsection[{intersect}]{\setlength{\rightskip}{0pt plus 5cm}bool Renderer\+::\+Sphere\+::intersect (
+\begin{DoxyParamCaption}
+\item[{const {\bf Ray} \&}]{\+\_\+ray, }
+\item[{{\bf Hit\+Data} \&}]{\+\_\+hit}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{classRenderer_1_1Sphere_ac9525a1fa2081d065e25e93f5e2f4b1d}
+
+
+Implements \hyperlink{classRenderer_1_1Primitive_a22f0a7845bbec672a363f39fac4daf5e}{Renderer\+::\+Primitive}.
+
+\hypertarget{classRenderer_1_1Sphere_a63986b9167dd275192e87cc3c578d91a}{}\index{Renderer\+::\+Sphere@{Renderer\+::\+Sphere}!sample@{sample}}
+\index{sample@{sample}!Renderer\+::\+Sphere@{Renderer\+::\+Sphere}}
+\subsubsection[{sample}]{\setlength{\rightskip}{0pt plus 5cm}ngl\+::\+Vec3 Renderer\+::\+Sphere\+::sample (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{classRenderer_1_1Sphere_a63986b9167dd275192e87cc3c578d91a}
+
+
+Implements \hyperlink{classRenderer_1_1Primitive_a203efa6754633a8559c441a4de603b2d}{Renderer\+::\+Primitive}.
+
+\hypertarget{classRenderer_1_1Sphere_a1e60080d349a95c18e29bd3e2f0f3819}{}\index{Renderer\+::\+Sphere@{Renderer\+::\+Sphere}!tangent\+Sphere@{tangent\+Sphere}}
+\index{tangent\+Sphere@{tangent\+Sphere}!Renderer\+::\+Sphere@{Renderer\+::\+Sphere}}
+\subsubsection[{tangent\+Sphere}]{\setlength{\rightskip}{0pt plus 5cm}ngl\+::\+Vec3 Renderer\+::\+Sphere\+::tangent\+Sphere (
+\begin{DoxyParamCaption}
+\item[{const ngl\+::\+Vec3}]{\+\_\+point, }
+\item[{const ngl\+::\+Vec3}]{\+\_\+direction}
+\end{DoxyParamCaption}
+) const}\label{classRenderer_1_1Sphere_a1e60080d349a95c18e29bd3e2f0f3819}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/raytracer/\hyperlink{sphere_8h}{sphere.\+h}\item 
+src/raytracer/\hyperlink{sphere_8cpp}{sphere.\+cpp}\end{DoxyCompactItemize}

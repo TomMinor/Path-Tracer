@@ -1,0 +1,145 @@
+\hypertarget{classImage}{}\section{Image Class Reference}
+\label{classImage}\index{Image@{Image}}
+
+
+The \hyperlink{classImage}{Image} is the base class of a structure that stores an image, child classes are expected to implemented the read/write functions to write to specific locations (framebuffers, files of various types etc)  
+
+
+
+
+{\ttfamily \#include $<$image.\+h$>$}
+
+
+
+Inheritance diagram for Image\+:
+% FIG 0
+
+
+Collaboration diagram for Image\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structImage_1_1Pixel}{Pixel}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{structImage_1_1Pixel}{Pixel} struct simply represents an R\+G\+B colour, overloads the +,-\/,/ and $\ast$ operators. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classImage_a055c8145be6f8c3da429f73da47c7163}{Image} (unsigned int \+\_\+width, unsigned int \+\_\+height)
+\item 
+\hyperlink{classImage_a0294f63700543e11c0f0da85601c7ae5}{$\sim$\+Image} ()
+\item 
+virtual void \hyperlink{classImage_a704672fded047d7f142c6e6dd8c488f8}{set\+Pixel} (const \hyperlink{structImage_1_1Pixel}{Pixel} \&\+\_\+pixel, unsigned int \+\_\+x, unsigned int \+\_\+y)
+\item 
+virtual \hyperlink{structImage_1_1Pixel}{Pixel} \& \hyperlink{classImage_a634f5e4de7751158cfc2312c93a9a005}{get\+Pixel} (unsigned int \+\_\+x, unsigned int \+\_\+y)
+\item 
+virtual bool \hyperlink{classImage_abccefaaa9c3b1c9edb57f19d7c7777c3}{save} (const std\+::string \&\+\_\+filename)=0
+\item 
+virtual bool \hyperlink{classImage_aaad771ed7e29b7f01f2f129f84224060}{read} (const std\+::string \&\+\_\+filename)=0
+\item 
+virtual void \hyperlink{classImage_a614b4183dc55a0097007bb65bb76493f}{tonemap} (double \+\_\+max\+Scene\+Luminance, double \+\_\+max\+Display\+Luminance)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{classImage_a121b435401e6fc86901514d000f7df37}{m\+\_\+width}
+\item 
+unsigned int \hyperlink{classImage_af2c44810438cfeaaf63fb3616b276db4}{m\+\_\+height}
+\item 
+\hyperlink{structImage_1_1Pixel}{Pixel} $\ast$ \hyperlink{classImage_a917680d514864d303cd210fcf3d52299}{m\+\_\+image}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classImage}{Image} is the base class of a structure that stores an image, child classes are expected to implemented the read/write functions to write to specific locations (framebuffers, files of various types etc) 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classImage_a055c8145be6f8c3da429f73da47c7163}{}\index{Image@{Image}!Image@{Image}}
+\index{Image@{Image}!Image@{Image}}
+\subsubsection[{Image}]{\setlength{\rightskip}{0pt plus 5cm}Image\+::\+Image (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{\+\_\+width, }
+\item[{unsigned int}]{\+\_\+height}
+\end{DoxyParamCaption}
+)}\label{classImage_a055c8145be6f8c3da429f73da47c7163}
+\hypertarget{classImage_a0294f63700543e11c0f0da85601c7ae5}{}\index{Image@{Image}!````~Image@{$\sim$\+Image}}
+\index{````~Image@{$\sim$\+Image}!Image@{Image}}
+\subsubsection[{$\sim$\+Image}]{\setlength{\rightskip}{0pt plus 5cm}Image\+::$\sim$\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classImage_a0294f63700543e11c0f0da85601c7ae5}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classImage_a634f5e4de7751158cfc2312c93a9a005}{}\index{Image@{Image}!get\+Pixel@{get\+Pixel}}
+\index{get\+Pixel@{get\+Pixel}!Image@{Image}}
+\subsubsection[{get\+Pixel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Image\+::\+Pixel} \& Image\+::get\+Pixel (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{\+\_\+x, }
+\item[{unsigned int}]{\+\_\+y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classImage_a634f5e4de7751158cfc2312c93a9a005}
+\hypertarget{classImage_aaad771ed7e29b7f01f2f129f84224060}{}\index{Image@{Image}!read@{read}}
+\index{read@{read}!Image@{Image}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Image\+::read (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{\+\_\+filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classImage_aaad771ed7e29b7f01f2f129f84224060}
+
+
+Implemented in \hyperlink{classImagePPM_a948a454964cd10c3eba73a4c5ecc27d6}{Image\+P\+P\+M}.
+
+\hypertarget{classImage_abccefaaa9c3b1c9edb57f19d7c7777c3}{}\index{Image@{Image}!save@{save}}
+\index{save@{save}!Image@{Image}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Image\+::save (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{\+\_\+filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classImage_abccefaaa9c3b1c9edb57f19d7c7777c3}
+
+
+Implemented in \hyperlink{classImagePPM_acf4a44ec60de8ce19b826d51f82e9054}{Image\+P\+P\+M}.
+
+\hypertarget{classImage_a704672fded047d7f142c6e6dd8c488f8}{}\index{Image@{Image}!set\+Pixel@{set\+Pixel}}
+\index{set\+Pixel@{set\+Pixel}!Image@{Image}}
+\subsubsection[{set\+Pixel}]{\setlength{\rightskip}{0pt plus 5cm}void Image\+::set\+Pixel (
+\begin{DoxyParamCaption}
+\item[{const {\bf Pixel} \&}]{\+\_\+pixel, }
+\item[{unsigned int}]{\+\_\+x, }
+\item[{unsigned int}]{\+\_\+y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classImage_a704672fded047d7f142c6e6dd8c488f8}
+\hypertarget{classImage_a614b4183dc55a0097007bb65bb76493f}{}\index{Image@{Image}!tonemap@{tonemap}}
+\index{tonemap@{tonemap}!Image@{Image}}
+\subsubsection[{tonemap}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Image\+::tonemap (
+\begin{DoxyParamCaption}
+\item[{double}]{\+\_\+max\+Scene\+Luminance, }
+\item[{double}]{\+\_\+max\+Display\+Luminance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classImage_a614b4183dc55a0097007bb65bb76493f}
+
+
+Implemented in \hyperlink{classImagePPM_a27820174d8704665b266e751a6919b53}{Image\+P\+P\+M}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classImage_af2c44810438cfeaaf63fb3616b276db4}{}\index{Image@{Image}!m\+\_\+height@{m\+\_\+height}}
+\index{m\+\_\+height@{m\+\_\+height}!Image@{Image}}
+\subsubsection[{m\+\_\+height}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Image\+::m\+\_\+height\hspace{0.3cm}{\ttfamily [protected]}}\label{classImage_af2c44810438cfeaaf63fb3616b276db4}
+\hypertarget{classImage_a917680d514864d303cd210fcf3d52299}{}\index{Image@{Image}!m\+\_\+image@{m\+\_\+image}}
+\index{m\+\_\+image@{m\+\_\+image}!Image@{Image}}
+\subsubsection[{m\+\_\+image}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pixel}$\ast$ Image\+::m\+\_\+image\hspace{0.3cm}{\ttfamily [protected]}}\label{classImage_a917680d514864d303cd210fcf3d52299}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]Maybe make this void and unique to each image type \end{DoxyRefDesc}
+\hypertarget{classImage_a121b435401e6fc86901514d000f7df37}{}\index{Image@{Image}!m\+\_\+width@{m\+\_\+width}}
+\index{m\+\_\+width@{m\+\_\+width}!Image@{Image}}
+\subsubsection[{m\+\_\+width}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Image\+::m\+\_\+width\hspace{0.3cm}{\ttfamily [protected]}}\label{classImage_a121b435401e6fc86901514d000f7df37}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/raytracer/\hyperlink{image_8h}{image.\+h}\item 
+src/raytracer/\hyperlink{image_8cpp}{image.\+cpp}\end{DoxyCompactItemize}

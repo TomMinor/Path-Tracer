@@ -1,0 +1,209 @@
+\hypertarget{classRenderer_1_1Primitive}{}\section{Renderer\+:\+:Primitive Class Reference}
+\label{classRenderer_1_1Primitive}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+
+
+The \hyperlink{classRenderer_1_1Primitive}{Primitive} class is the abstract class representing a renderer primitive, the intersect and draw methods must be overloaded in child classes.  
+
+
+
+
+{\ttfamily \#include $<$primitive.\+h$>$}
+
+
+
+Inheritance diagram for Renderer\+:\+:Primitive\+:
+% FIG 0
+
+
+Collaboration diagram for Renderer\+:\+:Primitive\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRenderer_1_1Primitive_aef85c08ccb6b189417433a81fa382513}{Primitive} (const ngl\+::\+Mat4 \&\+\_\+to\+World\+Space, const \hyperlink{structMaterial}{Material} \&\+\_\+material)
+\item 
+virtual \hyperlink{classRenderer_1_1Primitive_a72985fa9fd72f5229a9bfb638377f4c8}{$\sim$\+Primitive} ()
+\item 
+virtual bool \hyperlink{classRenderer_1_1Primitive_a22f0a7845bbec672a363f39fac4daf5e}{intersect} (const \hyperlink{structRenderer_1_1Ray}{Ray} \&\+\_\+ray, \hyperlink{structRenderer_1_1HitData}{Hit\+Data} \&\+\_\+hit) const =0
+\item 
+virtual void \hyperlink{classRenderer_1_1Primitive_a9ac7e1ff84d81f2a8f474cbaf36b41d0}{draw} () const =0
+\item 
+virtual ngl\+::\+Vec3 \hyperlink{classRenderer_1_1Primitive_a203efa6754633a8559c441a4de603b2d}{sample} () const =0
+\item 
+virtual ngl\+::\+Vec3 \hyperlink{classRenderer_1_1Primitive_ade88d0252e3c0bd1f1ee81df35afca0a}{get\+Normal} (ngl\+::\+Vec3 \+\_\+point) const =0
+\item 
+\hyperlink{structRenderer_1_1Ray}{Ray} \hyperlink{classRenderer_1_1Primitive_ab284806b9c1642ae80410607d606ae46}{ray\+To\+Object\+Space} (const \hyperlink{structRenderer_1_1Ray}{Ray} \&\+\_\+ray) const 
+\begin{DoxyCompactList}\small\item\em convert\+Ray\+To\+Object\+Space is a helper method to transform a ray into this primitives object space \end{DoxyCompactList}\item 
+\hyperlink{structRenderer_1_1Ray}{Ray} \hyperlink{classRenderer_1_1Primitive_aef8e1c3e54925ef164f094ef976ad78e}{ray\+To\+World\+Space} (const \hyperlink{structRenderer_1_1Ray}{Ray} \&\+\_\+ray) const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{classRenderer_1_1Primitive_aef8e1c3e54925ef164f094ef976ad78e}{Primitive\+::ray\+To\+World\+Space}. \end{DoxyCompactList}\item 
+\hyperlink{structMaterial}{Material} \hyperlink{classRenderer_1_1Primitive_aa303dc1042f7305a3895049d5f1a51e2}{get\+Surface\+Material} () const 
+\item 
+const ngl\+::\+Mat4 \& \hyperlink{classRenderer_1_1Primitive_a935c1ff33ec49914cd4dfaafb92055f0}{object\+Transform} () const 
+\item 
+const ngl\+::\+Mat4 \& \hyperlink{classRenderer_1_1Primitive_a9a55765d6ba313e07482cd650700bd00}{world\+Transform} () const 
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ngl\+::\+Mat4 \hyperlink{classRenderer_1_1Primitive_a165cf73028170dd26e253a35ca3f75e4}{m\+\_\+to\+World\+Space}
+\begin{DoxyCompactList}\small\item\em m\+\_\+to\+World\+Space stores the object space to world space transformation matrix for this primitive. \end{DoxyCompactList}\item 
+ngl\+::\+Mat4 \hyperlink{classRenderer_1_1Primitive_a14b4a25d610a4af486935efff6d85a3c}{m\+\_\+to\+Object\+Space}
+\begin{DoxyCompactList}\small\item\em m\+\_\+to\+Object\+Space stores the world space to object space transformation matrix for this primitive. \end{DoxyCompactList}\item 
+\hyperlink{structMaterial}{Material} \hyperlink{classRenderer_1_1Primitive_a3c5f1dc45cf1c74402047a93007d9a3b}{m\+\_\+material}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classRenderer_1_1Primitive}{Primitive} class is the abstract class representing a renderer primitive, the intersect and draw methods must be overloaded in child classes. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classRenderer_1_1Primitive_aef85c08ccb6b189417433a81fa382513}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!Primitive@{Primitive}}
+\index{Primitive@{Primitive}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{Primitive}]{\setlength{\rightskip}{0pt plus 5cm}Renderer\+::\+Primitive\+::\+Primitive (
+\begin{DoxyParamCaption}
+\item[{const ngl\+::\+Mat4 \&}]{\+\_\+to\+World\+Space, }
+\item[{const {\bf Material} \&}]{\+\_\+material}
+\end{DoxyParamCaption}
+)}\label{classRenderer_1_1Primitive_aef85c08ccb6b189417433a81fa382513}
+\hypertarget{classRenderer_1_1Primitive_a72985fa9fd72f5229a9bfb638377f4c8}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!````~Primitive@{$\sim$\+Primitive}}
+\index{````~Primitive@{$\sim$\+Primitive}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{$\sim$\+Primitive}]{\setlength{\rightskip}{0pt plus 5cm}virtual Renderer\+::\+Primitive\+::$\sim$\+Primitive (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{classRenderer_1_1Primitive_a72985fa9fd72f5229a9bfb638377f4c8}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classRenderer_1_1Primitive_a9ac7e1ff84d81f2a8f474cbaf36b41d0}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!draw@{draw}}
+\index{draw@{draw}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Renderer\+::\+Primitive\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classRenderer_1_1Primitive_a9ac7e1ff84d81f2a8f474cbaf36b41d0}
+
+
+Implemented in \hyperlink{classRenderer_1_1Triangle_a325a404a8c7b9bef234738dcb1caa19b}{Renderer\+::\+Triangle}, \hyperlink{classRenderer_1_1Plane_abd2e9c48aa3acb347255c15245939449}{Renderer\+::\+Plane}, and \hyperlink{classRenderer_1_1Sphere_addc6c6ef784badc0065ef827d1edda7f}{Renderer\+::\+Sphere}.
+
+\hypertarget{classRenderer_1_1Primitive_ade88d0252e3c0bd1f1ee81df35afca0a}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!get\+Normal@{get\+Normal}}
+\index{get\+Normal@{get\+Normal}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{get\+Normal}]{\setlength{\rightskip}{0pt plus 5cm}virtual ngl\+::\+Vec3 Renderer\+::\+Primitive\+::get\+Normal (
+\begin{DoxyParamCaption}
+\item[{ngl\+::\+Vec3}]{\+\_\+point}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classRenderer_1_1Primitive_ade88d0252e3c0bd1f1ee81df35afca0a}
+
+
+Implemented in \hyperlink{classRenderer_1_1Triangle_adae4e94dc4c3b4e4ed844a222815f0a4}{Renderer\+::\+Triangle}, \hyperlink{classRenderer_1_1Plane_a134fb1ab85f0c9537edde96220edb014}{Renderer\+::\+Plane}, and \hyperlink{classRenderer_1_1Sphere_a9a25c8561b372c717b03ab1696473b73}{Renderer\+::\+Sphere}.
+
+\hypertarget{classRenderer_1_1Primitive_aa303dc1042f7305a3895049d5f1a51e2}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!get\+Surface\+Material@{get\+Surface\+Material}}
+\index{get\+Surface\+Material@{get\+Surface\+Material}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{get\+Surface\+Material}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Material} Renderer\+::\+Primitive\+::get\+Surface\+Material (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classRenderer_1_1Primitive_aa303dc1042f7305a3895049d5f1a51e2}
+\hypertarget{classRenderer_1_1Primitive_a22f0a7845bbec672a363f39fac4daf5e}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!intersect@{intersect}}
+\index{intersect@{intersect}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{intersect}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Renderer\+::\+Primitive\+::intersect (
+\begin{DoxyParamCaption}
+\item[{const {\bf Ray} \&}]{\+\_\+ray, }
+\item[{{\bf Hit\+Data} \&}]{\+\_\+hit}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classRenderer_1_1Primitive_a22f0a7845bbec672a363f39fac4daf5e}
+
+
+Implemented in \hyperlink{classRenderer_1_1Triangle_af9802d9321c1fcdeb3aae9364efd246c}{Renderer\+::\+Triangle}, \hyperlink{classRenderer_1_1Plane_a1954528af0da8ab0b96b9dee73b5c7a3}{Renderer\+::\+Plane}, and \hyperlink{classRenderer_1_1Sphere_ac9525a1fa2081d065e25e93f5e2f4b1d}{Renderer\+::\+Sphere}.
+
+\hypertarget{classRenderer_1_1Primitive_a935c1ff33ec49914cd4dfaafb92055f0}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!object\+Transform@{object\+Transform}}
+\index{object\+Transform@{object\+Transform}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{object\+Transform}]{\setlength{\rightskip}{0pt plus 5cm}const ngl\+::\+Mat4\& Renderer\+::\+Primitive\+::object\+Transform (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classRenderer_1_1Primitive_a935c1ff33ec49914cd4dfaafb92055f0}
+\hypertarget{classRenderer_1_1Primitive_ab284806b9c1642ae80410607d606ae46}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!ray\+To\+Object\+Space@{ray\+To\+Object\+Space}}
+\index{ray\+To\+Object\+Space@{ray\+To\+Object\+Space}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{ray\+To\+Object\+Space}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ray} Renderer\+::\+Primitive\+::ray\+To\+Object\+Space (
+\begin{DoxyParamCaption}
+\item[{const {\bf Ray} \&}]{\+\_\+ray}
+\end{DoxyParamCaption}
+) const}\label{classRenderer_1_1Primitive_ab284806b9c1642ae80410607d606ae46}
+
+
+convert\+Ray\+To\+Object\+Space is a helper method to transform a ray into this primitives object space 
+
+\hyperlink{classRenderer_1_1Primitive_ab284806b9c1642ae80410607d606ae46}{Primitive\+::ray\+To\+Object\+Space}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+ray} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classRenderer_1_1Primitive_aef8e1c3e54925ef164f094ef976ad78e}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!ray\+To\+World\+Space@{ray\+To\+World\+Space}}
+\index{ray\+To\+World\+Space@{ray\+To\+World\+Space}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{ray\+To\+World\+Space}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ray} Renderer\+::\+Primitive\+::ray\+To\+World\+Space (
+\begin{DoxyParamCaption}
+\item[{const {\bf Ray} \&}]{\+\_\+ray}
+\end{DoxyParamCaption}
+) const}\label{classRenderer_1_1Primitive_aef8e1c3e54925ef164f094ef976ad78e}
+
+
+\hyperlink{classRenderer_1_1Primitive_aef8e1c3e54925ef164f094ef976ad78e}{Primitive\+::ray\+To\+World\+Space}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+ray} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classRenderer_1_1Primitive_a203efa6754633a8559c441a4de603b2d}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!sample@{sample}}
+\index{sample@{sample}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{sample}]{\setlength{\rightskip}{0pt plus 5cm}virtual ngl\+::\+Vec3 Renderer\+::\+Primitive\+::sample (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classRenderer_1_1Primitive_a203efa6754633a8559c441a4de603b2d}
+
+
+Implemented in \hyperlink{classRenderer_1_1Triangle_a40b6162167de14c18f0ec9233eb7e2ad}{Renderer\+::\+Triangle}, \hyperlink{classRenderer_1_1Plane_ad18b055a0daabda07b22e71da10cc84d}{Renderer\+::\+Plane}, and \hyperlink{classRenderer_1_1Sphere_a63986b9167dd275192e87cc3c578d91a}{Renderer\+::\+Sphere}.
+
+\hypertarget{classRenderer_1_1Primitive_a9a55765d6ba313e07482cd650700bd00}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!world\+Transform@{world\+Transform}}
+\index{world\+Transform@{world\+Transform}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{world\+Transform}]{\setlength{\rightskip}{0pt plus 5cm}const ngl\+::\+Mat4\& Renderer\+::\+Primitive\+::world\+Transform (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classRenderer_1_1Primitive_a9a55765d6ba313e07482cd650700bd00}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classRenderer_1_1Primitive_a3c5f1dc45cf1c74402047a93007d9a3b}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!m\+\_\+material@{m\+\_\+material}}
+\index{m\+\_\+material@{m\+\_\+material}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{m\+\_\+material}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Material} Renderer\+::\+Primitive\+::m\+\_\+material\hspace{0.3cm}{\ttfamily [protected]}}\label{classRenderer_1_1Primitive_a3c5f1dc45cf1c74402047a93007d9a3b}
+\hypertarget{classRenderer_1_1Primitive_a14b4a25d610a4af486935efff6d85a3c}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!m\+\_\+to\+Object\+Space@{m\+\_\+to\+Object\+Space}}
+\index{m\+\_\+to\+Object\+Space@{m\+\_\+to\+Object\+Space}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{m\+\_\+to\+Object\+Space}]{\setlength{\rightskip}{0pt plus 5cm}ngl\+::\+Mat4 Renderer\+::\+Primitive\+::m\+\_\+to\+Object\+Space\hspace{0.3cm}{\ttfamily [protected]}}\label{classRenderer_1_1Primitive_a14b4a25d610a4af486935efff6d85a3c}
+
+
+m\+\_\+to\+Object\+Space stores the world space to object space transformation matrix for this primitive. 
+
+\hypertarget{classRenderer_1_1Primitive_a165cf73028170dd26e253a35ca3f75e4}{}\index{Renderer\+::\+Primitive@{Renderer\+::\+Primitive}!m\+\_\+to\+World\+Space@{m\+\_\+to\+World\+Space}}
+\index{m\+\_\+to\+World\+Space@{m\+\_\+to\+World\+Space}!Renderer\+::\+Primitive@{Renderer\+::\+Primitive}}
+\subsubsection[{m\+\_\+to\+World\+Space}]{\setlength{\rightskip}{0pt plus 5cm}ngl\+::\+Mat4 Renderer\+::\+Primitive\+::m\+\_\+to\+World\+Space\hspace{0.3cm}{\ttfamily [protected]}}\label{classRenderer_1_1Primitive_a165cf73028170dd26e253a35ca3f75e4}
+
+
+m\+\_\+to\+World\+Space stores the object space to world space transformation matrix for this primitive. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/raytracer/\hyperlink{primitive_8h}{primitive.\+h}\item 
+src/raytracer/\hyperlink{primitive_8cpp}{primitive.\+cpp}\end{DoxyCompactItemize}

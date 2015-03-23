@@ -1,0 +1,117 @@
+\hypertarget{classRenderer_1_1Triangle}{}\section{Renderer\+:\+:Triangle Class Reference}
+\label{classRenderer_1_1Triangle}\index{Renderer\+::\+Triangle@{Renderer\+::\+Triangle}}
+
+
+{\ttfamily \#include $<$triangle.\+h$>$}
+
+
+
+Inheritance diagram for Renderer\+:\+:Triangle\+:
+% FIG 0
+
+
+Collaboration diagram for Renderer\+:\+:Triangle\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRenderer_1_1Triangle_a7053d2e8592075bc7a1c9bbdbf95ffdc}{Triangle} (ngl\+::\+Vec3 \+\_\+v0, ngl\+::\+Vec3 \+\_\+v1, ngl\+::\+Vec3 \+\_\+v2, const ngl\+::\+Mat4 \+\_\+to\+World\+Space, const \hyperlink{structMaterial}{Material} \&\+\_\+material, bool \+\_\+single\+Sided=true)
+\item 
+virtual bool \hyperlink{classRenderer_1_1Triangle_af9802d9321c1fcdeb3aae9364efd246c}{intersect} (const \hyperlink{structRenderer_1_1Ray}{Ray} \&\+\_\+ray, \hyperlink{structRenderer_1_1HitData}{Hit\+Data} \&\+\_\+hit) const 
+\item 
+virtual void \hyperlink{classRenderer_1_1Triangle_a325a404a8c7b9bef234738dcb1caa19b}{draw} () const 
+\item 
+virtual ngl\+::\+Vec3 \hyperlink{classRenderer_1_1Triangle_a40b6162167de14c18f0ec9233eb7e2ad}{sample} () const 
+\item 
+virtual ngl\+::\+Vec3 \hyperlink{classRenderer_1_1Triangle_adae4e94dc4c3b4e4ed844a222815f0a4}{get\+Normal} (ngl\+::\+Vec3 \+\_\+point) const 
+\item 
+ngl\+::\+Vec3 \hyperlink{classRenderer_1_1Triangle_a36f812846c8e2fcf5ced411f3e12812b}{get\+Tangent} () const 
+\item 
+\hyperlink{classRenderer_1_1Triangle_aa4d8804ea95f8d0a64681fd6eae0bd6c}{$\sim$\+Triangle} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classRenderer_1_1Triangle_a7053d2e8592075bc7a1c9bbdbf95ffdc}{}\index{Renderer\+::\+Triangle@{Renderer\+::\+Triangle}!Triangle@{Triangle}}
+\index{Triangle@{Triangle}!Renderer\+::\+Triangle@{Renderer\+::\+Triangle}}
+\subsubsection[{Triangle}]{\setlength{\rightskip}{0pt plus 5cm}Renderer\+::\+Triangle\+::\+Triangle (
+\begin{DoxyParamCaption}
+\item[{ngl\+::\+Vec3}]{\+\_\+v0, }
+\item[{ngl\+::\+Vec3}]{\+\_\+v1, }
+\item[{ngl\+::\+Vec3}]{\+\_\+v2, }
+\item[{const ngl\+::\+Mat4}]{\+\_\+to\+World\+Space, }
+\item[{const {\bf Material} \&}]{\+\_\+material, }
+\item[{bool}]{\+\_\+single\+Sided = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classRenderer_1_1Triangle_a7053d2e8592075bc7a1c9bbdbf95ffdc}
+\hypertarget{classRenderer_1_1Triangle_aa4d8804ea95f8d0a64681fd6eae0bd6c}{}\index{Renderer\+::\+Triangle@{Renderer\+::\+Triangle}!````~Triangle@{$\sim$\+Triangle}}
+\index{````~Triangle@{$\sim$\+Triangle}!Renderer\+::\+Triangle@{Renderer\+::\+Triangle}}
+\subsubsection[{$\sim$\+Triangle}]{\setlength{\rightskip}{0pt plus 5cm}Renderer\+::\+Triangle\+::$\sim$\+Triangle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classRenderer_1_1Triangle_aa4d8804ea95f8d0a64681fd6eae0bd6c}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classRenderer_1_1Triangle_a325a404a8c7b9bef234738dcb1caa19b}{}\index{Renderer\+::\+Triangle@{Renderer\+::\+Triangle}!draw@{draw}}
+\index{draw@{draw}!Renderer\+::\+Triangle@{Renderer\+::\+Triangle}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Renderer\+::\+Triangle\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{classRenderer_1_1Triangle_a325a404a8c7b9bef234738dcb1caa19b}
+
+
+Implements \hyperlink{classRenderer_1_1Primitive_a9ac7e1ff84d81f2a8f474cbaf36b41d0}{Renderer\+::\+Primitive}.
+
+\hypertarget{classRenderer_1_1Triangle_adae4e94dc4c3b4e4ed844a222815f0a4}{}\index{Renderer\+::\+Triangle@{Renderer\+::\+Triangle}!get\+Normal@{get\+Normal}}
+\index{get\+Normal@{get\+Normal}!Renderer\+::\+Triangle@{Renderer\+::\+Triangle}}
+\subsubsection[{get\+Normal}]{\setlength{\rightskip}{0pt plus 5cm}ngl\+::\+Vec3 Renderer\+::\+Triangle\+::get\+Normal (
+\begin{DoxyParamCaption}
+\item[{ngl\+::\+Vec3}]{\+\_\+point}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{classRenderer_1_1Triangle_adae4e94dc4c3b4e4ed844a222815f0a4}
+
+
+Implements \hyperlink{classRenderer_1_1Primitive_ade88d0252e3c0bd1f1ee81df35afca0a}{Renderer\+::\+Primitive}.
+
+\hypertarget{classRenderer_1_1Triangle_a36f812846c8e2fcf5ced411f3e12812b}{}\index{Renderer\+::\+Triangle@{Renderer\+::\+Triangle}!get\+Tangent@{get\+Tangent}}
+\index{get\+Tangent@{get\+Tangent}!Renderer\+::\+Triangle@{Renderer\+::\+Triangle}}
+\subsubsection[{get\+Tangent}]{\setlength{\rightskip}{0pt plus 5cm}ngl\+::\+Vec3 Renderer\+::\+Triangle\+::get\+Tangent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classRenderer_1_1Triangle_a36f812846c8e2fcf5ced411f3e12812b}
+\hypertarget{classRenderer_1_1Triangle_af9802d9321c1fcdeb3aae9364efd246c}{}\index{Renderer\+::\+Triangle@{Renderer\+::\+Triangle}!intersect@{intersect}}
+\index{intersect@{intersect}!Renderer\+::\+Triangle@{Renderer\+::\+Triangle}}
+\subsubsection[{intersect}]{\setlength{\rightskip}{0pt plus 5cm}bool Renderer\+::\+Triangle\+::intersect (
+\begin{DoxyParamCaption}
+\item[{const {\bf Ray} \&}]{\+\_\+ray, }
+\item[{{\bf Hit\+Data} \&}]{\+\_\+hit}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{classRenderer_1_1Triangle_af9802d9321c1fcdeb3aae9364efd246c}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000008}{Todo}]This doesn\textquotesingle{}t return the right value of t \end{DoxyRefDesc}
+
+
+Implements \hyperlink{classRenderer_1_1Primitive_a22f0a7845bbec672a363f39fac4daf5e}{Renderer\+::\+Primitive}.
+
+\hypertarget{classRenderer_1_1Triangle_a40b6162167de14c18f0ec9233eb7e2ad}{}\index{Renderer\+::\+Triangle@{Renderer\+::\+Triangle}!sample@{sample}}
+\index{sample@{sample}!Renderer\+::\+Triangle@{Renderer\+::\+Triangle}}
+\subsubsection[{sample}]{\setlength{\rightskip}{0pt plus 5cm}ngl\+::\+Vec3 Renderer\+::\+Triangle\+::sample (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{classRenderer_1_1Triangle_a40b6162167de14c18f0ec9233eb7e2ad}
+
+
+Implements \hyperlink{classRenderer_1_1Primitive_a203efa6754633a8559c441a4de603b2d}{Renderer\+::\+Primitive}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/raytracer/\hyperlink{triangle_8h}{triangle.\+h}\item 
+src/raytracer/\hyperlink{triangle_8cpp}{triangle.\+cpp}\end{DoxyCompactItemize}
