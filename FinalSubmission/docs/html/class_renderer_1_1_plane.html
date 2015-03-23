@@ -139,6 +139,7 @@ $(document).ready(function(){initNavTree('class_renderer_1_1_plane.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aed8859b010b215062f3d058356e4d345"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer_1_1_plane.html#aed8859b010b215062f3d058356e4d345">Plane</a> (ngl::Vec3 _p, ngl::Vec3 _x, ngl::Vec3 _y, const ngl::Mat4 &amp;_toWorldSpace, const <a class="el" href="struct_material.html">Material</a> &amp;_material)</td></tr>
+<tr class="memdesc:aed8859b010b215062f3d058356e4d345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Most of the implementation is heavily borrowed from this, but it is completely untested and isn't used right now (2 triangles are used to represent a plane instead, although the code may be easier to use with a specialised plane primitive Modified from :- Open Shading Language Test Render, ImageWorks [online]. [Accessed 2015]. Available from: <a href="https://github.com/imageworks/OpenShadingLanguage/blob/master/src/testrender/raytracer.h">https://github.com/imageworks/OpenShadingLanguage/blob/master/src/testrender/raytracer.h</a>.  <a href="#aed8859b010b215062f3d058356e4d345">More...</a><br /></td></tr>
 <tr class="separator:aed8859b010b215062f3d058356e4d345"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a180a33628429897332d5b96feea1660a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer_1_1_plane.html#a180a33628429897332d5b96feea1660a">~Plane</a> ()</td></tr>
 <tr class="separator:a180a33628429897332d5b96feea1660a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -207,7 +208,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="plane_8h_source.html#l00013">13</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
+<p>Definition at line <a class="el" href="plane_8h_source.html#l00011">11</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aed8859b010b215062f3d058356e4d345"></a>
 <div class="memitem">
@@ -251,24 +252,26 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00009">9</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
+<p>Most of the implementation is heavily borrowed from this, but it is completely untested and isn't used right now (2 triangles are used to represent a plane instead, although the code may be easier to use with a specialised plane primitive Modified from :- Open Shading Language Test Render, ImageWorks [online]. [Accessed 2015]. Available from: <a href="https://github.com/imageworks/OpenShadingLanguage/blob/master/src/testrender/raytracer.h">https://github.com/imageworks/OpenShadingLanguage/blob/master/src/testrender/raytracer.h</a>. </p>
 
-<p>References <a class="el" href="plane_8h_source.html#l00030">m_area</a>, <a class="el" href="plane_8h_source.html#l00026">m_normal</a>, <a class="el" href="plane_8h_source.html#l00027">m_p</a>, <a class="el" href="plane_8h_source.html#l00028">m_x</a>, and <a class="el" href="plane_8h_source.html#l00029">m_y</a>.</p>
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    : <a class="code" href="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513">Primitive</a>(_toWorldSpace, _material)</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">m_p</a> = _p;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">m_x</a> = _x;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">m_y</a> = _y;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a> = _x.cross(_y);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#a25ccf6132f2172cb8c2191aeacb65141">m_area</a> = <a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a>.length();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a>.normalize();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
-<div class="ttc" id="class_renderer_1_1_plane_html_a980d662f2c35ba4f8f24d48292837263"><div class="ttname"><a href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">Renderer::Plane::m_normal</a></div><div class="ttdeci">ngl::Vec3 m_normal</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00026">plane.h:26</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_a567aca454306ae9d55d601abf9c14b7c"><div class="ttname"><a href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">Renderer::Plane::m_p</a></div><div class="ttdeci">ngl::Vec3 m_p</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00027">plane.h:27</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_a25ccf6132f2172cb8c2191aeacb65141"><div class="ttname"><a href="class_renderer_1_1_plane.html#a25ccf6132f2172cb8c2191aeacb65141">Renderer::Plane::m_area</a></div><div class="ttdeci">float m_area</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00030">plane.h:30</a></div></div>
-<div class="ttc" id="class_renderer_1_1_primitive_html_aef85c08ccb6b189417433a81fa382513"><div class="ttname"><a href="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513">Renderer::Primitive::Primitive</a></div><div class="ttdeci">Primitive(const ngl::Mat4 &amp;_toWorldSpace, const Material &amp;_material)</div><div class="ttdoc">Primitive constructs the to world and to object transform matrices. </div><div class="ttdef"><b>Definition:</b> <a href="primitive_8cpp_source.html#l00019">primitive.cpp:19</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_afc4148cf6676acb39245db1fa6dc87e8"><div class="ttname"><a href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">Renderer::Plane::m_y</a></div><div class="ttdeci">ngl::Vec3 m_y</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00029">plane.h:29</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_ad4fcfc2dcdc16f83ebeba1b045fe782c"><div class="ttname"><a href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">Renderer::Plane::m_x</a></div><div class="ttdeci">ngl::Vec3 m_x</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00028">plane.h:28</a></div></div>
+<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00012">12</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
+
+<p>References <a class="el" href="plane_8h_source.html#l00028">m_area</a>, <a class="el" href="plane_8h_source.html#l00024">m_normal</a>, <a class="el" href="plane_8h_source.html#l00025">m_p</a>, <a class="el" href="plane_8h_source.html#l00026">m_x</a>, and <a class="el" href="plane_8h_source.html#l00027">m_y</a>.</p>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    : <a class="code" href="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513">Primitive</a>(_toWorldSpace, _material)</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">m_p</a> = _p;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">m_x</a> = _x;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">m_y</a> = _y;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a> = _x.cross(_y);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#a25ccf6132f2172cb8c2191aeacb65141">m_area</a> = <a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a>.length();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a>.normalize();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="ttc" id="class_renderer_1_1_plane_html_a980d662f2c35ba4f8f24d48292837263"><div class="ttname"><a href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">Renderer::Plane::m_normal</a></div><div class="ttdeci">ngl::Vec3 m_normal</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00024">plane.h:24</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_a567aca454306ae9d55d601abf9c14b7c"><div class="ttname"><a href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">Renderer::Plane::m_p</a></div><div class="ttdeci">ngl::Vec3 m_p</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00025">plane.h:25</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_a25ccf6132f2172cb8c2191aeacb65141"><div class="ttname"><a href="class_renderer_1_1_plane.html#a25ccf6132f2172cb8c2191aeacb65141">Renderer::Plane::m_area</a></div><div class="ttdeci">float m_area</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00028">plane.h:28</a></div></div>
+<div class="ttc" id="class_renderer_1_1_primitive_html_aef85c08ccb6b189417433a81fa382513"><div class="ttname"><a href="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513">Renderer::Primitive::Primitive</a></div><div class="ttdeci">Primitive(const ngl::Mat4 &amp;_toWorldSpace, const Material &amp;_material)</div><div class="ttdoc">Primitive constructs the to world and to object transform matrices. </div><div class="ttdef"><b>Definition:</b> <a href="primitive_8cpp_source.html#l00010">primitive.cpp:10</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_afc4148cf6676acb39245db1fa6dc87e8"><div class="ttname"><a href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">Renderer::Plane::m_y</a></div><div class="ttdeci">ngl::Vec3 m_y</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00027">plane.h:27</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_ad4fcfc2dcdc16f83ebeba1b045fe782c"><div class="ttname"><a href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">Renderer::Plane::m_x</a></div><div class="ttdeci">ngl::Vec3 m_x</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00026">plane.h:26</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -285,9 +288,9 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00043">43</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00046">46</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -317,10 +320,10 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_renderer_1_1_primitive.html#a9ac7e1ff84d81f2a8f474cbaf36b41d0">Renderer::Primitive</a>.</p>
 
-<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00079">79</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00082">82</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -357,13 +360,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_renderer_1_1_primitive.html#ade88d0252e3c0bd1f1ee81df35afca0a">Renderer::Primitive</a>.</p>
 
-<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00038">38</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00041">41</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
 
-<p>References <a class="el" href="plane_8h_source.html#l00026">m_normal</a>.</p>
-<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="ttc" id="class_renderer_1_1_plane_html_a980d662f2c35ba4f8f24d48292837263"><div class="ttname"><a href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">Renderer::Plane::m_normal</a></div><div class="ttdeci">ngl::Vec3 m_normal</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00026">plane.h:26</a></div></div>
+<p>References <a class="el" href="plane_8h_source.html#l00024">m_normal</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="ttc" id="class_renderer_1_1_plane_html_a980d662f2c35ba4f8f24d48292837263"><div class="ttname"><a href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">Renderer::Plane::m_normal</a></div><div class="ttdeci">ngl::Vec3 m_normal</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00024">plane.h:24</a></div></div>
 </div><!-- fragment -->
 <p><div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
@@ -422,46 +425,46 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_renderer_1_1_primitive.html#a22f0a7845bbec672a363f39fac4daf5e">Renderer::Primitive</a>.</p>
 
-<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00047">47</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00050">50</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
 
-<p>References <a class="el" href="plane_8cpp_source.html#l00038">getNormal()</a>, <a class="el" href="ray_8h_source.html#l00047">Renderer::Ray::m_direction</a>, <a class="el" href="primitive_8h_source.html#l00019">Renderer::HitData::m_distanceSqr</a>, <a class="el" href="plane_8h_source.html#l00026">m_normal</a>, <a class="el" href="primitive_8h_source.html#l00026">Renderer::HitData::m_object</a>, <a class="el" href="ray_8h_source.html#l00046">Renderer::Ray::m_origin</a>, <a class="el" href="plane_8h_source.html#l00027">m_p</a>, <a class="el" href="primitive_8h_source.html#l00018">Renderer::HitData::m_ray</a>, <a class="el" href="primitive_8h_source.html#l00024">Renderer::HitData::m_surfaceImpact</a>, <a class="el" href="primitive_8h_source.html#l00025">Renderer::HitData::m_surfaceNormal</a>, <a class="el" href="primitive_8h_source.html#l00020">Renderer::HitData::m_t</a>, <a class="el" href="primitive_8h_source.html#l00021">Renderer::HitData::m_u</a>, <a class="el" href="plane_8h_source.html#l00031">m_u</a>, <a class="el" href="primitive_8h_source.html#l00022">Renderer::HitData::m_v</a>, <a class="el" href="plane_8h_source.html#l00032">m_v</a>, <a class="el" href="plane_8h_source.html#l00028">m_x</a>, and <a class="el" href="plane_8h_source.html#l00029">m_y</a>.</p>
-<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">float</span> dn = _ray.m_direction.dot(<a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a>);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">float</span> en = (<a class="code" href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">m_p</a> - _ray.m_origin).dot(<a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span>(dn * en &gt; 0)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">float</span> t = en / dn;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        ngl::Vec3 h = _ray(t) - <a class="code" href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">m_p</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">float</span> dx = h.dot(<a class="code" href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">m_x</a>) * <a class="code" href="class_renderer_1_1_plane.html#aa64d0c360a616c75db94c15bb2f8162c">m_u</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">float</span> dy = h.dot(<a class="code" href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">m_y</a>) * <a class="code" href="class_renderer_1_1_plane.html#a4688cb8cd378d99808bbff11934e3a02">m_v</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span>( dx &gt;= 0 &amp;&amp; dx &lt; 1 &amp;&amp; dy &gt;= 0 &amp;&amp; dy &lt; 1)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            _hit.m_object = <span class="keyword">this</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            _hit.m_ray = _ray;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            _hit.m_t = t;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            _hit.m_surfaceImpact = _ray(t);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            _hit.m_surfaceNormal = <a class="code" href="class_renderer_1_1_plane.html#a134fb1ab85f0c9537edde96220edb014">getNormal</a>(_hit.m_surfaceImpact);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            _hit.m_distanceSqr =  _hit.m_surfaceImpact.lengthSquared() ;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="comment">// These UVs probably aren&#39;t correct</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            _hit.m_u = <a class="code" href="class_renderer_1_1_plane.html#aa64d0c360a616c75db94c15bb2f8162c">m_u</a>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            _hit.m_v = <a class="code" href="class_renderer_1_1_plane.html#a4688cb8cd378d99808bbff11934e3a02">m_v</a>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
-<div class="ttc" id="class_renderer_1_1_plane_html_a980d662f2c35ba4f8f24d48292837263"><div class="ttname"><a href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">Renderer::Plane::m_normal</a></div><div class="ttdeci">ngl::Vec3 m_normal</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00026">plane.h:26</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_a567aca454306ae9d55d601abf9c14b7c"><div class="ttname"><a href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">Renderer::Plane::m_p</a></div><div class="ttdeci">ngl::Vec3 m_p</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00027">plane.h:27</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_a4688cb8cd378d99808bbff11934e3a02"><div class="ttname"><a href="class_renderer_1_1_plane.html#a4688cb8cd378d99808bbff11934e3a02">Renderer::Plane::m_v</a></div><div class="ttdeci">float m_v</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00032">plane.h:32</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_a134fb1ab85f0c9537edde96220edb014"><div class="ttname"><a href="class_renderer_1_1_plane.html#a134fb1ab85f0c9537edde96220edb014">Renderer::Plane::getNormal</a></div><div class="ttdeci">virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const </div><div class="ttdoc">getNormal calculates the surface normal a certain point </div><div class="ttdef"><b>Definition:</b> <a href="plane_8cpp_source.html#l00038">plane.cpp:38</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_afc4148cf6676acb39245db1fa6dc87e8"><div class="ttname"><a href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">Renderer::Plane::m_y</a></div><div class="ttdeci">ngl::Vec3 m_y</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00029">plane.h:29</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_aa64d0c360a616c75db94c15bb2f8162c"><div class="ttname"><a href="class_renderer_1_1_plane.html#aa64d0c360a616c75db94c15bb2f8162c">Renderer::Plane::m_u</a></div><div class="ttdeci">float m_u</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00031">plane.h:31</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_ad4fcfc2dcdc16f83ebeba1b045fe782c"><div class="ttname"><a href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">Renderer::Plane::m_x</a></div><div class="ttdeci">ngl::Vec3 m_x</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00028">plane.h:28</a></div></div>
+<p>References <a class="el" href="plane_8cpp_source.html#l00041">getNormal()</a>, <a class="el" href="ray_8h_source.html#l00048">Renderer::Ray::m_direction</a>, <a class="el" href="primitive_8h_source.html#l00019">Renderer::HitData::m_distanceSqr</a>, <a class="el" href="plane_8h_source.html#l00024">m_normal</a>, <a class="el" href="primitive_8h_source.html#l00026">Renderer::HitData::m_object</a>, <a class="el" href="ray_8h_source.html#l00047">Renderer::Ray::m_origin</a>, <a class="el" href="plane_8h_source.html#l00025">m_p</a>, <a class="el" href="primitive_8h_source.html#l00018">Renderer::HitData::m_ray</a>, <a class="el" href="primitive_8h_source.html#l00024">Renderer::HitData::m_surfaceImpact</a>, <a class="el" href="primitive_8h_source.html#l00025">Renderer::HitData::m_surfaceNormal</a>, <a class="el" href="primitive_8h_source.html#l00020">Renderer::HitData::m_t</a>, <a class="el" href="primitive_8h_source.html#l00021">Renderer::HitData::m_u</a>, <a class="el" href="plane_8h_source.html#l00029">m_u</a>, <a class="el" href="primitive_8h_source.html#l00022">Renderer::HitData::m_v</a>, <a class="el" href="plane_8h_source.html#l00030">m_v</a>, <a class="el" href="plane_8h_source.html#l00026">m_x</a>, and <a class="el" href="plane_8h_source.html#l00027">m_y</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">float</span> dn = _ray.m_direction.dot(<a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">float</span> en = (<a class="code" href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">m_p</a> - _ray.m_origin).dot(<a class="code" href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">m_normal</a>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span>(dn * en &gt; 0)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">float</span> t = en / dn;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        ngl::Vec3 h = _ray(t) - <a class="code" href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">m_p</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">float</span> dx = h.dot(<a class="code" href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">m_x</a>) * <a class="code" href="class_renderer_1_1_plane.html#aa64d0c360a616c75db94c15bb2f8162c">m_u</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">float</span> dy = h.dot(<a class="code" href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">m_y</a>) * <a class="code" href="class_renderer_1_1_plane.html#a4688cb8cd378d99808bbff11934e3a02">m_v</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span>( dx &gt;= 0 &amp;&amp; dx &lt; 1 &amp;&amp; dy &gt;= 0 &amp;&amp; dy &lt; 1)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            _hit.m_object = <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            _hit.m_ray = _ray;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            _hit.m_t = t;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            _hit.m_surfaceImpact = _ray(t);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            _hit.m_surfaceNormal = <a class="code" href="class_renderer_1_1_plane.html#a134fb1ab85f0c9537edde96220edb014">getNormal</a>(_hit.m_surfaceImpact);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            _hit.m_distanceSqr =  _hit.m_surfaceImpact.lengthSquared() ;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="comment">// These UVs probably aren&#39;t correct</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            _hit.m_u = <a class="code" href="class_renderer_1_1_plane.html#aa64d0c360a616c75db94c15bb2f8162c">m_u</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            _hit.m_v = <a class="code" href="class_renderer_1_1_plane.html#a4688cb8cd378d99808bbff11934e3a02">m_v</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="ttc" id="class_renderer_1_1_plane_html_a980d662f2c35ba4f8f24d48292837263"><div class="ttname"><a href="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263">Renderer::Plane::m_normal</a></div><div class="ttdeci">ngl::Vec3 m_normal</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00024">plane.h:24</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_a567aca454306ae9d55d601abf9c14b7c"><div class="ttname"><a href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">Renderer::Plane::m_p</a></div><div class="ttdeci">ngl::Vec3 m_p</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00025">plane.h:25</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_a4688cb8cd378d99808bbff11934e3a02"><div class="ttname"><a href="class_renderer_1_1_plane.html#a4688cb8cd378d99808bbff11934e3a02">Renderer::Plane::m_v</a></div><div class="ttdeci">float m_v</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00030">plane.h:30</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_a134fb1ab85f0c9537edde96220edb014"><div class="ttname"><a href="class_renderer_1_1_plane.html#a134fb1ab85f0c9537edde96220edb014">Renderer::Plane::getNormal</a></div><div class="ttdeci">virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const </div><div class="ttdoc">getNormal calculates the surface normal a certain point </div><div class="ttdef"><b>Definition:</b> <a href="plane_8cpp_source.html#l00041">plane.cpp:41</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_afc4148cf6676acb39245db1fa6dc87e8"><div class="ttname"><a href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">Renderer::Plane::m_y</a></div><div class="ttdeci">ngl::Vec3 m_y</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00027">plane.h:27</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_aa64d0c360a616c75db94c15bb2f8162c"><div class="ttname"><a href="class_renderer_1_1_plane.html#aa64d0c360a616c75db94c15bb2f8162c">Renderer::Plane::m_u</a></div><div class="ttdeci">float m_u</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00029">plane.h:29</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_ad4fcfc2dcdc16f83ebeba1b045fe782c"><div class="ttname"><a href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">Renderer::Plane::m_x</a></div><div class="ttdeci">ngl::Vec3 m_x</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00026">plane.h:26</a></div></div>
 </div><!-- fragment -->
 <p><div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
@@ -502,28 +505,28 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_renderer_1_1_primitive.html#a203efa6754633a8559c441a4de603b2d">Renderer::Primitive</a>.</p>
 
-<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00020">20</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="plane_8cpp_source.html#l00023">23</a> of file <a class="el" href="plane_8cpp_source.html">plane.cpp</a>.</p>
 
-<p>References <a class="el" href="plane_8h_source.html#l00027">m_p</a>, <a class="el" href="plane_8h_source.html#l00028">m_x</a>, and <a class="el" href="plane_8h_source.html#l00029">m_y</a>.</p>
-<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    ngl::Random* rand = ngl::Random::instance();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// Unsure what these are meant to be, randomise all the things</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    ngl::Vec3 x = rand-&gt;getRandomVec3();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    ngl::Vec3 xi = rand-&gt;getRandomVec3();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    ngl::Vec3 yi = rand-&gt;getRandomVec3();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    ngl::Vec3 l = (<a class="code" href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">m_p</a> + xi * <a class="code" href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">m_x</a> + yi * <a class="code" href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">m_y</a>) - x;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">float</span> d2 = l.lengthSquared();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    l.normalize();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">//invpdf = m_area * fabsf(dir.dot(m_normal)) / d2;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> l;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-<div class="ttc" id="class_renderer_1_1_plane_html_a567aca454306ae9d55d601abf9c14b7c"><div class="ttname"><a href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">Renderer::Plane::m_p</a></div><div class="ttdeci">ngl::Vec3 m_p</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00027">plane.h:27</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_afc4148cf6676acb39245db1fa6dc87e8"><div class="ttname"><a href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">Renderer::Plane::m_y</a></div><div class="ttdeci">ngl::Vec3 m_y</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00029">plane.h:29</a></div></div>
-<div class="ttc" id="class_renderer_1_1_plane_html_ad4fcfc2dcdc16f83ebeba1b045fe782c"><div class="ttname"><a href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">Renderer::Plane::m_x</a></div><div class="ttdeci">ngl::Vec3 m_x</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00028">plane.h:28</a></div></div>
+<p>References <a class="el" href="plane_8h_source.html#l00025">m_p</a>, <a class="el" href="plane_8h_source.html#l00026">m_x</a>, and <a class="el" href="plane_8h_source.html#l00027">m_y</a>.</p>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    ngl::Random* rand = ngl::Random::instance();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// Unsure what these are meant to be, randomise all the things</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    ngl::Vec3 x = rand-&gt;getRandomVec3();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    ngl::Vec3 xi = rand-&gt;getRandomVec3();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    ngl::Vec3 yi = rand-&gt;getRandomVec3();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ngl::Vec3 l = (<a class="code" href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">m_p</a> + xi * <a class="code" href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">m_x</a> + yi * <a class="code" href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">m_y</a>) - x;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">float</span> d2 = l.lengthSquared();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    l.normalize();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//invpdf = m_area * fabsf(dir.dot(m_normal)) / d2;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> l;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="ttc" id="class_renderer_1_1_plane_html_a567aca454306ae9d55d601abf9c14b7c"><div class="ttname"><a href="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c">Renderer::Plane::m_p</a></div><div class="ttdeci">ngl::Vec3 m_p</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00025">plane.h:25</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_afc4148cf6676acb39245db1fa6dc87e8"><div class="ttname"><a href="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8">Renderer::Plane::m_y</a></div><div class="ttdeci">ngl::Vec3 m_y</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00027">plane.h:27</a></div></div>
+<div class="ttc" id="class_renderer_1_1_plane_html_ad4fcfc2dcdc16f83ebeba1b045fe782c"><div class="ttname"><a href="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c">Renderer::Plane::m_x</a></div><div class="ttdeci">ngl::Vec3 m_x</div><div class="ttdef"><b>Definition:</b> <a href="plane_8h_source.html#l00026">plane.h:26</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -546,7 +549,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plane_8h_source.html#l00030">30</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
+<p>Definition at line <a class="el" href="plane_8h_source.html#l00028">28</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
 
 </div>
 </div>
@@ -568,7 +571,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plane_8h_source.html#l00026">26</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
+<p>Definition at line <a class="el" href="plane_8h_source.html#l00024">24</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
 
 </div>
 </div>
@@ -590,7 +593,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plane_8h_source.html#l00027">27</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
+<p>Definition at line <a class="el" href="plane_8h_source.html#l00025">25</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
 
 </div>
 </div>
@@ -612,7 +615,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plane_8h_source.html#l00031">31</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
+<p>Definition at line <a class="el" href="plane_8h_source.html#l00029">29</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
 
 </div>
 </div>
@@ -634,7 +637,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plane_8h_source.html#l00032">32</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
+<p>Definition at line <a class="el" href="plane_8h_source.html#l00030">30</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
 
 </div>
 </div>
@@ -656,7 +659,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plane_8h_source.html#l00028">28</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
+<p>Definition at line <a class="el" href="plane_8h_source.html#l00026">26</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
 
 </div>
 </div>
@@ -678,7 +681,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="plane_8h_source.html#l00029">29</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
+<p>Definition at line <a class="el" href="plane_8h_source.html#l00027">27</a> of file <a class="el" href="plane_8h_source.html">plane.h</a>.</p>
 
 </div>
 </div>

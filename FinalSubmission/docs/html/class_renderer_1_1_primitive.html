@@ -223,13 +223,13 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="primitive_8cpp_source.html#l00019">19</a> of file <a class="el" href="primitive_8cpp_source.html">primitive.cpp</a>.</p>
+<p>Definition at line <a class="el" href="primitive_8cpp_source.html#l00010">10</a> of file <a class="el" href="primitive_8cpp_source.html">primitive.cpp</a>.</p>
 
 <p>References <a class="el" href="primitive_8h_source.html#l00120">m_toObjectSpace</a>, and <a class="el" href="primitive_8h_source.html#l00115">m_toWorldSpace</a>.</p>
-<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    : <a class="code" href="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4">m_toWorldSpace</a>(_toWorldSpace), <a class="code" href="class_renderer_1_1_primitive.html#a3c5f1dc45cf1c74402047a93007d9a3b">m_material</a>(_material)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">m_toObjectSpace</a> = <a class="code" href="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4">m_toWorldSpace</a>.inverse();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    : <a class="code" href="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4">m_toWorldSpace</a>(_toWorldSpace), <a class="code" href="class_renderer_1_1_primitive.html#a3c5f1dc45cf1c74402047a93007d9a3b">m_material</a>(_material)</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">m_toObjectSpace</a> = <a class="code" href="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4">m_toWorldSpace</a>.inverse();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
 <div class="ttc" id="class_renderer_1_1_primitive_html_a3c5f1dc45cf1c74402047a93007d9a3b"><div class="ttname"><a href="class_renderer_1_1_primitive.html#a3c5f1dc45cf1c74402047a93007d9a3b">Renderer::Primitive::m_material</a></div><div class="ttdeci">Material m_material</div><div class="ttdef"><b>Definition:</b> <a href="primitive_8h_source.html#l00122">primitive.h:122</a></div></div>
 <div class="ttc" id="class_renderer_1_1_primitive_html_a14b4a25d610a4af486935efff6d85a3c"><div class="ttname"><a href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">Renderer::Primitive::m_toObjectSpace</a></div><div class="ttdeci">ngl::Mat4 m_toObjectSpace</div><div class="ttdoc">m_toObjectSpace stores the world space to object space transformation matrix for this primitive...</div><div class="ttdef"><b>Definition:</b> <a href="primitive_8h_source.html#l00120">primitive.h:120</a></div></div>
 <div class="ttc" id="class_renderer_1_1_primitive_html_a165cf73028170dd26e253a35ca3f75e4"><div class="ttname"><a href="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4">Renderer::Primitive::m_toWorldSpace</a></div><div class="ttdeci">ngl::Mat4 m_toWorldSpace</div><div class="ttdoc">m_toWorldSpace stores the object space to world space transformation matrix for this primitive...</div><div class="ttdef"><b>Definition:</b> <a href="primitive_8h_source.html#l00115">primitive.h:115</a></div></div>
@@ -488,30 +488,22 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Definition at line <a class="el" href="primitive_8cpp_source.html#l00031">31</a> of file <a class="el" href="primitive_8cpp_source.html">primitive.cpp</a>.</p>
+<p>Definition at line <a class="el" href="primitive_8cpp_source.html#l00022">22</a> of file <a class="el" href="primitive_8cpp_source.html">primitive.cpp</a>.</p>
 
-<p>References <a class="el" href="ray_8h_source.html#l00047">Renderer::Ray::m_direction</a>, <a class="el" href="ray_8h_source.html#l00046">Renderer::Ray::m_origin</a>, <a class="el" href="ray_8h_source.html#l00055">Renderer::Ray::m_tmax</a>, <a class="el" href="ray_8h_source.html#l00054">Renderer::Ray::m_tmin</a>, <a class="el" href="primitive_8h_source.html#l00120">m_toObjectSpace</a>, <a class="el" href="ray_8h_source.html#l00057">Renderer::Ray::m_type</a>, <a class="el" href="tracemath_8cpp_source.html#l00064">transformNormal()</a>, and <a class="el" href="tracemath_8cpp_source.html#l00053">transformPosition()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">/* To get correct object intersections the ray must also be transformed</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">     * to match the primitive&#39;s transform/scale.</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">     * The primitive is transformed in world space, but as the ray is already in world space</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">     * it must be transformed by the inverse (object space) to match the primitive&#39;s transforms.</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ngl::Vec3 rayOrigin = <a class="code" href="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45">transformPosition</a>(_ray.m_origin, <a class="code" href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">m_toObjectSpace</a>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    ngl::Vec3 rayDirection = <a class="code" href="tracemath_8cpp.html#a6400b711aeed0a6ff4cd2d8006c4cea8">transformNormal</a>(_ray.m_direction , <a class="code" href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">m_toObjectSpace</a>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">//    ngl::Mat4 tmp = m_toObjectSpace;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">//    tmp.transpose();</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">//    ngl::Vec3 rayOrigin = ngl::Vec4( tmp * ngl::Vec4(_ray.m_origin)).toVec3();;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">//    ngl::Vec3 rayDirection = ngl::Vec4( m_toObjectSpace * ngl::Vec4(_ray.m_direction)).toVec3(); // Apply world transforms to ray direction</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">//    //rayOrigin.normalize();</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//    rayDirection.normalize();</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> Ray(rayOrigin, rayDirection, _ray.m_type, _ray.m_tmin, _ray.m_tmax);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<p>References <a class="el" href="ray_8h_source.html#l00048">Renderer::Ray::m_direction</a>, <a class="el" href="ray_8h_source.html#l00047">Renderer::Ray::m_origin</a>, <a class="el" href="ray_8h_source.html#l00056">Renderer::Ray::m_tmax</a>, <a class="el" href="ray_8h_source.html#l00055">Renderer::Ray::m_tmin</a>, <a class="el" href="primitive_8h_source.html#l00120">m_toObjectSpace</a>, <a class="el" href="ray_8h_source.html#l00058">Renderer::Ray::m_type</a>, <a class="el" href="tracemath_8cpp_source.html#l00064">transformNormal()</a>, and <a class="el" href="tracemath_8cpp_source.html#l00053">transformPosition()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">/* To get correct object intersections the ray must also be transformed</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">     * to match the primitive&#39;s transform/scale.</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">     * The primitive is transformed in world space, but as the ray is already in world space</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">     * it must be transformed by the inverse (object space) to match the primitive&#39;s transforms.</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    ngl::Vec3 rayOrigin = <a class="code" href="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45">transformPosition</a>(_ray.m_origin, <a class="code" href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">m_toObjectSpace</a>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    ngl::Vec3 rayDirection = <a class="code" href="tracemath_8cpp.html#a6400b711aeed0a6ff4cd2d8006c4cea8">transformNormal</a>(_ray.m_direction , <a class="code" href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">m_toObjectSpace</a>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> Ray(rayOrigin, rayDirection, _ray.m_type, _ray.m_tmin, _ray.m_tmax);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
 <div class="ttc" id="class_renderer_1_1_primitive_html_a14b4a25d610a4af486935efff6d85a3c"><div class="ttname"><a href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">Renderer::Primitive::m_toObjectSpace</a></div><div class="ttdeci">ngl::Mat4 m_toObjectSpace</div><div class="ttdoc">m_toObjectSpace stores the world space to object space transformation matrix for this primitive...</div><div class="ttdef"><b>Definition:</b> <a href="primitive_8h_source.html#l00120">primitive.h:120</a></div></div>
 <div class="ttc" id="tracemath_8cpp_html_a70d4019cedd59fd08c763a06b47b2d45"><div class="ttname"><a href="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45">transformPosition</a></div><div class="ttdeci">ngl::Vec3 transformPosition(const ngl::Vec3 &amp;_point, const ngl::Mat4 &amp;_transform)</div><div class="ttdoc">transformPosition transforms a point vector by a transform matrix </div><div class="ttdef"><b>Definition:</b> <a href="tracemath_8cpp_source.html#l00053">tracemath.cpp:53</a></div></div>
 <div class="ttc" id="tracemath_8cpp_html_a6400b711aeed0a6ff4cd2d8006c4cea8"><div class="ttname"><a href="tracemath_8cpp.html#a6400b711aeed0a6ff4cd2d8006c4cea8">transformNormal</a></div><div class="ttdeci">ngl::Vec3 transformNormal(const ngl::Vec3 &amp;_normal, const ngl::Mat4 &amp;_transform)</div><div class="ttdoc">transformNormal </div><div class="ttdef"><b>Definition:</b> <a href="tracemath_8cpp_source.html#l00064">tracemath.cpp:64</a></div></div>
@@ -560,30 +552,22 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Definition at line <a class="el" href="primitive_8cpp_source.html#l00059">59</a> of file <a class="el" href="primitive_8cpp_source.html">primitive.cpp</a>.</p>
+<p>Definition at line <a class="el" href="primitive_8cpp_source.html#l00042">42</a> of file <a class="el" href="primitive_8cpp_source.html">primitive.cpp</a>.</p>
 
-<p>References <a class="el" href="ray_8h_source.html#l00047">Renderer::Ray::m_direction</a>, <a class="el" href="ray_8h_source.html#l00046">Renderer::Ray::m_origin</a>, <a class="el" href="ray_8h_source.html#l00055">Renderer::Ray::m_tmax</a>, <a class="el" href="ray_8h_source.html#l00054">Renderer::Ray::m_tmin</a>, <a class="el" href="primitive_8h_source.html#l00115">m_toWorldSpace</a>, <a class="el" href="ray_8h_source.html#l00057">Renderer::Ray::m_type</a>, <a class="el" href="tracemath_8cpp_source.html#l00064">transformNormal()</a>, and <a class="el" href="tracemath_8cpp_source.html#l00053">transformPosition()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">/* To get correct object intersections the ray must also be transformed</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">     * to match the primitive&#39;s transform/scale.</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">     *</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">     * The primitive is transformed in world space, but as the ray is already in world space</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">     * it must be transformed by the inverse (object space) to match the primitive&#39;s transforms.</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    ngl::Vec3 rayOrigin = <a class="code" href="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45">transformPosition</a>(_ray.m_origin, <a class="code" href="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4">m_toWorldSpace</a>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    ngl::Vec3 rayDirection = <a class="code" href="tracemath_8cpp.html#a6400b711aeed0a6ff4cd2d8006c4cea8">transformNormal</a>(_ray.m_direction , <a class="code" href="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4">m_toWorldSpace</a>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">//    ngl::Mat4 tmp = m_toWorldSpace;</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">//    tmp.transpose();</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">//    ngl::Vec3 rayOrigin = ngl::Vec4( tmp * ngl::Vec4(_ray.m_origin)).toVec3();;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">//    ngl::Vec3 rayDirection = ngl::Vec4( m_toWorldSpace * ngl::Vec4(_ray.m_direction)).toVec3(); // Apply world transforms to ray direction</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">//rayOrigin.normalize();</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">//    rayDirection.normalize();</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> Ray(rayOrigin, rayDirection, _ray.m_type, _ray.m_tmin, _ray.m_tmax);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<p>References <a class="el" href="ray_8h_source.html#l00048">Renderer::Ray::m_direction</a>, <a class="el" href="ray_8h_source.html#l00047">Renderer::Ray::m_origin</a>, <a class="el" href="ray_8h_source.html#l00056">Renderer::Ray::m_tmax</a>, <a class="el" href="ray_8h_source.html#l00055">Renderer::Ray::m_tmin</a>, <a class="el" href="primitive_8h_source.html#l00115">m_toWorldSpace</a>, <a class="el" href="ray_8h_source.html#l00058">Renderer::Ray::m_type</a>, <a class="el" href="tracemath_8cpp_source.html#l00064">transformNormal()</a>, and <a class="el" href="tracemath_8cpp_source.html#l00053">transformPosition()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">/* To get correct object intersections the ray must also be transformed</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">     * to match the primitive&#39;s transform/scale.</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">     *</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">     * The primitive is transformed in world space, but as the ray is already in world space</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">     * it must be transformed by the inverse (object space) to match the primitive&#39;s transforms.</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    ngl::Vec3 rayOrigin = <a class="code" href="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45">transformPosition</a>(_ray.m_origin, <a class="code" href="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4">m_toWorldSpace</a>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    ngl::Vec3 rayDirection = <a class="code" href="tracemath_8cpp.html#a6400b711aeed0a6ff4cd2d8006c4cea8">transformNormal</a>(_ray.m_direction , <a class="code" href="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4">m_toWorldSpace</a>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> Ray(rayOrigin, rayDirection, _ray.m_type, _ray.m_tmin, _ray.m_tmax);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="ttc" id="tracemath_8cpp_html_a70d4019cedd59fd08c763a06b47b2d45"><div class="ttname"><a href="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45">transformPosition</a></div><div class="ttdeci">ngl::Vec3 transformPosition(const ngl::Vec3 &amp;_point, const ngl::Mat4 &amp;_transform)</div><div class="ttdoc">transformPosition transforms a point vector by a transform matrix </div><div class="ttdef"><b>Definition:</b> <a href="tracemath_8cpp_source.html#l00053">tracemath.cpp:53</a></div></div>
 <div class="ttc" id="class_renderer_1_1_primitive_html_a165cf73028170dd26e253a35ca3f75e4"><div class="ttname"><a href="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4">Renderer::Primitive::m_toWorldSpace</a></div><div class="ttdeci">ngl::Mat4 m_toWorldSpace</div><div class="ttdoc">m_toWorldSpace stores the object space to world space transformation matrix for this primitive...</div><div class="ttdef"><b>Definition:</b> <a href="primitive_8h_source.html#l00115">primitive.h:115</a></div></div>
 <div class="ttc" id="tracemath_8cpp_html_a6400b711aeed0a6ff4cd2d8006c4cea8"><div class="ttname"><a href="tracemath_8cpp.html#a6400b711aeed0a6ff4cd2d8006c4cea8">transformNormal</a></div><div class="ttdeci">ngl::Vec3 transformNormal(const ngl::Vec3 &amp;_normal, const ngl::Mat4 &amp;_transform)</div><div class="ttdoc">transformNormal </div><div class="ttdef"><b>Definition:</b> <a href="tracemath_8cpp_source.html#l00064">tracemath.cpp:64</a></div></div>

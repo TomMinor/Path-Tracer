@@ -36,8 +36,10 @@ namespace Renderer
           ngl::Vec3 direction = shadowOrigin - shadowEnd;
           direction.normalize();
 
-          // Don't bother with checking objects in the scene if the surface normal & light direction are in opposing directions
-          // http://www.ics.uci.edu/~gopi/CS211B/RayTracing%20tutorial.pdf pg 8
+          /// @brief Don't bother with checking objects in the scene if the surface normal & light direction are in opposing directions
+          /// Modified from :-
+          /// Codermind team, Ray Tracing Tutorial [online].
+          /// [Accessed 2015]. Available from: <http://www.ics.uci.edu/~gopi/CS211B/RayTracing%20tutorial.pdf> Pg 8.
           if(_context->m_hit.m_object->getNormal(shadowOrigin).dot(direction) <= 0.f)
           {
               continue;
@@ -175,8 +177,10 @@ namespace Renderer
     // Convert world origin to camera's world space
     ngl::Vec3 rayOrigin = (ngl::Vec4() * _context->m_renderCamera->getWorldSpaceMatrix()).toVec3();
 
-    // Much improved performance (even without using threads)
-    // http://www.iquilezles.org/www/articles/cputiles/cputiles.htm
+    /// @brief Much improved performance (even without using threads)
+    /// Modified from :-
+    /// Iñigo Quílez, Tile Rendering [online].
+    /// [Accessed 2015]. Available from: <http://www.iquilezles.org/www/articles/cputiles/cputiles.htm>.
     const int tilesize = 8;
 
     const int numxtiles = _context->m_imageWidth / tilesize;

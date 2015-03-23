@@ -8,7 +8,8 @@ namespace Renderer
 {
 
 ///
-/// \brief The Ray struct represents a direction starting from an origin point, it used as a camera, shadow, reflection and refraction ray depending on the space it is currently transformed to
+/// \brief The Ray struct represents a direction starting from an origin point,
+/// it used as a camera, shadow, reflection and refraction ray depending on the space it is currently transformed to
 ///
 struct Ray
 {

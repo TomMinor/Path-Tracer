@@ -4,8 +4,11 @@
 namespace Renderer
 {
 
-// Heavily borrowed from https://github.com/imageworks/OpenShadingLanguage/blob/master/src/testrender/raytracer.h
-
+/// @brief Most of the implementation is heavily borrowed from this, but it is completely untested and isn't used right now
+/// (2 triangles are used to represent a plane instead, although the code may be easier to use with a specialised plane primitive
+/// Modified from :-
+/// Open Shading Language Test Render, ImageWorks [online].
+/// [Accessed 2015]. Available from: <https://github.com/imageworks/OpenShadingLanguage/blob/master/src/testrender/raytracer.h>.
 Plane::Plane(ngl::Vec3 _p, ngl::Vec3 _x, ngl::Vec3 _y, const ngl::Mat4 &_toWorldSpace, const Material& _material)
     : Primitive(_toWorldSpace, _material)
 {

@@ -7,7 +7,7 @@ digraph "Renderer::SceneFile::parseTriangle"
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="Renderer::SceneFile\l::parseColour",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_scene_file.html#ad278fe4d9ffdd2018607836d8777f4ea",tooltip="parseColour Parses a stream of tokens and extracts the r,g,b colour values "];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="tokenToFloat",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_string_utils_8cpp.html#ab602aec05d401dc633003bf507e9db8c"];
+  Node3 [label="tokenToFloat",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_string_utils_8cpp.html#ab602aec05d401dc633003bf507e9db8c",tooltip="tokenToFloat converts a string to a float "];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="Renderer::SceneFile\l::parseMaterialType",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_renderer_1_1_scene_file.html#afdfcfbdb80511cc22f4287a8c8515f0f",tooltip="parseMaterialType Reads a token to find out the material type "];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

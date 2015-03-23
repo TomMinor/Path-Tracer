@@ -30,11 +30,22 @@ public:
 
     virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const;
 
-    //http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf pg 17
+
+    /// @brief Tangent Sphere (unused)
+    /// Modified from :-
+    /// Philip Dutré (September 29, 2003). Global Illumination Compendium [online].
+    /// [Accessed 2015]. Available from: <http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf> (page 17).
     ngl::Vec3 tangentSphere(const ngl::Vec3 _point, const ngl::Vec3 _direction) const;
 
 private:
+    ///
+    /// \brief m_radius
+    ///
     float m_radius;
+
+    ///
+    /// \brief m_squaredRadius is the squared radius
+    ///
     float m_squaredRadius;
 
 };

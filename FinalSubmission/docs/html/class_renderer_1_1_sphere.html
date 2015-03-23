@@ -151,12 +151,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:addc6c6ef784badc0065ef827d1edda7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws the primitive in the 3d visualisation  <a href="#addc6c6ef784badc0065ef827d1edda7f">More...</a><br /></td></tr>
 <tr class="separator:addc6c6ef784badc0065ef827d1edda7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63986b9167dd275192e87cc3c578d91a"><td class="memItemLeft" align="right" valign="top">virtual ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer_1_1_sphere.html#a63986b9167dd275192e87cc3c578d91a">sample</a> () const </td></tr>
-<tr class="memdesc:a63986b9167dd275192e87cc3c578d91a"><td class="mdescLeft">&#160;</td><td class="mdescRight">samples a point on the surface, used for lighting  <a href="#a63986b9167dd275192e87cc3c578d91a">More...</a><br /></td></tr>
+<tr class="memdesc:a63986b9167dd275192e87cc3c578d91a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_renderer_1_1_sphere.html" title="The Sphere class represents a sphere defined by a radius and transform. ">Sphere</a> sampling Modified from :- Philip Dutré (September 29, 2003). Global Illumination Compendium [online]. [Accessed 2015]. Available from: <a href="http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf">http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf</a> (page 17).  <a href="#a63986b9167dd275192e87cc3c578d91a">More...</a><br /></td></tr>
 <tr class="separator:a63986b9167dd275192e87cc3c578d91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a25c8561b372c717b03ab1696473b73"><td class="memItemLeft" align="right" valign="top">virtual ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer_1_1_sphere.html#a9a25c8561b372c717b03ab1696473b73">getNormal</a> (ngl::Vec3 _point) const </td></tr>
 <tr class="memdesc:a9a25c8561b372c717b03ab1696473b73"><td class="mdescLeft">&#160;</td><td class="mdescRight">getNormal calculates the surface normal a certain point  <a href="#a9a25c8561b372c717b03ab1696473b73">More...</a><br /></td></tr>
 <tr class="separator:a9a25c8561b372c717b03ab1696473b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e60080d349a95c18e29bd3e2f0f3819"><td class="memItemLeft" align="right" valign="top">ngl::Vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer_1_1_sphere.html#a1e60080d349a95c18e29bd3e2f0f3819">tangentSphere</a> (const ngl::Vec3 _point, const ngl::Vec3 _direction) const </td></tr>
+<tr class="memdesc:a1e60080d349a95c18e29bd3e2f0f3819"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tangent <a class="el" href="class_renderer_1_1_sphere.html" title="The Sphere class represents a sphere defined by a radius and transform. ">Sphere</a> (unused) Modified from :- Philip Dutré (September 29, 2003). Global Illumination Compendium [online]. [Accessed 2015]. Available from: <a href="http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf">http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf</a> (page 17).  <a href="#a1e60080d349a95c18e29bd3e2f0f3819">More...</a><br /></td></tr>
 <tr class="separator:a1e60080d349a95c18e29bd3e2f0f3819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_renderer_1_1_primitive"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_renderer_1_1_primitive')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_renderer_1_1_primitive.html">Renderer::Primitive</a></td></tr>
 <tr class="memitem:aef85c08ccb6b189417433a81fa382513 inherit pub_methods_class_renderer_1_1_primitive"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513">Primitive</a> (const ngl::Mat4 &amp;_toWorldSpace, const <a class="el" href="struct_material.html">Material</a> &amp;_material)</td></tr>
@@ -183,8 +184,10 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ad562c80f7df13edadaaadab089f36a20"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">m_radius</a></td></tr>
+<tr class="memdesc:ad562c80f7df13edadaaadab089f36a20"><td class="mdescLeft">&#160;</td><td class="mdescRight">m_radius  <a href="#ad562c80f7df13edadaaadab089f36a20">More...</a><br /></td></tr>
 <tr class="separator:ad562c80f7df13edadaaadab089f36a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaebd2870643f080b0b41accbeac8e55a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renderer_1_1_sphere.html#aaebd2870643f080b0b41accbeac8e55a">m_squaredRadius</a></td></tr>
+<tr class="memdesc:aaebd2870643f080b0b41accbeac8e55a"><td class="mdescLeft">&#160;</td><td class="mdescRight">m_squaredRadius is the squared radius  <a href="#aaebd2870643f080b0b41accbeac8e55a">More...</a><br /></td></tr>
 <tr class="separator:aaebd2870643f080b0b41accbeac8e55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -255,9 +258,9 @@ Additional Inherited Members</h2></td></tr>
 <p>Definition at line <a class="el" href="sphere_8h_source.html#l00021">21</a> of file <a class="el" href="sphere_8h_source.html">sphere.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        : <a class="code" href="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513">Primitive</a>(_toWorldSpace, _material), <a class="code" href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">m_radius</a>(_radius), <a class="code" href="class_renderer_1_1_sphere.html#aaebd2870643f080b0b41accbeac8e55a">m_squaredRadius</a>(_radius * _radius)</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {;}</div>
-<div class="ttc" id="class_renderer_1_1_sphere_html_ad562c80f7df13edadaaadab089f36a20"><div class="ttname"><a href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">Renderer::Sphere::m_radius</a></div><div class="ttdeci">float m_radius</div><div class="ttdef"><b>Definition:</b> <a href="sphere_8h_source.html#l00037">sphere.h:37</a></div></div>
-<div class="ttc" id="class_renderer_1_1_primitive_html_aef85c08ccb6b189417433a81fa382513"><div class="ttname"><a href="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513">Renderer::Primitive::Primitive</a></div><div class="ttdeci">Primitive(const ngl::Mat4 &amp;_toWorldSpace, const Material &amp;_material)</div><div class="ttdoc">Primitive constructs the to world and to object transform matrices. </div><div class="ttdef"><b>Definition:</b> <a href="primitive_8cpp_source.html#l00019">primitive.cpp:19</a></div></div>
-<div class="ttc" id="class_renderer_1_1_sphere_html_aaebd2870643f080b0b41accbeac8e55a"><div class="ttname"><a href="class_renderer_1_1_sphere.html#aaebd2870643f080b0b41accbeac8e55a">Renderer::Sphere::m_squaredRadius</a></div><div class="ttdeci">float m_squaredRadius</div><div class="ttdef"><b>Definition:</b> <a href="sphere_8h_source.html#l00038">sphere.h:38</a></div></div>
+<div class="ttc" id="class_renderer_1_1_sphere_html_ad562c80f7df13edadaaadab089f36a20"><div class="ttname"><a href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">Renderer::Sphere::m_radius</a></div><div class="ttdeci">float m_radius</div><div class="ttdoc">m_radius </div><div class="ttdef"><b>Definition:</b> <a href="sphere_8h_source.html#l00044">sphere.h:44</a></div></div>
+<div class="ttc" id="class_renderer_1_1_primitive_html_aef85c08ccb6b189417433a81fa382513"><div class="ttname"><a href="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513">Renderer::Primitive::Primitive</a></div><div class="ttdeci">Primitive(const ngl::Mat4 &amp;_toWorldSpace, const Material &amp;_material)</div><div class="ttdoc">Primitive constructs the to world and to object transform matrices. </div><div class="ttdef"><b>Definition:</b> <a href="primitive_8cpp_source.html#l00010">primitive.cpp:10</a></div></div>
+<div class="ttc" id="class_renderer_1_1_sphere_html_aaebd2870643f080b0b41accbeac8e55a"><div class="ttname"><a href="class_renderer_1_1_sphere.html#aaebd2870643f080b0b41accbeac8e55a">Renderer::Sphere::m_squaredRadius</a></div><div class="ttdeci">float m_squaredRadius</div><div class="ttdoc">m_squaredRadius is the squared radius </div><div class="ttdef"><b>Definition:</b> <a href="sphere_8h_source.html#l00049">sphere.h:49</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -287,13 +290,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_renderer_1_1_primitive.html#a9ac7e1ff84d81f2a8f474cbaf36b41d0">Renderer::Primitive</a>.</p>
 
-<p>Definition at line <a class="el" href="sphere_8cpp_source.html#l00089">89</a> of file <a class="el" href="sphere_8cpp_source.html">sphere.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">//glCullFace(GL_FRONT);</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    prim-&gt;draw(<span class="stringliteral">&quot;sphere&quot;</span>);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">//glCullFace(GL_BACK);</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<p>Definition at line <a class="el" href="sphere_8cpp_source.html#l00093">93</a> of file <a class="el" href="sphere_8cpp_source.html">sphere.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">//glCullFace(GL_FRONT);</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    ngl::VAOPrimitives *prim=ngl::VAOPrimitives::instance();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    prim-&gt;draw(<span class="stringliteral">&quot;sphere&quot;</span>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">//glCullFace(GL_BACK);</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -413,7 +416,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Definition at line <a class="el" href="sphere_8cpp_source.html#l00028">28</a> of file <a class="el" href="sphere_8cpp_source.html">sphere.cpp</a>.</p>
 
-<p>References <a class="el" href="primitive_8h_source.html#l00033">Renderer::EPSILON</a>, <a class="el" href="sphere_8cpp_source.html#l00018">getNormal()</a>, <a class="el" href="ray_8h_source.html#l00047">Renderer::Ray::m_direction</a>, <a class="el" href="primitive_8h_source.html#l00026">Renderer::HitData::m_object</a>, <a class="el" href="ray_8h_source.html#l00046">Renderer::Ray::m_origin</a>, <a class="el" href="primitive_8h_source.html#l00018">Renderer::HitData::m_ray</a>, <a class="el" href="sphere_8h_source.html#l00038">m_squaredRadius</a>, <a class="el" href="primitive_8h_source.html#l00024">Renderer::HitData::m_surfaceImpact</a>, <a class="el" href="primitive_8h_source.html#l00025">Renderer::HitData::m_surfaceNormal</a>, <a class="el" href="primitive_8h_source.html#l00020">Renderer::HitData::m_t</a>, <a class="el" href="primitive_8h_source.html#l00021">Renderer::HitData::m_u</a>, <a class="el" href="primitive_8h_source.html#l00022">Renderer::HitData::m_v</a>, <a class="el" href="primitive_8h_source.html#l00023">Renderer::HitData::m_w</a>, and <a class="el" href="tracemath_8cpp_source.html#l00004">SolveQuadratic()</a>.</p>
+<p>References <a class="el" href="primitive_8h_source.html#l00033">Renderer::EPSILON</a>, <a class="el" href="sphere_8cpp_source.html#l00018">getNormal()</a>, <a class="el" href="ray_8h_source.html#l00048">Renderer::Ray::m_direction</a>, <a class="el" href="primitive_8h_source.html#l00026">Renderer::HitData::m_object</a>, <a class="el" href="ray_8h_source.html#l00047">Renderer::Ray::m_origin</a>, <a class="el" href="primitive_8h_source.html#l00018">Renderer::HitData::m_ray</a>, <a class="el" href="sphere_8h_source.html#l00049">m_squaredRadius</a>, <a class="el" href="primitive_8h_source.html#l00024">Renderer::HitData::m_surfaceImpact</a>, <a class="el" href="primitive_8h_source.html#l00025">Renderer::HitData::m_surfaceNormal</a>, <a class="el" href="primitive_8h_source.html#l00020">Renderer::HitData::m_t</a>, <a class="el" href="primitive_8h_source.html#l00021">Renderer::HitData::m_u</a>, <a class="el" href="primitive_8h_source.html#l00022">Renderer::HitData::m_v</a>, <a class="el" href="primitive_8h_source.html#l00023">Renderer::HitData::m_w</a>, and <a class="el" href="tracemath_8cpp_source.html#l00004">SolveQuadratic()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">const</span> ngl::Vec3 rayDirection = _ray.m_direction;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">const</span> ngl::Vec3 rayOrigin = _ray.m_origin;</div>
@@ -453,7 +456,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="ttc" id="tracemath_8cpp_html_a69ce87f2be8257a30cb1d2998f0d8e9c"><div class="ttname"><a href="tracemath_8cpp.html#a69ce87f2be8257a30cb1d2998f0d8e9c">SolveQuadratic</a></div><div class="ttdeci">bool SolveQuadratic(float _a, float _b, float _c, float &amp;o_x0, float &amp;o_x1)</div><div class="ttdoc">SolveQuadratic. </div><div class="ttdef"><b>Definition:</b> <a href="tracemath_8cpp_source.html#l00004">tracemath.cpp:4</a></div></div>
 <div class="ttc" id="namespace_renderer_html_ad0639ed60b8a49b3a6b0526def7f1bb2"><div class="ttname"><a href="namespace_renderer.html#ad0639ed60b8a49b3a6b0526def7f1bb2">Renderer::EPSILON</a></div><div class="ttdeci">const double EPSILON</div><div class="ttdef"><b>Definition:</b> <a href="primitive_8h_source.html#l00033">primitive.h:33</a></div></div>
-<div class="ttc" id="class_renderer_1_1_sphere_html_aaebd2870643f080b0b41accbeac8e55a"><div class="ttname"><a href="class_renderer_1_1_sphere.html#aaebd2870643f080b0b41accbeac8e55a">Renderer::Sphere::m_squaredRadius</a></div><div class="ttdeci">float m_squaredRadius</div><div class="ttdef"><b>Definition:</b> <a href="sphere_8h_source.html#l00038">sphere.h:38</a></div></div>
+<div class="ttc" id="class_renderer_1_1_sphere_html_aaebd2870643f080b0b41accbeac8e55a"><div class="ttname"><a href="class_renderer_1_1_sphere.html#aaebd2870643f080b0b41accbeac8e55a">Renderer::Sphere::m_squaredRadius</a></div><div class="ttdeci">float m_squaredRadius</div><div class="ttdoc">m_squaredRadius is the squared radius </div><div class="ttdef"><b>Definition:</b> <a href="sphere_8h_source.html#l00049">sphere.h:49</a></div></div>
 <div class="ttc" id="class_renderer_1_1_sphere_html_a9a25c8561b372c717b03ab1696473b73"><div class="ttname"><a href="class_renderer_1_1_sphere.html#a9a25c8561b372c717b03ab1696473b73">Renderer::Sphere::getNormal</a></div><div class="ttdeci">virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const </div><div class="ttdoc">getNormal calculates the surface normal a certain point </div><div class="ttdef"><b>Definition:</b> <a href="sphere_8cpp_source.html#l00018">sphere.cpp:18</a></div></div>
 </div><!-- fragment -->
 <p><div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -490,29 +493,28 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>samples a point on the surface, used for lighting </p>
-<dl class="section return"><dt>Returns</dt><dd>a point on the primitive surface </dd></dl>
+<p><a class="el" href="class_renderer_1_1_sphere.html" title="The Sphere class represents a sphere defined by a radius and transform. ">Sphere</a> sampling Modified from :- Philip Dutré (September 29, 2003). Global Illumination Compendium [online]. [Accessed 2015]. Available from: <a href="http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf">http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf</a> (page 17). </p>
 
 <p>Implements <a class="el" href="class_renderer_1_1_primitive.html#a203efa6754633a8559c441a4de603b2d">Renderer::Primitive</a>.</p>
 
-<p>Definition at line <a class="el" href="sphere_8cpp_source.html#l00068">68</a> of file <a class="el" href="sphere_8cpp_source.html">sphere.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere_8cpp_source.html#l00072">72</a> of file <a class="el" href="sphere_8cpp_source.html">sphere.cpp</a>.</p>
 
-<p>References <a class="el" href="sphere_8h_source.html#l00037">m_radius</a>, <a class="el" href="primitive_8h_source.html#l00120">Renderer::Primitive::m_toObjectSpace</a>, and <a class="el" href="tracemath_8cpp_source.html#l00053">transformPosition()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    ngl::Vec3 center = <a class="code" href="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45">transformPosition</a>( ngl::Vec3(), <a class="code" href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">m_toObjectSpace</a>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">float</span> r1 = drand48();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">float</span> r2 = drand48();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    ngl::Vec3 point( center.m_x + 2 * <a class="code" href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">m_radius</a> * cos(2 * M_PI * r1) * sqrt(r2 * (1 - r2)),</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                      center.m_y + 2 * <a class="code" href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">m_radius</a> * sin(2 * M_PI * r1) * sqrt(r2 * (1 - r2)),</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                      center.m_z + <a class="code" href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">m_radius</a> * (1 - (2*r2))</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                );</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> point;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<p>References <a class="el" href="sphere_8h_source.html#l00044">m_radius</a>, <a class="el" href="primitive_8h_source.html#l00120">Renderer::Primitive::m_toObjectSpace</a>, and <a class="el" href="tracemath_8cpp_source.html#l00053">transformPosition()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    ngl::Vec3 center = <a class="code" href="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45">transformPosition</a>( ngl::Vec3(), <a class="code" href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">m_toObjectSpace</a>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">float</span> r1 = drand48();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">float</span> r2 = drand48();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    ngl::Vec3 point( center.m_x + 2 * <a class="code" href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">m_radius</a> * cos(2 * M_PI * r1) * sqrt(r2 * (1 - r2)),</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                      center.m_y + 2 * <a class="code" href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">m_radius</a> * sin(2 * M_PI * r1) * sqrt(r2 * (1 - r2)),</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                      center.m_z + <a class="code" href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">m_radius</a> * (1 - (2*r2))</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                );</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> point;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 <div class="ttc" id="class_renderer_1_1_primitive_html_a14b4a25d610a4af486935efff6d85a3c"><div class="ttname"><a href="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c">Renderer::Primitive::m_toObjectSpace</a></div><div class="ttdeci">ngl::Mat4 m_toObjectSpace</div><div class="ttdoc">m_toObjectSpace stores the world space to object space transformation matrix for this primitive...</div><div class="ttdef"><b>Definition:</b> <a href="primitive_8h_source.html#l00120">primitive.h:120</a></div></div>
 <div class="ttc" id="tracemath_8cpp_html_a70d4019cedd59fd08c763a06b47b2d45"><div class="ttname"><a href="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45">transformPosition</a></div><div class="ttdeci">ngl::Vec3 transformPosition(const ngl::Vec3 &amp;_point, const ngl::Mat4 &amp;_transform)</div><div class="ttdoc">transformPosition transforms a point vector by a transform matrix </div><div class="ttdef"><b>Definition:</b> <a href="tracemath_8cpp_source.html#l00053">tracemath.cpp:53</a></div></div>
-<div class="ttc" id="class_renderer_1_1_sphere_html_ad562c80f7df13edadaaadab089f36a20"><div class="ttname"><a href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">Renderer::Sphere::m_radius</a></div><div class="ttdeci">float m_radius</div><div class="ttdef"><b>Definition:</b> <a href="sphere_8h_source.html#l00037">sphere.h:37</a></div></div>
+<div class="ttc" id="class_renderer_1_1_sphere_html_ad562c80f7df13edadaaadab089f36a20"><div class="ttname"><a href="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20">Renderer::Sphere::m_radius</a></div><div class="ttdeci">float m_radius</div><div class="ttdoc">m_radius </div><div class="ttdef"><b>Definition:</b> <a href="sphere_8h_source.html#l00044">sphere.h:44</a></div></div>
 </div><!-- fragment -->
 <p><div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
@@ -551,14 +553,16 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere_8cpp_source.html#l00082">82</a> of file <a class="el" href="sphere_8cpp_source.html">sphere.cpp</a>.</p>
+<p>Tangent <a class="el" href="class_renderer_1_1_sphere.html" title="The Sphere class represents a sphere defined by a radius and transform. ">Sphere</a> (unused) Modified from :- Philip Dutré (September 29, 2003). Global Illumination Compendium [online]. [Accessed 2015]. Available from: <a href="http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf">http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf</a> (page 17). </p>
+
+<p>Definition at line <a class="el" href="sphere_8cpp_source.html#l00086">86</a> of file <a class="el" href="sphere_8cpp_source.html">sphere.cpp</a>.</p>
 
 <p>References <a class="el" href="sphere_8cpp_source.html#l00018">getNormal()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">float</span> t = <a class="code" href="class_renderer_1_1_sphere.html#a9a25c8561b372c717b03ab1696473b73">getNormal</a>(_point).dot(_direction);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">return</span> (t &gt;= 0) ? t : 0;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">float</span> t = <a class="code" href="class_renderer_1_1_sphere.html#a9a25c8561b372c717b03ab1696473b73">getNormal</a>(_point).dot(_direction);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">return</span> (t &gt;= 0) ? t : 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
 <div class="ttc" id="class_renderer_1_1_sphere_html_a9a25c8561b372c717b03ab1696473b73"><div class="ttname"><a href="class_renderer_1_1_sphere.html#a9a25c8561b372c717b03ab1696473b73">Renderer::Sphere::getNormal</a></div><div class="ttdeci">virtual ngl::Vec3 getNormal(ngl::Vec3 _point) const </div><div class="ttdoc">getNormal calculates the surface normal a certain point </div><div class="ttdef"><b>Definition:</b> <a href="sphere_8cpp_source.html#l00018">sphere.cpp:18</a></div></div>
 </div><!-- fragment -->
 <p><div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -593,7 +597,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere_8h_source.html#l00037">37</a> of file <a class="el" href="sphere_8h_source.html">sphere.h</a>.</p>
+<p>m_radius </p>
+
+<p>Definition at line <a class="el" href="sphere_8h_source.html#l00044">44</a> of file <a class="el" href="sphere_8h_source.html">sphere.h</a>.</p>
 
 </div>
 </div>
@@ -615,7 +621,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere_8h_source.html#l00038">38</a> of file <a class="el" href="sphere_8h_source.html">sphere.h</a>.</p>
+<p>m_squaredRadius is the squared radius </p>
+
+<p>Definition at line <a class="el" href="sphere_8h_source.html#l00049">49</a> of file <a class="el" href="sphere_8h_source.html">sphere.h</a>.</p>
 
 </div>
 </div>

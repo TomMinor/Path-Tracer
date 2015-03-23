@@ -64,7 +64,11 @@ bool Sphere::intersect(const Ray &_ray, HitData& _hit) const
     return true;
 }
 
-//http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf pg 19
+
+/// @brief Sphere sampling
+/// Modified from :-
+/// Philip Dutré (September 29, 2003). Global Illumination Compendium [online].
+/// [Accessed 2015]. Available from: <http://people.cs.kuleuven.be/~philip.dutre/GI/TotalCompendium.pdf> (page 17).
 ngl::Vec3 Sphere::sample() const
 {
     ngl::Vec3 center = transformPosition( ngl::Vec3(), m_toObjectSpace);
