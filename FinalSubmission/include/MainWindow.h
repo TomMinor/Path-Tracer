@@ -71,6 +71,8 @@ private slots :
     void on_renderHeightEdit_editingFinished();
     void on_renderWidthEdit_editingFinished();
     void on_renderFilenameEdit_editingFinished();
+    void on_openScene_clicked();
+    void on_quit_clicked();
 };
 
 #endif // MAINWINDOW_H

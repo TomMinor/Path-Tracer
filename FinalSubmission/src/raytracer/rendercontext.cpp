@@ -7,6 +7,7 @@ RenderContext::RenderContext(Scene* _scene,
                              Camera *_camera,
                              unsigned int _imageWidth,
                              unsigned int _imageHeight,
+                             int _samples,
                              const std::string &_outputPath)
     : m_imageWidth(_imageWidth),
       m_imageHeight(_imageHeight),
@@ -14,7 +15,7 @@ RenderContext::RenderContext(Scene* _scene,
       m_scene(_scene),
       m_outputPath(_outputPath),
       m_depth(0),
-      m_samples(16)
+      m_samples(_samples)
 
 {
     m_aspectRatio = (float)m_imageWidth / (float)m_imageHeight;

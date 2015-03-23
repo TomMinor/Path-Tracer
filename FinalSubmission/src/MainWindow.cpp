@@ -2,6 +2,7 @@
 /// @brief basic implementation file for the MainWindow class
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include <QFileDialog>
 
 
 
@@ -49,6 +50,8 @@ MainWindow::MainWindow( QWidget *parent )
   connect(m_gl,SIGNAL(matrixDirty(ngl::Mat4)),this,SLOT(updateMatrix(ngl::Mat4)));
 
   connect(m_ui->actionRender, SIGNAL(triggered()), this, SLOT(renderNow()) );
+  connect(m_ui->actionOpen_scene, SIGNAL(triggered()), this, SLOT(on_openScene_clicked()) );
+  connect(m_ui->actionQuit, SIGNAL(triggered()), this, SLOT(on_quit_clicked()) );
   connect(m_ui->renderButton, SIGNAL(triggered()), this, SLOT(renderNow()) );
 
   // connect the slider to the normal drawing attrib size
@@ -94,6 +97,7 @@ void MainWindow::renderNow()
                                                                  NULL,
                                                                  m_ui->renderWidthEdit->text().toInt(),
                                                                  m_ui->renderHeightEdit->text().toInt(),
+                                                                 m_ui->rendersamplesEdit->text().toInt(),
                                                                  m_ui->renderFilenameEdit->text().toStdString());
 
   m_gl->renderScene(context);
@@ -301,4 +305,18 @@ void MainWindow::on_renderWidthEdit_editingFinished()
 void MainWindow::on_renderFilenameEdit_editingFinished()
 {
 
+}
+
+void MainWindow::on_openScene_clicked()
+{
+  QString path = QFileDialog::getOpenFileName(this, "Open scene", ".", tr("T-ray Scene (*.txt *.tray);;"));
+  if ( path.isNull() == false )
+  {
+      m_gl->setScenePath(path.toStdString());
+  }
+}
+
+void MainWindow::on_quit_clicked()
+{
+  QApplication::exit(EXIT_SUCCESS);
 }

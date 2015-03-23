@@ -24,6 +24,7 @@
 #include "raytracer/tracemath.h"
 
 #include <QDebug>
+#include <QFileInfo>
 const static float INCREMENT=0.01;
 const static float ZOOM=0.1;
 
@@ -87,10 +88,12 @@ GLWindow::GLWindow(const QGLFormat _format, QWidget *_parent ) : QGLWidget( _for
   m_cam = NULL;
   m_axis = NULL;
   m_scene = NULL;
+
+  m_scenePath = "test.tray";
 }
 
-const static int TEXTURE_WIDTH=1024;
-const static int TEXTURE_HEIGHT=1024;
+//const static int TEXTURE_WIDTH=1024;
+//const static int TEXTURE_HEIGHT=1024;
 
 //void GLWindow::createTextureObject()
 //{
@@ -331,7 +334,17 @@ void GLWindow::loadMatricesToShader( )
 // this is our main drawing routine
 void GLWindow::paintGL()
 {
-    loadScene("test.txt");
+    // Reload the scene every draw, not very efficient but it does allow for easy file editing
+    QFileInfo checkFile(QString(m_scenePath.c_str()));
+    if(checkFile.exists() && checkFile.isFile())
+    {
+      loadScene(m_scenePath);
+    }
+    else
+    {
+      qWarning("Scene file %s does not exist", m_scenePath.c_str());
+      return;
+    }
 
 //    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

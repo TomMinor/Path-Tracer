@@ -25,6 +25,7 @@ struct RenderContext
                   Camera *_camera,
                    unsigned int _imageWidth,
                    unsigned int _imageHeight,
+                   int _samples = 16,
                    const std::string& _outputPath = ""
                  );
 
