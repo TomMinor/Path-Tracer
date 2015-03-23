@@ -13,7 +13,7 @@ My original goals for this project were to create a path tracer with Open Shadin
 
 Once the renderer is more mature I hope to carry out my original plans of a usable path tracer integrated with OSL.
 
-![Alt text](/examples/example.png?raw=true "Example")
+![Example Render](examples/example.png?raw=true "Example")
 
 ##Usage
 
