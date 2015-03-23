@@ -74,7 +74,7 @@ namespace Renderer
                 ngl::Vec3 camera = shadowOrigin;
                 ngl::Vec3 shadow = shadowEnd;
 
-                // Convert to world space
+                // Convert sample point to world space
                 //shadow = transformPosition(shadow, (*light)->worldTransform());
 
                 float distance = (camera - shadow).length(); // This should be squared, for some reason the actual length computes a nicer falloff
@@ -175,51 +175,64 @@ namespace Renderer
 
     ngl::Vec3 rayOrigin = (ngl::Vec4() * _context->m_renderCamera->getWorldSpaceMatrix()).toVec3();
 
-    for(unsigned int j = 0; j < _context->m_imageHeight; ++j)
+    // Much improved performance (even without using threads)
+    //http://www.iquilezles.org/www/articles/cputiles/cputiles.htm
+    const int tilesize = 16;
+
+    const int numxtiles = _context->m_imageWidth / tilesize;
+    const int numytiles = _context->m_imageHeight / tilesize;
+    const int numtiles = numxtiles * numytiles;
+
+    // Render tiles
+    for(int tile=0; tile < numtiles; tile++)
     {
-      for(unsigned int i = 0; i < _context->m_imageWidth; ++i)
+      const int ia = tilesize * (tile % numxtiles);
+      const int ja = tilesize * (tile / numxtiles);
+
+      // Compute colour for each pixel in this tile
+      for(unsigned int j = 0; j < tilesize; ++j)
       {
-          Image::Pixel result;
+        for(unsigned int i = 0; i < tilesize; ++i)
+        {
+            Image::Pixel result;
 
-          const int samples = 16;
-          for(int s = 0; s < samples; s++)
-          {
-              ///@todo Add a better sampler (stratified?), move into Sampler class, put in render context
-              /// https://www.cs.duke.edu/courses/spring09/cps111/notes/sampling.pdf
-              float jitterX = drand48();
-              float jitterY = drand48();
+            const int samples = 16;
+            for(int s = 0; s < samples; s++)
+            {
+                ///@todo Add a better sampler (stratified?), move into Sampler class, put in render context
+                /// https://www.cs.duke.edu/courses/spring09/cps111/notes/sampling.pdf
+                float jitterX = drand48();
+                float jitterY = drand48();
 
-              ///@todo Move into function and explain this a bit (canonical coordinates?)
-              float x = (2 * ((i + jitterX) / _context->m_imageWidth) - 1) * _context->m_aspectRatio * _context->m_renderCamera->getAngle();
-              float y = (1 - 2 *((j + jitterY) / _context->m_imageHeight)) * _context->m_renderCamera->getAngle();
+                ///@todo Move into function and explain this a bit (canonical coordinates?)
+                float x = (2 * ((ia + i + jitterX) / _context->m_imageWidth) - 1) * _context->m_aspectRatio * _context->m_renderCamera->getAngle();
+                float y = (1 - 2 *((ja + j + jitterY) / _context->m_imageHeight)) * _context->m_renderCamera->getAngle();
 
-              ngl::Vec3 cameraPosition = (ngl::Vec4(x, y, -1, 1) * _context->m_renderCamera->getWorldSpaceMatrix()).toVec3();
-              ngl::Vec3 rayDirection = cameraPosition - rayOrigin;
-              rayDirection.normalize();
+                ngl::Vec3 cameraPosition = (ngl::Vec4(x, y, -1, 1) * _context->m_renderCamera->getWorldSpaceMatrix()).toVec3();
+                ngl::Vec3 rayDirection = cameraPosition - rayOrigin;
+                rayDirection.normalize();
 
-              // Construct a ray from camera into the world (World Space)
-              Ray ray(rayOrigin,
-                      rayDirection,
-                      Ray::CAMERA,
-                      _context->m_renderCamera->getNearClipPlane(),
-                      _context->m_renderCamera->getfarClipPlane()
-                      );
+                // Construct a ray from camera into the world (World Space)
+                Ray ray(rayOrigin,
+                        rayDirection,
+                        Ray::CAMERA,
+                        _context->m_renderCamera->getNearClipPlane(),
+                        _context->m_renderCamera->getfarClipPlane()
+                        );
 
-              _context->m_depth = 0;
-              result += trace(ray, _context);
-          }
+                _context->m_depth = 0;
+                result += trace(ray, _context);
+            }
 
-        result /= samples;
+          result /= samples;
 
-        pixels.setPixel(result, i, j);
+          pixels.setPixel(result, ia + i, ja + j);
+        }
       }
-
-      const float percentile = ((float)((_context->m_imageWidth * j)) /
-                                        (_context->m_imageWidth * _context->m_imageHeight)) * 100;
+      const float percentile = (float)(tile * 1.0/numtiles) * 100;
 
       qDebug("Render progress : %.2f%%", percentile);
     }
-
     qDebug("Render complete.");
 
     if(_context->m_outputPath.length() > 0)
