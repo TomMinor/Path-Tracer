@@ -1,0 +1,6 @@
+digraph "Renderer::Camera"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Renderer::Camera\n|- m_toObjectSpace\l- m_toWorldSpace\l- m_nearClippingPlane\l- m_farClippingPlane\l- m_fov\l- m_angle\l|+ Camera()\l+ setFOV()\l+ setClippingPlanes()\l+ setCameraWorldSpace()\l+ getObjectSpaceMatrix()\l+ getWorldSpaceMatrix()\l+ getFOV()\l+ getAngle()\l+ getNearClipPlane()\l+ getfarClipPlane()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+}

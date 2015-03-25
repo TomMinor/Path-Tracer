@@ -1,0 +1,1625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+  <namespace>ac.uk.ncca</namespace>
+  <virtualFolder>ngl</virtualFolder>
+  <filterSection>
+    <filterAttribute>doxygen</filterAttribute>
+    <toc>
+      <section title="AffineTransform 1.0" ref="index.html">
+        <section title="Todo List" ref="todo.html" />
+        <section title="Bug List" ref="bug.html" />
+        <section title="Namespaces">
+          <section title="Namespace List" ref="namespaces.html">
+            <section title="Renderer" ref="namespace_renderer.html" />
+            <section title="Ui" ref="namespace_ui.html" />
+          </section>
+          <section title="Namespace Members" ref="namespacemembers.html">
+            <section title="All" ref="namespacemembers.html" />
+            <section title="Functions" ref="namespacemembers_func.html" />
+            <section title="Variables" ref="namespacemembers_vars.html" />
+          </section>
+        </section>
+        <section title="Classes">
+          <section title="Class List" ref="annotated.html">
+            <section title="Renderer" ref="namespace_renderer.html">
+              <section title="Camera" ref="class_renderer_1_1_camera.html">
+                <section title="Camera" ref="class_renderer_1_1_camera.html#ab25a860d30c9fb7988ad68c4d89de8b9" />
+                <section title="getAngle" ref="class_renderer_1_1_camera.html#aee5a50c681121ebad8e8bf0a02df4e96" />
+                <section title="getfarClipPlane" ref="class_renderer_1_1_camera.html#a4f31ff2bb69d635467d59ec1e2bd8bfd" />
+                <section title="getFOV" ref="class_renderer_1_1_camera.html#a62a6811e608244e6739bf5d9d4821b94" />
+                <section title="getNearClipPlane" ref="class_renderer_1_1_camera.html#acf6473a1263096a8309c5f1209066ba4" />
+                <section title="getObjectSpaceMatrix" ref="class_renderer_1_1_camera.html#a041846a3c8872e90b001e65319745ece" />
+                <section title="getWorldSpaceMatrix" ref="class_renderer_1_1_camera.html#a3f6afedf440c05554e7fbf506aea5514" />
+                <section title="setCameraWorldSpace" ref="class_renderer_1_1_camera.html#a979318d93dd9fd29d1188b109dbf25e8" />
+                <section title="setClippingPlanes" ref="class_renderer_1_1_camera.html#a4452d3bce23326607f184c5621fba48d" />
+                <section title="setFOV" ref="class_renderer_1_1_camera.html#aa903bf49a467f2bd0c915c12a032a2d3" />
+                <section title="m_angle" ref="class_renderer_1_1_camera.html#a124c8532797a7b6f495b2aafe39b262b" />
+                <section title="m_farClippingPlane" ref="class_renderer_1_1_camera.html#ae499659612df0d91ce5dd1435ca94b41" />
+                <section title="m_fov" ref="class_renderer_1_1_camera.html#a2bf9d76c1afa694bd08186a0b0ab4420" />
+                <section title="m_nearClippingPlane" ref="class_renderer_1_1_camera.html#a965a5116d88b44ae64912d612ec8479b" />
+                <section title="m_toObjectSpace" ref="class_renderer_1_1_camera.html#a4bbfee36155bbf808a0d544d577a118d" />
+                <section title="m_toWorldSpace" ref="class_renderer_1_1_camera.html#aa99f5491754f965a11ac9ca411de9036" />
+              </section>
+              <section title="HitData" ref="struct_renderer_1_1_hit_data.html">
+                <section title="HitData" ref="struct_renderer_1_1_hit_data.html#a68c0ee0efbd32d15c3fd9add42eb8f8a" />
+                <section title="m_distanceSqr" ref="struct_renderer_1_1_hit_data.html#a51f1e587ef8b56abfd1f3017aa24584b" />
+                <section title="m_object" ref="struct_renderer_1_1_hit_data.html#a68a87eb8a21afc9cb328fc242153ae09" />
+                <section title="m_ray" ref="struct_renderer_1_1_hit_data.html#a5aee6d1129c216194f0b0bfbbb3d6e55" />
+                <section title="m_surfaceImpact" ref="struct_renderer_1_1_hit_data.html#a21db1ed6df74b8b6c7109025928201c6" />
+                <section title="m_surfaceNormal" ref="struct_renderer_1_1_hit_data.html#a12c4d926e3b5d93a8e12d65e36139760" />
+                <section title="m_t" ref="struct_renderer_1_1_hit_data.html#adeafe63956b601b01d7ea69bde1a1986" />
+                <section title="m_u" ref="struct_renderer_1_1_hit_data.html#ac70ab126082944359393e5bb0cd5abb2" />
+                <section title="m_v" ref="struct_renderer_1_1_hit_data.html#a025e748b1c3e95f989128cf6c3b8f5c8" />
+                <section title="m_w" ref="struct_renderer_1_1_hit_data.html#a9d85ba822c1cc07983e5c00e457178d9" />
+              </section>
+              <section title="Plane" ref="class_renderer_1_1_plane.html">
+                <section title="Plane" ref="class_renderer_1_1_plane.html#aed8859b010b215062f3d058356e4d345" />
+                <section title="~Plane" ref="class_renderer_1_1_plane.html#a180a33628429897332d5b96feea1660a" />
+                <section title="draw" ref="class_renderer_1_1_plane.html#abd2e9c48aa3acb347255c15245939449" />
+                <section title="getNormal" ref="class_renderer_1_1_plane.html#a134fb1ab85f0c9537edde96220edb014" />
+                <section title="intersect" ref="class_renderer_1_1_plane.html#a1954528af0da8ab0b96b9dee73b5c7a3" />
+                <section title="sample" ref="class_renderer_1_1_plane.html#ad18b055a0daabda07b22e71da10cc84d" />
+                <section title="m_area" ref="class_renderer_1_1_plane.html#a25ccf6132f2172cb8c2191aeacb65141" />
+                <section title="m_normal" ref="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263" />
+                <section title="m_p" ref="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c" />
+                <section title="m_u" ref="class_renderer_1_1_plane.html#aa64d0c360a616c75db94c15bb2f8162c" />
+                <section title="m_v" ref="class_renderer_1_1_plane.html#a4688cb8cd378d99808bbff11934e3a02" />
+                <section title="m_x" ref="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c" />
+                <section title="m_y" ref="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8" />
+              </section>
+              <section title="Primitive" ref="class_renderer_1_1_primitive.html">
+                <section title="Primitive" ref="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513" />
+                <section title="~Primitive" ref="class_renderer_1_1_primitive.html#a72985fa9fd72f5229a9bfb638377f4c8" />
+                <section title="draw" ref="class_renderer_1_1_primitive.html#a9ac7e1ff84d81f2a8f474cbaf36b41d0" />
+                <section title="getNormal" ref="class_renderer_1_1_primitive.html#ade88d0252e3c0bd1f1ee81df35afca0a" />
+                <section title="getSurfaceMaterial" ref="class_renderer_1_1_primitive.html#aa303dc1042f7305a3895049d5f1a51e2" />
+                <section title="intersect" ref="class_renderer_1_1_primitive.html#a22f0a7845bbec672a363f39fac4daf5e" />
+                <section title="objectTransform" ref="class_renderer_1_1_primitive.html#a935c1ff33ec49914cd4dfaafb92055f0" />
+                <section title="rayToObjectSpace" ref="class_renderer_1_1_primitive.html#ab284806b9c1642ae80410607d606ae46" />
+                <section title="rayToWorldSpace" ref="class_renderer_1_1_primitive.html#aef8e1c3e54925ef164f094ef976ad78e" />
+                <section title="sample" ref="class_renderer_1_1_primitive.html#a203efa6754633a8559c441a4de603b2d" />
+                <section title="worldTransform" ref="class_renderer_1_1_primitive.html#a9a55765d6ba313e07482cd650700bd00" />
+                <section title="m_material" ref="class_renderer_1_1_primitive.html#a3c5f1dc45cf1c74402047a93007d9a3b" />
+                <section title="m_toObjectSpace" ref="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c" />
+                <section title="m_toWorldSpace" ref="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4" />
+              </section>
+              <section title="Ray" ref="struct_renderer_1_1_ray.html">
+                <section title="RayType" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414df">
+                  <section title="UNKNOWN" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa25ec2789fd632c336f09178ec9065b82" />
+                  <section title="CAMERA" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa8aa5e7b13fe018ad7b45bec8271fb675" />
+                  <section title="SHADOW" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa1470ae5ab6a64b0215827ed607f05807" />
+                  <section title="REFLECT" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfad976c070bfe94008c9ec8f64c62bb524" />
+                  <section title="REFRACT" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa699b8cebf03b418927cf54fd6ea917b8" />
+                </section>
+                <section title="Ray" ref="struct_renderer_1_1_ray.html#a174d2a110f464b0715f689b9eb664cad" />
+                <section title="inverseDirection" ref="struct_renderer_1_1_ray.html#aa6bf2242c96eeff730f78b389e16b3e7" />
+                <section title="operator()" ref="struct_renderer_1_1_ray.html#a7aadfb31ea40383058a79e02ddfe9fdc" />
+                <section title="reflect" ref="struct_renderer_1_1_ray.html#aefb8158efe030eeb62c731a5b3b6ac06" />
+                <section title="m_direction" ref="struct_renderer_1_1_ray.html#ae8daac3681b1f08903bbd1cf4ba9c791" />
+                <section title="m_inverseDirection" ref="struct_renderer_1_1_ray.html#a526b15d36b37ad8c7c39d88da8c936de" />
+                <section title="m_origin" ref="struct_renderer_1_1_ray.html#a5028bc5fd552d6878884c3fbd8bed02c" />
+                <section title="m_sign" ref="struct_renderer_1_1_ray.html#a34e1eab13ea919449469e3353b14d6a3" />
+                <section title="m_tmax" ref="struct_renderer_1_1_ray.html#aa61919436e6d1e655575943fd1803f66" />
+                <section title="m_tmin" ref="struct_renderer_1_1_ray.html#a30ab8d94432ef36f4b8615f5d48304f6" />
+                <section title="m_type" ref="struct_renderer_1_1_ray.html#a80f06b6cefceda2490e10441077e277b" />
+              </section>
+              <section title="RenderContext" ref="struct_renderer_1_1_render_context.html">
+                <section title="RenderContext" ref="struct_renderer_1_1_render_context.html#a7e9f3ac4c9560be1057139836739b6c6" />
+                <section title="~RenderContext" ref="struct_renderer_1_1_render_context.html#a0e29c5ebfeb166a4243b645acbd44bd8" />
+                <section title="m_aspectRatio" ref="struct_renderer_1_1_render_context.html#aa71a4a0454592902c0e59b4d47ff4e83" />
+                <section title="m_depth" ref="struct_renderer_1_1_render_context.html#ac96c287e23437d653c4fb317ba2a108b" />
+                <section title="m_hit" ref="struct_renderer_1_1_render_context.html#aa9bda306ae7a969d5d2b1af128270edb" />
+                <section title="m_imageHeight" ref="struct_renderer_1_1_render_context.html#ae9375e1dbdd7f835d4b65527a0cf470b" />
+                <section title="m_imageWidth" ref="struct_renderer_1_1_render_context.html#a4654e2eb0253d9933aa78ea14b43d3be" />
+                <section title="m_outputPath" ref="struct_renderer_1_1_render_context.html#ae317255b06e72c9d98dd65853232a303" />
+                <section title="m_renderCamera" ref="struct_renderer_1_1_render_context.html#a51c51a98344d7acdef2da9c1f46fd0f8" />
+                <section title="m_samples" ref="struct_renderer_1_1_render_context.html#abb2007b9ebefdaa2fe0855b19bcc75d5" />
+                <section title="m_scene" ref="struct_renderer_1_1_render_context.html#adcb12a26eedfa83b6c72d39bbef539b0" />
+              </section>
+              <section title="Scene" ref="class_renderer_1_1_scene.html">
+                <section title="objectList" ref="class_renderer_1_1_scene.html#a883277f707aee77273e5e8ce210c8673" />
+                <section title="objectListIterator" ref="class_renderer_1_1_scene.html#a6408d8af3659e808e45877a96a6059de" />
+                <section title="Scene" ref="class_renderer_1_1_scene.html#a42cd9d1821ccd82a487e112f4bc3a9db" />
+                <section title="getBackgroundColour" ref="class_renderer_1_1_scene.html#afed66d5469d6bf5c15a8a1c72051a45a" />
+                <section title="objectBegin" ref="class_renderer_1_1_scene.html#ac71ec50dfcae221f69e83ac1717b865d" />
+                <section title="objectEnd" ref="class_renderer_1_1_scene.html#af5f44baafb6e49510712579c4aca0ca7" />
+                <section title="m_background" ref="class_renderer_1_1_scene.html#ab3c42502a9430b1aa858aa1f86f5c690" />
+                <section title="m_initialCameraView" ref="class_renderer_1_1_scene.html#a73b7840d1ddff6e0af41dfa842093d5e" />
+                <section title="m_primitives" ref="class_renderer_1_1_scene.html#a8cab7b246650c82ae60ee3e5b9a9ecbb" />
+              </section>
+              <section title="SceneFile" ref="class_renderer_1_1_scene_file.html">
+                <section title="SceneFile" ref="class_renderer_1_1_scene_file.html#adb6eacf448a934b2f87d8eaeddc4e005" />
+                <section title="~SceneFile" ref="class_renderer_1_1_scene_file.html#ab365086c8a1cc792f65fefea56d4e46a" />
+                <section title="parseCamera" ref="class_renderer_1_1_scene_file.html#a51b5288f138fc6bdf7340d55f95f76f1" />
+                <section title="parseColour" ref="class_renderer_1_1_scene_file.html#ad278fe4d9ffdd2018607836d8777f4ea" />
+                <section title="parseFloat" ref="class_renderer_1_1_scene_file.html#acdf20b92e3d33be370c3ad081555fd16" />
+                <section title="parseMaterialType" ref="class_renderer_1_1_scene_file.html#afdfcfbdb80511cc22f4287a8c8515f0f" />
+                <section title="parseSphere" ref="class_renderer_1_1_scene_file.html#a52b006539e1d470e6d75ee662b056bc2" />
+                <section title="parseTransform" ref="class_renderer_1_1_scene_file.html#a0050fe3c8f4c1cf799df54740d623cdd" />
+                <section title="parseTriangle" ref="class_renderer_1_1_scene_file.html#a7c8cd7aafa876459375f0aa158c5ae2c" />
+                <section title="parseVertex" ref="class_renderer_1_1_scene_file.html#a136fab17d94808f9ea3a0247cef5f3cf" />
+                <section title="read" ref="class_renderer_1_1_scene_file.html#a615a08298e12eec3794cd80ba687c127" />
+                <section title="m_counter" ref="class_renderer_1_1_scene_file.html#a6957094bf0b644df37698bde91357af7" />
+                <section title="m_sceneFile" ref="class_renderer_1_1_scene_file.html#a7847a9fbddd6b67599ac4410b0342717" />
+              </section>
+              <section title="Sphere" ref="class_renderer_1_1_sphere.html">
+                <section title="Sphere" ref="class_renderer_1_1_sphere.html#a1cc7e679282a27fba0d528021061f571" />
+                <section title="draw" ref="class_renderer_1_1_sphere.html#addc6c6ef784badc0065ef827d1edda7f" />
+                <section title="getNormal" ref="class_renderer_1_1_sphere.html#a9a25c8561b372c717b03ab1696473b73" />
+                <section title="intersect" ref="class_renderer_1_1_sphere.html#ac9525a1fa2081d065e25e93f5e2f4b1d" />
+                <section title="sample" ref="class_renderer_1_1_sphere.html#a63986b9167dd275192e87cc3c578d91a" />
+                <section title="tangentSphere" ref="class_renderer_1_1_sphere.html#a1e60080d349a95c18e29bd3e2f0f3819" />
+                <section title="m_radius" ref="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20" />
+                <section title="m_squaredRadius" ref="class_renderer_1_1_sphere.html#aaebd2870643f080b0b41accbeac8e55a" />
+              </section>
+              <section title="Triangle" ref="class_renderer_1_1_triangle.html">
+                <section title="Triangle" ref="class_renderer_1_1_triangle.html#a7053d2e8592075bc7a1c9bbdbf95ffdc" />
+                <section title="~Triangle" ref="class_renderer_1_1_triangle.html#aa4d8804ea95f8d0a64681fd6eae0bd6c" />
+                <section title="draw" ref="class_renderer_1_1_triangle.html#a325a404a8c7b9bef234738dcb1caa19b" />
+                <section title="getNormal" ref="class_renderer_1_1_triangle.html#adae4e94dc4c3b4e4ed844a222815f0a4" />
+                <section title="getTangent" ref="class_renderer_1_1_triangle.html#a36f812846c8e2fcf5ced411f3e12812b" />
+                <section title="intersect" ref="class_renderer_1_1_triangle.html#af9802d9321c1fcdeb3aae9364efd246c" />
+                <section title="sample" ref="class_renderer_1_1_triangle.html#a40b6162167de14c18f0ec9233eb7e2ad" />
+                <section title="m_normals" ref="class_renderer_1_1_triangle.html#a7a3f4ab1063f6856f29550487145b761" />
+                <section title="m_singleSided" ref="class_renderer_1_1_triangle.html#aa668f30d8a7279d8a7b5677e3bc6a763" />
+                <section title="m_vao" ref="class_renderer_1_1_triangle.html#a093ffebe18ba2f43a9878323e5da678f" />
+                <section title="m_vtx" ref="class_renderer_1_1_triangle.html#a9c7e7264f73272aad6ecc741254affb2" />
+              </section>
+            </section>
+            <section title="Axis" ref="class_axis.html">
+              <section title="Axis" ref="class_axis.html#af00b512700438f6c0d5c4f50d3f5e08f" />
+              <section title="~Axis" ref="class_axis.html#a675ffe75a5e61a9e4f60bb79749d5e0c" />
+              <section title="draw" ref="class_axis.html#a6a001a1f69c90c980822515e17fb1701" />
+              <section title="loadMatricesToShader" ref="class_axis.html#a79d40f39b4a3713b4acf66b13077e92f" />
+              <section title="setCam" ref="class_axis.html#a2aa5d9e6cdf5a8453aa0e7a63d93efa1" />
+              <section title="m_cam" ref="class_axis.html#a2007716ef8d46f1cd4747fd9310e1d0d" />
+              <section title="m_globalMouseTx" ref="class_axis.html#a9a9d779f074267d1bd44f17cbdfbfc90" />
+              <section title="m_scale" ref="class_axis.html#a091b29268cee3c443921a8b82c85f2a9" />
+              <section title="m_shaderName" ref="class_axis.html#a005d1914b6346a2c5e492475b5d2fb9a" />
+              <section title="m_transform" ref="class_axis.html#ae12638693bd7b29894124480bb80c919" />
+            </section>
+            <section title="GLWindow" ref="class_g_l_window.html">
+              <section title="MATRIXORDER" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789">
+                <section title="RTS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a82f3c1d330e10a7d3ceec235967bb641" />
+                <section title="TRS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a6546e34dfcd2f5431cc82141cd1748d8" />
+                <section title="GIMBALLOCK" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a4fde2d4e466ff0849489c92964e0e441" />
+                <section title="EULERTS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a7018902f1275a263f943ab4f3a86a50d" />
+                <section title="TEULERS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a6d2d35f45dae389220921143e0d486a4" />
+              </section>
+              <section title="GLWindow" ref="class_g_l_window.html#a54ae7036a8f059e9ea6a3b91064837c8" />
+              <section title="~GLWindow" ref="class_g_l_window.html#a2eeaea2148f4f72344edd6d1bac9759b" />
+              <section title="createFramebufferObject" ref="class_g_l_window.html#a68504d141bb9f62168eb06773a105954" />
+              <section title="createTextureObject" ref="class_g_l_window.html#a69aa7cac3d60aaa671ebecaff25c7bdb" />
+              <section title="getScene" ref="class_g_l_window.html#a167f9005a38f79ca53b7ed0256b54076" />
+              <section title="initializeGL" ref="class_g_l_window.html#a39e39761cd7323806917a217cc7caea5" />
+              <section title="loadMatricesToShader" ref="class_g_l_window.html#a89d4304966d8947bc1fd98fbe881f63b" />
+              <section title="loadScene" ref="class_g_l_window.html#aed7b270f88867c428887e7c43145988b" />
+              <section title="matrixDirty" ref="class_g_l_window.html#a305540b7cf1841e24163be0a9a7e4956" />
+              <section title="mouseMoveEvent" ref="class_g_l_window.html#a7a04e2a3400fa69d1bcb6b650425c01e" />
+              <section title="mousePressEvent" ref="class_g_l_window.html#a2c4d9af80c2a7a33a46bce46276b8409" />
+              <section title="mouseReleaseEvent" ref="class_g_l_window.html#ab9e5741b8c69d2f6447a5fc6d9d704c8" />
+              <section title="paintGL" ref="class_g_l_window.html#a9bd2503dd5f812c10a9481f22ecd3403" />
+              <section title="renderScene" ref="class_g_l_window.html#afa32b188a2c32efb856380c59f966c50" />
+              <section title="resetMouse" ref="class_g_l_window.html#a7d68a4cf2db4ee1f485462595ffe7137" />
+              <section title="resizeGL" ref="class_g_l_window.html#abe57c0f40e59cba4c98759121e22eb47" />
+              <section title="setColour" ref="class_g_l_window.html#aa1349f743c7896eae48d9de70bc3a435" />
+              <section title="setEuler" ref="class_g_l_window.html#aaf083de2d54fb667a530976735ef459d" />
+              <section title="setMatrixOrder" ref="class_g_l_window.html#a1d0cb30ace164133ef57a191f6365fb7" />
+              <section title="setNormalSize" ref="class_g_l_window.html#a5def6c0eceb97287c9281e8994c741ca" />
+              <section title="setRotate" ref="class_g_l_window.html#aeb38f75f4aabaa234c6edfd47961ffd3" />
+              <section title="setScale" ref="class_g_l_window.html#a36debb64f302762ef25187b053df91ab" />
+              <section title="setScenePath" ref="class_g_l_window.html#a3eb6fe3b14f113249c0be33a5337e8fa" />
+              <section title="setTranslate" ref="class_g_l_window.html#ace1f2e0ba90bdfa04d3792e41c9bb40c" />
+              <section title="toggleNormals" ref="class_g_l_window.html#a3101b6a32ac18c0c1f26fc6753d8ff22" />
+              <section title="toggleWireframe" ref="class_g_l_window.html#a221ed4a9a24a2639f3cd4398476d7a71" />
+              <section title="vboChanged" ref="class_g_l_window.html#ace72b2071df8b0415d76011d747cdb36" />
+              <section title="wheelEvent" ref="class_g_l_window.html#a5f96a70cc4c2666b46ecfa62de7be598" />
+              <section title="m_axis" ref="class_g_l_window.html#af581f7ed1a05e48c59322582950948d9" />
+              <section title="m_cam" ref="class_g_l_window.html#a55556dafb4fc86c35b270ca0d68f456e" />
+              <section title="m_colour" ref="class_g_l_window.html#a88711a51b442586d0ce3775641d1e478" />
+              <section title="m_drawIndex" ref="class_g_l_window.html#acf36447a3fe2182b73bd96d6a6987fd8" />
+              <section title="m_drawNormals" ref="class_g_l_window.html#a03f2c728ffe9d1598a95ee18e7d7a606" />
+              <section title="m_euler" ref="class_g_l_window.html#ac606d67dd840cf40abaff4790bbbbc05" />
+              <section title="m_fboID" ref="class_g_l_window.html#a5a06415ec577aa6c9d0bdca11de0602b" />
+              <section title="m_gimbal" ref="class_g_l_window.html#a18c3d2cd29637ca1e066333d01966cac" />
+              <section title="m_light" ref="class_g_l_window.html#a45cb8c5f6e0004c2cce30eb1d5b3c56f" />
+              <section title="m_material" ref="class_g_l_window.html#ada3ede9902ea00c4a4588de958fe8519" />
+              <section title="m_matrixOrder" ref="class_g_l_window.html#a5993da88cf9d0cc66c36b12becad1e69" />
+              <section title="m_modelPos" ref="class_g_l_window.html#a222840baf9b594f95626a55563904684" />
+              <section title="m_mouseGlobalTX" ref="class_g_l_window.html#ae4cf79c7e425b4033ccef92aa517130a" />
+              <section title="m_normalSize" ref="class_g_l_window.html#a1c59e57a6bfeb6ce8007a51fff8fd9ed" />
+              <section title="m_origX" ref="class_g_l_window.html#ab6aec410f5ce5868cabe5fe2f0768bc9" />
+              <section title="m_origXPos" ref="class_g_l_window.html#a176afd6632502975d692b69a90488670" />
+              <section title="m_origY" ref="class_g_l_window.html#ab7a1ee2202588e005b90c99ea1323af4" />
+              <section title="m_origYPos" ref="class_g_l_window.html#aab805b77275ea41e8ff2dcf9e714f345" />
+              <section title="m_rboID" ref="class_g_l_window.html#aca7e0a6b4688406f66a2186e09844ca9" />
+              <section title="m_rotate" ref="class_g_l_window.html#a331ff6c02edb1f1a4252600a345d003a" />
+              <section title="m_rotateActive" ref="class_g_l_window.html#af97ce940b726836b024ab02c25ed391d" />
+              <section title="m_scale" ref="class_g_l_window.html#a8887cc2890bd1a31bcecf465ee6ace94" />
+              <section title="m_scene" ref="class_g_l_window.html#aee9be712fbb0f20fc2166bcf735f89ae" />
+              <section title="m_scenePath" ref="class_g_l_window.html#a5175cc7e618636fc7e3d6f8eb3e0dc39" />
+              <section title="m_spinXFace" ref="class_g_l_window.html#af8ea09020a5ad4c20a16ea835ed1f2af" />
+              <section title="m_spinYFace" ref="class_g_l_window.html#aa4c39badfa80d8eac6a773449b6db5a2" />
+              <section title="m_textureID" ref="class_g_l_window.html#ac7fde34ae6a96eaa95ddf7ebea83baf4" />
+              <section title="m_transform" ref="class_g_l_window.html#ab84b6540a88835041b06ac295b0b1642" />
+              <section title="m_translate" ref="class_g_l_window.html#aae1a322d5ba7062e7d14c65b95b3f073" />
+              <section title="m_translateActive" ref="class_g_l_window.html#af65008bca7b2d863c12a93f3087b2969" />
+              <section title="m_verts" ref="class_g_l_window.html#aac22ba5ee4eeec173f668f8cdf40fc76" />
+              <section title="renderThread" ref="class_g_l_window.html#af84acb17ea1b3a5dde7abc9c85771447" />
+              <section title="s_vboNames" ref="class_g_l_window.html#ab8f5ad2f6aed486d7922ab4246c3ea52" />
+              <section title="test_vao" ref="class_g_l_window.html#a90e0680c5b0aa5b2abdb2ddc4a82157e" />
+            </section>
+            <section title="Image" ref="class_image.html">
+              <section title="Pixel" ref="struct_image_1_1_pixel.html">
+                <section title="Pixel" ref="struct_image_1_1_pixel.html#a93d339cf79d059bfff19312344dc3169" />
+                <section title="Pixel" ref="struct_image_1_1_pixel.html#abc76a3238962d4fa4088df895345e70d" />
+                <section title="operator*" ref="struct_image_1_1_pixel.html#a45019e2e7a6b136c483dda3757073376" />
+                <section title="operator*" ref="struct_image_1_1_pixel.html#a9ac59bc7ffcf0d258020457f7a874c5e" />
+                <section title="operator*=" ref="struct_image_1_1_pixel.html#a5b971c342ea48a8e37cea11b9ebd86e1" />
+                <section title="operator*=" ref="struct_image_1_1_pixel.html#ace1d119e142e767536947e16b0e058a2" />
+                <section title="operator+" ref="struct_image_1_1_pixel.html#a162bce995aeeaba97b86787bf3ec564c" />
+                <section title="operator+=" ref="struct_image_1_1_pixel.html#a98be5e814ed4f7c02c2511069be37358" />
+                <section title="operator-" ref="struct_image_1_1_pixel.html#a45cdd002e2736b87f6ecfc21a936af67" />
+                <section title="operator-=" ref="struct_image_1_1_pixel.html#a4e55c878fdded95922790c951512e97b" />
+                <section title="operator/" ref="struct_image_1_1_pixel.html#a7650bff7855c16b62836969e3a6b51b8" />
+                <section title="operator/" ref="struct_image_1_1_pixel.html#ac12af52c4bb346e6f43f32d8620af758" />
+                <section title="operator/=" ref="struct_image_1_1_pixel.html#a0f4bed70eac895d786db9b8235c6efce" />
+                <section title="operator/=" ref="struct_image_1_1_pixel.html#a1e33173e685768745e612706e7090b79" />
+                <section title="m_b" ref="struct_image_1_1_pixel.html#af01bb9644bd2edd3ae0f61b15c6a7d28" />
+                <section title="m_g" ref="struct_image_1_1_pixel.html#a8339e42b46fbb5531ab21ad19f655ced" />
+                <section title="m_r" ref="struct_image_1_1_pixel.html#ae73fed2f793be32a29bc2747acfd3eb8" />
+              </section>
+              <section title="Image" ref="class_image.html#a055c8145be6f8c3da429f73da47c7163" />
+              <section title="~Image" ref="class_image.html#a0294f63700543e11c0f0da85601c7ae5" />
+              <section title="getPixel" ref="class_image.html#a634f5e4de7751158cfc2312c93a9a005" />
+              <section title="read" ref="class_image.html#aaad771ed7e29b7f01f2f129f84224060" />
+              <section title="save" ref="class_image.html#abccefaaa9c3b1c9edb57f19d7c7777c3" />
+              <section title="setPixel" ref="class_image.html#a704672fded047d7f142c6e6dd8c488f8" />
+              <section title="tonemap" ref="class_image.html#a614b4183dc55a0097007bb65bb76493f" />
+              <section title="m_height" ref="class_image.html#af2c44810438cfeaaf63fb3616b276db4" />
+              <section title="m_image" ref="class_image.html#a917680d514864d303cd210fcf3d52299" />
+              <section title="m_width" ref="class_image.html#a121b435401e6fc86901514d000f7df37" />
+            </section>
+            <section title="ImagePPM" ref="class_image_p_p_m.html">
+              <section title="ImagePPM" ref="class_image_p_p_m.html#a11a311b9ba6382739eb75f7a15dc832b" />
+              <section title="read" ref="class_image_p_p_m.html#a948a454964cd10c3eba73a4c5ecc27d6" />
+              <section title="save" ref="class_image_p_p_m.html#acf4a44ec60de8ce19b826d51f82e9054" />
+              <section title="tonemap" ref="class_image_p_p_m.html#a27820174d8704665b266e751a6919b53" />
+            </section>
+            <section title="MainWindow" ref="class_main_window.html">
+              <section title="MainWindow" ref="class_main_window.html#a8b244be8b7b7db1b08de2a2acb9409db" />
+              <section title="~MainWindow" ref="class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7" />
+              <section title="changeColour" ref="class_main_window.html#a494094a6550b91f808a64f5bf792170a" />
+              <section title="keyPressEvent" ref="class_main_window.html#a3c2e352934c6318d405c3d2b0e07729c" />
+              <section title="on_openScene_clicked" ref="class_main_window.html#af0d2560399a08d1070ad344ca30e968d" />
+              <section title="on_quit_clicked" ref="class_main_window.html#a65970e860475159b218470a3a790c71d" />
+              <section title="on_renderButton_clicked" ref="class_main_window.html#ad4224ffb01cbd6f9b31b3024053aeeef" />
+              <section title="on_renderFilenameEdit_editingFinished" ref="class_main_window.html#a012aeb18cc06cbadca1841632593c76f" />
+              <section title="on_renderHeightEdit_editingFinished" ref="class_main_window.html#a11c0bf07f446f8bbc5e912a7d973b5cd" />
+              <section title="on_rendersamplesEdit_editingFinished" ref="class_main_window.html#a40c3d236462b660f4d7a06f6a76279c9" />
+              <section title="on_renderWidthEdit_editingFinished" ref="class_main_window.html#a2c89a572d5da0794f91d895f59e1357f" />
+              <section title="on_tabWidget_2_currentChanged" ref="class_main_window.html#a716cd8ffd41900239ad14135e8b8eb96" />
+              <section title="on_tabWidget_currentChanged" ref="class_main_window.html#ab5ec4a06e4e38781eb7b913fed92733e" />
+              <section title="renderNow" ref="class_main_window.html#ab9611cd38a22e0d943734a6f656df484" />
+              <section title="reset" ref="class_main_window.html#a02076de46e6810174817ebfc6ddd2be5" />
+              <section title="setEuler" ref="class_main_window.html#a1f5e9c808e1c271a197d9e9530f30953" />
+              <section title="setMatrix" ref="class_main_window.html#a9578e39b64f852586b8e1d60baed355a" />
+              <section title="setRotate" ref="class_main_window.html#a04863128e9b29d912f6b4570278bffc8" />
+              <section title="setScale" ref="class_main_window.html#ab46ab292ac859c7955da8e37d03f9c0c" />
+              <section title="setTab" ref="class_main_window.html#a539952dc23679e932b2430885490b062" />
+              <section title="setTranslate" ref="class_main_window.html#a484c02eab066eef508b165c6455d3253" />
+              <section title="updateMatrix" ref="class_main_window.html#aa7811f5612fc3902900dad6d71368a02" />
+              <section title="m_gl" ref="class_main_window.html#a8f18111d1b422167f8b9a688f38f8969" />
+              <section title="m_scene" ref="class_main_window.html#a5c6198cf098e925e28672cc4b9481b7c" />
+              <section title="m_ui" ref="class_main_window.html#a5a3eb262660797d9a4d52ed16edb6d11" />
+            </section>
+            <section title="Material" ref="struct_material.html">
+              <section title="SurfaceProperty" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7">
+                <section title="DIFFUSE" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7a1f17ceafe04d70586701c6d8736dcf00" />
+                <section title="SPECULAR" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7a66b7035936c46b641aa4a552e85547bf" />
+                <section title="EMISSIVE" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7a33f0bc9cf55afdd237745adc43f9c478" />
+              </section>
+              <section title="Material" ref="struct_material.html#a137e987401b63eb7c6c27c3e38bc74b5" />
+              <section title="Material" ref="struct_material.html#a7c6b26aab15e38ab4381a710f176c4a3" />
+              <section title="m_diffuse" ref="struct_material.html#a2da5909aa70508688864dbc7f7559306" />
+              <section title="m_specularCoefficient" ref="struct_material.html#aecf39c59a7f6010888fa3095fc013a0f" />
+              <section title="m_type" ref="struct_material.html#a25bc4627b427de86ba7ca89ce3dc883f" />
+            </section>
+            <section title="Sampler" ref="class_sampler.html">
+              <section title="Sampler" ref="class_sampler.html#a9682037ac10546714cfde073143cb0be" />
+            </section>
+          </section>
+          <section title="Class Index" ref="classes.html" />
+          <section title="Class Hierarchy" ref="hierarchy.html">
+            <section title="Axis" ref="class_axis.html" />
+            <section title="Renderer::Camera" ref="class_renderer_1_1_camera.html" />
+            <section title="Renderer::HitData" ref="struct_renderer_1_1_hit_data.html" />
+            <section title="Image" ref="class_image.html">
+              <section title="ImagePPM" ref="class_image_p_p_m.html" />
+            </section>
+            <section title="Material" ref="struct_material.html" />
+            <section title="Image::Pixel" ref="struct_image_1_1_pixel.html" />
+            <section title="Renderer::Primitive" ref="class_renderer_1_1_primitive.html">
+              <section title="Renderer::Plane" ref="class_renderer_1_1_plane.html" />
+              <section title="Renderer::Sphere" ref="class_renderer_1_1_sphere.html" />
+              <section title="Renderer::Triangle" ref="class_renderer_1_1_triangle.html" />
+            </section>
+            <section title="QGLWidget">
+              <section title="GLWindow" ref="class_g_l_window.html" />
+            </section>
+            <section title="QMainWindow">
+              <section title="MainWindow" ref="class_main_window.html" />
+            </section>
+            <section title="Renderer::Ray" ref="struct_renderer_1_1_ray.html" />
+            <section title="Renderer::RenderContext" ref="struct_renderer_1_1_render_context.html" />
+            <section title="Sampler" ref="class_sampler.html" />
+            <section title="Renderer::Scene" ref="class_renderer_1_1_scene.html" />
+            <section title="Renderer::SceneFile" ref="class_renderer_1_1_scene_file.html" />
+          </section>
+          <section title="Class Members" ref="functions.html">
+            <section title="All" ref="functions.html">
+              <section title="a" ref="functions.html" />
+              <section title="c" ref="functions_c.html" />
+              <section title="d" ref="functions_d.html" />
+              <section title="e" ref="functions_e.html" />
+              <section title="g" ref="functions_g.html" />
+              <section title="h" ref="functions_h.html" />
+              <section title="i" ref="functions_i.html" />
+              <section title="k" ref="functions_k.html" />
+              <section title="l" ref="functions_l.html" />
+              <section title="m" ref="functions_m.html" />
+              <section title="o" ref="functions_o.html" />
+              <section title="p" ref="functions_p.html" />
+              <section title="r" ref="functions_r.html" />
+              <section title="s" ref="functions_s.html" />
+              <section title="t" ref="functions_t.html" />
+              <section title="u" ref="functions_u.html" />
+              <section title="v" ref="functions_v.html" />
+              <section title="w" ref="functions_w.html" />
+              <section title="~" ref="functions_~.html" />
+            </section>
+            <section title="Functions" ref="functions_func.html" />
+            <section title="Variables" ref="functions_vars.html" />
+            <section title="Typedefs" ref="functions_type.html" />
+            <section title="Enumerations" ref="functions_enum.html" />
+            <section title="Enumerator" ref="functions_eval.html" />
+          </section>
+        </section>
+        <section title="Files">
+          <section title="File List" ref="files.html">
+            <section title="Axis.cpp" ref="_axis_8cpp.html" />
+            <section title="Axis.h" ref="_axis_8h.html">
+              <section title="Axis" ref="class_axis.html">
+                <section title="Axis" ref="class_axis.html#af00b512700438f6c0d5c4f50d3f5e08f" />
+                <section title="~Axis" ref="class_axis.html#a675ffe75a5e61a9e4f60bb79749d5e0c" />
+                <section title="draw" ref="class_axis.html#a6a001a1f69c90c980822515e17fb1701" />
+                <section title="loadMatricesToShader" ref="class_axis.html#a79d40f39b4a3713b4acf66b13077e92f" />
+                <section title="setCam" ref="class_axis.html#a2aa5d9e6cdf5a8453aa0e7a63d93efa1" />
+                <section title="m_cam" ref="class_axis.html#a2007716ef8d46f1cd4747fd9310e1d0d" />
+                <section title="m_globalMouseTx" ref="class_axis.html#a9a9d779f074267d1bd44f17cbdfbfc90" />
+                <section title="m_scale" ref="class_axis.html#a091b29268cee3c443921a8b82c85f2a9" />
+                <section title="m_shaderName" ref="class_axis.html#a005d1914b6346a2c5e492475b5d2fb9a" />
+                <section title="m_transform" ref="class_axis.html#ae12638693bd7b29894124480bb80c919" />
+              </section>
+            </section>
+            <section title="camera.cpp" ref="camera_8cpp.html" />
+            <section title="camera.h" ref="camera_8h.html">
+              <section title="Camera" ref="class_renderer_1_1_camera.html">
+                <section title="Camera" ref="class_renderer_1_1_camera.html#ab25a860d30c9fb7988ad68c4d89de8b9" />
+                <section title="getAngle" ref="class_renderer_1_1_camera.html#aee5a50c681121ebad8e8bf0a02df4e96" />
+                <section title="getfarClipPlane" ref="class_renderer_1_1_camera.html#a4f31ff2bb69d635467d59ec1e2bd8bfd" />
+                <section title="getFOV" ref="class_renderer_1_1_camera.html#a62a6811e608244e6739bf5d9d4821b94" />
+                <section title="getNearClipPlane" ref="class_renderer_1_1_camera.html#acf6473a1263096a8309c5f1209066ba4" />
+                <section title="getObjectSpaceMatrix" ref="class_renderer_1_1_camera.html#a041846a3c8872e90b001e65319745ece" />
+                <section title="getWorldSpaceMatrix" ref="class_renderer_1_1_camera.html#a3f6afedf440c05554e7fbf506aea5514" />
+                <section title="setCameraWorldSpace" ref="class_renderer_1_1_camera.html#a979318d93dd9fd29d1188b109dbf25e8" />
+                <section title="setClippingPlanes" ref="class_renderer_1_1_camera.html#a4452d3bce23326607f184c5621fba48d" />
+                <section title="setFOV" ref="class_renderer_1_1_camera.html#aa903bf49a467f2bd0c915c12a032a2d3" />
+                <section title="m_angle" ref="class_renderer_1_1_camera.html#a124c8532797a7b6f495b2aafe39b262b" />
+                <section title="m_farClippingPlane" ref="class_renderer_1_1_camera.html#ae499659612df0d91ce5dd1435ca94b41" />
+                <section title="m_fov" ref="class_renderer_1_1_camera.html#a2bf9d76c1afa694bd08186a0b0ab4420" />
+                <section title="m_nearClippingPlane" ref="class_renderer_1_1_camera.html#a965a5116d88b44ae64912d612ec8479b" />
+                <section title="m_toObjectSpace" ref="class_renderer_1_1_camera.html#a4bbfee36155bbf808a0d544d577a118d" />
+                <section title="m_toWorldSpace" ref="class_renderer_1_1_camera.html#aa99f5491754f965a11ac9ca411de9036" />
+              </section>
+            </section>
+            <section title="GLWindow.cpp" ref="_g_l_window_8cpp.html">
+              <section title="INCREMENT" ref="_g_l_window_8cpp.html#a1e7bfa770ab6ff97ddeda9d97a5bd527" />
+              <section title="ZOOM" ref="_g_l_window_8cpp.html#ad53f4ea4bad2000e469a9b538c39878f" />
+            </section>
+            <section title="GLWindow.h" ref="_g_l_window_8h.html">
+              <section title="GLWindow" ref="class_g_l_window.html">
+                <section title="MATRIXORDER" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789">
+                  <section title="RTS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a82f3c1d330e10a7d3ceec235967bb641" />
+                  <section title="TRS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a6546e34dfcd2f5431cc82141cd1748d8" />
+                  <section title="GIMBALLOCK" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a4fde2d4e466ff0849489c92964e0e441" />
+                  <section title="EULERTS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a7018902f1275a263f943ab4f3a86a50d" />
+                  <section title="TEULERS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a6d2d35f45dae389220921143e0d486a4" />
+                </section>
+                <section title="GLWindow" ref="class_g_l_window.html#a54ae7036a8f059e9ea6a3b91064837c8" />
+                <section title="~GLWindow" ref="class_g_l_window.html#a2eeaea2148f4f72344edd6d1bac9759b" />
+                <section title="createFramebufferObject" ref="class_g_l_window.html#a68504d141bb9f62168eb06773a105954" />
+                <section title="createTextureObject" ref="class_g_l_window.html#a69aa7cac3d60aaa671ebecaff25c7bdb" />
+                <section title="getScene" ref="class_g_l_window.html#a167f9005a38f79ca53b7ed0256b54076" />
+                <section title="initializeGL" ref="class_g_l_window.html#a39e39761cd7323806917a217cc7caea5" />
+                <section title="loadMatricesToShader" ref="class_g_l_window.html#a89d4304966d8947bc1fd98fbe881f63b" />
+                <section title="loadScene" ref="class_g_l_window.html#aed7b270f88867c428887e7c43145988b" />
+                <section title="matrixDirty" ref="class_g_l_window.html#a305540b7cf1841e24163be0a9a7e4956" />
+                <section title="mouseMoveEvent" ref="class_g_l_window.html#a7a04e2a3400fa69d1bcb6b650425c01e" />
+                <section title="mousePressEvent" ref="class_g_l_window.html#a2c4d9af80c2a7a33a46bce46276b8409" />
+                <section title="mouseReleaseEvent" ref="class_g_l_window.html#ab9e5741b8c69d2f6447a5fc6d9d704c8" />
+                <section title="paintGL" ref="class_g_l_window.html#a9bd2503dd5f812c10a9481f22ecd3403" />
+                <section title="renderScene" ref="class_g_l_window.html#afa32b188a2c32efb856380c59f966c50" />
+                <section title="resetMouse" ref="class_g_l_window.html#a7d68a4cf2db4ee1f485462595ffe7137" />
+                <section title="resizeGL" ref="class_g_l_window.html#abe57c0f40e59cba4c98759121e22eb47" />
+                <section title="setColour" ref="class_g_l_window.html#aa1349f743c7896eae48d9de70bc3a435" />
+                <section title="setEuler" ref="class_g_l_window.html#aaf083de2d54fb667a530976735ef459d" />
+                <section title="setMatrixOrder" ref="class_g_l_window.html#a1d0cb30ace164133ef57a191f6365fb7" />
+                <section title="setNormalSize" ref="class_g_l_window.html#a5def6c0eceb97287c9281e8994c741ca" />
+                <section title="setRotate" ref="class_g_l_window.html#aeb38f75f4aabaa234c6edfd47961ffd3" />
+                <section title="setScale" ref="class_g_l_window.html#a36debb64f302762ef25187b053df91ab" />
+                <section title="setScenePath" ref="class_g_l_window.html#a3eb6fe3b14f113249c0be33a5337e8fa" />
+                <section title="setTranslate" ref="class_g_l_window.html#ace1f2e0ba90bdfa04d3792e41c9bb40c" />
+                <section title="toggleNormals" ref="class_g_l_window.html#a3101b6a32ac18c0c1f26fc6753d8ff22" />
+                <section title="toggleWireframe" ref="class_g_l_window.html#a221ed4a9a24a2639f3cd4398476d7a71" />
+                <section title="vboChanged" ref="class_g_l_window.html#ace72b2071df8b0415d76011d747cdb36" />
+                <section title="wheelEvent" ref="class_g_l_window.html#a5f96a70cc4c2666b46ecfa62de7be598" />
+                <section title="m_axis" ref="class_g_l_window.html#af581f7ed1a05e48c59322582950948d9" />
+                <section title="m_cam" ref="class_g_l_window.html#a55556dafb4fc86c35b270ca0d68f456e" />
+                <section title="m_colour" ref="class_g_l_window.html#a88711a51b442586d0ce3775641d1e478" />
+                <section title="m_drawIndex" ref="class_g_l_window.html#acf36447a3fe2182b73bd96d6a6987fd8" />
+                <section title="m_drawNormals" ref="class_g_l_window.html#a03f2c728ffe9d1598a95ee18e7d7a606" />
+                <section title="m_euler" ref="class_g_l_window.html#ac606d67dd840cf40abaff4790bbbbc05" />
+                <section title="m_fboID" ref="class_g_l_window.html#a5a06415ec577aa6c9d0bdca11de0602b" />
+                <section title="m_gimbal" ref="class_g_l_window.html#a18c3d2cd29637ca1e066333d01966cac" />
+                <section title="m_light" ref="class_g_l_window.html#a45cb8c5f6e0004c2cce30eb1d5b3c56f" />
+                <section title="m_material" ref="class_g_l_window.html#ada3ede9902ea00c4a4588de958fe8519" />
+                <section title="m_matrixOrder" ref="class_g_l_window.html#a5993da88cf9d0cc66c36b12becad1e69" />
+                <section title="m_modelPos" ref="class_g_l_window.html#a222840baf9b594f95626a55563904684" />
+                <section title="m_mouseGlobalTX" ref="class_g_l_window.html#ae4cf79c7e425b4033ccef92aa517130a" />
+                <section title="m_normalSize" ref="class_g_l_window.html#a1c59e57a6bfeb6ce8007a51fff8fd9ed" />
+                <section title="m_origX" ref="class_g_l_window.html#ab6aec410f5ce5868cabe5fe2f0768bc9" />
+                <section title="m_origXPos" ref="class_g_l_window.html#a176afd6632502975d692b69a90488670" />
+                <section title="m_origY" ref="class_g_l_window.html#ab7a1ee2202588e005b90c99ea1323af4" />
+                <section title="m_origYPos" ref="class_g_l_window.html#aab805b77275ea41e8ff2dcf9e714f345" />
+                <section title="m_rboID" ref="class_g_l_window.html#aca7e0a6b4688406f66a2186e09844ca9" />
+                <section title="m_rotate" ref="class_g_l_window.html#a331ff6c02edb1f1a4252600a345d003a" />
+                <section title="m_rotateActive" ref="class_g_l_window.html#af97ce940b726836b024ab02c25ed391d" />
+                <section title="m_scale" ref="class_g_l_window.html#a8887cc2890bd1a31bcecf465ee6ace94" />
+                <section title="m_scene" ref="class_g_l_window.html#aee9be712fbb0f20fc2166bcf735f89ae" />
+                <section title="m_scenePath" ref="class_g_l_window.html#a5175cc7e618636fc7e3d6f8eb3e0dc39" />
+                <section title="m_spinXFace" ref="class_g_l_window.html#af8ea09020a5ad4c20a16ea835ed1f2af" />
+                <section title="m_spinYFace" ref="class_g_l_window.html#aa4c39badfa80d8eac6a773449b6db5a2" />
+                <section title="m_textureID" ref="class_g_l_window.html#ac7fde34ae6a96eaa95ddf7ebea83baf4" />
+                <section title="m_transform" ref="class_g_l_window.html#ab84b6540a88835041b06ac295b0b1642" />
+                <section title="m_translate" ref="class_g_l_window.html#aae1a322d5ba7062e7d14c65b95b3f073" />
+                <section title="m_translateActive" ref="class_g_l_window.html#af65008bca7b2d863c12a93f3087b2969" />
+                <section title="m_verts" ref="class_g_l_window.html#aac22ba5ee4eeec173f668f8cdf40fc76" />
+                <section title="renderThread" ref="class_g_l_window.html#af84acb17ea1b3a5dde7abc9c85771447" />
+                <section title="s_vboNames" ref="class_g_l_window.html#ab8f5ad2f6aed486d7922ab4246c3ea52" />
+                <section title="test_vao" ref="class_g_l_window.html#a90e0680c5b0aa5b2abdb2ddc4a82157e" />
+              </section>
+            </section>
+            <section title="image.cpp" ref="image_8cpp.html" />
+            <section title="image.h" ref="image_8h.html">
+              <section title="Image" ref="class_image.html">
+                <section title="Pixel" ref="struct_image_1_1_pixel.html">
+                  <section title="Pixel" ref="struct_image_1_1_pixel.html#a93d339cf79d059bfff19312344dc3169" />
+                  <section title="Pixel" ref="struct_image_1_1_pixel.html#abc76a3238962d4fa4088df895345e70d" />
+                  <section title="operator*" ref="struct_image_1_1_pixel.html#a45019e2e7a6b136c483dda3757073376" />
+                  <section title="operator*" ref="struct_image_1_1_pixel.html#a9ac59bc7ffcf0d258020457f7a874c5e" />
+                  <section title="operator*=" ref="struct_image_1_1_pixel.html#a5b971c342ea48a8e37cea11b9ebd86e1" />
+                  <section title="operator*=" ref="struct_image_1_1_pixel.html#ace1d119e142e767536947e16b0e058a2" />
+                  <section title="operator+" ref="struct_image_1_1_pixel.html#a162bce995aeeaba97b86787bf3ec564c" />
+                  <section title="operator+=" ref="struct_image_1_1_pixel.html#a98be5e814ed4f7c02c2511069be37358" />
+                  <section title="operator-" ref="struct_image_1_1_pixel.html#a45cdd002e2736b87f6ecfc21a936af67" />
+                  <section title="operator-=" ref="struct_image_1_1_pixel.html#a4e55c878fdded95922790c951512e97b" />
+                  <section title="operator/" ref="struct_image_1_1_pixel.html#a7650bff7855c16b62836969e3a6b51b8" />
+                  <section title="operator/" ref="struct_image_1_1_pixel.html#ac12af52c4bb346e6f43f32d8620af758" />
+                  <section title="operator/=" ref="struct_image_1_1_pixel.html#a0f4bed70eac895d786db9b8235c6efce" />
+                  <section title="operator/=" ref="struct_image_1_1_pixel.html#a1e33173e685768745e612706e7090b79" />
+                  <section title="m_b" ref="struct_image_1_1_pixel.html#af01bb9644bd2edd3ae0f61b15c6a7d28" />
+                  <section title="m_g" ref="struct_image_1_1_pixel.html#a8339e42b46fbb5531ab21ad19f655ced" />
+                  <section title="m_r" ref="struct_image_1_1_pixel.html#ae73fed2f793be32a29bc2747acfd3eb8" />
+                </section>
+                <section title="Image" ref="class_image.html#a055c8145be6f8c3da429f73da47c7163" />
+                <section title="~Image" ref="class_image.html#a0294f63700543e11c0f0da85601c7ae5" />
+                <section title="getPixel" ref="class_image.html#a634f5e4de7751158cfc2312c93a9a005" />
+                <section title="read" ref="class_image.html#aaad771ed7e29b7f01f2f129f84224060" />
+                <section title="save" ref="class_image.html#abccefaaa9c3b1c9edb57f19d7c7777c3" />
+                <section title="setPixel" ref="class_image.html#a704672fded047d7f142c6e6dd8c488f8" />
+                <section title="tonemap" ref="class_image.html#a614b4183dc55a0097007bb65bb76493f" />
+                <section title="m_height" ref="class_image.html#af2c44810438cfeaaf63fb3616b276db4" />
+                <section title="m_image" ref="class_image.html#a917680d514864d303cd210fcf3d52299" />
+                <section title="m_width" ref="class_image.html#a121b435401e6fc86901514d000f7df37" />
+              </section>
+              <section title="Pixel" ref="struct_image_1_1_pixel.html">
+                <section title="Pixel" ref="struct_image_1_1_pixel.html#a93d339cf79d059bfff19312344dc3169" />
+                <section title="Pixel" ref="struct_image_1_1_pixel.html#abc76a3238962d4fa4088df895345e70d" />
+                <section title="operator*" ref="struct_image_1_1_pixel.html#a45019e2e7a6b136c483dda3757073376" />
+                <section title="operator*" ref="struct_image_1_1_pixel.html#a9ac59bc7ffcf0d258020457f7a874c5e" />
+                <section title="operator*=" ref="struct_image_1_1_pixel.html#a5b971c342ea48a8e37cea11b9ebd86e1" />
+                <section title="operator*=" ref="struct_image_1_1_pixel.html#ace1d119e142e767536947e16b0e058a2" />
+                <section title="operator+" ref="struct_image_1_1_pixel.html#a162bce995aeeaba97b86787bf3ec564c" />
+                <section title="operator+=" ref="struct_image_1_1_pixel.html#a98be5e814ed4f7c02c2511069be37358" />
+                <section title="operator-" ref="struct_image_1_1_pixel.html#a45cdd002e2736b87f6ecfc21a936af67" />
+                <section title="operator-=" ref="struct_image_1_1_pixel.html#a4e55c878fdded95922790c951512e97b" />
+                <section title="operator/" ref="struct_image_1_1_pixel.html#a7650bff7855c16b62836969e3a6b51b8" />
+                <section title="operator/" ref="struct_image_1_1_pixel.html#ac12af52c4bb346e6f43f32d8620af758" />
+                <section title="operator/=" ref="struct_image_1_1_pixel.html#a0f4bed70eac895d786db9b8235c6efce" />
+                <section title="operator/=" ref="struct_image_1_1_pixel.html#a1e33173e685768745e612706e7090b79" />
+                <section title="m_b" ref="struct_image_1_1_pixel.html#af01bb9644bd2edd3ae0f61b15c6a7d28" />
+                <section title="m_g" ref="struct_image_1_1_pixel.html#a8339e42b46fbb5531ab21ad19f655ced" />
+                <section title="m_r" ref="struct_image_1_1_pixel.html#ae73fed2f793be32a29bc2747acfd3eb8" />
+              </section>
+            </section>
+            <section title="imagePPM.cpp" ref="image_p_p_m_8cpp.html" />
+            <section title="imagePPM.h" ref="image_p_p_m_8h.html">
+              <section title="ImagePPM" ref="class_image_p_p_m.html">
+                <section title="ImagePPM" ref="class_image_p_p_m.html#a11a311b9ba6382739eb75f7a15dc832b" />
+                <section title="read" ref="class_image_p_p_m.html#a948a454964cd10c3eba73a4c5ecc27d6" />
+                <section title="save" ref="class_image_p_p_m.html#acf4a44ec60de8ce19b826d51f82e9054" />
+                <section title="tonemap" ref="class_image_p_p_m.html#a27820174d8704665b266e751a6919b53" />
+              </section>
+            </section>
+            <section title="main.cpp" ref="main_8cpp.html">
+              <section title="main" ref="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" />
+            </section>
+            <section title="MainWindow.cpp" ref="_main_window_8cpp.html" />
+            <section title="MainWindow.h" ref="_main_window_8h.html">
+              <section title="MainWindow" ref="class_main_window.html">
+                <section title="MainWindow" ref="class_main_window.html#a8b244be8b7b7db1b08de2a2acb9409db" />
+                <section title="~MainWindow" ref="class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7" />
+                <section title="changeColour" ref="class_main_window.html#a494094a6550b91f808a64f5bf792170a" />
+                <section title="keyPressEvent" ref="class_main_window.html#a3c2e352934c6318d405c3d2b0e07729c" />
+                <section title="on_openScene_clicked" ref="class_main_window.html#af0d2560399a08d1070ad344ca30e968d" />
+                <section title="on_quit_clicked" ref="class_main_window.html#a65970e860475159b218470a3a790c71d" />
+                <section title="on_renderButton_clicked" ref="class_main_window.html#ad4224ffb01cbd6f9b31b3024053aeeef" />
+                <section title="on_renderFilenameEdit_editingFinished" ref="class_main_window.html#a012aeb18cc06cbadca1841632593c76f" />
+                <section title="on_renderHeightEdit_editingFinished" ref="class_main_window.html#a11c0bf07f446f8bbc5e912a7d973b5cd" />
+                <section title="on_rendersamplesEdit_editingFinished" ref="class_main_window.html#a40c3d236462b660f4d7a06f6a76279c9" />
+                <section title="on_renderWidthEdit_editingFinished" ref="class_main_window.html#a2c89a572d5da0794f91d895f59e1357f" />
+                <section title="on_tabWidget_2_currentChanged" ref="class_main_window.html#a716cd8ffd41900239ad14135e8b8eb96" />
+                <section title="on_tabWidget_currentChanged" ref="class_main_window.html#ab5ec4a06e4e38781eb7b913fed92733e" />
+                <section title="renderNow" ref="class_main_window.html#ab9611cd38a22e0d943734a6f656df484" />
+                <section title="reset" ref="class_main_window.html#a02076de46e6810174817ebfc6ddd2be5" />
+                <section title="setEuler" ref="class_main_window.html#a1f5e9c808e1c271a197d9e9530f30953" />
+                <section title="setMatrix" ref="class_main_window.html#a9578e39b64f852586b8e1d60baed355a" />
+                <section title="setRotate" ref="class_main_window.html#a04863128e9b29d912f6b4570278bffc8" />
+                <section title="setScale" ref="class_main_window.html#ab46ab292ac859c7955da8e37d03f9c0c" />
+                <section title="setTab" ref="class_main_window.html#a539952dc23679e932b2430885490b062" />
+                <section title="setTranslate" ref="class_main_window.html#a484c02eab066eef508b165c6455d3253" />
+                <section title="updateMatrix" ref="class_main_window.html#aa7811f5612fc3902900dad6d71368a02" />
+                <section title="m_gl" ref="class_main_window.html#a8f18111d1b422167f8b9a688f38f8969" />
+                <section title="m_scene" ref="class_main_window.html#a5c6198cf098e925e28672cc4b9481b7c" />
+                <section title="m_ui" ref="class_main_window.html#a5a3eb262660797d9a4d52ed16edb6d11" />
+              </section>
+            </section>
+            <section title="material.cpp" ref="material_8cpp.html" />
+            <section title="material.h" ref="material_8h.html">
+              <section title="Material" ref="struct_material.html">
+                <section title="SurfaceProperty" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7">
+                  <section title="DIFFUSE" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7a1f17ceafe04d70586701c6d8736dcf00" />
+                  <section title="SPECULAR" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7a66b7035936c46b641aa4a552e85547bf" />
+                  <section title="EMISSIVE" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7a33f0bc9cf55afdd237745adc43f9c478" />
+                </section>
+                <section title="Material" ref="struct_material.html#a137e987401b63eb7c6c27c3e38bc74b5" />
+                <section title="Material" ref="struct_material.html#a7c6b26aab15e38ab4381a710f176c4a3" />
+                <section title="m_diffuse" ref="struct_material.html#a2da5909aa70508688864dbc7f7559306" />
+                <section title="m_specularCoefficient" ref="struct_material.html#aecf39c59a7f6010888fa3095fc013a0f" />
+                <section title="m_type" ref="struct_material.html#a25bc4627b427de86ba7ca89ce3dc883f" />
+              </section>
+            </section>
+            <section title="plane.cpp" ref="plane_8cpp.html" />
+            <section title="plane.h" ref="plane_8h.html">
+              <section title="Plane" ref="class_renderer_1_1_plane.html">
+                <section title="Plane" ref="class_renderer_1_1_plane.html#aed8859b010b215062f3d058356e4d345" />
+                <section title="~Plane" ref="class_renderer_1_1_plane.html#a180a33628429897332d5b96feea1660a" />
+                <section title="draw" ref="class_renderer_1_1_plane.html#abd2e9c48aa3acb347255c15245939449" />
+                <section title="getNormal" ref="class_renderer_1_1_plane.html#a134fb1ab85f0c9537edde96220edb014" />
+                <section title="intersect" ref="class_renderer_1_1_plane.html#a1954528af0da8ab0b96b9dee73b5c7a3" />
+                <section title="sample" ref="class_renderer_1_1_plane.html#ad18b055a0daabda07b22e71da10cc84d" />
+                <section title="m_area" ref="class_renderer_1_1_plane.html#a25ccf6132f2172cb8c2191aeacb65141" />
+                <section title="m_normal" ref="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263" />
+                <section title="m_p" ref="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c" />
+                <section title="m_u" ref="class_renderer_1_1_plane.html#aa64d0c360a616c75db94c15bb2f8162c" />
+                <section title="m_v" ref="class_renderer_1_1_plane.html#a4688cb8cd378d99808bbff11934e3a02" />
+                <section title="m_x" ref="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c" />
+                <section title="m_y" ref="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8" />
+              </section>
+            </section>
+            <section title="primitive.cpp" ref="primitive_8cpp.html" />
+            <section title="primitive.h" ref="primitive_8h.html">
+              <section title="HitData" ref="struct_renderer_1_1_hit_data.html">
+                <section title="HitData" ref="struct_renderer_1_1_hit_data.html#a68c0ee0efbd32d15c3fd9add42eb8f8a" />
+                <section title="m_distanceSqr" ref="struct_renderer_1_1_hit_data.html#a51f1e587ef8b56abfd1f3017aa24584b" />
+                <section title="m_object" ref="struct_renderer_1_1_hit_data.html#a68a87eb8a21afc9cb328fc242153ae09" />
+                <section title="m_ray" ref="struct_renderer_1_1_hit_data.html#a5aee6d1129c216194f0b0bfbbb3d6e55" />
+                <section title="m_surfaceImpact" ref="struct_renderer_1_1_hit_data.html#a21db1ed6df74b8b6c7109025928201c6" />
+                <section title="m_surfaceNormal" ref="struct_renderer_1_1_hit_data.html#a12c4d926e3b5d93a8e12d65e36139760" />
+                <section title="m_t" ref="struct_renderer_1_1_hit_data.html#adeafe63956b601b01d7ea69bde1a1986" />
+                <section title="m_u" ref="struct_renderer_1_1_hit_data.html#ac70ab126082944359393e5bb0cd5abb2" />
+                <section title="m_v" ref="struct_renderer_1_1_hit_data.html#a025e748b1c3e95f989128cf6c3b8f5c8" />
+                <section title="m_w" ref="struct_renderer_1_1_hit_data.html#a9d85ba822c1cc07983e5c00e457178d9" />
+              </section>
+              <section title="Primitive" ref="class_renderer_1_1_primitive.html">
+                <section title="Primitive" ref="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513" />
+                <section title="~Primitive" ref="class_renderer_1_1_primitive.html#a72985fa9fd72f5229a9bfb638377f4c8" />
+                <section title="draw" ref="class_renderer_1_1_primitive.html#a9ac7e1ff84d81f2a8f474cbaf36b41d0" />
+                <section title="getNormal" ref="class_renderer_1_1_primitive.html#ade88d0252e3c0bd1f1ee81df35afca0a" />
+                <section title="getSurfaceMaterial" ref="class_renderer_1_1_primitive.html#aa303dc1042f7305a3895049d5f1a51e2" />
+                <section title="intersect" ref="class_renderer_1_1_primitive.html#a22f0a7845bbec672a363f39fac4daf5e" />
+                <section title="objectTransform" ref="class_renderer_1_1_primitive.html#a935c1ff33ec49914cd4dfaafb92055f0" />
+                <section title="rayToObjectSpace" ref="class_renderer_1_1_primitive.html#ab284806b9c1642ae80410607d606ae46" />
+                <section title="rayToWorldSpace" ref="class_renderer_1_1_primitive.html#aef8e1c3e54925ef164f094ef976ad78e" />
+                <section title="sample" ref="class_renderer_1_1_primitive.html#a203efa6754633a8559c441a4de603b2d" />
+                <section title="worldTransform" ref="class_renderer_1_1_primitive.html#a9a55765d6ba313e07482cd650700bd00" />
+                <section title="m_material" ref="class_renderer_1_1_primitive.html#a3c5f1dc45cf1c74402047a93007d9a3b" />
+                <section title="m_toObjectSpace" ref="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c" />
+                <section title="m_toWorldSpace" ref="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4" />
+              </section>
+              <section title="EPSILON" ref="primitive_8h.html#ad0639ed60b8a49b3a6b0526def7f1bb2" />
+            </section>
+            <section title="ray.cpp" ref="ray_8cpp.html" />
+            <section title="ray.h" ref="ray_8h.html">
+              <section title="Ray" ref="struct_renderer_1_1_ray.html">
+                <section title="RayType" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414df">
+                  <section title="UNKNOWN" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa25ec2789fd632c336f09178ec9065b82" />
+                  <section title="CAMERA" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa8aa5e7b13fe018ad7b45bec8271fb675" />
+                  <section title="SHADOW" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa1470ae5ab6a64b0215827ed607f05807" />
+                  <section title="REFLECT" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfad976c070bfe94008c9ec8f64c62bb524" />
+                  <section title="REFRACT" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa699b8cebf03b418927cf54fd6ea917b8" />
+                </section>
+                <section title="Ray" ref="struct_renderer_1_1_ray.html#a174d2a110f464b0715f689b9eb664cad" />
+                <section title="inverseDirection" ref="struct_renderer_1_1_ray.html#aa6bf2242c96eeff730f78b389e16b3e7" />
+                <section title="operator()" ref="struct_renderer_1_1_ray.html#a7aadfb31ea40383058a79e02ddfe9fdc" />
+                <section title="reflect" ref="struct_renderer_1_1_ray.html#aefb8158efe030eeb62c731a5b3b6ac06" />
+                <section title="m_direction" ref="struct_renderer_1_1_ray.html#ae8daac3681b1f08903bbd1cf4ba9c791" />
+                <section title="m_inverseDirection" ref="struct_renderer_1_1_ray.html#a526b15d36b37ad8c7c39d88da8c936de" />
+                <section title="m_origin" ref="struct_renderer_1_1_ray.html#a5028bc5fd552d6878884c3fbd8bed02c" />
+                <section title="m_sign" ref="struct_renderer_1_1_ray.html#a34e1eab13ea919449469e3353b14d6a3" />
+                <section title="m_tmax" ref="struct_renderer_1_1_ray.html#aa61919436e6d1e655575943fd1803f66" />
+                <section title="m_tmin" ref="struct_renderer_1_1_ray.html#a30ab8d94432ef36f4b8615f5d48304f6" />
+                <section title="m_type" ref="struct_renderer_1_1_ray.html#a80f06b6cefceda2490e10441077e277b" />
+              </section>
+            </section>
+            <section title="rendercontext.cpp" ref="rendercontext_8cpp.html" />
+            <section title="rendercontext.h" ref="rendercontext_8h.html">
+              <section title="RenderContext" ref="struct_renderer_1_1_render_context.html">
+                <section title="RenderContext" ref="struct_renderer_1_1_render_context.html#a7e9f3ac4c9560be1057139836739b6c6" />
+                <section title="~RenderContext" ref="struct_renderer_1_1_render_context.html#a0e29c5ebfeb166a4243b645acbd44bd8" />
+                <section title="m_aspectRatio" ref="struct_renderer_1_1_render_context.html#aa71a4a0454592902c0e59b4d47ff4e83" />
+                <section title="m_depth" ref="struct_renderer_1_1_render_context.html#ac96c287e23437d653c4fb317ba2a108b" />
+                <section title="m_hit" ref="struct_renderer_1_1_render_context.html#aa9bda306ae7a969d5d2b1af128270edb" />
+                <section title="m_imageHeight" ref="struct_renderer_1_1_render_context.html#ae9375e1dbdd7f835d4b65527a0cf470b" />
+                <section title="m_imageWidth" ref="struct_renderer_1_1_render_context.html#a4654e2eb0253d9933aa78ea14b43d3be" />
+                <section title="m_outputPath" ref="struct_renderer_1_1_render_context.html#ae317255b06e72c9d98dd65853232a303" />
+                <section title="m_renderCamera" ref="struct_renderer_1_1_render_context.html#a51c51a98344d7acdef2da9c1f46fd0f8" />
+                <section title="m_samples" ref="struct_renderer_1_1_render_context.html#abb2007b9ebefdaa2fe0855b19bcc75d5" />
+                <section title="m_scene" ref="struct_renderer_1_1_render_context.html#adcb12a26eedfa83b6c72d39bbef539b0" />
+              </section>
+            </section>
+            <section title="renderer.cpp" ref="renderer_8cpp.html">
+              <section title="render" ref="renderer_8cpp.html#ab4e56fa4911b200479ea79e6f43079d0" />
+              <section title="shade" ref="renderer_8cpp.html#a5889ab8316b510a8dc208452fc14a76c" />
+              <section title="trace" ref="renderer_8cpp.html#ac12ecacae721953493f903dacb4d411a" />
+            </section>
+            <section title="renderer.h" ref="renderer_8h.html">
+              <section title="render" ref="renderer_8h.html#ab4e56fa4911b200479ea79e6f43079d0" />
+              <section title="shade" ref="renderer_8h.html#a5889ab8316b510a8dc208452fc14a76c" />
+              <section title="trace" ref="renderer_8h.html#ac12ecacae721953493f903dacb4d411a" />
+            </section>
+            <section title="sampler.cpp" ref="sampler_8cpp.html" />
+            <section title="sampler.h" ref="sampler_8h.html">
+              <section title="Sampler" ref="class_sampler.html">
+                <section title="Sampler" ref="class_sampler.html#a9682037ac10546714cfde073143cb0be" />
+              </section>
+            </section>
+            <section title="scene.cpp" ref="scene_8cpp.html" />
+            <section title="scene.h" ref="scene_8h.html">
+              <section title="Scene" ref="class_renderer_1_1_scene.html">
+                <section title="objectList" ref="class_renderer_1_1_scene.html#a883277f707aee77273e5e8ce210c8673" />
+                <section title="objectListIterator" ref="class_renderer_1_1_scene.html#a6408d8af3659e808e45877a96a6059de" />
+                <section title="Scene" ref="class_renderer_1_1_scene.html#a42cd9d1821ccd82a487e112f4bc3a9db" />
+                <section title="getBackgroundColour" ref="class_renderer_1_1_scene.html#afed66d5469d6bf5c15a8a1c72051a45a" />
+                <section title="objectBegin" ref="class_renderer_1_1_scene.html#ac71ec50dfcae221f69e83ac1717b865d" />
+                <section title="objectEnd" ref="class_renderer_1_1_scene.html#af5f44baafb6e49510712579c4aca0ca7" />
+                <section title="m_background" ref="class_renderer_1_1_scene.html#ab3c42502a9430b1aa858aa1f86f5c690" />
+                <section title="m_initialCameraView" ref="class_renderer_1_1_scene.html#a73b7840d1ddff6e0af41dfa842093d5e" />
+                <section title="m_primitives" ref="class_renderer_1_1_scene.html#a8cab7b246650c82ae60ee3e5b9a9ecbb" />
+              </section>
+            </section>
+            <section title="scenefile.cpp" ref="scenefile_8cpp.html">
+              <section title="popFirstItem" ref="scenefile_8cpp.html#aa6ee81d879eb80bd4242817e9052b9bc" />
+            </section>
+            <section title="scenefile.h" ref="scenefile_8h.html">
+              <section title="SceneFile" ref="class_renderer_1_1_scene_file.html">
+                <section title="SceneFile" ref="class_renderer_1_1_scene_file.html#adb6eacf448a934b2f87d8eaeddc4e005" />
+                <section title="~SceneFile" ref="class_renderer_1_1_scene_file.html#ab365086c8a1cc792f65fefea56d4e46a" />
+                <section title="parseCamera" ref="class_renderer_1_1_scene_file.html#a51b5288f138fc6bdf7340d55f95f76f1" />
+                <section title="parseColour" ref="class_renderer_1_1_scene_file.html#ad278fe4d9ffdd2018607836d8777f4ea" />
+                <section title="parseFloat" ref="class_renderer_1_1_scene_file.html#acdf20b92e3d33be370c3ad081555fd16" />
+                <section title="parseMaterialType" ref="class_renderer_1_1_scene_file.html#afdfcfbdb80511cc22f4287a8c8515f0f" />
+                <section title="parseSphere" ref="class_renderer_1_1_scene_file.html#a52b006539e1d470e6d75ee662b056bc2" />
+                <section title="parseTransform" ref="class_renderer_1_1_scene_file.html#a0050fe3c8f4c1cf799df54740d623cdd" />
+                <section title="parseTriangle" ref="class_renderer_1_1_scene_file.html#a7c8cd7aafa876459375f0aa158c5ae2c" />
+                <section title="parseVertex" ref="class_renderer_1_1_scene_file.html#a136fab17d94808f9ea3a0247cef5f3cf" />
+                <section title="read" ref="class_renderer_1_1_scene_file.html#a615a08298e12eec3794cd80ba687c127" />
+                <section title="m_counter" ref="class_renderer_1_1_scene_file.html#a6957094bf0b644df37698bde91357af7" />
+                <section title="m_sceneFile" ref="class_renderer_1_1_scene_file.html#a7847a9fbddd6b67599ac4410b0342717" />
+              </section>
+            </section>
+            <section title="sphere.cpp" ref="sphere_8cpp.html" />
+            <section title="sphere.h" ref="sphere_8h.html">
+              <section title="Sphere" ref="class_renderer_1_1_sphere.html">
+                <section title="Sphere" ref="class_renderer_1_1_sphere.html#a1cc7e679282a27fba0d528021061f571" />
+                <section title="draw" ref="class_renderer_1_1_sphere.html#addc6c6ef784badc0065ef827d1edda7f" />
+                <section title="getNormal" ref="class_renderer_1_1_sphere.html#a9a25c8561b372c717b03ab1696473b73" />
+                <section title="intersect" ref="class_renderer_1_1_sphere.html#ac9525a1fa2081d065e25e93f5e2f4b1d" />
+                <section title="sample" ref="class_renderer_1_1_sphere.html#a63986b9167dd275192e87cc3c578d91a" />
+                <section title="tangentSphere" ref="class_renderer_1_1_sphere.html#a1e60080d349a95c18e29bd3e2f0f3819" />
+                <section title="m_radius" ref="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20" />
+                <section title="m_squaredRadius" ref="class_renderer_1_1_sphere.html#aaebd2870643f080b0b41accbeac8e55a" />
+              </section>
+            </section>
+            <section title="StringUtils.cpp" ref="_string_utils_8cpp.html">
+              <section title="tokenize" ref="_string_utils_8cpp.html#a65c424f4219d2baacff104fdd206b016" />
+              <section title="tokenToFloat" ref="_string_utils_8cpp.html#ab602aec05d401dc633003bf507e9db8c" />
+            </section>
+            <section title="StringUtils.h" ref="_string_utils_8h.html">
+              <section title="tokenize" ref="_string_utils_8h.html#a65c424f4219d2baacff104fdd206b016" />
+              <section title="tokenToFloat" ref="_string_utils_8h.html#ab602aec05d401dc633003bf507e9db8c" />
+            </section>
+            <section title="tracemath.cpp" ref="tracemath_8cpp.html">
+              <section title="degreesToRadians" ref="tracemath_8cpp.html#ac4bb74681e6f160a17183e2295e6ffcf" />
+              <section title="integrate" ref="tracemath_8cpp.html#a4c59b2b3f3ccde7dd5814d921a8cf2e0" />
+              <section title="SolveQuadratic" ref="tracemath_8cpp.html#a69ce87f2be8257a30cb1d2998f0d8e9c" />
+              <section title="transformNormal" ref="tracemath_8cpp.html#a6400b711aeed0a6ff4cd2d8006c4cea8" />
+              <section title="transformPosition" ref="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45" />
+            </section>
+            <section title="tracemath.h" ref="tracemath_8h.html">
+              <section title="degreesToRadians" ref="tracemath_8h.html#ac4bb74681e6f160a17183e2295e6ffcf" />
+              <section title="integrate" ref="tracemath_8h.html#a06e3ce6f2b644468f65aec38eb1d17e6" />
+              <section title="inverseSquare" ref="tracemath_8h.html#a8156363d0dd5b6af9a73ca4bbcea0939" />
+              <section title="SolveQuadratic" ref="tracemath_8h.html#a69ce87f2be8257a30cb1d2998f0d8e9c" />
+              <section title="transformNormal" ref="tracemath_8h.html#a6400b711aeed0a6ff4cd2d8006c4cea8" />
+              <section title="transformPosition" ref="tracemath_8h.html#a70d4019cedd59fd08c763a06b47b2d45" />
+            </section>
+            <section title="triangle.cpp" ref="triangle_8cpp.html" />
+            <section title="triangle.h" ref="triangle_8h.html">
+              <section title="Triangle" ref="class_renderer_1_1_triangle.html">
+                <section title="Triangle" ref="class_renderer_1_1_triangle.html#a7053d2e8592075bc7a1c9bbdbf95ffdc" />
+                <section title="~Triangle" ref="class_renderer_1_1_triangle.html#aa4d8804ea95f8d0a64681fd6eae0bd6c" />
+                <section title="draw" ref="class_renderer_1_1_triangle.html#a325a404a8c7b9bef234738dcb1caa19b" />
+                <section title="getNormal" ref="class_renderer_1_1_triangle.html#adae4e94dc4c3b4e4ed844a222815f0a4" />
+                <section title="getTangent" ref="class_renderer_1_1_triangle.html#a36f812846c8e2fcf5ced411f3e12812b" />
+                <section title="intersect" ref="class_renderer_1_1_triangle.html#af9802d9321c1fcdeb3aae9364efd246c" />
+                <section title="sample" ref="class_renderer_1_1_triangle.html#a40b6162167de14c18f0ec9233eb7e2ad" />
+                <section title="m_normals" ref="class_renderer_1_1_triangle.html#a7a3f4ab1063f6856f29550487145b761" />
+                <section title="m_singleSided" ref="class_renderer_1_1_triangle.html#aa668f30d8a7279d8a7b5677e3bc6a763" />
+                <section title="m_vao" ref="class_renderer_1_1_triangle.html#a093ffebe18ba2f43a9878323e5da678f" />
+                <section title="m_vtx" ref="class_renderer_1_1_triangle.html#a9c7e7264f73272aad6ecc741254affb2" />
+              </section>
+            </section>
+          </section>
+          <section title="File Members" ref="globals.html">
+            <section title="All" ref="globals.html" />
+            <section title="Functions" ref="globals_func.html" />
+            <section title="Variables" ref="globals_vars.html" />
+          </section>
+        </section>
+      </section>
+    </toc>
+    <keywords>
+      <keyword name="INCREMENT" id="GLWindow.cpp::INCREMENT" ref="_g_l_window_8cpp.html#a1e7bfa770ab6ff97ddeda9d97a5bd527" />
+      <keyword name="ZOOM" id="GLWindow.cpp::ZOOM" ref="_g_l_window_8cpp.html#ad53f4ea4bad2000e469a9b538c39878f" />
+      <keyword name="main" id="main.cpp::main" ref="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" />
+      <keyword name="EPSILON" id="primitive.h::EPSILON" ref="primitive_8h.html#ad0639ed60b8a49b3a6b0526def7f1bb2" />
+      <keyword name="shade" id="renderer.cpp::shade" ref="renderer_8cpp.html#a5889ab8316b510a8dc208452fc14a76c" />
+      <keyword name="trace" id="renderer.cpp::trace" ref="renderer_8cpp.html#ac12ecacae721953493f903dacb4d411a" />
+      <keyword name="render" id="renderer.cpp::render" ref="renderer_8cpp.html#ab4e56fa4911b200479ea79e6f43079d0" />
+      <keyword name="render" id="renderer.h::render" ref="renderer_8h.html#ab4e56fa4911b200479ea79e6f43079d0" />
+      <keyword name="trace" id="renderer.h::trace" ref="renderer_8h.html#ac12ecacae721953493f903dacb4d411a" />
+      <keyword name="shade" id="renderer.h::shade" ref="renderer_8h.html#a5889ab8316b510a8dc208452fc14a76c" />
+      <keyword name="popFirstItem" id="scenefile.cpp::popFirstItem" ref="scenefile_8cpp.html#aa6ee81d879eb80bd4242817e9052b9bc" />
+      <keyword name="tokenize" id="StringUtils.cpp::tokenize" ref="_string_utils_8cpp.html#a65c424f4219d2baacff104fdd206b016" />
+      <keyword name="tokenToFloat" id="StringUtils.cpp::tokenToFloat" ref="_string_utils_8cpp.html#ab602aec05d401dc633003bf507e9db8c" />
+      <keyword name="tokenize" id="StringUtils.h::tokenize" ref="_string_utils_8h.html#a65c424f4219d2baacff104fdd206b016" />
+      <keyword name="tokenToFloat" id="StringUtils.h::tokenToFloat" ref="_string_utils_8h.html#ab602aec05d401dc633003bf507e9db8c" />
+      <keyword name="SolveQuadratic" id="tracemath.cpp::SolveQuadratic" ref="tracemath_8cpp.html#a69ce87f2be8257a30cb1d2998f0d8e9c" />
+      <keyword name="degreesToRadians" id="tracemath.cpp::degreesToRadians" ref="tracemath_8cpp.html#ac4bb74681e6f160a17183e2295e6ffcf" />
+      <keyword name="integrate" id="tracemath.cpp::integrate" ref="tracemath_8cpp.html#a4c59b2b3f3ccde7dd5814d921a8cf2e0" />
+      <keyword name="transformPosition" id="tracemath.cpp::transformPosition" ref="tracemath_8cpp.html#a70d4019cedd59fd08c763a06b47b2d45" />
+      <keyword name="transformNormal" id="tracemath.cpp::transformNormal" ref="tracemath_8cpp.html#a6400b711aeed0a6ff4cd2d8006c4cea8" />
+      <keyword name="SolveQuadratic" id="tracemath.h::SolveQuadratic" ref="tracemath_8h.html#a69ce87f2be8257a30cb1d2998f0d8e9c" />
+      <keyword name="degreesToRadians" id="tracemath.h::degreesToRadians" ref="tracemath_8h.html#ac4bb74681e6f160a17183e2295e6ffcf" />
+      <keyword name="integrate" id="tracemath.h::integrate" ref="tracemath_8h.html#a06e3ce6f2b644468f65aec38eb1d17e6" />
+      <keyword name="inverseSquare" id="tracemath.h::inverseSquare" ref="tracemath_8h.html#a8156363d0dd5b6af9a73ca4bbcea0939" />
+      <keyword name="transformPosition" id="tracemath.h::transformPosition" ref="tracemath_8h.html#a70d4019cedd59fd08c763a06b47b2d45" />
+      <keyword name="transformNormal" id="tracemath.h::transformNormal" ref="tracemath_8h.html#a6400b711aeed0a6ff4cd2d8006c4cea8" />
+      <keyword name="Todo List" id="Todo List" ref="todo.html" />
+      <keyword name="Bug List" id="Bug List" ref="bug.html" />
+      <keyword name="Axis" id="Axis" ref="class_axis.html" />
+      <keyword name="Axis" id="Axis::Axis" ref="class_axis.html#af00b512700438f6c0d5c4f50d3f5e08f" />
+      <keyword name="~Axis" id="Axis::~Axis" ref="class_axis.html#a675ffe75a5e61a9e4f60bb79749d5e0c" />
+      <keyword name="draw" id="Axis::draw" ref="class_axis.html#a6a001a1f69c90c980822515e17fb1701" />
+      <keyword name="setCam" id="Axis::setCam" ref="class_axis.html#a2aa5d9e6cdf5a8453aa0e7a63d93efa1" />
+      <keyword name="loadMatricesToShader" id="Axis::loadMatricesToShader" ref="class_axis.html#a79d40f39b4a3713b4acf66b13077e92f" />
+      <keyword name="m_shaderName" id="Axis::m_shaderName" ref="class_axis.html#a005d1914b6346a2c5e492475b5d2fb9a" />
+      <keyword name="m_scale" id="Axis::m_scale" ref="class_axis.html#a091b29268cee3c443921a8b82c85f2a9" />
+      <keyword name="m_cam" id="Axis::m_cam" ref="class_axis.html#a2007716ef8d46f1cd4747fd9310e1d0d" />
+      <keyword name="m_transform" id="Axis::m_transform" ref="class_axis.html#ae12638693bd7b29894124480bb80c919" />
+      <keyword name="m_globalMouseTx" id="Axis::m_globalMouseTx" ref="class_axis.html#a9a9d779f074267d1bd44f17cbdfbfc90" />
+      <keyword name="GLWindow" id="GLWindow" ref="class_g_l_window.html" />
+      <keyword name="vboChanged" id="GLWindow::vboChanged" ref="class_g_l_window.html#ace72b2071df8b0415d76011d747cdb36" />
+      <keyword name="toggleNormals" id="GLWindow::toggleNormals" ref="class_g_l_window.html#a3101b6a32ac18c0c1f26fc6753d8ff22" />
+      <keyword name="toggleWireframe" id="GLWindow::toggleWireframe" ref="class_g_l_window.html#a221ed4a9a24a2639f3cd4398476d7a71" />
+      <keyword name="setNormalSize" id="GLWindow::setNormalSize" ref="class_g_l_window.html#a5def6c0eceb97287c9281e8994c741ca" />
+      <keyword name="setScale" id="GLWindow::setScale" ref="class_g_l_window.html#a36debb64f302762ef25187b053df91ab" />
+      <keyword name="setTranslate" id="GLWindow::setTranslate" ref="class_g_l_window.html#ace1f2e0ba90bdfa04d3792e41c9bb40c" />
+      <keyword name="setRotate" id="GLWindow::setRotate" ref="class_g_l_window.html#aeb38f75f4aabaa234c6edfd47961ffd3" />
+      <keyword name="setColour" id="GLWindow::setColour" ref="class_g_l_window.html#aa1349f743c7896eae48d9de70bc3a435" />
+      <keyword name="setMatrixOrder" id="GLWindow::setMatrixOrder" ref="class_g_l_window.html#a1d0cb30ace164133ef57a191f6365fb7" />
+      <keyword name="setEuler" id="GLWindow::setEuler" ref="class_g_l_window.html#aaf083de2d54fb667a530976735ef459d" />
+      <keyword name="matrixDirty" id="GLWindow::matrixDirty" ref="class_g_l_window.html#a305540b7cf1841e24163be0a9a7e4956" />
+      <keyword name="GLWindow" id="GLWindow::GLWindow" ref="class_g_l_window.html#a54ae7036a8f059e9ea6a3b91064837c8" />
+      <keyword name="~GLWindow" id="GLWindow::~GLWindow" ref="class_g_l_window.html#a2eeaea2148f4f72344edd6d1bac9759b" />
+      <keyword name="resetMouse" id="GLWindow::resetMouse" ref="class_g_l_window.html#a7d68a4cf2db4ee1f485462595ffe7137" />
+      <keyword name="loadScene" id="GLWindow::loadScene" ref="class_g_l_window.html#aed7b270f88867c428887e7c43145988b" />
+      <keyword name="renderScene" id="GLWindow::renderScene" ref="class_g_l_window.html#afa32b188a2c32efb856380c59f966c50" />
+      <keyword name="getScene" id="GLWindow::getScene" ref="class_g_l_window.html#a167f9005a38f79ca53b7ed0256b54076" />
+      <keyword name="createFramebufferObject" id="GLWindow::createFramebufferObject" ref="class_g_l_window.html#a68504d141bb9f62168eb06773a105954" />
+      <keyword name="createTextureObject" id="GLWindow::createTextureObject" ref="class_g_l_window.html#a69aa7cac3d60aaa671ebecaff25c7bdb" />
+      <keyword name="setScenePath" id="GLWindow::setScenePath" ref="class_g_l_window.html#a3eb6fe3b14f113249c0be33a5337e8fa" />
+      <keyword name="m_verts" id="GLWindow::m_verts" ref="class_g_l_window.html#aac22ba5ee4eeec173f668f8cdf40fc76" />
+      <keyword name="m_scenePath" id="GLWindow::m_scenePath" ref="class_g_l_window.html#a5175cc7e618636fc7e3d6f8eb3e0dc39" />
+      <keyword name="m_cam" id="GLWindow::m_cam" ref="class_g_l_window.html#a55556dafb4fc86c35b270ca0d68f456e" />
+      <keyword name="test_vao" id="GLWindow::test_vao" ref="class_g_l_window.html#a90e0680c5b0aa5b2abdb2ddc4a82157e" />
+      <keyword name="renderThread" id="GLWindow::renderThread" ref="class_g_l_window.html#af84acb17ea1b3a5dde7abc9c85771447" />
+      <keyword name="initializeGL" id="GLWindow::initializeGL" ref="class_g_l_window.html#a39e39761cd7323806917a217cc7caea5" />
+      <keyword name="resizeGL" id="GLWindow::resizeGL" ref="class_g_l_window.html#abe57c0f40e59cba4c98759121e22eb47" />
+      <keyword name="paintGL" id="GLWindow::paintGL" ref="class_g_l_window.html#a9bd2503dd5f812c10a9481f22ecd3403" />
+      <keyword name="mouseMoveEvent" id="GLWindow::mouseMoveEvent" ref="class_g_l_window.html#a7a04e2a3400fa69d1bcb6b650425c01e" />
+      <keyword name="mousePressEvent" id="GLWindow::mousePressEvent" ref="class_g_l_window.html#a2c4d9af80c2a7a33a46bce46276b8409" />
+      <keyword name="mouseReleaseEvent" id="GLWindow::mouseReleaseEvent" ref="class_g_l_window.html#ab9e5741b8c69d2f6447a5fc6d9d704c8" />
+      <keyword name="wheelEvent" id="GLWindow::wheelEvent" ref="class_g_l_window.html#a5f96a70cc4c2666b46ecfa62de7be598" />
+      <keyword name="loadMatricesToShader" id="GLWindow::loadMatricesToShader" ref="class_g_l_window.html#a89d4304966d8947bc1fd98fbe881f63b" />
+      <keyword name="m_textureID" id="GLWindow::m_textureID" ref="class_g_l_window.html#ac7fde34ae6a96eaa95ddf7ebea83baf4" />
+      <keyword name="m_fboID" id="GLWindow::m_fboID" ref="class_g_l_window.html#a5a06415ec577aa6c9d0bdca11de0602b" />
+      <keyword name="m_rboID" id="GLWindow::m_rboID" ref="class_g_l_window.html#aca7e0a6b4688406f66a2186e09844ca9" />
+      <keyword name="m_spinXFace" id="GLWindow::m_spinXFace" ref="class_g_l_window.html#af8ea09020a5ad4c20a16ea835ed1f2af" />
+      <keyword name="m_spinYFace" id="GLWindow::m_spinYFace" ref="class_g_l_window.html#aa4c39badfa80d8eac6a773449b6db5a2" />
+      <keyword name="m_rotateActive" id="GLWindow::m_rotateActive" ref="class_g_l_window.html#af97ce940b726836b024ab02c25ed391d" />
+      <keyword name="m_translateActive" id="GLWindow::m_translateActive" ref="class_g_l_window.html#af65008bca7b2d863c12a93f3087b2969" />
+      <keyword name="m_origX" id="GLWindow::m_origX" ref="class_g_l_window.html#ab6aec410f5ce5868cabe5fe2f0768bc9" />
+      <keyword name="m_origY" id="GLWindow::m_origY" ref="class_g_l_window.html#ab7a1ee2202588e005b90c99ea1323af4" />
+      <keyword name="m_origXPos" id="GLWindow::m_origXPos" ref="class_g_l_window.html#a176afd6632502975d692b69a90488670" />
+      <keyword name="m_origYPos" id="GLWindow::m_origYPos" ref="class_g_l_window.html#aab805b77275ea41e8ff2dcf9e714f345" />
+      <keyword name="m_modelPos" id="GLWindow::m_modelPos" ref="class_g_l_window.html#a222840baf9b594f95626a55563904684" />
+      <keyword name="m_mouseGlobalTX" id="GLWindow::m_mouseGlobalTX" ref="class_g_l_window.html#ae4cf79c7e425b4033ccef92aa517130a" />
+      <keyword name="m_drawIndex" id="GLWindow::m_drawIndex" ref="class_g_l_window.html#acf36447a3fe2182b73bd96d6a6987fd8" />
+      <keyword name="m_drawNormals" id="GLWindow::m_drawNormals" ref="class_g_l_window.html#a03f2c728ffe9d1598a95ee18e7d7a606" />
+      <keyword name="m_transform" id="GLWindow::m_transform" ref="class_g_l_window.html#ab84b6540a88835041b06ac295b0b1642" />
+      <keyword name="m_rotate" id="GLWindow::m_rotate" ref="class_g_l_window.html#a331ff6c02edb1f1a4252600a345d003a" />
+      <keyword name="m_gimbal" id="GLWindow::m_gimbal" ref="class_g_l_window.html#a18c3d2cd29637ca1e066333d01966cac" />
+      <keyword name="m_translate" id="GLWindow::m_translate" ref="class_g_l_window.html#aae1a322d5ba7062e7d14c65b95b3f073" />
+      <keyword name="m_scale" id="GLWindow::m_scale" ref="class_g_l_window.html#a8887cc2890bd1a31bcecf465ee6ace94" />
+      <keyword name="m_euler" id="GLWindow::m_euler" ref="class_g_l_window.html#ac606d67dd840cf40abaff4790bbbbc05" />
+      <keyword name="m_light" id="GLWindow::m_light" ref="class_g_l_window.html#a45cb8c5f6e0004c2cce30eb1d5b3c56f" />
+      <keyword name="m_colour" id="GLWindow::m_colour" ref="class_g_l_window.html#a88711a51b442586d0ce3775641d1e478" />
+      <keyword name="m_normalSize" id="GLWindow::m_normalSize" ref="class_g_l_window.html#a1c59e57a6bfeb6ce8007a51fff8fd9ed" />
+      <keyword name="m_axis" id="GLWindow::m_axis" ref="class_g_l_window.html#af581f7ed1a05e48c59322582950948d9" />
+      <keyword name="m_material" id="GLWindow::m_material" ref="class_g_l_window.html#ada3ede9902ea00c4a4588de958fe8519" />
+      <keyword name="m_scene" id="GLWindow::m_scene" ref="class_g_l_window.html#aee9be712fbb0f20fc2166bcf735f89ae" />
+      <keyword name="m_matrixOrder" id="GLWindow::m_matrixOrder" ref="class_g_l_window.html#a5993da88cf9d0cc66c36b12becad1e69" />
+      <keyword name="s_vboNames" id="GLWindow::s_vboNames" ref="class_g_l_window.html#ab8f5ad2f6aed486d7922ab4246c3ea52" />
+      <keyword name="RTS" id="GLWindow::RTS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a82f3c1d330e10a7d3ceec235967bb641" />
+      <keyword name="TRS" id="GLWindow::TRS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a6546e34dfcd2f5431cc82141cd1748d8" />
+      <keyword name="GIMBALLOCK" id="GLWindow::GIMBALLOCK" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a4fde2d4e466ff0849489c92964e0e441" />
+      <keyword name="EULERTS" id="GLWindow::EULERTS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a7018902f1275a263f943ab4f3a86a50d" />
+      <keyword name="TEULERS" id="GLWindow::TEULERS" ref="class_g_l_window.html#ae61dc5cdfda31ff4d3023accc2f40789a6d2d35f45dae389220921143e0d486a4" />
+      <keyword name="Image" id="Image" ref="class_image.html" />
+      <keyword name="Image" id="Image::Image" ref="class_image.html#a055c8145be6f8c3da429f73da47c7163" />
+      <keyword name="~Image" id="Image::~Image" ref="class_image.html#a0294f63700543e11c0f0da85601c7ae5" />
+      <keyword name="setPixel" id="Image::setPixel" ref="class_image.html#a704672fded047d7f142c6e6dd8c488f8" />
+      <keyword name="getPixel" id="Image::getPixel" ref="class_image.html#a634f5e4de7751158cfc2312c93a9a005" />
+      <keyword name="save" id="Image::save" ref="class_image.html#abccefaaa9c3b1c9edb57f19d7c7777c3" />
+      <keyword name="read" id="Image::read" ref="class_image.html#aaad771ed7e29b7f01f2f129f84224060" />
+      <keyword name="tonemap" id="Image::tonemap" ref="class_image.html#a614b4183dc55a0097007bb65bb76493f" />
+      <keyword name="m_width" id="Image::m_width" ref="class_image.html#a121b435401e6fc86901514d000f7df37" />
+      <keyword name="m_height" id="Image::m_height" ref="class_image.html#af2c44810438cfeaaf63fb3616b276db4" />
+      <keyword name="m_image" id="Image::m_image" ref="class_image.html#a917680d514864d303cd210fcf3d52299" />
+      <keyword name="Image::Pixel" id="Image::Pixel" ref="struct_image_1_1_pixel.html" />
+      <keyword name="Pixel" id="Image::Pixel::Pixel" ref="struct_image_1_1_pixel.html#a93d339cf79d059bfff19312344dc3169" />
+      <keyword name="Pixel" id="Image::Pixel::Pixel" ref="struct_image_1_1_pixel.html#abc76a3238962d4fa4088df895345e70d" />
+      <keyword name="operator+" id="Image::Pixel::operator+" ref="struct_image_1_1_pixel.html#a162bce995aeeaba97b86787bf3ec564c" />
+      <keyword name="operator-" id="Image::Pixel::operator-" ref="struct_image_1_1_pixel.html#a45cdd002e2736b87f6ecfc21a936af67" />
+      <keyword name="operator/" id="Image::Pixel::operator/" ref="struct_image_1_1_pixel.html#a7650bff7855c16b62836969e3a6b51b8" />
+      <keyword name="operator*" id="Image::Pixel::operator*" ref="struct_image_1_1_pixel.html#a45019e2e7a6b136c483dda3757073376" />
+      <keyword name="operator/" id="Image::Pixel::operator/" ref="struct_image_1_1_pixel.html#ac12af52c4bb346e6f43f32d8620af758" />
+      <keyword name="operator*" id="Image::Pixel::operator*" ref="struct_image_1_1_pixel.html#a9ac59bc7ffcf0d258020457f7a874c5e" />
+      <keyword name="operator+=" id="Image::Pixel::operator+=" ref="struct_image_1_1_pixel.html#a98be5e814ed4f7c02c2511069be37358" />
+      <keyword name="operator-=" id="Image::Pixel::operator-=" ref="struct_image_1_1_pixel.html#a4e55c878fdded95922790c951512e97b" />
+      <keyword name="operator*=" id="Image::Pixel::operator*=" ref="struct_image_1_1_pixel.html#a5b971c342ea48a8e37cea11b9ebd86e1" />
+      <keyword name="operator/=" id="Image::Pixel::operator/=" ref="struct_image_1_1_pixel.html#a0f4bed70eac895d786db9b8235c6efce" />
+      <keyword name="operator*=" id="Image::Pixel::operator*=" ref="struct_image_1_1_pixel.html#ace1d119e142e767536947e16b0e058a2" />
+      <keyword name="operator/=" id="Image::Pixel::operator/=" ref="struct_image_1_1_pixel.html#a1e33173e685768745e612706e7090b79" />
+      <keyword name="m_r" id="Image::Pixel::m_r" ref="struct_image_1_1_pixel.html#ae73fed2f793be32a29bc2747acfd3eb8" />
+      <keyword name="m_g" id="Image::Pixel::m_g" ref="struct_image_1_1_pixel.html#a8339e42b46fbb5531ab21ad19f655ced" />
+      <keyword name="m_b" id="Image::Pixel::m_b" ref="struct_image_1_1_pixel.html#af01bb9644bd2edd3ae0f61b15c6a7d28" />
+      <keyword name="ImagePPM" id="ImagePPM" ref="class_image_p_p_m.html" />
+      <keyword name="ImagePPM" id="ImagePPM::ImagePPM" ref="class_image_p_p_m.html#a11a311b9ba6382739eb75f7a15dc832b" />
+      <keyword name="save" id="ImagePPM::save" ref="class_image_p_p_m.html#acf4a44ec60de8ce19b826d51f82e9054" />
+      <keyword name="read" id="ImagePPM::read" ref="class_image_p_p_m.html#a948a454964cd10c3eba73a4c5ecc27d6" />
+      <keyword name="tonemap" id="ImagePPM::tonemap" ref="class_image_p_p_m.html#a27820174d8704665b266e751a6919b53" />
+      <keyword name="Image" id="Image::Image" ref="class_image.html#a055c8145be6f8c3da429f73da47c7163" />
+      <keyword name="~Image" id="Image::~Image" ref="class_image.html#a0294f63700543e11c0f0da85601c7ae5" />
+      <keyword name="setPixel" id="Image::setPixel" ref="class_image.html#a704672fded047d7f142c6e6dd8c488f8" />
+      <keyword name="getPixel" id="Image::getPixel" ref="class_image.html#a634f5e4de7751158cfc2312c93a9a005" />
+      <keyword name="m_width" id="Image::m_width" ref="class_image.html#a121b435401e6fc86901514d000f7df37" />
+      <keyword name="m_height" id="Image::m_height" ref="class_image.html#af2c44810438cfeaaf63fb3616b276db4" />
+      <keyword name="m_image" id="Image::m_image" ref="class_image.html#a917680d514864d303cd210fcf3d52299" />
+      <keyword name="MainWindow" id="MainWindow" ref="class_main_window.html" />
+      <keyword name="MainWindow" id="MainWindow::MainWindow" ref="class_main_window.html#a8b244be8b7b7db1b08de2a2acb9409db" />
+      <keyword name="~MainWindow" id="MainWindow::~MainWindow" ref="class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7" />
+      <keyword name="renderNow" id="MainWindow::renderNow" ref="class_main_window.html#ab9611cd38a22e0d943734a6f656df484" />
+      <keyword name="setScale" id="MainWindow::setScale" ref="class_main_window.html#ab46ab292ac859c7955da8e37d03f9c0c" />
+      <keyword name="setTranslate" id="MainWindow::setTranslate" ref="class_main_window.html#a484c02eab066eef508b165c6455d3253" />
+      <keyword name="setRotate" id="MainWindow::setRotate" ref="class_main_window.html#a04863128e9b29d912f6b4570278bffc8" />
+      <keyword name="reset" id="MainWindow::reset" ref="class_main_window.html#a02076de46e6810174817ebfc6ddd2be5" />
+      <keyword name="updateMatrix" id="MainWindow::updateMatrix" ref="class_main_window.html#aa7811f5612fc3902900dad6d71368a02" />
+      <keyword name="setMatrix" id="MainWindow::setMatrix" ref="class_main_window.html#a9578e39b64f852586b8e1d60baed355a" />
+      <keyword name="changeColour" id="MainWindow::changeColour" ref="class_main_window.html#a494094a6550b91f808a64f5bf792170a" />
+      <keyword name="setEuler" id="MainWindow::setEuler" ref="class_main_window.html#a1f5e9c808e1c271a197d9e9530f30953" />
+      <keyword name="setTab" id="MainWindow::setTab" ref="class_main_window.html#a539952dc23679e932b2430885490b062" />
+      <keyword name="on_renderButton_clicked" id="MainWindow::on_renderButton_clicked" ref="class_main_window.html#ad4224ffb01cbd6f9b31b3024053aeeef" />
+      <keyword name="on_tabWidget_2_currentChanged" id="MainWindow::on_tabWidget_2_currentChanged" ref="class_main_window.html#a716cd8ffd41900239ad14135e8b8eb96" />
+      <keyword name="on_tabWidget_currentChanged" id="MainWindow::on_tabWidget_currentChanged" ref="class_main_window.html#ab5ec4a06e4e38781eb7b913fed92733e" />
+      <keyword name="on_rendersamplesEdit_editingFinished" id="MainWindow::on_rendersamplesEdit_editingFinished" ref="class_main_window.html#a40c3d236462b660f4d7a06f6a76279c9" />
+      <keyword name="on_renderHeightEdit_editingFinished" id="MainWindow::on_renderHeightEdit_editingFinished" ref="class_main_window.html#a11c0bf07f446f8bbc5e912a7d973b5cd" />
+      <keyword name="on_renderWidthEdit_editingFinished" id="MainWindow::on_renderWidthEdit_editingFinished" ref="class_main_window.html#a2c89a572d5da0794f91d895f59e1357f" />
+      <keyword name="on_renderFilenameEdit_editingFinished" id="MainWindow::on_renderFilenameEdit_editingFinished" ref="class_main_window.html#a012aeb18cc06cbadca1841632593c76f" />
+      <keyword name="on_openScene_clicked" id="MainWindow::on_openScene_clicked" ref="class_main_window.html#af0d2560399a08d1070ad344ca30e968d" />
+      <keyword name="on_quit_clicked" id="MainWindow::on_quit_clicked" ref="class_main_window.html#a65970e860475159b218470a3a790c71d" />
+      <keyword name="keyPressEvent" id="MainWindow::keyPressEvent" ref="class_main_window.html#a3c2e352934c6318d405c3d2b0e07729c" />
+      <keyword name="m_ui" id="MainWindow::m_ui" ref="class_main_window.html#a5a3eb262660797d9a4d52ed16edb6d11" />
+      <keyword name="m_gl" id="MainWindow::m_gl" ref="class_main_window.html#a8f18111d1b422167f8b9a688f38f8969" />
+      <keyword name="m_scene" id="MainWindow::m_scene" ref="class_main_window.html#a5c6198cf098e925e28672cc4b9481b7c" />
+      <keyword name="Material" id="Material" ref="struct_material.html" />
+      <keyword name="Material" id="Material::Material" ref="struct_material.html#a137e987401b63eb7c6c27c3e38bc74b5" />
+      <keyword name="Material" id="Material::Material" ref="struct_material.html#a7c6b26aab15e38ab4381a710f176c4a3" />
+      <keyword name="m_diffuse" id="Material::m_diffuse" ref="struct_material.html#a2da5909aa70508688864dbc7f7559306" />
+      <keyword name="m_specularCoefficient" id="Material::m_specularCoefficient" ref="struct_material.html#aecf39c59a7f6010888fa3095fc013a0f" />
+      <keyword name="m_type" id="Material::m_type" ref="struct_material.html#a25bc4627b427de86ba7ca89ce3dc883f" />
+      <keyword name="DIFFUSE" id="Material::DIFFUSE" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7a1f17ceafe04d70586701c6d8736dcf00" />
+      <keyword name="SPECULAR" id="Material::SPECULAR" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7a66b7035936c46b641aa4a552e85547bf" />
+      <keyword name="EMISSIVE" id="Material::EMISSIVE" ref="struct_material.html#a20ba0daec5b9ea2e7f2c1ce5ffd882c7a33f0bc9cf55afdd237745adc43f9c478" />
+      <keyword name="Sampler" id="Sampler" ref="class_sampler.html" />
+      <keyword name="Sampler" id="Sampler::Sampler" ref="class_sampler.html#a9682037ac10546714cfde073143cb0be" />
+      <keyword name="Renderer" id="Renderer" ref="namespace_renderer.html" />
+      <keyword name="shade" id="Renderer::shade" ref="namespace_renderer.html#a5889ab8316b510a8dc208452fc14a76c" />
+      <keyword name="trace" id="Renderer::trace" ref="namespace_renderer.html#ac12ecacae721953493f903dacb4d411a" />
+      <keyword name="render" id="Renderer::render" ref="namespace_renderer.html#ab4e56fa4911b200479ea79e6f43079d0" />
+      <keyword name="popFirstItem" id="Renderer::popFirstItem" ref="namespace_renderer.html#aa6ee81d879eb80bd4242817e9052b9bc" />
+      <keyword name="EPSILON" id="Renderer::EPSILON" ref="namespace_renderer.html#ad0639ed60b8a49b3a6b0526def7f1bb2" />
+      <keyword name="Renderer::Camera" id="Renderer::Camera" ref="class_renderer_1_1_camera.html" />
+      <keyword name="Camera" id="Renderer::Camera::Camera" ref="class_renderer_1_1_camera.html#ab25a860d30c9fb7988ad68c4d89de8b9" />
+      <keyword name="setFOV" id="Renderer::Camera::setFOV" ref="class_renderer_1_1_camera.html#aa903bf49a467f2bd0c915c12a032a2d3" />
+      <keyword name="setClippingPlanes" id="Renderer::Camera::setClippingPlanes" ref="class_renderer_1_1_camera.html#a4452d3bce23326607f184c5621fba48d" />
+      <keyword name="setCameraWorldSpace" id="Renderer::Camera::setCameraWorldSpace" ref="class_renderer_1_1_camera.html#a979318d93dd9fd29d1188b109dbf25e8" />
+      <keyword name="getObjectSpaceMatrix" id="Renderer::Camera::getObjectSpaceMatrix" ref="class_renderer_1_1_camera.html#a041846a3c8872e90b001e65319745ece" />
+      <keyword name="getWorldSpaceMatrix" id="Renderer::Camera::getWorldSpaceMatrix" ref="class_renderer_1_1_camera.html#a3f6afedf440c05554e7fbf506aea5514" />
+      <keyword name="getFOV" id="Renderer::Camera::getFOV" ref="class_renderer_1_1_camera.html#a62a6811e608244e6739bf5d9d4821b94" />
+      <keyword name="getAngle" id="Renderer::Camera::getAngle" ref="class_renderer_1_1_camera.html#aee5a50c681121ebad8e8bf0a02df4e96" />
+      <keyword name="getNearClipPlane" id="Renderer::Camera::getNearClipPlane" ref="class_renderer_1_1_camera.html#acf6473a1263096a8309c5f1209066ba4" />
+      <keyword name="getfarClipPlane" id="Renderer::Camera::getfarClipPlane" ref="class_renderer_1_1_camera.html#a4f31ff2bb69d635467d59ec1e2bd8bfd" />
+      <keyword name="m_toObjectSpace" id="Renderer::Camera::m_toObjectSpace" ref="class_renderer_1_1_camera.html#a4bbfee36155bbf808a0d544d577a118d" />
+      <keyword name="m_toWorldSpace" id="Renderer::Camera::m_toWorldSpace" ref="class_renderer_1_1_camera.html#aa99f5491754f965a11ac9ca411de9036" />
+      <keyword name="m_nearClippingPlane" id="Renderer::Camera::m_nearClippingPlane" ref="class_renderer_1_1_camera.html#a965a5116d88b44ae64912d612ec8479b" />
+      <keyword name="m_farClippingPlane" id="Renderer::Camera::m_farClippingPlane" ref="class_renderer_1_1_camera.html#ae499659612df0d91ce5dd1435ca94b41" />
+      <keyword name="m_fov" id="Renderer::Camera::m_fov" ref="class_renderer_1_1_camera.html#a2bf9d76c1afa694bd08186a0b0ab4420" />
+      <keyword name="m_angle" id="Renderer::Camera::m_angle" ref="class_renderer_1_1_camera.html#a124c8532797a7b6f495b2aafe39b262b" />
+      <keyword name="Renderer::HitData" id="Renderer::HitData" ref="struct_renderer_1_1_hit_data.html" />
+      <keyword name="HitData" id="Renderer::HitData::HitData" ref="struct_renderer_1_1_hit_data.html#a68c0ee0efbd32d15c3fd9add42eb8f8a" />
+      <keyword name="m_ray" id="Renderer::HitData::m_ray" ref="struct_renderer_1_1_hit_data.html#a5aee6d1129c216194f0b0bfbbb3d6e55" />
+      <keyword name="m_distanceSqr" id="Renderer::HitData::m_distanceSqr" ref="struct_renderer_1_1_hit_data.html#a51f1e587ef8b56abfd1f3017aa24584b" />
+      <keyword name="m_t" id="Renderer::HitData::m_t" ref="struct_renderer_1_1_hit_data.html#adeafe63956b601b01d7ea69bde1a1986" />
+      <keyword name="m_u" id="Renderer::HitData::m_u" ref="struct_renderer_1_1_hit_data.html#ac70ab126082944359393e5bb0cd5abb2" />
+      <keyword name="m_v" id="Renderer::HitData::m_v" ref="struct_renderer_1_1_hit_data.html#a025e748b1c3e95f989128cf6c3b8f5c8" />
+      <keyword name="m_w" id="Renderer::HitData::m_w" ref="struct_renderer_1_1_hit_data.html#a9d85ba822c1cc07983e5c00e457178d9" />
+      <keyword name="m_surfaceImpact" id="Renderer::HitData::m_surfaceImpact" ref="struct_renderer_1_1_hit_data.html#a21db1ed6df74b8b6c7109025928201c6" />
+      <keyword name="m_surfaceNormal" id="Renderer::HitData::m_surfaceNormal" ref="struct_renderer_1_1_hit_data.html#a12c4d926e3b5d93a8e12d65e36139760" />
+      <keyword name="m_object" id="Renderer::HitData::m_object" ref="struct_renderer_1_1_hit_data.html#a68a87eb8a21afc9cb328fc242153ae09" />
+      <keyword name="Renderer::Plane" id="Renderer::Plane" ref="class_renderer_1_1_plane.html" />
+      <keyword name="Plane" id="Renderer::Plane::Plane" ref="class_renderer_1_1_plane.html#aed8859b010b215062f3d058356e4d345" />
+      <keyword name="~Plane" id="Renderer::Plane::~Plane" ref="class_renderer_1_1_plane.html#a180a33628429897332d5b96feea1660a" />
+      <keyword name="intersect" id="Renderer::Plane::intersect" ref="class_renderer_1_1_plane.html#a1954528af0da8ab0b96b9dee73b5c7a3" />
+      <keyword name="draw" id="Renderer::Plane::draw" ref="class_renderer_1_1_plane.html#abd2e9c48aa3acb347255c15245939449" />
+      <keyword name="sample" id="Renderer::Plane::sample" ref="class_renderer_1_1_plane.html#ad18b055a0daabda07b22e71da10cc84d" />
+      <keyword name="getNormal" id="Renderer::Plane::getNormal" ref="class_renderer_1_1_plane.html#a134fb1ab85f0c9537edde96220edb014" />
+      <keyword name="Primitive" id="Renderer::Primitive::Primitive" ref="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513" />
+      <keyword name="~Primitive" id="Renderer::Primitive::~Primitive" ref="class_renderer_1_1_primitive.html#a72985fa9fd72f5229a9bfb638377f4c8" />
+      <keyword name="rayToObjectSpace" id="Renderer::Primitive::rayToObjectSpace" ref="class_renderer_1_1_primitive.html#ab284806b9c1642ae80410607d606ae46" />
+      <keyword name="rayToWorldSpace" id="Renderer::Primitive::rayToWorldSpace" ref="class_renderer_1_1_primitive.html#aef8e1c3e54925ef164f094ef976ad78e" />
+      <keyword name="getSurfaceMaterial" id="Renderer::Primitive::getSurfaceMaterial" ref="class_renderer_1_1_primitive.html#aa303dc1042f7305a3895049d5f1a51e2" />
+      <keyword name="objectTransform" id="Renderer::Primitive::objectTransform" ref="class_renderer_1_1_primitive.html#a935c1ff33ec49914cd4dfaafb92055f0" />
+      <keyword name="worldTransform" id="Renderer::Primitive::worldTransform" ref="class_renderer_1_1_primitive.html#a9a55765d6ba313e07482cd650700bd00" />
+      <keyword name="m_normal" id="Renderer::Plane::m_normal" ref="class_renderer_1_1_plane.html#a980d662f2c35ba4f8f24d48292837263" />
+      <keyword name="m_p" id="Renderer::Plane::m_p" ref="class_renderer_1_1_plane.html#a567aca454306ae9d55d601abf9c14b7c" />
+      <keyword name="m_x" id="Renderer::Plane::m_x" ref="class_renderer_1_1_plane.html#ad4fcfc2dcdc16f83ebeba1b045fe782c" />
+      <keyword name="m_y" id="Renderer::Plane::m_y" ref="class_renderer_1_1_plane.html#afc4148cf6676acb39245db1fa6dc87e8" />
+      <keyword name="m_area" id="Renderer::Plane::m_area" ref="class_renderer_1_1_plane.html#a25ccf6132f2172cb8c2191aeacb65141" />
+      <keyword name="m_u" id="Renderer::Plane::m_u" ref="class_renderer_1_1_plane.html#aa64d0c360a616c75db94c15bb2f8162c" />
+      <keyword name="m_v" id="Renderer::Plane::m_v" ref="class_renderer_1_1_plane.html#a4688cb8cd378d99808bbff11934e3a02" />
+      <keyword name="m_toWorldSpace" id="Renderer::Primitive::m_toWorldSpace" ref="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4" />
+      <keyword name="m_toObjectSpace" id="Renderer::Primitive::m_toObjectSpace" ref="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c" />
+      <keyword name="m_material" id="Renderer::Primitive::m_material" ref="class_renderer_1_1_primitive.html#a3c5f1dc45cf1c74402047a93007d9a3b" />
+      <keyword name="Renderer::Primitive" id="Renderer::Primitive" ref="class_renderer_1_1_primitive.html" />
+      <keyword name="Primitive" id="Renderer::Primitive::Primitive" ref="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513" />
+      <keyword name="~Primitive" id="Renderer::Primitive::~Primitive" ref="class_renderer_1_1_primitive.html#a72985fa9fd72f5229a9bfb638377f4c8" />
+      <keyword name="intersect" id="Renderer::Primitive::intersect" ref="class_renderer_1_1_primitive.html#a22f0a7845bbec672a363f39fac4daf5e" />
+      <keyword name="draw" id="Renderer::Primitive::draw" ref="class_renderer_1_1_primitive.html#a9ac7e1ff84d81f2a8f474cbaf36b41d0" />
+      <keyword name="sample" id="Renderer::Primitive::sample" ref="class_renderer_1_1_primitive.html#a203efa6754633a8559c441a4de603b2d" />
+      <keyword name="getNormal" id="Renderer::Primitive::getNormal" ref="class_renderer_1_1_primitive.html#ade88d0252e3c0bd1f1ee81df35afca0a" />
+      <keyword name="rayToObjectSpace" id="Renderer::Primitive::rayToObjectSpace" ref="class_renderer_1_1_primitive.html#ab284806b9c1642ae80410607d606ae46" />
+      <keyword name="rayToWorldSpace" id="Renderer::Primitive::rayToWorldSpace" ref="class_renderer_1_1_primitive.html#aef8e1c3e54925ef164f094ef976ad78e" />
+      <keyword name="getSurfaceMaterial" id="Renderer::Primitive::getSurfaceMaterial" ref="class_renderer_1_1_primitive.html#aa303dc1042f7305a3895049d5f1a51e2" />
+      <keyword name="objectTransform" id="Renderer::Primitive::objectTransform" ref="class_renderer_1_1_primitive.html#a935c1ff33ec49914cd4dfaafb92055f0" />
+      <keyword name="worldTransform" id="Renderer::Primitive::worldTransform" ref="class_renderer_1_1_primitive.html#a9a55765d6ba313e07482cd650700bd00" />
+      <keyword name="m_toWorldSpace" id="Renderer::Primitive::m_toWorldSpace" ref="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4" />
+      <keyword name="m_toObjectSpace" id="Renderer::Primitive::m_toObjectSpace" ref="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c" />
+      <keyword name="m_material" id="Renderer::Primitive::m_material" ref="class_renderer_1_1_primitive.html#a3c5f1dc45cf1c74402047a93007d9a3b" />
+      <keyword name="Renderer::Ray" id="Renderer::Ray" ref="struct_renderer_1_1_ray.html" />
+      <keyword name="Ray" id="Renderer::Ray::Ray" ref="struct_renderer_1_1_ray.html#a174d2a110f464b0715f689b9eb664cad" />
+      <keyword name="operator()" id="Renderer::Ray::operator()" ref="struct_renderer_1_1_ray.html#a7aadfb31ea40383058a79e02ddfe9fdc" />
+      <keyword name="reflect" id="Renderer::Ray::reflect" ref="struct_renderer_1_1_ray.html#aefb8158efe030eeb62c731a5b3b6ac06" />
+      <keyword name="m_origin" id="Renderer::Ray::m_origin" ref="struct_renderer_1_1_ray.html#a5028bc5fd552d6878884c3fbd8bed02c" />
+      <keyword name="m_direction" id="Renderer::Ray::m_direction" ref="struct_renderer_1_1_ray.html#ae8daac3681b1f08903bbd1cf4ba9c791" />
+      <keyword name="m_inverseDirection" id="Renderer::Ray::m_inverseDirection" ref="struct_renderer_1_1_ray.html#a526b15d36b37ad8c7c39d88da8c936de" />
+      <keyword name="m_sign" id="Renderer::Ray::m_sign" ref="struct_renderer_1_1_ray.html#a34e1eab13ea919449469e3353b14d6a3" />
+      <keyword name="m_tmin" id="Renderer::Ray::m_tmin" ref="struct_renderer_1_1_ray.html#a30ab8d94432ef36f4b8615f5d48304f6" />
+      <keyword name="m_tmax" id="Renderer::Ray::m_tmax" ref="struct_renderer_1_1_ray.html#aa61919436e6d1e655575943fd1803f66" />
+      <keyword name="m_type" id="Renderer::Ray::m_type" ref="struct_renderer_1_1_ray.html#a80f06b6cefceda2490e10441077e277b" />
+      <keyword name="inverseDirection" id="Renderer::Ray::inverseDirection" ref="struct_renderer_1_1_ray.html#aa6bf2242c96eeff730f78b389e16b3e7" />
+      <keyword name="UNKNOWN" id="Renderer::Ray::UNKNOWN" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa25ec2789fd632c336f09178ec9065b82" />
+      <keyword name="CAMERA" id="Renderer::Ray::CAMERA" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa8aa5e7b13fe018ad7b45bec8271fb675" />
+      <keyword name="SHADOW" id="Renderer::Ray::SHADOW" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa1470ae5ab6a64b0215827ed607f05807" />
+      <keyword name="REFLECT" id="Renderer::Ray::REFLECT" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfad976c070bfe94008c9ec8f64c62bb524" />
+      <keyword name="REFRACT" id="Renderer::Ray::REFRACT" ref="struct_renderer_1_1_ray.html#a4722d2a722c51993edca2496027414dfa699b8cebf03b418927cf54fd6ea917b8" />
+      <keyword name="Renderer::RenderContext" id="Renderer::RenderContext" ref="struct_renderer_1_1_render_context.html" />
+      <keyword name="RenderContext" id="Renderer::RenderContext::RenderContext" ref="struct_renderer_1_1_render_context.html#a7e9f3ac4c9560be1057139836739b6c6" />
+      <keyword name="~RenderContext" id="Renderer::RenderContext::~RenderContext" ref="struct_renderer_1_1_render_context.html#a0e29c5ebfeb166a4243b645acbd44bd8" />
+      <keyword name="m_imageWidth" id="Renderer::RenderContext::m_imageWidth" ref="struct_renderer_1_1_render_context.html#a4654e2eb0253d9933aa78ea14b43d3be" />
+      <keyword name="m_imageHeight" id="Renderer::RenderContext::m_imageHeight" ref="struct_renderer_1_1_render_context.html#ae9375e1dbdd7f835d4b65527a0cf470b" />
+      <keyword name="m_samples" id="Renderer::RenderContext::m_samples" ref="struct_renderer_1_1_render_context.html#abb2007b9ebefdaa2fe0855b19bcc75d5" />
+      <keyword name="m_aspectRatio" id="Renderer::RenderContext::m_aspectRatio" ref="struct_renderer_1_1_render_context.html#aa71a4a0454592902c0e59b4d47ff4e83" />
+      <keyword name="m_depth" id="Renderer::RenderContext::m_depth" ref="struct_renderer_1_1_render_context.html#ac96c287e23437d653c4fb317ba2a108b" />
+      <keyword name="m_renderCamera" id="Renderer::RenderContext::m_renderCamera" ref="struct_renderer_1_1_render_context.html#a51c51a98344d7acdef2da9c1f46fd0f8" />
+      <keyword name="m_scene" id="Renderer::RenderContext::m_scene" ref="struct_renderer_1_1_render_context.html#adcb12a26eedfa83b6c72d39bbef539b0" />
+      <keyword name="m_outputPath" id="Renderer::RenderContext::m_outputPath" ref="struct_renderer_1_1_render_context.html#ae317255b06e72c9d98dd65853232a303" />
+      <keyword name="m_hit" id="Renderer::RenderContext::m_hit" ref="struct_renderer_1_1_render_context.html#aa9bda306ae7a969d5d2b1af128270edb" />
+      <keyword name="Renderer::Scene" id="Renderer::Scene" ref="class_renderer_1_1_scene.html" />
+      <keyword name="objectList" id="Renderer::Scene::objectList" ref="class_renderer_1_1_scene.html#a883277f707aee77273e5e8ce210c8673" />
+      <keyword name="objectListIterator" id="Renderer::Scene::objectListIterator" ref="class_renderer_1_1_scene.html#a6408d8af3659e808e45877a96a6059de" />
+      <keyword name="Scene" id="Renderer::Scene::Scene" ref="class_renderer_1_1_scene.html#a42cd9d1821ccd82a487e112f4bc3a9db" />
+      <keyword name="objectBegin" id="Renderer::Scene::objectBegin" ref="class_renderer_1_1_scene.html#ac71ec50dfcae221f69e83ac1717b865d" />
+      <keyword name="objectEnd" id="Renderer::Scene::objectEnd" ref="class_renderer_1_1_scene.html#af5f44baafb6e49510712579c4aca0ca7" />
+      <keyword name="getBackgroundColour" id="Renderer::Scene::getBackgroundColour" ref="class_renderer_1_1_scene.html#afed66d5469d6bf5c15a8a1c72051a45a" />
+      <keyword name="m_initialCameraView" id="Renderer::Scene::m_initialCameraView" ref="class_renderer_1_1_scene.html#a73b7840d1ddff6e0af41dfa842093d5e" />
+      <keyword name="m_background" id="Renderer::Scene::m_background" ref="class_renderer_1_1_scene.html#ab3c42502a9430b1aa858aa1f86f5c690" />
+      <keyword name="m_primitives" id="Renderer::Scene::m_primitives" ref="class_renderer_1_1_scene.html#a8cab7b246650c82ae60ee3e5b9a9ecbb" />
+      <keyword name="Renderer::SceneFile" id="Renderer::SceneFile" ref="class_renderer_1_1_scene_file.html" />
+      <keyword name="SceneFile" id="Renderer::SceneFile::SceneFile" ref="class_renderer_1_1_scene_file.html#adb6eacf448a934b2f87d8eaeddc4e005" />
+      <keyword name="~SceneFile" id="Renderer::SceneFile::~SceneFile" ref="class_renderer_1_1_scene_file.html#ab365086c8a1cc792f65fefea56d4e46a" />
+      <keyword name="read" id="Renderer::SceneFile::read" ref="class_renderer_1_1_scene_file.html#a615a08298e12eec3794cd80ba687c127" />
+      <keyword name="parseTransform" id="Renderer::SceneFile::parseTransform" ref="class_renderer_1_1_scene_file.html#a0050fe3c8f4c1cf799df54740d623cdd" />
+      <keyword name="parseColour" id="Renderer::SceneFile::parseColour" ref="class_renderer_1_1_scene_file.html#ad278fe4d9ffdd2018607836d8777f4ea" />
+      <keyword name="parseVertex" id="Renderer::SceneFile::parseVertex" ref="class_renderer_1_1_scene_file.html#a136fab17d94808f9ea3a0247cef5f3cf" />
+      <keyword name="parseFloat" id="Renderer::SceneFile::parseFloat" ref="class_renderer_1_1_scene_file.html#acdf20b92e3d33be370c3ad081555fd16" />
+      <keyword name="parseMaterialType" id="Renderer::SceneFile::parseMaterialType" ref="class_renderer_1_1_scene_file.html#afdfcfbdb80511cc22f4287a8c8515f0f" />
+      <keyword name="parseSphere" id="Renderer::SceneFile::parseSphere" ref="class_renderer_1_1_scene_file.html#a52b006539e1d470e6d75ee662b056bc2" />
+      <keyword name="parseTriangle" id="Renderer::SceneFile::parseTriangle" ref="class_renderer_1_1_scene_file.html#a7c8cd7aafa876459375f0aa158c5ae2c" />
+      <keyword name="parseCamera" id="Renderer::SceneFile::parseCamera" ref="class_renderer_1_1_scene_file.html#a51b5288f138fc6bdf7340d55f95f76f1" />
+      <keyword name="m_sceneFile" id="Renderer::SceneFile::m_sceneFile" ref="class_renderer_1_1_scene_file.html#a7847a9fbddd6b67599ac4410b0342717" />
+      <keyword name="m_counter" id="Renderer::SceneFile::m_counter" ref="class_renderer_1_1_scene_file.html#a6957094bf0b644df37698bde91357af7" />
+      <keyword name="Renderer::Sphere" id="Renderer::Sphere" ref="class_renderer_1_1_sphere.html" />
+      <keyword name="Sphere" id="Renderer::Sphere::Sphere" ref="class_renderer_1_1_sphere.html#a1cc7e679282a27fba0d528021061f571" />
+      <keyword name="intersect" id="Renderer::Sphere::intersect" ref="class_renderer_1_1_sphere.html#ac9525a1fa2081d065e25e93f5e2f4b1d" />
+      <keyword name="draw" id="Renderer::Sphere::draw" ref="class_renderer_1_1_sphere.html#addc6c6ef784badc0065ef827d1edda7f" />
+      <keyword name="sample" id="Renderer::Sphere::sample" ref="class_renderer_1_1_sphere.html#a63986b9167dd275192e87cc3c578d91a" />
+      <keyword name="getNormal" id="Renderer::Sphere::getNormal" ref="class_renderer_1_1_sphere.html#a9a25c8561b372c717b03ab1696473b73" />
+      <keyword name="tangentSphere" id="Renderer::Sphere::tangentSphere" ref="class_renderer_1_1_sphere.html#a1e60080d349a95c18e29bd3e2f0f3819" />
+      <keyword name="Primitive" id="Renderer::Primitive::Primitive" ref="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513" />
+      <keyword name="~Primitive" id="Renderer::Primitive::~Primitive" ref="class_renderer_1_1_primitive.html#a72985fa9fd72f5229a9bfb638377f4c8" />
+      <keyword name="rayToObjectSpace" id="Renderer::Primitive::rayToObjectSpace" ref="class_renderer_1_1_primitive.html#ab284806b9c1642ae80410607d606ae46" />
+      <keyword name="rayToWorldSpace" id="Renderer::Primitive::rayToWorldSpace" ref="class_renderer_1_1_primitive.html#aef8e1c3e54925ef164f094ef976ad78e" />
+      <keyword name="getSurfaceMaterial" id="Renderer::Primitive::getSurfaceMaterial" ref="class_renderer_1_1_primitive.html#aa303dc1042f7305a3895049d5f1a51e2" />
+      <keyword name="objectTransform" id="Renderer::Primitive::objectTransform" ref="class_renderer_1_1_primitive.html#a935c1ff33ec49914cd4dfaafb92055f0" />
+      <keyword name="worldTransform" id="Renderer::Primitive::worldTransform" ref="class_renderer_1_1_primitive.html#a9a55765d6ba313e07482cd650700bd00" />
+      <keyword name="m_radius" id="Renderer::Sphere::m_radius" ref="class_renderer_1_1_sphere.html#ad562c80f7df13edadaaadab089f36a20" />
+      <keyword name="m_squaredRadius" id="Renderer::Sphere::m_squaredRadius" ref="class_renderer_1_1_sphere.html#aaebd2870643f080b0b41accbeac8e55a" />
+      <keyword name="m_toWorldSpace" id="Renderer::Primitive::m_toWorldSpace" ref="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4" />
+      <keyword name="m_toObjectSpace" id="Renderer::Primitive::m_toObjectSpace" ref="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c" />
+      <keyword name="m_material" id="Renderer::Primitive::m_material" ref="class_renderer_1_1_primitive.html#a3c5f1dc45cf1c74402047a93007d9a3b" />
+      <keyword name="Renderer::Triangle" id="Renderer::Triangle" ref="class_renderer_1_1_triangle.html" />
+      <keyword name="Triangle" id="Renderer::Triangle::Triangle" ref="class_renderer_1_1_triangle.html#a7053d2e8592075bc7a1c9bbdbf95ffdc" />
+      <keyword name="intersect" id="Renderer::Triangle::intersect" ref="class_renderer_1_1_triangle.html#af9802d9321c1fcdeb3aae9364efd246c" />
+      <keyword name="draw" id="Renderer::Triangle::draw" ref="class_renderer_1_1_triangle.html#a325a404a8c7b9bef234738dcb1caa19b" />
+      <keyword name="sample" id="Renderer::Triangle::sample" ref="class_renderer_1_1_triangle.html#a40b6162167de14c18f0ec9233eb7e2ad" />
+      <keyword name="getNormal" id="Renderer::Triangle::getNormal" ref="class_renderer_1_1_triangle.html#adae4e94dc4c3b4e4ed844a222815f0a4" />
+      <keyword name="getTangent" id="Renderer::Triangle::getTangent" ref="class_renderer_1_1_triangle.html#a36f812846c8e2fcf5ced411f3e12812b" />
+      <keyword name="~Triangle" id="Renderer::Triangle::~Triangle" ref="class_renderer_1_1_triangle.html#aa4d8804ea95f8d0a64681fd6eae0bd6c" />
+      <keyword name="Primitive" id="Renderer::Primitive::Primitive" ref="class_renderer_1_1_primitive.html#aef85c08ccb6b189417433a81fa382513" />
+      <keyword name="~Primitive" id="Renderer::Primitive::~Primitive" ref="class_renderer_1_1_primitive.html#a72985fa9fd72f5229a9bfb638377f4c8" />
+      <keyword name="rayToObjectSpace" id="Renderer::Primitive::rayToObjectSpace" ref="class_renderer_1_1_primitive.html#ab284806b9c1642ae80410607d606ae46" />
+      <keyword name="rayToWorldSpace" id="Renderer::Primitive::rayToWorldSpace" ref="class_renderer_1_1_primitive.html#aef8e1c3e54925ef164f094ef976ad78e" />
+      <keyword name="getSurfaceMaterial" id="Renderer::Primitive::getSurfaceMaterial" ref="class_renderer_1_1_primitive.html#aa303dc1042f7305a3895049d5f1a51e2" />
+      <keyword name="objectTransform" id="Renderer::Primitive::objectTransform" ref="class_renderer_1_1_primitive.html#a935c1ff33ec49914cd4dfaafb92055f0" />
+      <keyword name="worldTransform" id="Renderer::Primitive::worldTransform" ref="class_renderer_1_1_primitive.html#a9a55765d6ba313e07482cd650700bd00" />
+      <keyword name="m_vtx" id="Renderer::Triangle::m_vtx" ref="class_renderer_1_1_triangle.html#a9c7e7264f73272aad6ecc741254affb2" />
+      <keyword name="m_normals" id="Renderer::Triangle::m_normals" ref="class_renderer_1_1_triangle.html#a7a3f4ab1063f6856f29550487145b761" />
+      <keyword name="m_vao" id="Renderer::Triangle::m_vao" ref="class_renderer_1_1_triangle.html#a093ffebe18ba2f43a9878323e5da678f" />
+      <keyword name="m_singleSided" id="Renderer::Triangle::m_singleSided" ref="class_renderer_1_1_triangle.html#aa668f30d8a7279d8a7b5677e3bc6a763" />
+      <keyword name="m_toWorldSpace" id="Renderer::Primitive::m_toWorldSpace" ref="class_renderer_1_1_primitive.html#a165cf73028170dd26e253a35ca3f75e4" />
+      <keyword name="m_toObjectSpace" id="Renderer::Primitive::m_toObjectSpace" ref="class_renderer_1_1_primitive.html#a14b4a25d610a4af486935efff6d85a3c" />
+      <keyword name="m_material" id="Renderer::Primitive::m_material" ref="class_renderer_1_1_primitive.html#a3c5f1dc45cf1c74402047a93007d9a3b" />
+      <keyword name="Ui" id="Ui" ref="namespace_ui.html" />
+    </keywords>
+    <files>
+      <file>tabs.css</file>
+      <file>tab_a.png</file>
+      <file>tab_b.png</file>
+      <file>tab_h.png</file>
+      <file>tab_s.png</file>
+      <file>nav_h.png</file>
+      <file>nav_f.png</file>
+      <file>bc_s.png</file>
+      <file>doxygen.png</file>
+      <file>closed.png</file>
+      <file>open.png</file>
+      <file>bdwn.png</file>
+      <file>sync_on.png</file>
+      <file>sync_off.png</file>
+      <file>doc.png</file>
+      <file>folderopen.png</file>
+      <file>folderclosed.png</file>
+      <file>arrowdown.png</file>
+      <file>arrowright.png</file>
+      <file>splitbar.png</file>
+      <file>doxygen.css</file>
+      <file>search/search_l.png</file>
+      <file>search/search_m.png</file>
+      <file>search/search_r.png</file>
+      <file>search/close.png</file>
+      <file>search/mag_sel.png</file>
+      <file>search/search.css</file>
+      <file>search/search.js</file>
+      <file>_axis_8cpp_source.html</file>
+      <file>_axis_8h_source.html</file>
+      <file>camera_8cpp_source.html</file>
+      <file>camera_8h_source.html</file>
+      <file>_g_l_window_8cpp_source.html</file>
+      <file>_g_l_window_8h_source.html</file>
+      <file>image_8cpp_source.html</file>
+      <file>image_8h_source.html</file>
+      <file>image_p_p_m_8cpp_source.html</file>
+      <file>image_p_p_m_8h_source.html</file>
+      <file>main_8cpp_source.html</file>
+      <file>_main_window_8cpp_source.html</file>
+      <file>_main_window_8h_source.html</file>
+      <file>material_8cpp_source.html</file>
+      <file>material_8h_source.html</file>
+      <file>plane_8cpp_source.html</file>
+      <file>plane_8h_source.html</file>
+      <file>primitive_8cpp_source.html</file>
+      <file>primitive_8h_source.html</file>
+      <file>ray_8cpp_source.html</file>
+      <file>ray_8h_source.html</file>
+      <file>rendercontext_8cpp_source.html</file>
+      <file>rendercontext_8h_source.html</file>
+      <file>renderer_8cpp_source.html</file>
+      <file>renderer_8h_source.html</file>
+      <file>sampler_8cpp_source.html</file>
+      <file>sampler_8h_source.html</file>
+      <file>scene_8cpp_source.html</file>
+      <file>scene_8h_source.html</file>
+      <file>scenefile_8cpp_source.html</file>
+      <file>scenefile_8h_source.html</file>
+      <file>sphere_8cpp_source.html</file>
+      <file>sphere_8h_source.html</file>
+      <file>_string_utils_8cpp_source.html</file>
+      <file>_string_utils_8h_source.html</file>
+      <file>tracemath_8cpp_source.html</file>
+      <file>tracemath_8h_source.html</file>
+      <file>triangle_8cpp_source.html</file>
+      <file>triangle_8h_source.html</file>
+      <file>_axis_8cpp.html</file>
+      <file>_axis_8cpp__incl.png</file>
+      <file>_axis_8h.html</file>
+      <file>_axis_8h__incl.png</file>
+      <file>_axis_8h__dep__incl.png</file>
+      <file>camera_8cpp.html</file>
+      <file>camera_8cpp__incl.png</file>
+      <file>camera_8h.html</file>
+      <file>camera_8h__incl.png</file>
+      <file>camera_8h__dep__incl.png</file>
+      <file>_g_l_window_8cpp.html</file>
+      <file>_g_l_window_8cpp__incl.png</file>
+      <file>_g_l_window_8h.html</file>
+      <file>_g_l_window_8h__incl.png</file>
+      <file>_g_l_window_8h__dep__incl.png</file>
+      <file>image_8cpp.html</file>
+      <file>image_8cpp__incl.png</file>
+      <file>image_8h.html</file>
+      <file>image_8h__incl.png</file>
+      <file>image_8h__dep__incl.png</file>
+      <file>image_p_p_m_8cpp.html</file>
+      <file>image_p_p_m_8cpp__incl.png</file>
+      <file>image_p_p_m_8h.html</file>
+      <file>image_p_p_m_8h__incl.png</file>
+      <file>image_p_p_m_8h__dep__incl.png</file>
+      <file>main_8cpp.html</file>
+      <file>main_8cpp__incl.png</file>
+      <file>_main_window_8cpp.html</file>
+      <file>_main_window_8cpp__incl.png</file>
+      <file>_main_window_8h.html</file>
+      <file>_main_window_8h__incl.png</file>
+      <file>_main_window_8h__dep__incl.png</file>
+      <file>material_8cpp.html</file>
+      <file>material_8h.html</file>
+      <file>material_8h__incl.png</file>
+      <file>material_8h__dep__incl.png</file>
+      <file>plane_8cpp.html</file>
+      <file>plane_8cpp__incl.png</file>
+      <file>plane_8h.html</file>
+      <file>plane_8h__incl.png</file>
+      <file>plane_8h__dep__incl.png</file>
+      <file>primitive_8cpp.html</file>
+      <file>primitive_8cpp__incl.png</file>
+      <file>primitive_8h.html</file>
+      <file>primitive_8h__incl.png</file>
+      <file>primitive_8h__dep__incl.png</file>
+      <file>ray_8cpp.html</file>
+      <file>ray_8cpp__incl.png</file>
+      <file>ray_8h.html</file>
+      <file>ray_8h__incl.png</file>
+      <file>ray_8h__dep__incl.png</file>
+      <file>rendercontext_8cpp.html</file>
+      <file>rendercontext_8cpp__incl.png</file>
+      <file>rendercontext_8h.html</file>
+      <file>rendercontext_8h__incl.png</file>
+      <file>rendercontext_8h__dep__incl.png</file>
+      <file>renderer_8cpp.html</file>
+      <file>renderer_8cpp__incl.png</file>
+      <file>renderer_8h.html</file>
+      <file>renderer_8h__incl.png</file>
+      <file>renderer_8h__dep__incl.png</file>
+      <file>sampler_8cpp.html</file>
+      <file>sampler_8h.html</file>
+      <file>scene_8cpp.html</file>
+      <file>scene_8cpp__incl.png</file>
+      <file>scene_8h.html</file>
+      <file>scene_8h__incl.png</file>
+      <file>scene_8h__dep__incl.png</file>
+      <file>scenefile_8cpp.html</file>
+      <file>scenefile_8cpp__incl.png</file>
+      <file>scenefile_8h.html</file>
+      <file>scenefile_8h__incl.png</file>
+      <file>scenefile_8h__dep__incl.png</file>
+      <file>sphere_8cpp.html</file>
+      <file>sphere_8cpp__incl.png</file>
+      <file>sphere_8h.html</file>
+      <file>sphere_8h__incl.png</file>
+      <file>sphere_8h__dep__incl.png</file>
+      <file>_string_utils_8cpp.html</file>
+      <file>_string_utils_8cpp__incl.png</file>
+      <file>_string_utils_8cpp_a65c424f4219d2baacff104fdd206b016_icgraph.png</file>
+      <file>_string_utils_8cpp_ab602aec05d401dc633003bf507e9db8c_icgraph.png</file>
+      <file>_string_utils_8h.html</file>
+      <file>_string_utils_8h__incl.png</file>
+      <file>_string_utils_8h__dep__incl.png</file>
+      <file>_string_utils_8h_a65c424f4219d2baacff104fdd206b016_icgraph.png</file>
+      <file>_string_utils_8h_ab602aec05d401dc633003bf507e9db8c_icgraph.png</file>
+      <file>tracemath_8cpp.html</file>
+      <file>tracemath_8cpp__incl.png</file>
+      <file>tracemath_8cpp_ac4bb74681e6f160a17183e2295e6ffcf_icgraph.png</file>
+      <file>tracemath_8cpp_a69ce87f2be8257a30cb1d2998f0d8e9c_icgraph.png</file>
+      <file>tracemath_8cpp_a6400b711aeed0a6ff4cd2d8006c4cea8_icgraph.png</file>
+      <file>tracemath_8cpp_a70d4019cedd59fd08c763a06b47b2d45_icgraph.png</file>
+      <file>tracemath_8h.html</file>
+      <file>tracemath_8h__incl.png</file>
+      <file>tracemath_8h__dep__incl.png</file>
+      <file>tracemath_8h_ac4bb74681e6f160a17183e2295e6ffcf_icgraph.png</file>
+      <file>tracemath_8h_a8156363d0dd5b6af9a73ca4bbcea0939_icgraph.png</file>
+      <file>tracemath_8h_a69ce87f2be8257a30cb1d2998f0d8e9c_icgraph.png</file>
+      <file>tracemath_8h_a6400b711aeed0a6ff4cd2d8006c4cea8_icgraph.png</file>
+      <file>tracemath_8h_a70d4019cedd59fd08c763a06b47b2d45_icgraph.png</file>
+      <file>triangle_8cpp.html</file>
+      <file>triangle_8cpp__incl.png</file>
+      <file>triangle_8h.html</file>
+      <file>triangle_8h__incl.png</file>
+      <file>triangle_8h__dep__incl.png</file>
+      <file>todo.html</file>
+      <file>bug.html</file>
+      <file>class_axis.html</file>
+      <file>class_axis__coll__graph.png</file>
+      <file>class_axis_a6a001a1f69c90c980822515e17fb1701_cgraph.png</file>
+      <file>class_axis_a6a001a1f69c90c980822515e17fb1701_icgraph.png</file>
+      <file>class_axis_a79d40f39b4a3713b4acf66b13077e92f_icgraph.png</file>
+      <file>class_axis_a2aa5d9e6cdf5a8453aa0e7a63d93efa1_icgraph.png</file>
+      <file>class_axis-members.html</file>
+      <file>class_g_l_window.html</file>
+      <file>class_g_l_window__inherit__graph.png</file>
+      <file>class_g_l_window__coll__graph.png</file>
+      <file>class_g_l_window_a167f9005a38f79ca53b7ed0256b54076_icgraph.png</file>
+      <file>class_g_l_window_a39e39761cd7323806917a217cc7caea5_cgraph.png</file>
+      <file>class_g_l_window_a89d4304966d8947bc1fd98fbe881f63b_icgraph.png</file>
+      <file>class_g_l_window_aed7b270f88867c428887e7c43145988b_cgraph.png</file>
+      <file>class_g_l_window_aed7b270f88867c428887e7c43145988b_icgraph.png</file>
+      <file>class_g_l_window_a9bd2503dd5f812c10a9481f22ecd3403_cgraph.png</file>
+      <file>class_g_l_window_afa32b188a2c32efb856380c59f966c50_cgraph.png</file>
+      <file>class_g_l_window_afa32b188a2c32efb856380c59f966c50_icgraph.png</file>
+      <file>class_g_l_window_a7d68a4cf2db4ee1f485462595ffe7137_icgraph.png</file>
+      <file>class_g_l_window_aa1349f743c7896eae48d9de70bc3a435_icgraph.png</file>
+      <file>class_g_l_window_a3eb6fe3b14f113249c0be33a5337e8fa_icgraph.png</file>
+      <file>class_g_l_window-members.html</file>
+      <file>class_image.html</file>
+      <file>class_image__inherit__graph.png</file>
+      <file>class_image__coll__graph.png</file>
+      <file>class_image_a634f5e4de7751158cfc2312c93a9a005_icgraph.png</file>
+      <file>class_image_a704672fded047d7f142c6e6dd8c488f8_icgraph.png</file>
+      <file>class_image-members.html</file>
+      <file>struct_image_1_1_pixel.html</file>
+      <file>struct_image_1_1_pixel__coll__graph.png</file>
+      <file>struct_image_1_1_pixel_a93d339cf79d059bfff19312344dc3169_icgraph.png</file>
+      <file>struct_image_1_1_pixel_a45019e2e7a6b136c483dda3757073376_cgraph.png</file>
+      <file>struct_image_1_1_pixel_a9ac59bc7ffcf0d258020457f7a874c5e_cgraph.png</file>
+      <file>struct_image_1_1_pixel_a162bce995aeeaba97b86787bf3ec564c_cgraph.png</file>
+      <file>struct_image_1_1_pixel_a45cdd002e2736b87f6ecfc21a936af67_cgraph.png</file>
+      <file>struct_image_1_1_pixel_a7650bff7855c16b62836969e3a6b51b8_cgraph.png</file>
+      <file>struct_image_1_1_pixel_ac12af52c4bb346e6f43f32d8620af758_cgraph.png</file>
+      <file>struct_image_1_1_pixel-members.html</file>
+      <file>class_image_p_p_m.html</file>
+      <file>class_image_p_p_m__inherit__graph.png</file>
+      <file>class_image_p_p_m__coll__graph.png</file>
+      <file>class_image_p_p_m_acf4a44ec60de8ce19b826d51f82e9054_cgraph.png</file>
+      <file>class_image_p_p_m_acf4a44ec60de8ce19b826d51f82e9054_icgraph.png</file>
+      <file>class_image_p_p_m-members.html</file>
+      <file>class_main_window.html</file>
+      <file>class_main_window__inherit__graph.png</file>
+      <file>class_main_window__coll__graph.png</file>
+      <file>class_main_window_a8b244be8b7b7db1b08de2a2acb9409db_cgraph.png</file>
+      <file>class_main_window_a494094a6550b91f808a64f5bf792170a_cgraph.png</file>
+      <file>class_main_window_a3c2e352934c6318d405c3d2b0e07729c_cgraph.png</file>
+      <file>class_main_window_af0d2560399a08d1070ad344ca30e968d_cgraph.png</file>
+      <file>class_main_window_af0d2560399a08d1070ad344ca30e968d_icgraph.png</file>
+      <file>class_main_window_a65970e860475159b218470a3a790c71d_icgraph.png</file>
+      <file>class_main_window_ad4224ffb01cbd6f9b31b3024053aeeef_cgraph.png</file>
+      <file>class_main_window_ab9611cd38a22e0d943734a6f656df484_cgraph.png</file>
+      <file>class_main_window_ab9611cd38a22e0d943734a6f656df484_icgraph.png</file>
+      <file>class_main_window_a02076de46e6810174817ebfc6ddd2be5_cgraph.png</file>
+      <file>class_main_window_aa7811f5612fc3902900dad6d71368a02_icgraph.png</file>
+      <file>class_main_window-members.html</file>
+      <file>struct_material.html</file>
+      <file>struct_material__coll__graph.png</file>
+      <file>struct_material-members.html</file>
+      <file>class_sampler.html</file>
+      <file>class_sampler__coll__graph.png</file>
+      <file>class_sampler-members.html</file>
+      <file>namespace_renderer.html</file>
+      <file>namespace_renderer_ab4e56fa4911b200479ea79e6f43079d0_cgraph.png</file>
+      <file>namespace_renderer_ab4e56fa4911b200479ea79e6f43079d0_icgraph.png</file>
+      <file>namespace_renderer_a5889ab8316b510a8dc208452fc14a76c_cgraph.png</file>
+      <file>namespace_renderer_a5889ab8316b510a8dc208452fc14a76c_icgraph.png</file>
+      <file>namespace_renderer_ac12ecacae721953493f903dacb4d411a_cgraph.png</file>
+      <file>namespace_renderer_ac12ecacae721953493f903dacb4d411a_icgraph.png</file>
+      <file>class_renderer_1_1_camera.html</file>
+      <file>class_renderer_1_1_camera__coll__graph.png</file>
+      <file>class_renderer_1_1_camera_ab25a860d30c9fb7988ad68c4d89de8b9_cgraph.png</file>
+      <file>class_renderer_1_1_camera_aee5a50c681121ebad8e8bf0a02df4e96_icgraph.png</file>
+      <file>class_renderer_1_1_camera_a4f31ff2bb69d635467d59ec1e2bd8bfd_icgraph.png</file>
+      <file>class_renderer_1_1_camera_acf6473a1263096a8309c5f1209066ba4_icgraph.png</file>
+      <file>class_renderer_1_1_camera_a3f6afedf440c05554e7fbf506aea5514_icgraph.png</file>
+      <file>class_renderer_1_1_camera_a979318d93dd9fd29d1188b109dbf25e8_icgraph.png</file>
+      <file>class_renderer_1_1_camera_a4452d3bce23326607f184c5621fba48d_icgraph.png</file>
+      <file>class_renderer_1_1_camera_aa903bf49a467f2bd0c915c12a032a2d3_cgraph.png</file>
+      <file>class_renderer_1_1_camera_aa903bf49a467f2bd0c915c12a032a2d3_icgraph.png</file>
+      <file>class_renderer_1_1_camera-members.html</file>
+      <file>struct_renderer_1_1_hit_data.html</file>
+      <file>struct_renderer_1_1_hit_data__coll__graph.png</file>
+      <file>struct_renderer_1_1_hit_data-members.html</file>
+      <file>class_renderer_1_1_plane.html</file>
+      <file>class_renderer_1_1_plane__inherit__graph.png</file>
+      <file>class_renderer_1_1_plane__coll__graph.png</file>
+      <file>class_renderer_1_1_plane_a134fb1ab85f0c9537edde96220edb014_icgraph.png</file>
+      <file>class_renderer_1_1_plane_a1954528af0da8ab0b96b9dee73b5c7a3_cgraph.png</file>
+      <file>class_renderer_1_1_plane-members.html</file>
+      <file>class_renderer_1_1_primitive.html</file>
+      <file>class_renderer_1_1_primitive__inherit__graph.png</file>
+      <file>class_renderer_1_1_primitive__coll__graph.png</file>
+      <file>class_renderer_1_1_primitive_ade88d0252e3c0bd1f1ee81df35afca0a_icgraph.png</file>
+      <file>class_renderer_1_1_primitive_aa303dc1042f7305a3895049d5f1a51e2_icgraph.png</file>
+      <file>class_renderer_1_1_primitive_ab284806b9c1642ae80410607d606ae46_cgraph.png</file>
+      <file>class_renderer_1_1_primitive_aef8e1c3e54925ef164f094ef976ad78e_cgraph.png</file>
+      <file>class_renderer_1_1_primitive_a9a55765d6ba313e07482cd650700bd00_icgraph.png</file>
+      <file>class_renderer_1_1_primitive-members.html</file>
+      <file>struct_renderer_1_1_ray.html</file>
+      <file>struct_renderer_1_1_ray__coll__graph.png</file>
+      <file>struct_renderer_1_1_ray_a174d2a110f464b0715f689b9eb664cad_cgraph.png</file>
+      <file>struct_renderer_1_1_ray_aa6bf2242c96eeff730f78b389e16b3e7_icgraph.png</file>
+      <file>struct_renderer_1_1_ray-members.html</file>
+      <file>struct_renderer_1_1_render_context.html</file>
+      <file>struct_renderer_1_1_render_context__coll__graph.png</file>
+      <file>struct_renderer_1_1_render_context-members.html</file>
+      <file>class_renderer_1_1_scene.html</file>
+      <file>class_renderer_1_1_scene__coll__graph.png</file>
+      <file>class_renderer_1_1_scene_afed66d5469d6bf5c15a8a1c72051a45a_icgraph.png</file>
+      <file>class_renderer_1_1_scene_ac71ec50dfcae221f69e83ac1717b865d_icgraph.png</file>
+      <file>class_renderer_1_1_scene_af5f44baafb6e49510712579c4aca0ca7_icgraph.png</file>
+      <file>class_renderer_1_1_scene-members.html</file>
+      <file>class_renderer_1_1_scene_file.html</file>
+      <file>class_renderer_1_1_scene_file__coll__graph.png</file>
+      <file>class_renderer_1_1_scene_file_a51b5288f138fc6bdf7340d55f95f76f1_cgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a51b5288f138fc6bdf7340d55f95f76f1_icgraph.png</file>
+      <file>class_renderer_1_1_scene_file_ad278fe4d9ffdd2018607836d8777f4ea_cgraph.png</file>
+      <file>class_renderer_1_1_scene_file_ad278fe4d9ffdd2018607836d8777f4ea_icgraph.png</file>
+      <file>class_renderer_1_1_scene_file_acdf20b92e3d33be370c3ad081555fd16_cgraph.png</file>
+      <file>class_renderer_1_1_scene_file_acdf20b92e3d33be370c3ad081555fd16_icgraph.png</file>
+      <file>class_renderer_1_1_scene_file_afdfcfbdb80511cc22f4287a8c8515f0f_icgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a52b006539e1d470e6d75ee662b056bc2_cgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a52b006539e1d470e6d75ee662b056bc2_icgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a0050fe3c8f4c1cf799df54740d623cdd_cgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a0050fe3c8f4c1cf799df54740d623cdd_icgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a7c8cd7aafa876459375f0aa158c5ae2c_cgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a7c8cd7aafa876459375f0aa158c5ae2c_icgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a136fab17d94808f9ea3a0247cef5f3cf_cgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a136fab17d94808f9ea3a0247cef5f3cf_icgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a615a08298e12eec3794cd80ba687c127_cgraph.png</file>
+      <file>class_renderer_1_1_scene_file_a615a08298e12eec3794cd80ba687c127_icgraph.png</file>
+      <file>class_renderer_1_1_scene_file-members.html</file>
+      <file>class_renderer_1_1_sphere.html</file>
+      <file>class_renderer_1_1_sphere__inherit__graph.png</file>
+      <file>class_renderer_1_1_sphere__coll__graph.png</file>
+      <file>class_renderer_1_1_sphere_a9a25c8561b372c717b03ab1696473b73_cgraph.png</file>
+      <file>class_renderer_1_1_sphere_a9a25c8561b372c717b03ab1696473b73_icgraph.png</file>
+      <file>class_renderer_1_1_sphere_ac9525a1fa2081d065e25e93f5e2f4b1d_cgraph.png</file>
+      <file>class_renderer_1_1_sphere_a63986b9167dd275192e87cc3c578d91a_cgraph.png</file>
+      <file>class_renderer_1_1_sphere_a1e60080d349a95c18e29bd3e2f0f3819_cgraph.png</file>
+      <file>class_renderer_1_1_sphere-members.html</file>
+      <file>class_renderer_1_1_triangle.html</file>
+      <file>class_renderer_1_1_triangle__inherit__graph.png</file>
+      <file>class_renderer_1_1_triangle__coll__graph.png</file>
+      <file>class_renderer_1_1_triangle_adae4e94dc4c3b4e4ed844a222815f0a4_cgraph.png</file>
+      <file>class_renderer_1_1_triangle_adae4e94dc4c3b4e4ed844a222815f0a4_icgraph.png</file>
+      <file>class_renderer_1_1_triangle_a36f812846c8e2fcf5ced411f3e12812b_icgraph.png</file>
+      <file>class_renderer_1_1_triangle_af9802d9321c1fcdeb3aae9364efd246c_cgraph.png</file>
+      <file>class_renderer_1_1_triangle-members.html</file>
+      <file>namespace_ui.html</file>
+      <file>graph_legend.png</file>
+      <file>graph_legend.html</file>
+      <file>dir_86f759b2ce0b15fae94469d3abcb8040.html</file>
+      <file>dir_86f759b2ce0b15fae94469d3abcb8040_dep.png</file>
+      <file>dir_7908b8aecca345ff4b65e8373e91b673.html</file>
+      <file>dir_7908b8aecca345ff4b65e8373e91b673_dep.png</file>
+      <file>dir_75b82e7e4a5feb05200b9ad7adf06257.html</file>
+      <file>dir_75b82e7e4a5feb05200b9ad7adf06257_dep.png</file>
+      <file>dir_811c8130c0a05e369f777b14a2091cd2.html</file>
+      <file>dir_811c8130c0a05e369f777b14a2091cd2_dep.png</file>
+      <file>dir_dc987c29deeb4e6b83fda4262a178be7.html</file>
+      <file>dir_dc987c29deeb4e6b83fda4262a178be7_dep.png</file>
+      <file>dir_a216f8a5ce282fb933f4d3758117f9d8.html</file>
+      <file>dir_a216f8a5ce282fb933f4d3758117f9d8_dep.png</file>
+      <file>dir_977432cada5a8d460db86abb6d81bd46.html</file>
+      <file>dir_977432cada5a8d460db86abb6d81bd46_dep.png</file>
+      <file>dir_e95fbbbd292ffa1d4511ce3e5b1cd593.html</file>
+      <file>dir_e95fbbbd292ffa1d4511ce3e5b1cd593_dep.png</file>
+      <file>dir_7de77bb8940b10a2f6b3336735c7a2cb.html</file>
+      <file>dir_7de77bb8940b10a2f6b3336735c7a2cb_dep.png</file>
+      <file>dir_4ed7600806e0f2a37805b0f25965073c.html</file>
+      <file>dir_4ed7600806e0f2a37805b0f25965073c_dep.png</file>
+      <file>dir_e56a2a865a1b4413f23067d43bb1c426.html</file>
+      <file>dir_e56a2a865a1b4413f23067d43bb1c426_dep.png</file>
+      <file>dir_000007_000008.html</file>
+      <file>dir_000008_000010.html</file>
+      <file>dir_000009_000008.html</file>
+      <file>index.html</file>
+      <file>pages.html</file>
+      <file>namespaces.html</file>
+      <file>namespacemembers.html</file>
+      <file>namespacemembers.html</file>
+      <file>namespacemembers.html</file>
+      <file>namespacemembers.html</file>
+      <file>namespacemembers.html</file>
+      <file>namespacemembers_func.html</file>
+      <file>namespacemembers_func.html</file>
+      <file>namespacemembers_func.html</file>
+      <file>namespacemembers_func.html</file>
+      <file>namespacemembers_vars.html</file>
+      <file>annotated.html</file>
+      <file>classes.html</file>
+      <file>hierarchy.html</file>
+      <file>inherits.html</file>
+      <file>inherit_graph_0.png</file>
+      <file>inherit_graph_1.png</file>
+      <file>inherit_graph_2.png</file>
+      <file>inherit_graph_3.png</file>
+      <file>inherit_graph_4.png</file>
+      <file>inherit_graph_5.png</file>
+      <file>inherit_graph_6.png</file>
+      <file>inherit_graph_7.png</file>
+      <file>inherit_graph_8.png</file>
+      <file>inherit_graph_9.png</file>
+      <file>inherit_graph_10.png</file>
+      <file>inherit_graph_11.png</file>
+      <file>inherit_graph_12.png</file>
+      <file>inherit_graph_13.png</file>
+      <file>functions.html</file>
+      <file>functions_c.html</file>
+      <file>functions_d.html</file>
+      <file>functions_e.html</file>
+      <file>functions_g.html</file>
+      <file>functions_h.html</file>
+      <file>functions_i.html</file>
+      <file>functions_k.html</file>
+      <file>functions_l.html</file>
+      <file>functions_m.html</file>
+      <file>functions_o.html</file>
+      <file>functions_p.html</file>
+      <file>functions_r.html</file>
+      <file>functions_s.html</file>
+      <file>functions_t.html</file>
+      <file>functions_u.html</file>
+      <file>functions_v.html</file>
+      <file>functions_w.html</file>
+      <file>functions_~.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_func.html</file>
+      <file>functions_vars.html</file>
+      <file>functions_vars.html</file>
+      <file>functions_vars.html</file>
+      <file>functions_vars.html</file>
+      <file>functions_type.html</file>
+      <file>functions_enum.html</file>
+      <file>functions_enum.html</file>
+      <file>functions_enum.html</file>
+      <file>functions_eval.html</file>
+      <file>functions_eval.html</file>
+      <file>functions_eval.html</file>
+      <file>functions_eval.html</file>
+      <file>functions_eval.html</file>
+      <file>functions_eval.html</file>
+      <file>functions_eval.html</file>
+      <file>functions_eval.html</file>
+      <file>files.html</file>
+      <file>globals.html</file>
+      <file>globals.html</file>
+      <file>globals.html</file>
+      <file>globals.html</file>
+      <file>globals.html</file>
+      <file>globals.html</file>
+      <file>globals_func.html</file>
+      <file>globals_func.html</file>
+      <file>globals_func.html</file>
+      <file>globals_func.html</file>
+      <file>globals_func.html</file>
+      <file>globals_vars.html</file>
+      <file>globals_vars.html</file>
+    </files>
+  </filterSection>
+</QtHelpProject>
