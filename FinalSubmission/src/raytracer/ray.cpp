@@ -1,2 +1,0 @@
-#include "raytracer/ray.h"
-

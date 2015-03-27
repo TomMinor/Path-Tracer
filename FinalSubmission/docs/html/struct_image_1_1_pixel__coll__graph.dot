@@ -1,6 +1,0 @@
-digraph "Image::Pixel"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{Image::Pixel\n|+ m_r\l+ m_g\l+ m_b\l|+ Pixel()\l+ Pixel()\l+ operator+()\l+ operator-()\l+ operator/()\l+ operator*()\l+ operator/()\l+ operator*()\l+ operator+=()\l+ operator-=()\l+ operator*=()\l+ operator/=()\l+ operator*=()\l+ operator/=()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-}
